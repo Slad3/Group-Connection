@@ -92,7 +92,7 @@
                     <view key="view" contentMode="scaleToFill" id="m9a-X5-p6E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21891373972693506" green="0.26117501875190419" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Check In" id="t5g-gy-mz3"/>
                 </viewController>
@@ -111,7 +111,7 @@
                     <view key="view" contentMode="scaleToFill" id="AVT-0H-nZX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.97190742484838877" blue="0.073346639538320546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Roster" id="kTC-Ji-mbx"/>
                 </viewController>
@@ -130,7 +130,7 @@
                     <view key="view" contentMode="scaleToFill" id="c5a-qH-5k8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.25070261090101054" green="1" blue="0.25230243054049262" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="Cpc-to-ZSW"/>
                 </viewController>
@@ -149,7 +149,7 @@
                     <view key="view" contentMode="scaleToFill" id="KMj-h3-idT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.2257454036675538" blue="0.26294646946842515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="n8z-JY-D2l"/>
                 </viewController>
