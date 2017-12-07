@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-1393" y="707"/>
         </scene>
-        <!--Item-->
+        <!--Roster-->
         <scene sceneID="T5D-DX-SsD">
             <objects>
                 <viewController id="GQF-7z-LfS" sceneMemberID="viewController">
@@ -41,13 +41,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="kTC-Ji-mbx"/>
+                    <tabBarItem key="tabBarItem" title="Roster" id="kTC-Ji-mbx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yha-fq-bI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="707"/>
+            <point key="canvasLocation" x="617" y="807"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="Ygy-WI-ez1">
             <objects>
                 <viewController id="5pG-ab-PXM" sceneMemberID="viewController">
@@ -60,13 +60,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Cpc-to-ZSW"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="Cpc-to-ZSW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svJ-IP-4Pp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1618" y="707"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="VZo-iy-o8R">
             <objects>
                 <viewController id="Fkr-nc-els" sceneMemberID="viewController">
@@ -79,11 +79,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="n8z-JY-D2l"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="n8z-JY-D2l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggW-nt-H3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-639" y="707"/>
+            <point key="canvasLocation" x="-586" y="789"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
