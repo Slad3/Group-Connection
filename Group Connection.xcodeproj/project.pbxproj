@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2CC6F91FE045D8001009FB /* JoinOrCreate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E2CC6F81FE045D8001009FB /* JoinOrCreate.xib */; };
+		0E2CC6FB1FE0461D001009FB /* JoinOrCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC6FA1FE0461D001009FB /* JoinOrCreate.swift */; };
 		0E9EF0271FD71D6500CD89CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */; };
 		0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */; };
 		0E9EF02B1FD71D6500CD89CC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */; };
@@ -16,6 +18,7 @@
 		0E9EF03E1FD71D6500CD89CC /* Group_ConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF03D1FD71D6500CD89CC /* Group_ConnectionTests.swift */; };
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
 		0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */; };
+		0EDC23AC1FDF055B004C8C8C /* JoinOrCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC23AB1FDF055B004C8C8C /* JoinOrCreate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E2CC6F81FE045D8001009FB /* JoinOrCreate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JoinOrCreate.xib; sourceTree = "<group>"; };
+		0E2CC6FA1FE0461D001009FB /* JoinOrCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinOrCreate.swift; sourceTree = "<group>"; };
 		0E9EF0231FD71D6500CD89CC /* Group Connection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Group Connection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_ConnectionUITests.swift; sourceTree = "<group>"; };
 		0E9EF04A1FD71D6500CD89CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinOrCreateViewContoller.swift; sourceTree = "<group>"; };
+		0EDC23AB1FDF055B004C8C8C /* JoinOrCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinOrCreate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,9 @@
 				0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */,
 				0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */,
 				0E9EF02C1FD71D6500CD89CC /* Main.storyboard */,
+				0EDC23AB1FDF055B004C8C8C /* JoinOrCreate.swift */,
+				0E2CC6F81FE045D8001009FB /* JoinOrCreate.xib */,
+				0E2CC6FA1FE0461D001009FB /* JoinOrCreate.swift */,
 				0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */,
 				0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */,
 				0E9EF0311FD71D6500CD89CC /* LaunchScreen.storyboard */,
@@ -240,6 +249,7 @@
 			files = (
 				0E9EF0331FD71D6500CD89CC /* LaunchScreen.storyboard in Resources */,
 				0E9EF0301FD71D6500CD89CC /* Assets.xcassets in Resources */,
+				0E2CC6F91FE045D8001009FB /* JoinOrCreate.xib in Resources */,
 				0E9EF02E1FD71D6500CD89CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +277,9 @@
 			files = (
 				0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */,
 				0E9EF02B1FD71D6500CD89CC /* SecondViewController.swift in Sources */,
+				0EDC23AC1FDF055B004C8C8C /* JoinOrCreate.swift in Sources */,
 				0E9EF0271FD71D6500CD89CC /* AppDelegate.swift in Sources */,
+				0E2CC6FB1FE0461D001009FB /* JoinOrCreate.swift in Sources */,
 				0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
