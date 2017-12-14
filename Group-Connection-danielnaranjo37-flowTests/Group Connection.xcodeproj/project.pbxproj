@@ -16,7 +16,8 @@
 		0E9EF03E1FD71D6500CD89CC /* Group_ConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF03D1FD71D6500CD89CC /* Group_ConnectionTests.swift */; };
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
 		0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */; };
-		4EC7CECB1FE2ED5E0013AC76 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */; };
+		5D10A9951FE05D19002275FD /* Group-Connection-danielnaranjo37-flowTests in Resources */ = {isa = PBXBuildFile; fileRef = 5D10A9941FE05D19002275FD /* Group-Connection-danielnaranjo37-flowTests */; };
+		5D8890581FE1BD6800E06BF4 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8890571FE1BD6800E06BF4 /* Globals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,8 @@
 		0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_ConnectionUITests.swift; sourceTree = "<group>"; };
 		0E9EF04A1FD71D6500CD89CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinOrCreateViewContoller.swift; sourceTree = "<group>"; };
-		4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = ../../Globals.swift; sourceTree = "<group>"; };
+		5D10A9941FE05D19002275FD /* Group-Connection-danielnaranjo37-flowTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Group-Connection-danielnaranjo37-flowTests"; sourceTree = "<group>"; };
+		5D8890571FE1BD6800E06BF4 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		0E9EF01A1FD71D6500CD89CC = {
 			isa = PBXGroup;
 			children = (
+				5D10A9941FE05D19002275FD /* Group-Connection-danielnaranjo37-flowTests */,
 				0E9EF0251FD71D6500CD89CC /* Group Connection */,
 				0E9EF03C1FD71D6500CD89CC /* Group ConnectionTests */,
 				0E9EF0471FD71D6500CD89CC /* Group ConnectionUITests */,
@@ -104,9 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */,
+				5D8890571FE1BD6800E06BF4 /* Globals.swift */,
 				0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */,
 				0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */,
-				4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */,
 				0E9EF02C1FD71D6500CD89CC /* Main.storyboard */,
 				0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */,
 				0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */,
@@ -197,7 +200,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = District196;
 				TargetAttributes = {
 					0E9EF0221FD71D6500CD89CC = {
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9EF0331FD71D6500CD89CC /* LaunchScreen.storyboard in Resources */,
+				5D10A9951FE05D19002275FD /* Group-Connection-danielnaranjo37-flowTests in Resources */,
 				0E9EF0301FD71D6500CD89CC /* Assets.xcassets in Resources */,
 				0E9EF02E1FD71D6500CD89CC /* Main.storyboard in Resources */,
 			);
@@ -268,10 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D8890581FE1BD6800E06BF4 /* Globals.swift in Sources */,
 				0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */,
 				0E9EF02B1FD71D6500CD89CC /* SecondViewController.swift in Sources */,
 				0E9EF0271FD71D6500CD89CC /* AppDelegate.swift in Sources */,
-				4EC7CECB1FE2ED5E0013AC76 /* Globals.swift in Sources */,
 				0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +341,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -345,7 +351,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -387,7 +397,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -395,7 +407,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

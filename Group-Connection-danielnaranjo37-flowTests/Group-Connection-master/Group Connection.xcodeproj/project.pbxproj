@@ -16,7 +16,6 @@
 		0E9EF03E1FD71D6500CD89CC /* Group_ConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF03D1FD71D6500CD89CC /* Group_ConnectionTests.swift */; };
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
 		0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */; };
-		4EC7CECB1FE2ED5E0013AC76 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_ConnectionUITests.swift; sourceTree = "<group>"; };
 		0E9EF04A1FD71D6500CD89CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinOrCreateViewContoller.swift; sourceTree = "<group>"; };
-		4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = ../../Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +104,6 @@
 				0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */,
 				0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */,
 				0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */,
-				4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */,
 				0E9EF02C1FD71D6500CD89CC /* Main.storyboard */,
 				0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */,
 				0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */,
@@ -271,7 +268,6 @@
 				0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */,
 				0E9EF02B1FD71D6500CD89CC /* SecondViewController.swift in Sources */,
 				0E9EF0271FD71D6500CD89CC /* AppDelegate.swift in Sources */,
-				4EC7CECB1FE2ED5E0013AC76 /* Globals.swift in Sources */,
 				0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
