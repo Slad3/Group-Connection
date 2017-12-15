@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8898B31FE2ED9C00B671A0 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */; };
+		0E8898B51FE2EE1F00B671A0 /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */; };
+		0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B61FE2EEC000B671A0 /* MapView.swift */; };
+		0E8898B91FE2EED100B671A0 /* RosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B81FE2EED100B671A0 /* RosterView.swift */; };
+		0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */; };
+		0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898BC1FE2F69500B671A0 /* Person.swift */; };
 		0E9EF0271FD71D6500CD89CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */; };
 		0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */; };
 		0E9EF02B1FD71D6500CD89CC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */; };
@@ -37,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
+		0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
+		0E8898B61FE2EEC000B671A0 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0E8898B81FE2EED100B671A0 /* RosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterView.swift; sourceTree = "<group>"; };
+		0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0E8898BC1FE2F69500B671A0 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		0E9EF0231FD71D6500CD89CC /* Group Connection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Group Connection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -108,10 +120,16 @@
 				0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */,
 				4EC7CECA1FE2ED5E0013AC76 /* Globals.swift */,
 				0E9EF02C1FD71D6500CD89CC /* Main.storyboard */,
+				0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */,
+				0E8898B81FE2EED100B671A0 /* RosterView.swift */,
+				0E8898B61FE2EEC000B671A0 /* MapView.swift */,
 				0EA60DB21FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift */,
 				0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */,
 				0E9EF0311FD71D6500CD89CC /* LaunchScreen.storyboard */,
 				0E9EF0341FD71D6500CD89CC /* Info.plist */,
+				0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */,
+				0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */,
+				0E8898BC1FE2F69500B671A0 /* Person.swift */,
 			);
 			path = "Group Connection";
 			sourceTree = "<group>";
@@ -268,8 +286,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */,
+				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
+				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
 				0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */,
 				0E9EF02B1FD71D6500CD89CC /* SecondViewController.swift in Sources */,
+				0E8898B51FE2EE1F00B671A0 /* CheckInView.swift in Sources */,
+				0E8898B31FE2ED9C00B671A0 /* CreateEventView.swift in Sources */,
+				0E8898B91FE2EED100B671A0 /* RosterView.swift in Sources */,
 				0E9EF0271FD71D6500CD89CC /* AppDelegate.swift in Sources */,
 				4EC7CECB1FE2ED5E0013AC76 /* Globals.swift in Sources */,
 				0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */,

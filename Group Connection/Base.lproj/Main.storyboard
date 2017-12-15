@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -52,7 +51,8 @@
         <!--JoinOrCreate-->
         <scene sceneID="ylA-xs-HiX">
             <objects>
-                <viewController storyboardIdentifier="Join or Create Event VC" title="JoinOrCreate" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Re-vt-O9v" sceneMemberID="viewController">
+
+                <viewController storyboardIdentifier="Join or Create Event VC" title="JoinOrCreate" id="0Re-vt-O9v" customClass="JoinOrCreateViewController" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lrA-CG-fu9"/>
                         <viewControllerLayoutGuide type="bottom" id="5Qj-9K-Gjk"/>
@@ -61,13 +61,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Join or Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cys-pg-Gnv">
-                                <rect key="frame" x="16" y="20" width="281" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Join Event" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="djj-A5-e06">
                                 <rect key="frame" x="52" y="173" width="188" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,21 +70,12 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Join Event:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKD-d0-BaA">
-                                <rect key="frame" x="20" y="110" width="188" height="62"/>
+                                <rect key="frame" x="20" y="103" width="188" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YI-nt-T7c">
-                                <rect key="frame" x="-21" y="240" width="311" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Create Event -&gt;"/>
-                                <connections>
-                                    <segue destination="4MN-c9-e70" kind="show" id="4Ff-sS-kpV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AA2-KQ-P8l">
                                 <rect key="frame" x="239" y="166" width="96" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -99,6 +83,22 @@
                                 <state key="normal" title="Join -&gt;"/>
                                 <connections>
                                     <segue destination="mel-2j-Tzc" kind="show" id="mnh-rA-B1p"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Join or Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cys-pg-Gnv">
+                                <rect key="frame" x="54" y="20" width="281" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YI-nt-T7c">
+                                <rect key="frame" x="20" y="255" width="311" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Create Event -&gt;"/>
+                                <connections>
+                                    <segue destination="4MN-c9-e70" kind="show" id="o8X-dz-QCd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -112,7 +112,7 @@
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
             <objects>
-                <viewController storyboardIdentifier="Create Event VC" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MN-c9-e70" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Create Event VC" title="Create" id="4MN-c9-e70" customClass="CreateEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ROj-dn-Fge"/>
                         <viewControllerLayoutGuide type="bottom" id="mh0-XI-ZbU"/>
@@ -174,25 +174,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time (Min) Between Check Ins:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8W-Ul-533">
-                                <rect key="frame" x="40" y="491" width="251" height="50"/>
+                                <rect key="frame" x="39" y="473" width="264" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="g2w-Sf-zFu">
-                                <rect key="frame" x="305" y="534" width="94" height="29"/>
+                                <rect key="frame" x="312" y="484" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stepper>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYg-au-X59">
-                                <rect key="frame" x="141" y="671" width="132" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Create Event"/>
-                                <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="KlM-OZ-X9s"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Imput Map" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pg0-GQ-9Fz">
                                 <rect key="frame" x="40" y="242" width="281" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -236,14 +227,7 @@
                                 <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-bQ-e74">
-                                <rect key="frame" x="20" y="491" width="16" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfY-fr-OA3">
-                                <rect key="frame" x="27" y="579" width="16" height="50"/>
+                                <rect key="frame" x="20" y="463" width="16" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,6 +240,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -299,18 +284,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yd6-Ga-dUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1200" y="-1665"/>
+
+            <point key="canvasLocation" x="-1200" y="-959.51086956521749"/>
         </scene>
         <!--Check In-->
         <scene sceneID="Row-Z4-a8m">
             <objects>
-                <viewController id="ej3-oA-gbH" sceneMemberID="viewController">
+                <viewController id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y9Z-1U-nXW"/>
                         <viewControllerLayoutGuide type="bottom" id="PPp-Fi-Q2a"/>
@@ -397,12 +377,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEq-kV-IV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <rotationGestureRecognizer id="A4p-lG-b0F"/>
             </objects>
-            <point key="canvasLocation" x="-1394.2028985507247" y="706.79347826086962"/>
+            <point key="canvasLocation" x="-1401" y="748"/>
         </scene>
         <!--Roster-->
         <scene sceneID="T5D-DX-SsD">
             <objects>
-                <viewController id="GQF-7z-LfS" sceneMemberID="viewController">
+                <viewController id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XrL-Pq-foW"/>
                         <viewControllerLayoutGuide type="bottom" id="nJ3-RR-MII"/>
@@ -434,12 +414,12 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="615.94202898550725" y="806.25000000000011"/>
+            <point key="canvasLocation" x="635" y="805"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Ygy-WI-ez1">
             <objects>
-                <viewController id="5pG-ab-PXM" sceneMemberID="viewController">
+                <viewController id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="acD-Rv-CI5"/>
                         <viewControllerLayoutGuide type="bottom" id="4fY-JD-Wll"/>
@@ -453,12 +433,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svJ-IP-4Pp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="707"/>
+            <point key="canvasLocation" x="1617" y="748"/>
         </scene>
         <!--Map-->
         <scene sceneID="VZo-iy-o8R">
             <objects>
-                <viewController id="Fkr-nc-els" sceneMemberID="viewController">
+                <viewController id="Fkr-nc-els" customClass="MapView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hQh-Cm-R3w"/>
                         <viewControllerLayoutGuide type="bottom" id="A36-kz-gX4"/>
@@ -490,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggW-nt-H3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-586.95652173913049" y="788.31521739130437"/>
+            <point key="canvasLocation" x="-620" y="806"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -505,8 +485,8 @@
                     <connections>
                         <segue destination="ej3-oA-gbH" kind="relationship" relationship="viewControllers" id="ytw-9d-tXA"/>
                         <segue destination="Fkr-nc-els" kind="relationship" relationship="viewControllers" id="HhO-5U-GJv"/>
-                        <segue destination="GQF-7z-LfS" kind="relationship" relationship="viewControllers" id="Ffn-MX-CXB"/>
                         <segue destination="5pG-ab-PXM" kind="relationship" relationship="viewControllers" id="AFL-2v-nD9"/>
+                        <segue destination="GQF-7z-LfS" kind="relationship" relationship="viewControllers" id="Ffn-MX-CXB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

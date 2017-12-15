@@ -1,14 +1,14 @@
 //
-//  JoinOrCreatViewController.swift
+//  RosterView.swift
 //  Group Connection
 //
-//  Created by BARCASKEY, BENJAMIN on 12/5/17.
+//  Created by BARCASKEY, BENJAMIN on 12/14/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
 
 import UIKit
 
-class JoinOrCreateViewController: UIViewController {
+class RosterView: UIViewController {
     
     
     
@@ -33,4 +33,3 @@ class JoinOrCreateViewController: UIViewController {
     
     
 }
-
