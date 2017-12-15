@@ -42,8 +42,8 @@ class Person {
         
         //Non required Initialized Variables
         self.phoneNumber = ""
-        self.buddy1 = Person()
-        self.buddy2 = Person()
+        self.buddy1 =
+        self.buddy2 = 
         
  
         
@@ -57,9 +57,8 @@ class Person {
     
     
     
-    init(){
       
-    }
+
     
     
     
