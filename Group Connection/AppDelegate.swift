@@ -22,22 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var initialViewController: UIViewController
         
-        print("reached if/else")
-        
-        if !globals.initialized {
-            print("did it get here*")
+        //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
+        if !globals.initialized { //Initial Profile
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         } else if !globals.inEvent{
-            if globals.isMentor{
+            if globals.isMentor{ //Join or Create
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
-            } else {
+            } else { //Join
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
             }
-        } else if globals.inEvent {
+        } else if globals.inEvent { //Main Tab
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Main Tab VC")
-        } else {
+        } else { //Initial Profile; Only if stuff really goes wrong
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-            print("Something went wrong in the if/else sequence.")
         }
         
         self.window?.rootViewController = initialViewController
