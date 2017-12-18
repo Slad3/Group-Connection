@@ -16,6 +16,8 @@ class Person {
     
     var isMentor: Bool
     
+    var isCreator: Bool? //optional so we can hold off initialization until later
+    
     var age: Int
     
     var phoneNumber: String
@@ -24,14 +26,12 @@ class Person {
     
     var additionalNotes: String
     
-    var buddy1: Person
+//    var buddy1: Person
+//
+//    var buddy2: Person
     
-    var buddy2: Person
     
-    
-    init(ffirstName: String, llastName: String, iisMentor: Bool, aage: Int, eemail: String, aaditionalNotes: String){
-    
-        
+    init(ffirstName: String, llastName: String, iisMentor: Bool, aage: Int, eemail: String, aaditionalNotes: String) {
         //Required Initialized Variables
         self.firstName = ffirstName
         self.lastName = llastName
@@ -40,36 +40,27 @@ class Person {
         self.email = eemail
         self.additionalNotes = aaditionalNotes
         
-        //Non required Initialized Variables
+        //Non required Initialized Variabl0es
         self.phoneNumber = ""
-        self.buddy1 =
-        self.buddy2 = 
-        
- 
-        
-    
+//        self.buddy1 =
+//        self.buddy2 =
+        return
     }
-    
-    
-    
-    
-    
-    
-    
-    
-      
+    //Second initializer for when there is a phone number input
+    init(firstName: String, lastName: String, isMentor: Bool, age: Int, email: String, phoneNumber: String, additionalNotes: String ) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.isMentor = isMentor
+        self.age = age
+        self.email = email
+        self.additionalNotes = additionalNotes
+        self.phoneNumber = phoneNumber
+        return
+    }
 
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
+

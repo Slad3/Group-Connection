@@ -11,6 +11,7 @@ import UIKit
 class CreateEventView: UIViewController {
     
     @IBOutlet weak var eventName: UITextField!
+
     @IBOutlet weak var checkInLength: UIStepper!
     @IBOutlet weak var generalAccessCode: UITextField!
     

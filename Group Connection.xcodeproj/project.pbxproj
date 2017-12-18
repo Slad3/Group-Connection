@@ -123,6 +123,7 @@
 		0E9EF0251FD71D6500CD89CC /* Group Connection */ = {
 			isa = PBXGroup;
 			children = (
+				0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */,
 				5D128D141FE4E03000D38505 /* View Controllers */,
 				5D128D081FE4DB6300D38505 /* Class Structures */,
 				5D128D0F1FE4DFF700D38505 /* Main.storyboard */,
@@ -165,7 +166,6 @@
 		5D128D141FE4E03000D38505 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E9EF0261FD71D6500CD89CC /* AppDelegate.swift */,
 				0E9EF0281FD71D6500CD89CC /* FirstViewController.swift */,
 				0E9EF02A1FD71D6500CD89CC /* SecondViewController.swift */,
 				0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */,
