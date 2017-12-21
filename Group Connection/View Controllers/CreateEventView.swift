@@ -19,7 +19,7 @@ class CreateEventView: UIViewController {
     
     @IBAction func stepper(_ sender: UIStepper){
     
-    
+    lengthLable.text = String(sender.value)
     
     
     }

@@ -36,9 +36,13 @@ UINavigationControllerDelegate {
     @IBAction func makeUser(_ sender: Any) {
         print("Button got pressed")
         if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumber.hasText && email.hasText && additionalNotes.hasText {
+            
             let age: Int = Int(ageText.text!)!
+            
             let user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: isMentor.isOn, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
+            
             performSegue(withIdentifier: "To Join or Create", sender: nil)
+            
 
         }
         else {
