@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import Group_Connection
 
 class Group_ConnectionTests: XCTestCase {
     
