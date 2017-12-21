@@ -14,6 +14,19 @@ class CreateEventView: UIViewController {
 
     @IBOutlet weak var checkInLength: UIStepper!
     @IBOutlet weak var generalAccessCode: UITextField!
+    @IBOutlet weak var lengthLable: UILabel!
+    
+    
+    @IBAction func stepper(_ sender: UIStepper){
+    
+    
+    
+    
+    }
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -25,6 +38,11 @@ class CreateEventView: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    
     
     @IBAction func makeEvent(_ sender: Any) {
         let event = Event()
