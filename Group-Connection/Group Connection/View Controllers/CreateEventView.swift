@@ -8,12 +8,59 @@
 
 import UIKit
 
-class CreateEventView: UIViewController {
+class CreateEventView: UIViewController,
+    UIImagePickerControllerDelegate,
+UINavigationControllerDelegate  {
     
     @IBOutlet weak var eventName: UITextField!
-
-    @IBOutlet weak var checkInLength: UIStepper!
+    
     @IBOutlet weak var generalAccessCode: UITextField!
+    @IBOutlet weak var mentorAccessCode: UITextField!
+    @IBOutlet weak var groupName: UITextField!
+    
+    @IBOutlet weak var stepperLabel: UILabel!
+    @IBOutlet weak var checkInLength: UIStepper!
+    
+    @IBOutlet weak var mapView: UIImageView!
+    @IBOutlet weak var mistakeLabel: UILabel!
+    
+    @IBAction func changeCheckInLength(_ sender: Any) {
+        stepperLabel.text = "\(checkInLength.value) + min"
+    }
+    
+    @IBAction func makeGeneralCode(_ sender: Any) {
+        event.generalAccessCode = Event.makeCode()
+        generalAccessCode.text = event.generalAccessCode
+    }
+    
+    @IBAction func makeMentorCode(_ sender: Any) {
+        event.mentorAccessCode = Event.makeCode()
+        mentorAccessCode.text = event.mentorAccessCode
+    }
+    
+    @IBAction func photoFromLibrary(_ sender: Any) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+    }
+    
+    @IBAction func makeEvent(_ sender: Any) {
+        if generalAccessCode.hasText && mentorAccessCode.hasText && eventName.hasText && (checkInLength.value > checkInLength.minimumValue) {
+            mistakeLabel.text = ""
+            event.eventName = eventName.text!
+            event.checkInLength = checkInLength.value
+            event.generalAccessCode = generalAccessCode.text ?? Event.makeCode()
+            event.mentorAccessCode = Event.makeCode()
+        }
+        else {
+            mistakeLabel.text = "Please input all values before proceeding."
+        }
+    }
+    
+    var event: Event = Event()
+    let picker = UIImagePickerController()
+
     
     
     override func viewDidLoad() {
@@ -26,13 +73,20 @@ class CreateEventView: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func makeEvent(_ sender: Any) {
-        let event = Event()
-        event.eventName = eventName.text!
-        event.checkInLength = checkInLength.value
-        event.generalAccessCode = generalAccessCode.text ?? Event.makeCode()
-        event.mentorAccessCode = Event.makeCode() 
+    
+    
+    //MARK: - Delegates
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        mapView.contentMode = .scaleAspectFit //3
+        mapView.image = chosenImage //4
+        dismiss(animated:true, completion: nil) //5
+        event.importedMap = mapView.image
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 

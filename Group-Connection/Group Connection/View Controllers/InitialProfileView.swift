@@ -24,14 +24,14 @@ UINavigationControllerDelegate {
    
     @IBOutlet weak var profilePhoto: UIImageView!
     
+    let picker = UIImagePickerController()
+
     @IBAction func photoFromLibrary(_ sender: Any) {
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
-    
-    let picker = UIImagePickerController()
 
     @IBAction func makeUser(_ sender: Any) {
         print("Button got pressed")
