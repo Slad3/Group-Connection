@@ -157,7 +157,7 @@
 		5D128D081FE4DB6300D38505 /* Class Structures */ = {
 			isa = PBXGroup;
 			children = (
-				5DFE7E4F1FEB110F000D69DE /* LoremSwiftum.swift */,
+				0EC208EB1FED76FE00871FE3 /* LoremSwiftum.swift */,
 				5D128D051FE4D82700D38505 /* Event.swift */,
 				0E8898BC1FE2F69500B671A0 /* Person.swift */,
 				5D37D3F41FE44BF000A6114F /* Globals.swift */,
@@ -332,7 +332,7 @@
 				5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */,
 				5DFE7E521FEB111D000D69DE /* PersistentStringArray.swift in Sources */,
 				0E9EF0291FD71D6500CD89CC /* FirstViewController.swift in Sources */,
-				5DFE7E501FEB110F000D69DE /* LoremSwiftum.swift in Sources */,
+				0EC208EC1FED76FE00871FE3 /* LoremSwiftum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
