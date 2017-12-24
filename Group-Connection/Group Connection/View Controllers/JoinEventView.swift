@@ -11,6 +11,15 @@ import UIKit
 
 class JoinEventView: UIViewController {
     
+    @IBOutlet weak var accessCode: UITextField!
+    
+    @IBOutlet weak var mistakeLabel: UILabel!
+    
+    @IBAction func checkCode(_ sender: Any) {
+        //implement moar stuff here please
+        
+        performSegue(withIdentifier: "To Main Tab", sender: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

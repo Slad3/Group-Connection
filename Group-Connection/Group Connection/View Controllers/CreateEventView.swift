@@ -46,7 +46,7 @@ UINavigationControllerDelegate  {
     }
     
     @IBAction func makeEvent(_ sender: Any) {
-        if generalAccessCode.hasText && mentorAccessCode.hasText && eventName.hasText && (checkInLength.value > checkInLength.minimumValue) {
+        if generalAccessCode.hasText && mentorAccessCode.hasText && eventName.hasText && (checkInLength.value > 0.0) {
             mistakeLabel.text = ""
             event.eventName = eventName.text!
             event.checkInLength = checkInLength.value
