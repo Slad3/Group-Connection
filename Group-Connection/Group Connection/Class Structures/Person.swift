@@ -18,7 +18,7 @@ class Person {
     
     var isCreator: Bool? //optional so we can hold off initialization until later
     
-    var age: Int
+    public var age: Int
     
     var phoneNumber: String
     
@@ -58,7 +58,7 @@ class Person {
         return
     }
 
-    
+
     
     
 

@@ -38,13 +38,13 @@ UINavigationControllerDelegate {
         if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumber.hasText && email.hasText  {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
-            if age > 18 {
+            if age > 19 {
                 let user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
             else {
                 let user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
-                performSegue(withIdentifier: "To Join", sender: nil)
+                performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
         }
         else {

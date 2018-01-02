@@ -21,7 +21,17 @@ class JoinOrCreateViewController: UIViewController {
         performSegue(withIdentifier: "To Main Tab", sender: nil)
     }
    
+    
+    
     @IBAction func create(_ sender: Any) {
+        
+        //filter out students
+        if(age < 19){
+            return
+        
+        }
+        
+        
         performSegue(withIdentifier: "To Create", sender: nil)
     }
     

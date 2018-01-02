@@ -96,25 +96,7 @@ public final class Lorem {
         return "\(urlScheme)://\(urlDomains.random)"
     }
     
-    /// Generates a random tweet which is shorter than 140 characters.
-    public static var tweet: String {
-        var tweet = ""
-        
-        while tweet.count < tweetLength {
-            tweet += paragraph
-        }
-        
-        tweet = String(tweet.prefix(tweetLength - 1))
-        tweet = tweet.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
-        if let lastCharacter = tweet.last {
-            if String(lastCharacter) != Separator.dot.rawValue {
-                tweet += Separator.dot.rawValue
-            }
-        }
-        
-        return tweet
-    }
+    
     
 }
 
