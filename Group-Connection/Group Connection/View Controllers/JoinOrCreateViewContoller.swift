@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class JoinOrCreateViewController: UIViewController {
     
     
@@ -26,7 +27,7 @@ class JoinOrCreateViewController: UIViewController {
     @IBAction func create(_ sender: Any) {
         
         //filter out students
-        if(age < 19){
+        if(user.age < 19){
             return
         
         }
