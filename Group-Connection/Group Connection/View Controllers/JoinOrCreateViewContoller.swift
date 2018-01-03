@@ -35,7 +35,7 @@ class JoinOrCreateViewController: UIViewController {
                 return
             }
         }
-        
+ 
         
         
         
