@@ -12,7 +12,7 @@ import Foundation
 class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
-    var user: Person
+    public static var user: Person? = nil
     
     
     

@@ -39,11 +39,11 @@ UINavigationControllerDelegate {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
             if age > 19 {
-                let globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
+                Globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
             else {
-                let globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
+                Globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
         }
