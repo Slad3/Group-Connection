@@ -1,5 +1,5 @@
 //
-//  JoinOrCreatViewController.swift
+//  JoinOrCreateViewController.swift
 //  Group Connection
 //
 //  Created by BARCASKEY, BENJAMIN on 12/5/17.
@@ -22,25 +22,6 @@ class JoinOrCreateViewController: UIViewController {
         performSegue(withIdentifier: "To Main Tab", sender: nil)
     }
    
-    
-    
-    @IBAction func create(_ sender: Any) {
-        
-        
-        
-        
-        //filter out students
-        if let hold = globals.user?.age {
-            if hold >= 19 {
-                return
-            }
-        }
- 
-        
-        
-        
-        performSegue(withIdentifier: "To Create", sender: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
