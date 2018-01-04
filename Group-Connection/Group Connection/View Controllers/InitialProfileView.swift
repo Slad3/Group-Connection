@@ -24,27 +24,27 @@ UINavigationControllerDelegate {
    
     @IBOutlet weak var profilePhoto: UIImageView!
     
+    let picker = UIImagePickerController()
+
     @IBAction func photoFromLibrary(_ sender: Any) {
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
-    
-    let picker = UIImagePickerController()
 
     @IBAction func makeUser(_ sender: Any) {
         print("Button got pressed")
         if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumber.hasText && email.hasText  {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
-            if age > 18 {
-                let user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
+            if age > 19 {
+                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
             else {
-                let user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
-                performSegue(withIdentifier: "To Join", sender: nil)
+                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
+                performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
         }
         else {

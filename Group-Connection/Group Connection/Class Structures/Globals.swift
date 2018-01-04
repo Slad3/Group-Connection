@@ -12,11 +12,21 @@ import Foundation
 class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
+    public var user: Person?
+    
+    
+    
     
     init() {
         initialized = false
         inEvent = false
         isMentor = false
     }
+       
+    
+    
+    
+    
+    
     
 }
