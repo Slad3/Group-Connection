@@ -26,11 +26,17 @@ class JoinOrCreateViewController: UIViewController {
     
     @IBAction func create(_ sender: Any) {
         
-        //filter out students
-        if(user.age < 19){
-            return
         
+        
+        
+        //filter out students
+        if let hold = globals.user?.age {
+            if hold >= 19 {
+                return
+            }
         }
+ 
+        
         
         
         performSegue(withIdentifier: "To Create", sender: nil)
@@ -45,6 +51,7 @@ class JoinOrCreateViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     
 }

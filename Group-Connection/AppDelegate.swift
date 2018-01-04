@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let globals = Globals()
+
         globals.initialized = false
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -74,3 +74,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 }
+
+let globals = Globals()
