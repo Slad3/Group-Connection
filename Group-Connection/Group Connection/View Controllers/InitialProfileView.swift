@@ -11,7 +11,7 @@ import UIKit
 
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -21,8 +21,30 @@ UINavigationControllerDelegate {
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var mistakeLabel: UILabel!
     @IBOutlet weak var subteam: UITextField!
-    
     @IBOutlet weak var profilePhoto: UIImageView!
+    @IBOutlet weak var subLabel: UILabel!
+    @IBOutlet weak var subPicker: UIPickerView!
+   
+    
+    let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
+    
+    func numberOfComponents(in subPicker: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ subPicker: UIPickerView, titleForRow: Int, forComponent component: Int) -> String?
+    {
+        return subTeam[titleForRow]
+    }
+    
+    func pickerView(_ subPicker: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return subTeam.count
+    }
+    
+    
+
     
     let picker = UIImagePickerController()
     
