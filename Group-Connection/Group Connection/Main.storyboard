@@ -236,7 +236,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="1fW-IY-8Pn"/>
                     <connections>
                         <outlet property="accessCode" destination="djj-A5-e06" id="ZAk-da-cl3"/>
                         <outlet property="mistakeLabel" destination="igB-vZ-wJ5" id="RYu-WN-m4r"/>
@@ -244,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2K-Ul-Ddi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2984" y="-1086"/>
+            <point key="canvasLocation" x="-3023.1884057971015" y="-960.32608695652186"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
@@ -500,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd6-Ga-dUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2023.1884057971015" y="-1706.2500000000002"/>
+            <point key="canvasLocation" x="-3023" y="-1861"/>
         </scene>
         <!--Check In-->
         <scene sceneID="Row-Z4-a8m">
@@ -710,7 +710,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kYt-s9-k8J"/>
-        <segue reference="INf-rf-5yz"/>
+        <segue reference="U2s-Oj-PhL"/>
+        <segue reference="dmB-VU-4UA"/>
     </inferredMetricsTieBreakers>
 </document>
