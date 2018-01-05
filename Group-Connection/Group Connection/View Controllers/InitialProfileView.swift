@@ -21,36 +21,59 @@ UINavigationControllerDelegate {
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var mistakeLabel: UILabel!
     @IBOutlet weak var subteam: UITextField!
-   
+    
     @IBOutlet weak var profilePhoto: UIImageView!
     
     let picker = UIImagePickerController()
-
+    
     @IBAction func photoFromLibrary(_ sender: Any) {
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
-
+    
     @IBAction func makeUser(_ sender: Any) {
         print("Button got pressed")
-        if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumber.hasText && email.hasText  {
+        
+        
+        //Phone Number Check
+        var phoneNumberGood = false
+        if (!phoneNumber.hasText){
+            phoneNumberGood = false
+        }
+        else if (phoneNumber.text?.characters.count == 10){
+            phoneNumberGood = true
+        }
+        
+        
+        //Subteam formatting
+        let tempSubteam = subteam.text?.lowercased()
+        subteam.text = tempSubteam
+        
+        
+        //
+        //   Do the subteam stuff for constructor asuhdfil
+        //
+        
+        if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumberGood && email.hasText  {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
             if age > 19 {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
+                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
             else {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!)
-                performSegue(withIdentifier: "To Join or Create", sender: nil)
+                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
+                performSegue(withIdentifier: "Join Event", sender: nil)
             }
         }
         else {
-            mistakeLabel.text = "Please input all values before proceeding."
+            mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
+    
+    
     
     
     override func viewDidLoad() {
@@ -65,15 +88,15 @@ UINavigationControllerDelegate {
     
     //MARK: - Delegates
     func imagePickerController(_ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
         dismiss(animated:true, completion: nil) //5
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
 }
