@@ -39,24 +39,30 @@ UINavigationControllerDelegate {
         
         //Phone Number Check
         var phoneNumberGood = false
-        if (!phoneNumber.hasText){
-            phoneNumberGood = false
-        }
-        else if (phoneNumber.text?.characters.count == 10){
+        if (phoneNumber.hasText && phoneNumber.text?.characters.count == 10){
             phoneNumberGood = true
         }
         
         
-        //Subteam formatting
-        let tempSubteam = subteam.text?.lowercased()
-        subteam.text = tempSubteam
+        //Subteam check and formatting
+        var subTeamGood = false
+        if (subteam.hasText){
+            let tempSubteam = subteam.text?.lowercased()
+            subteam.text = tempSubteam
+            subTeamGood = true
+        }
+        
+        
+        
+        
+        
         
         
         //
         //   Do the subteam stuff for constructor asuhdfil
         //
         
-        if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumberGood && email.hasText  {
+        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumberGood && email.hasText && subTeamGood  {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
             if age > 19 {
