@@ -18,6 +18,14 @@ class JoinOrCreateViewController: UIViewController {
     
     @IBAction func checkCode(_ sender: Any) {
         //implement moar stuff here please
+        print("Doing stuff pre-segue to Main Tab")
+        var somethingWentWrong: Bool = false
+        
+        if somethingWentWrong {
+            mistakeLabel.text = "Something went wrong. Sorry."
+            return
+        }
+        
         
         performSegue(withIdentifier: "To Main Tab", sender: nil)
     }
