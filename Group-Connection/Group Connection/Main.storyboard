@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2K-Ul-Ddi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3023" y="-960"/>
+            <point key="canvasLocation" x="-2894" y="-1101"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
@@ -466,11 +466,7 @@
                                                 <segue destination="0Re-vt-O9v" kind="show" id="U2s-Oj-PhL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Go -&gt;" id="8ql-oK-8UY">
-                                            <connections>
-                                                <segue destination="4MN-c9-e70" kind="show" id="Ga8-II-H2r"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Go -&gt;" id="8ql-oK-8UY"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -697,7 +693,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CbN-ac-u0p"/>
         <segue reference="U2s-Oj-PhL"/>
     </inferredMetricsTieBreakers>
 </document>
