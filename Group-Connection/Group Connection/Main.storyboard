@@ -236,7 +236,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="1fW-IY-8Pn"/>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="accessCode" destination="djj-A5-e06" id="ZAk-da-cl3"/>
                         <outlet property="mistakeLabel" destination="igB-vZ-wJ5" id="RYu-WN-m4r"/>
@@ -244,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2K-Ul-Ddi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3023.1884057971015" y="-960.32608695652186"/>
+            <point key="canvasLocation" x="-2984" y="-1086"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
