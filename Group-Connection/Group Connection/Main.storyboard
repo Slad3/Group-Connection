@@ -119,18 +119,31 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Buid Your Profile" id="nIe-0z-CjP">
-                                        <barButtonItem key="rightBarButtonItem" title="Go" id="Hcy-Tn-BzE">
-                                            <connections>
-                                                <segue destination="0Re-vt-O9v" kind="show" id="Pew-M6-ZBY"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Buid Your Profile" id="nIe-0z-CjP"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-lK-nFM">
+                                <rect key="frame" x="337" y="615" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="makeUser:" destination="Xly-Nh-swL" eventType="touchUpInside" id="TpS-vV-Pdh"/>
+                                    <segue destination="mel-2j-Tzc" kind="show" identifier="To Join" id="iYt-IC-Lwy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-lO-8BW">
+                                <rect key="frame" x="337" y="614" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="AW3-Mo-hbv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="additionalNotes" destination="3vZ-as-YBc" id="zFW-H8-ZWH"/>
                         <outlet property="ageText" destination="wFW-DU-Esp" id="pR4-MT-4IB"/>
@@ -171,44 +184,49 @@
                                 <rect key="frame" x="262" y="138" width="96" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Join -&gt;"/>
+                                <state key="normal" title="Join "/>
                                 <connections>
+                                    <action selector="checkCode:" destination="0Re-vt-O9v" eventType="touchUpInside" id="Skb-RI-HCy"/>
                                     <segue destination="mel-2j-Tzc" kind="show" id="p6m-LG-iM7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YI-nt-T7c">
-                                <rect key="frame" x="59" y="259" width="311" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Create Event -&gt;"/>
-                                <connections>
-                                    <segue destination="4MN-c9-e70" kind="show" id="CbN-ac-u0p"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K04-Gt-anc">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Join Event" id="qll-ri-zjc">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="JJi-Qb-2t0">
+                                    <navigationItem title="Join or Create Event" id="qll-ri-zjc">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back" id="JJi-Qb-2t0">
+                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="Xly-Nh-swL" kind="show" id="rrN-8q-eNJ"/>
+                                                <segue destination="Xly-Nh-swL" kind="show" identifier="To Create" id="rrN-8q-eNJ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Join Event:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKD-d0-BaA">
-                                <rect key="frame" x="113" y="75" width="188" height="62"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igB-vZ-wJ5">
+                                <rect key="frame" x="59" y="224" width="282" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSy-Ay-Bqv">
+                                <rect key="frame" x="75" y="278" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Event"/>
+                                <connections>
+                                    <segue destination="4MN-c9-e70" kind="show" id="p6P-aE-mQB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="1fW-IY-8Pn"/>
+                    <connections>
+                        <outlet property="accessCode" destination="djj-A5-e06" id="ZAk-da-cl3"/>
+                        <outlet property="mistakeLabel" destination="igB-vZ-wJ5" id="RYu-WN-m4r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2K-Ul-Ddi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,52 +251,13 @@
                                     <navigationItem title="Create Event" id="3gT-om-2fb">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="opE-BL-hgG">
                                             <connections>
-                                                <segue destination="0Re-vt-O9v" kind="show" id="kYt-s9-k8J"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Create Event -&gt;" id="sDu-UB-gLN">
-                                            <connections>
-                                                <segue destination="49e-Tb-3d3" kind="show" id="xqv-41-a1y"/>
+                                                <action selector="back:" destination="4MN-c9-e70" id="L22-1y-3hV"/>
+                                                <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="kYt-s9-k8J"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYj-tZ-Q8Y">
-                                <rect key="frame" x="17" y="86" width="16" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-8F-CrD">
-                                <rect key="frame" x="18" y="309" width="16" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF5-bQ-e74">
-                                <rect key="frame" x="17" y="393" width="16" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyx-Aw-zxT">
-                                <rect key="frame" x="16" y="172" width="16" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-YR-ZVW">
-                                <rect key="frame" x="18" y="251" width="16" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042760000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Access Code:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTo-zp-110">
                                 <rect key="frame" x="19" y="64" width="188" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -338,13 +317,6 @@
                                     <action selector="changeCheckInLength:" destination="4MN-c9-e70" eventType="valueChanged" id="aPm-eq-2yB"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3x-v8-DVd">
-                                <rect key="frame" x="271" y="64" width="127" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="0.037429042764917875" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mentor Access Code:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evt-Pn-ZxL">
                                 <rect key="frame" x="37" y="150" width="235" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -383,7 +355,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Auto-Generate"/>
                                 <connections>
-                                    <action selector="makeGeneralCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="7eE-cQ-S3e"/>
+                                    <action selector="makeGeneralCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="089-od-Jdj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7h-oV-QjG">
@@ -391,7 +363,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Auto-Generate"/>
                                 <connections>
-                                    <action selector="makeMentorCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="Uqj-Sa-mIF"/>
+                                    <action selector="makeMentorCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="Msb-gF-8PY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyW-nz-w6X">
@@ -410,6 +382,15 @@
                                     <action selector="photoFromLibrary:" destination="4MN-c9-e70" eventType="touchUpInside" id="wQG-5T-qRq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94b-EV-dje">
+                                <rect key="frame" x="266" y="616" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
+                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="XDm-Nz-ct1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -418,8 +399,6 @@
                         <outlet property="eventName" destination="c0L-U7-2cT" id="Oal-Yb-jqg"/>
                         <outlet property="generalAccessCode" destination="DHh-31-5Rp" id="RBV-WK-gFy"/>
                         <outlet property="groupName" destination="139-yy-ObM" id="xoj-1Z-Mcb"/>
-                        <outlet property="makeGeneral" destination="MkI-wG-6RV" id="x45-Xi-ZaK"/>
-                        <outlet property="makeMentor" destination="P7h-oV-QjG" id="VBW-Ms-vcW"/>
                         <outlet property="mapView" destination="0XC-cS-EdE" id="671-ko-p8J"/>
                         <outlet property="mentorAccessCode" destination="pSo-XG-7T5" id="u5b-wB-URt"/>
                         <outlet property="mistakeLabel" destination="EyW-nz-w6X" id="fTg-Ea-5av"/>
@@ -428,12 +407,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCU-ay-9NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1557" y="-794"/>
+            <point key="canvasLocation" x="-1780" y="-886"/>
         </scene>
         <!--Join-->
         <scene sceneID="fg6-Rc-CwX">
             <objects>
-                <viewController storyboardIdentifier="Join Event VC" title="Join" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mel-2j-Tzc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Join Event VC" title="Join" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mel-2j-Tzc" customClass="JoinEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="td2-3f-iUU"/>
                         <viewControllerLayoutGuide type="bottom" id="vk5-Sc-47U"/>
@@ -460,7 +439,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="Z4Y-fp-YgU">
+                                    <navigationItem title="Join Event" id="Z4Y-fp-YgU">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="qqq-qv-cAZ">
                                             <connections>
                                                 <segue destination="0Re-vt-O9v" kind="show" id="U2s-Oj-PhL"/>
@@ -470,8 +449,15 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kv2-Q8-Zcb">
+                                <rect key="frame" x="20" y="214" width="245" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LxN-N9-bu7">
-                                <rect key="frame" x="94" y="214" width="224" height="30"/>
+                                <rect key="frame" x="20" y="150" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -480,10 +466,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="accessCode" destination="LxN-N9-bu7" id="1eG-3l-Nxd"/>
+                        <outlet property="mistakeLabel" destination="kv2-Q8-Zcb" id="Kq0-ye-l3E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd6-Ga-dUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2023" y="-1706"/>
+            <point key="canvasLocation" x="-2023.1884057971015" y="-1706.2500000000002"/>
         </scene>
         <!--Check In-->
         <scene sceneID="Row-Z4-a8m">

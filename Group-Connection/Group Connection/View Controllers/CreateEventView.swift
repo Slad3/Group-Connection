@@ -25,8 +25,14 @@ UINavigationControllerDelegate  {
     @IBOutlet weak var mistakeLabel: UILabel!
     
     @IBAction func changeCheckInLength(_ sender: Any) {
-        stepperLabel.text = "\(checkInLength.value) + min"
+        let checkInNumber = Int(checkInLength.value)
+        stepperLabel.text = "\(checkInNumber) min"
     }
+    
+    @IBAction func back(_ sender: Any) {
+        performSegue(withIdentifier: "To Join or Create", sender: nil)
+    }
+    
     
     @IBAction func makeGeneralCode(_ sender: Any) {
         event.generalAccessCode = Event.makeCode()
@@ -52,6 +58,10 @@ UINavigationControllerDelegate  {
             event.checkInLength = checkInLength.value
             event.generalAccessCode = generalAccessCode.text ?? Event.makeCode()
             event.mentorAccessCode = Event.makeCode()
+            
+            print("Event has been made!!")
+            
+            performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
         else {
             mistakeLabel.text = "Please input all values before proceeding."
