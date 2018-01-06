@@ -11,28 +11,20 @@ import Foundation
 class Person {
     
     var firstName: String
-    
     var lastName: String
-    
     var isMentor: Bool
-    
-    var isCreator: Bool? //optional so we can hold off initialization until later
-    
-    public var age: Int
-    
+    var age: Int
     var phoneNumber: String
-    
     var email: String
-    
     var subteam: String
-    
     var additionalNotes: String
     
-    //    var buddy1: Person
-    //
-    //    var buddy2: Person
+    //mentor-specific stuff
+    var hasCheckIn: Bool! //the mentor has a check waiting
+    var checkArray: [Check]! //where the checks get held
     
-    
+    //    var isCreator: Bool? //optional so we can hold off initialization until later
+
     init(ffirstName: String, llastName: String, iisMentor: Bool, aage: Int, eemail: String, aaditionalNotes: String, ssubteam: String) {
         //Required Initialized Variables
         self.firstName = ffirstName
@@ -43,10 +35,8 @@ class Person {
         self.additionalNotes = aaditionalNotes
         self.subteam = ssubteam
         
-        //Non required Initialized Variabl0es
         self.phoneNumber = ""
-        //        self.buddy1 =
-        //        self.buddy2 =
+        self.checkArray = []
         return
     }
     //Second initializer for when there is a phone number input
@@ -59,9 +49,15 @@ class Person {
         self.additionalNotes = additionalNotes
         self.phoneNumber = phoneNumber
         self.subteam = ssubteam
+        
+        self.checkArray = []
         return
     }
     
+    func addCheck(check: Check) {
+        self.checkArray?.append(check)
+        return
+    }
     
     
     

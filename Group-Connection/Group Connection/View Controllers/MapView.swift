@@ -9,28 +9,96 @@
 import UIKit
 import MapKit
 
-class MapView: UIViewController {
+class MapView: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var mapView: MKMapView!
     
+    let locationManager = CLLocationManager()
+    let regionRadius: CLLocationDistance = 500 //displayed region size = 0.5 km
     
+    func startReceivingLocationChanges(){
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        
+        if authorizationStatus != .authorizedWhenInUse {
+            //user hasn't authorized location
+            return
+        }
+        if !CLLocationManager.locationServicesEnabled() {
+            //location services aren't available
+            return
+        }
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 5.0 //5 meters until update
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        _ = locations.last
+        
+        //do something with this location
+    }
+    
+    func centerMapOnLocation(location: CLLocation){
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func checkForIns() {
+        //mentor-side only. looks to see if any check ins have gotten been sent to them
+    
+        let mentor = globals.user?.isMentor ?? false
+        let hasCheck = globals.user?.hasCheckIn ?? false
+        
+        if mentor {
+            if hasCheck {
+                for check in globals.user.checkArray {
+                    //for each check waiting, make annotation on the map
+                    mapView.addAnnotation(check)
+                }
+            }
+        }
+        return
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        if authorizationStatus != .authorizedWhenInUse {
+            //if they haven't given permission already
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        startReceivingLocationChanges()
+        
+        let initialLocation = locationManager.location
+        mapView.showsUserLocation = true
+        centerMapOnLocation(location: initialLocation!)
+        
+        //delete everything below this if I haven't already
+        globals.hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
+        let lugar = CLLocation(latitude: 44.821152, longitude: -93.120435)
+        let check = Check(sender: globals.hans!, place: lugar, description: "ta da!")
+        Check.receiveCheck(check: check)
     }
     
-    
-    
-    
-    
-    
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkForIns()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        locationManager.stopUpdatingLocation()
+    }
 }
+
+

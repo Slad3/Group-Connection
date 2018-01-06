@@ -39,7 +39,7 @@ UINavigationControllerDelegate {
         
         //Phone Number Check
         var phoneNumberGood = false
-        if (phoneNumber.hasText && phoneNumber.text?.characters.count == 10){
+        if (phoneNumber.hasText && phoneNumber.text?.count == 10){
             phoneNumberGood = true
         }
         
@@ -93,7 +93,7 @@ UINavigationControllerDelegate {
     }
     
     //MARK: - Delegates
-    func imagePickerController(_ picker: UIImagePickerController,
+    @nonobjc func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
