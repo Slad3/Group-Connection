@@ -18,6 +18,7 @@ class Person {
     var email: String
     var subteam: String
     var additionalNotes: String
+    var fullName: String
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
@@ -34,6 +35,7 @@ class Person {
         self.email = eemail
         self.additionalNotes = aaditionalNotes
         self.subteam = ssubteam
+        self.fullName = self.firstName + " " + self.lastName
         
         self.phoneNumber = ""
         self.checkArray = []
@@ -49,6 +51,7 @@ class Person {
         self.additionalNotes = additionalNotes
         self.phoneNumber = phoneNumber
         self.subteam = ssubteam
+        self.fullName = self.firstName + " " + self.lastName
         
         self.checkArray = []
         return
