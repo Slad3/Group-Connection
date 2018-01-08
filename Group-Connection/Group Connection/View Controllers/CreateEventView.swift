@@ -86,7 +86,7 @@ UINavigationControllerDelegate  {
     
     
     //MARK: - Delegates
-    func imagePickerController(_ picker: UIImagePickerController,
+    @nonobjc func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         mapView.contentMode = .scaleAspectFit //3

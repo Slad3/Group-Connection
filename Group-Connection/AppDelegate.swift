@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else { //Initial Profile; Only if stuff really goes wrong
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-        }
+        }       
         
         self.window?.rootViewController = initialViewController
         

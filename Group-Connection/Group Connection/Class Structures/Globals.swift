@@ -12,7 +12,9 @@ import Foundation
 class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
-    public var user: Person?
+    public var user: Person!
+    public var hans: Person!
+
     
     
     
@@ -21,6 +23,8 @@ class Globals {
         initialized = false
         inEvent = false
         isMentor = false
+        
+        
     }
        
     
