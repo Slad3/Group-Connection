@@ -11,7 +11,7 @@ import UIKit
 
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -21,8 +21,30 @@ UINavigationControllerDelegate {
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var mistakeLabel: UILabel!
     @IBOutlet weak var subteam: UITextField!
-    
     @IBOutlet weak var profilePhoto: UIImageView!
+    @IBOutlet weak var subLabel: UILabel!
+    @IBOutlet weak var subPicker: UIPickerView!
+   
+    
+    let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
+    
+    func numberOfComponents(in subPicker: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ subPicker: UIPickerView, titleForRow: Int, forComponent component: Int) -> String?
+    {
+        return subTeam[titleForRow]
+    }
+    
+    func pickerView(_ subPicker: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return subTeam.count
+    }
+    
+    
+
     
     let picker = UIImagePickerController()
     
@@ -39,24 +61,30 @@ UINavigationControllerDelegate {
         
         //Phone Number Check
         var phoneNumberGood = false
-        if (!phoneNumber.hasText){
-            phoneNumberGood = false
-        }
-        else if (phoneNumber.text?.characters.count == 10){
+        if (phoneNumber.hasText && phoneNumber.text?.count == 10){
             phoneNumberGood = true
         }
         
         
-        //Subteam formatting
-        let tempSubteam = subteam.text?.lowercased()
-        subteam.text = tempSubteam
+        //Subteam check and formatting
+        var subTeamGood = false
+        if (subteam.hasText){
+            let tempSubteam = subteam.text?.lowercased()
+            subteam.text = tempSubteam
+            subTeamGood = true
+        }
+        
+        
+        
+        
+        
         
         
         //
         //   Do the subteam stuff for constructor asuhdfil
         //
         
-        if firstName.hasText && lastName.hasText && subteam.hasText && ageText.hasText && phoneNumberGood && email.hasText  {
+        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumberGood && email.hasText && subTeamGood  {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
             if age > 19 {
@@ -87,7 +115,7 @@ UINavigationControllerDelegate {
     }
     
     //MARK: - Delegates
-    func imagePickerController(_ picker: UIImagePickerController,
+    @nonobjc func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
