@@ -61,7 +61,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         
         //Phone Number Check
         var phoneNumberGood = false
-        if (phoneNumber.hasText && phoneNumber.text?.count == 10){
+        if (phoneNumber.hasText && phoneNumber.text?.characters.count == 10){
             phoneNumberGood = true
         }
         
