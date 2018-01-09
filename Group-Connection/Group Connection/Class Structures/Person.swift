@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MultipeerConnectivity
 
 class Person {
     
@@ -19,6 +20,7 @@ class Person {
     var subteam: String
     var additionalNotes: String
     var fullName: String
+    var peerid: MCPeerID!
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
@@ -39,6 +41,7 @@ class Person {
         
         self.phoneNumber = ""
         self.checkArray = []
+        self.peerid = MCPeerID(displayName: fullName)
         return
     }
     //Second initializer for when there is a phone number input
@@ -54,8 +57,22 @@ class Person {
         self.fullName = self.firstName + " " + self.lastName
         
         self.checkArray = []
+        self.peerid = MCPeerID(displayName: fullName)
         return
     }
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func addCheck(check: Check) {
         self.checkArray?.append(check)
