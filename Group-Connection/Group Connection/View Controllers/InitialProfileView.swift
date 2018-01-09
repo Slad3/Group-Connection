@@ -39,20 +39,20 @@ UINavigationControllerDelegate {
         
         //Phone Number Check
         var phoneNumberGood = false
-        if (phoneNumber.hasText && phoneNumber.text?.count == 10){
+        if (phoneNumber.hasText && phoneNumber.text?.characters.count == 10){
             phoneNumberGood = true
         }
         
-        
-        //Subteam check and formatting
-        var subTeamGood = false
-        if (subteam.hasText){
-            let tempSubteam = subteam.text?.lowercased()
-            subteam.text = tempSubteam
-            subTeamGood = true
-        }
-        
-        
+//        
+//        //Subteam check and formatting
+//        var subTeamGood = false
+//        if (subteam.hasText){
+//            let tempSubteam = subteam.text?.lowercased()
+//            subteam.text = tempSubteam
+//            subTeamGood = true
+//        }
+//        
+//        
         
         
         
@@ -62,15 +62,18 @@ UINavigationControllerDelegate {
         //   Do the subteam stuff for constructor asuhdfil
         //
         
-        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumberGood && email.hasText && subTeamGood  {
+        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText && subteam.hasText  {
             mistakeLabel.text = ""
             let age: Int = Int(ageText.text!)!
+            print("user age is \(age)")
             if age > 19 {
                 globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
+                print("iisMentor is true")
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
             else {
                 globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
+                print("iisMentor is false")
                 performSegue(withIdentifier: "Join Event", sender: nil)
             }
         }
