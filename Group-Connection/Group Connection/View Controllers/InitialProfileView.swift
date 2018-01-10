@@ -25,6 +25,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
    
+    weak var pickerViewDataSource: UIPickerViewDataSource?
     
     let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
     
@@ -84,20 +85,31 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         //   Do the subteam stuff for constructor asuhdfil
         //
         
-        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText && subteam.hasText  {
+        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText  {
             mistakeLabel.text = ""
-            let age: Int = Int(ageText.text!)!
-            print("user age is \(age)")
+            
+            
+            
+            let fName = firstName.text!
+            let lName = lastName.text!
+            let age: Int = Int(ageText.text!)!; print("user age is \(age)")
+            let eMail = email.text!
+            let notes = additionalNotes.text!
+            
+            var mentor: Bool
+            
+            
             if age > 19 {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
+                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: picker.description)
                 print("iisMentor is true")
                 performSegue(withIdentifier: "To Join or Create", sender: nil)
             }
             else {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
+                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: "Programming")
                 print("iisMentor is false")
                 performSegue(withIdentifier: "Join Event", sender: nil)
             }
+            
         }
         else {
             mistakeLabel.text = "Please input all values correctly before proceeding."
