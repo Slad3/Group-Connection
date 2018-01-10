@@ -148,7 +148,6 @@
                         <outlet property="mistakeLabel" destination="rvt-UM-hkd" id="PN4-zF-PjT"/>
                         <outlet property="phoneNumber" destination="2bW-Rc-ktt" id="oPe-D1-pSO"/>
                         <outlet property="profilePhoto" destination="fU8-Xb-QMW" id="TIY-My-6pR"/>
-                        <outlet property="subteam" destination="EHB-9n-we7" id="dZe-Df-Z5F"/>
                         <segue destination="mel-2j-Tzc" kind="show" identifier="Join Event" id="LG8-2G-iaW"/>
                         <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="gSV-l4-P4W"/>
                     </connections>
