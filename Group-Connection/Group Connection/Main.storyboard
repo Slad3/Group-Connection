@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -110,6 +110,29 @@
                                 <connections>
                                     <action selector="makeUser:" destination="Xly-Nh-swL" eventType="touchUpInside" id="TpS-vV-Pdh"/>
                                 </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wFW-DU-Esp">
+                                <rect key="frame" x="247" y="234" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subteam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQ3-F7-2xl">
+                                <rect key="frame" x="279" y="134" width="103" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6h-MX-nEY">
+                                <rect key="frame" x="247" y="161" width="166" height="65"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xly-Nh-swL" id="TlI-oi-3wf"/>
+                                    <outlet property="delegate" destination="Xly-Nh-swL" id="Utp-Dq-ROt"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,9 +148,10 @@
                         <outlet property="mistakeLabel" destination="rvt-UM-hkd" id="PN4-zF-PjT"/>
                         <outlet property="phoneNumber" destination="2bW-Rc-ktt" id="oPe-D1-pSO"/>
                         <outlet property="profilePhoto" destination="fU8-Xb-QMW" id="TIY-My-6pR"/>
-                        <outlet property="subteam" destination="EHB-9n-we7" id="dZe-Df-Z5F"/>
-                        <segue destination="mel-2j-Tzc" kind="show" identifier="To Join" id="47g-vi-jE7"/>
-                        <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="gOp-0W-7cf"/>
+                        <outlet property="subLabel" destination="EQ3-F7-2xl" id="qeS-da-wPc"/>
+                        <outlet property="subPicker" destination="t6h-MX-nEY" id="Jou-oO-GWr"/>
+                        <segue destination="mel-2j-Tzc" kind="show" identifier="Join Event" id="LG8-2G-iaW"/>
+                        <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="gSV-l4-P4W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,6 +700,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="INf-rf-5yz"/>
-        <segue reference="gOp-0W-7cf"/>
+        <segue reference="gSV-l4-P4W"/>
     </inferredMetricsTieBreakers>
 </document>

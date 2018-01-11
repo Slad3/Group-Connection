@@ -20,11 +20,10 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var mistakeLabel: UILabel!
-    @IBOutlet weak var subteam: UITextField!
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
-   
+    
     weak var pickerViewDataSource: UIPickerViewDataSource?
     
     let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
@@ -45,7 +44,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     
-
+    
     
     let picker = UIImagePickerController()
     
@@ -66,16 +65,16 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
             phoneNumberGood = true
         }
         
-//        
-//        //Subteam check and formatting
-//        var subTeamGood = false
-//        if (subteam.hasText){
-//            let tempSubteam = subteam.text?.lowercased()
-//            subteam.text = tempSubteam
-//            subTeamGood = true
-//        }
-//        
-//        
+        //
+        //        //Subteam check and formatting
+        //        var subTeamGood = false
+        //        if (subteam.hasText){
+        //            let tempSubteam = subteam.text?.lowercased()
+        //            subteam.text = tempSubteam
+        //            subTeamGood = true
+        //        }
+        //
+        //
         
         
         
@@ -95,23 +94,20 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
             let age: Int = Int(ageText.text!)!; print("user age is \(age)")
             let eMail = email.text!
             let notes = additionalNotes.text!
-            
-            var mentor: Bool
-            
+            let subteam = picker.description
+            var mentor = false
+            var destination = "Join Event"
             
             if age > 19 {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: picker.description)
+                mentor = true
                 print("iisMentor is true")
-                performSegue(withIdentifier: "To Join or Create", sender: nil)
-            }
-            else {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: "Programming")
-                print("iisMentor is false")
-                performSegue(withIdentifier: "Join Event", sender: nil)
+                destination = "To Join or Create"
             }
             
+            globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
+            performSegue(withIdentifier: destination, sender: nil)
         }
-        else {
+        else { //if bad input
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
@@ -131,7 +127,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     //MARK: - Delegates
     @nonobjc func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+                                        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
@@ -142,4 +138,29 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         dismiss(animated: true, completion: nil)
     }
     
+    
+    func checkInputs(age: String?, email: String, phone: String) -> Bool {
+        if !checkAge(age: age) {return false}
+        if !checkEmail(email: email) {return false}
+        if !checkPhoneNumber(phone: phone) {return false}
+        
+        return true
+    }
+    
+    func checkAge(age: String?) -> Bool {
+        let edad = age!
+        if Int(edad) == nil {return false}
+        return true
+    }
+    
+    func checkEmail(email: String) -> Bool {
+        
+        return true
+    }
+    
+    func checkPhoneNumber(phone: String) -> Bool {
+        
+        return true
+    }
 }
+
