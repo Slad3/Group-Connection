@@ -5,10 +5,8 @@
 //  Created by Daniel e. Naranjo Sampson on 12/15/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
-
 import Foundation
 import UIKit
-
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
@@ -59,32 +57,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         print("Button got pressed")
         
         
-        //Phone Number Check
-        var phoneNumberGood = false
-        if (phoneNumber.hasText && phoneNumber.text?.characters.count == 10){
-            phoneNumberGood = true
-        }
-        
-        //
-        //        //Subteam check and formatting
-        //        var subTeamGood = false
-        //        if (subteam.hasText){
-        //            let tempSubteam = subteam.text?.lowercased()
-        //            subteam.text = tempSubteam
-        //            subTeamGood = true
-        //        }
-        //
-        //
-        
-        
-        
-        
-        
-        //
-        //   Do the subteam stuff for constructor asuhdfil
-        //
-        
-        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText  {
+        if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
             mistakeLabel.text = ""
             
             
@@ -142,7 +115,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     func checkInputs(age: String?, email: String, phone: String) -> Bool {
         if !checkAge(age: age) {return false}
         if !checkEmail(email: email) {return false}
-        if !checkPhoneNumber(phone: phone) {return false}
+        if !checkPhone(phone: phone) {return false}
         
         return true
     }
@@ -154,13 +127,29 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     func checkEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
         
         return true
     }
     
-    func checkPhoneNumber(phone: String) -> Bool {
-        
-        return true
+    func checkPhone(phone: String)->Bool {
+        if isAllDigits(phone: phone) == true {
+            let phoneRegex = "[235689][0-9]{6}([0-9]{3})?"
+            let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+            return  predicate.evaluate(with: phone)
+        }
+        else {
+            return false
+        }
+    }
+    
+    func isAllDigits(phone: String)->Bool {
+        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
+        let inputString = phone.components(separatedBy: charcterSet)
+        let filtered = inputString.joined(separator: "")
+        return  phone == filtered
     }
 }
-
