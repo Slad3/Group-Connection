@@ -8,8 +8,34 @@
 
 import UIKit
 
-class RosterView: UIViewController {
+class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
+    var list = ["Tacos", "Pizza", "Chicken"]
+    
+    
+    // tells how many cells you want to have in the roster. This will be the number of people at the competition
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        //not yet updated to do the real profiles.
+
+        return globals.teamRoster.count
+    }
+    
+    
+    // tells what should be displayed in each cell.
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        //test this here---------------
+        
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = globals.teamRoster[indexPath.row].fullName
+        
+        return cell
+        
+    }
+
     
     
     
