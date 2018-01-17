@@ -1,18 +1,18 @@
 //
-//  PersistentStringArray.swift
-//  ScrollTest
+//  StaticPersonArray.swift
+//  Group Connection
 //
-//  Created by behnke on 6/24/17.
-//  Copyright © 2017 George K Behnke. All rights reserved.
+//  Created by Daniel e. Naranjo Sampson on 1/17/18.
+//  Copyright © 2018 District196. All rights reserved.
 //
 
 import Foundation
 import os.log
 
 // 2
-class PersistentStringArray: NSObject, NSCoding {
+class StaticPersonArray: NSObject, NSCoding {
     
-    var stringNames: [String]
+    var stringNames: [Person]
     var fileStoredName: String
     
     // 1
@@ -20,6 +20,16 @@ class PersistentStringArray: NSObject, NSCoding {
     struct PropertyKey {   // String values are same name as Properties they name
         static let stringNames = "stringNames"
         static let fileStoredName = "fileStoredName"
+        static let firstName = "firstName"
+        static let lastName = "lastName"
+        static let isMentor = "isMentor"
+        static let age = "age"
+        static let phoneNumber = "phoneNumber"
+        static let email = "email"
+        static let email = "email"
+        static let email = "email"
+        static let email = "email"
+        static let email = "email"
     }
     
     // 3
@@ -30,7 +40,7 @@ class PersistentStringArray: NSObject, NSCoding {
     //  Create the instance of the String to archive to long term storage
     //  This is the usual initializer for the class.
     init?(names: [String], fileName: String) { //  names: the String array to archive; fileName: the name of the file in which to store the archive
-
+        
         guard !names.isEmpty else {
             return nil
         }
