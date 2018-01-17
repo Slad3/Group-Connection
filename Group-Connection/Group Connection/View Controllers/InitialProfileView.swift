@@ -91,6 +91,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
+        globals.hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
+     //   globals.teamRoster.append(globals.hans)
     }
     
     override func didReceiveMemoryWarning() {

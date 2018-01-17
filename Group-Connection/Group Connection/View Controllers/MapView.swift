@@ -83,7 +83,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         centerMapOnLocation(location: initialLocation!)
         
         //delete everything below this if I haven't already
-        globals.hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
+        
         let lugar = CLLocation(latitude: 44.821152, longitude: -93.120435)
         let check = Check(sender: globals.hans!, place: lugar, description: "ta da!")
         Check.receiveCheck(check: check)
