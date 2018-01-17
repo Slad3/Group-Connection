@@ -11,16 +11,16 @@ import MultipeerConnectivity
 
 class Person {
     
-    var firstName: String
-    var lastName: String
-    var isMentor: Bool
-    var age: Int
-    var phoneNumber: String
-    var email: String
-    var subteam: String
-    var additionalNotes: String
+    var firstName: String //essential
+    var lastName: String //essential
+    var isMentor: Bool //essential
+    var age: Int //essential
+    var phoneNumber: String //essential
+    var email: String //essential
+    var subteam: String //essential
+    var additionalNotes: String //essential
     var fullName: String
-    var peerid: MCPeerID!
+    var peerid: MCPeerID! //essential
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
