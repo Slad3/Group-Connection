@@ -21,6 +21,7 @@ class Globals {
     
     
     init() {
+        teamRoster = [hans]
         initialized = false
         inEvent = false
         isMentor = false

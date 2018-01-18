@@ -29,6 +29,7 @@ class Person {
     //    var isCreator: Bool? //optional so we can hold off initialization until later
 
     init(ffirstName: String, llastName: String, iisMentor: Bool, aage: Int, eemail: String, aaditionalNotes: String, ssubteam: String) {
+        
         //Required Initialized Variables
         self.firstName = ffirstName
         self.lastName = llastName
@@ -38,7 +39,6 @@ class Person {
         self.additionalNotes = aaditionalNotes
         self.subteam = ssubteam
         self.fullName = self.firstName + " " + self.lastName
-        
         self.phoneNumber = ""
         self.checkArray = []
         self.peerid = MCPeerID(displayName: fullName)
@@ -46,6 +46,7 @@ class Person {
     }
     //Second initializer for when there is a phone number input
     init(firstName: String, lastName: String, isMentor: Bool, age: Int, email: String, phoneNumber: String, additionalNotes: String, ssubteam: String ) {
+        
         self.firstName = firstName
         self.lastName = lastName
         self.isMentor = isMentor
@@ -59,6 +60,7 @@ class Person {
         self.checkArray = []
         self.peerid = MCPeerID(displayName: fullName)
         return
+        
     }
    
     
