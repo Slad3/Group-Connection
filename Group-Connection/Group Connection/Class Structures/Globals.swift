@@ -15,7 +15,7 @@ class Globals {
     public var user: Person!
     public var hans: Person!
 
-    
+    public var teamRoster: [Person]!
     
     
     
@@ -23,7 +23,7 @@ class Globals {
         initialized = false
         inEvent = false
         isMentor = false
-        
+        teamRoster = [hans]
         
     }
        
