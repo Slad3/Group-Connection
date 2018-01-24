@@ -23,7 +23,7 @@ class Globals {
         initialized = false
         inEvent = false
         isMentor = false
-        teamRoster = [hans]
+        globals.teamRoster = [hans]
         
     }
        
