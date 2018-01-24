@@ -68,7 +68,7 @@ UINavigationControllerDelegate  {
         }
     }
     
-    var event: Event = Event()
+    var event: Event = Event(user: globals.user)
     let picker = UIImagePickerController()
 
     

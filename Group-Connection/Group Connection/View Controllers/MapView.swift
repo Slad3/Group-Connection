@@ -47,15 +47,19 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     
     func checkForIns() {
         //mentor-side only. looks to see if any check ins have gotten been sent to them
-    
-        let mentor = globals.user?.isMentor ?? false
-        let hasCheck = globals.user?.hasCheckIn ?? false
+        print("user.isMentor = \(globals.user?.isMentor)")
+        let mentor: Bool = (globals.user?.isMentor)!
+        print("mentor = \(mentor)")
+        let hasCheck: Bool = (globals.user?.hasCheckIn)!
+        print("user.hasCheckIn = \(globals.user.hasCheckIn)")
+        print("hasCheck = \(hasCheck)")
         
         if mentor {
             if hasCheck {
                 for check in globals.user.checkArray {
                     //for each check waiting, make annotation on the map
                     mapView.addAnnotation(check)
+                    print("Check \(check.sender.firstName) annotated")
                 }
             }
         }
@@ -83,11 +87,11 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         let lugar = CLLocation(latitude: 44.821152, longitude: -93.120435)
         let check = Check(sender: globals.hans, place: lugar, description: "ta da!")
         Check.receiveCheck(check: check)
+        checkForIns()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        checkForIns()
     }
     
     override func didReceiveMemoryWarning() {

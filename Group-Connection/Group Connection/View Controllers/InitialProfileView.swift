@@ -5,10 +5,8 @@
 //  Created by Daniel e. Naranjo Sampson on 12/15/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
-
 import Foundation
 import UIKit
-
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
@@ -20,11 +18,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var mistakeLabel: UILabel!
-    @IBOutlet weak var subteam: UITextField!
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
-   
+    
+    weak var pickerViewDataSource: UIPickerViewDataSource?
     
     let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
     
@@ -44,7 +42,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     
-
+    
     
     let picker = UIImagePickerController()
     
@@ -59,44 +57,30 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         print("Button got pressed")
         
         
-        //Phone Number Check
-        var phoneNumberGood = false
-        if (phoneNumber.hasText && phoneNumber.text?.characters.count == 10){
-            phoneNumberGood = true
-        }
-        
-        
-        //Subteam check and formatting
-        var subTeamGood = false
-        if (subteam.hasText){
-            let tempSubteam = subteam.text?.lowercased()
-            subteam.text = tempSubteam
-            subTeamGood = true
-        }
-        
-        
-        
-        
-        
-        
-        
-        //
-        //   Do the subteam stuff for constructor asuhdfil
-        //
-        
-        if firstName.hasText && lastName.hasText && ageText.hasText && phoneNumberGood && email.hasText && subTeamGood  {
+        if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
             mistakeLabel.text = ""
-            let age: Int = Int(ageText.text!)!
+            
+            
+            
+            let fName = firstName.text!
+            let lName = lastName.text!
+            let age: Int = Int(ageText.text!)!; print("user age is \(age)")
+            let eMail = email.text!
+            let notes = additionalNotes.text!
+            let subteam = picker.description
+            var mentor = false
+            var destination = "Join Event"
+            
             if age > 19 {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: true, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
-                performSegue(withIdentifier: "To Join or Create", sender: nil)
+                mentor = true
+                print("iisMentor is true")
+                destination = "To Join or Create"
             }
-            else {
-                globals.user = Person(ffirstName: firstName.text!, llastName: lastName.text!,  iisMentor: false, aage: age, eemail: email.text!, aaditionalNotes: additionalNotes.text!, ssubteam: subteam.text!)
-                performSegue(withIdentifier: "Join Event", sender: nil)
-            }
+            
+            globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
+            performSegue(withIdentifier: destination, sender: nil)
         }
-        else {
+        else { //if bad input
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
@@ -116,7 +100,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     //MARK: - Delegates
     @nonobjc func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+                                        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
@@ -127,6 +111,47 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         dismiss(animated: true, completion: nil)
     }
     
+    
+    func checkInputs(age: String?, email: String, phone: String) -> Bool {
+        if !checkAge(age: age) {return false}
+        if !checkEmail(email: email) {return false}
+        if !checkPhone(phone: phone) {return false}
+        
+        return true
+    }
+    
+    func checkAge(age: String?) -> Bool {
+        let edad = age!
+        if Int(edad) == nil {return false}
+        return true
+    }
+    
+    func checkEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+        
+        return true
+    }
+    
+    func checkPhone(phone: String)->Bool {
+        if isAllDigits(phone: phone) == true {
+            let phoneRegex = "[235689][0-9]{6}([0-9]{3})?"
+            let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+            return  predicate.evaluate(with: phone)
+        }
+        else {
+            return false
+        }
+    }
+    
+    func isAllDigits(phone: String)->Bool {
+        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
+        let inputString = phone.components(separatedBy: charcterSet)
+        let filtered = inputString.joined(separator: "")
+        return  phone == filtered
+    }
 }
 
 
