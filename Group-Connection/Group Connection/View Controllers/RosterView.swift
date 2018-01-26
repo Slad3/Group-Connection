@@ -23,7 +23,7 @@ class RosterView: UIViewController {
     {
         //not yet updated to do the real profiles.
         
-        return globals.teamRoster.count
+        return Globals.globals.teamRoster.count
     }
     
     
@@ -33,7 +33,7 @@ class RosterView: UIViewController {
         //test this here---------------
         
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = globals.teamRoster[indexPath.row].fullName
+        cell.textLabel?.text = Globals.globals.teamRoster[indexPath.row].fullName
         
         return cell
         

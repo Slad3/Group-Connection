@@ -10,12 +10,13 @@
 import Foundation
 
 class Globals {
+    static let globals: Globals! = Globals()
     var initialized, inEvent: Bool
     var isMentor: Bool
-    public var user: Person!
-    public let hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
+    var user: Person!
+    let hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
 
-    public var teamRoster: [Person]!
+    var teamRoster: [Person]!
     
     
     
@@ -23,7 +24,7 @@ class Globals {
         initialized = false
         inEvent = false
         isMentor = false
-        globals.teamRoster = [hans]
+        teamRoster = [hans]
         
     }
        

@@ -68,6 +68,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
             let eMail = email.text!
             let notes = additionalNotes.text!
             let subteam = picker.description
+            let phone = phoneNumber.text
             var mentor = false
             var destination = "Join Event"
             
@@ -76,9 +77,13 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
                 print("iisMentor is true")
                 destination = "To Join or Create"
             }
-            
-            globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
-            performSegue(withIdentifier: destination, sender: nil)
+            if checkInputs(age: ageText.text, email: eMail, phone: phone!) {
+                Globals.globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
+                performSegue(withIdentifier: destination, sender: nil)
+            }
+            else {
+                 mistakeLabel.text = "Please input all values correctly before proceeding."
+            }
         }
         else { //if bad input
             mistakeLabel.text = "Please input all values correctly before proceeding."
@@ -133,8 +138,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
-        
-        return true
     }
     
     func checkPhone(phone: String)->Bool {

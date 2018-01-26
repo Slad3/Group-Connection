@@ -14,27 +14,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
         
-
-        globals.initialized = false
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         print("delegate!!")
+
+        Globals.globals.initialized = false
+        print("\(Globals.globals.initialized)")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         var initialViewController: UIViewController
         
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
-        if !globals.initialized { //Initial Profile
+        if !Globals.globals.initialized { //Initial Profile
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
-        else if !globals.inEvent{
-            if globals.isMentor /*|| user.isMentor */ { //Join or Create
+        else if !Globals.globals.inEvent{
+            if Globals.globals.isMentor /*|| user.isMentor */ { //Join or Create
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
             }
             else { //Join
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
             }
         }
-        else if globals.inEvent { //Main Tab
+        else if Globals.globals.inEvent { //Main Tab
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Main Tab VC")
         }
         else { //Initial Profile; Only if stuff really goes wrong
@@ -75,4 +78,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-let globals = Globals()
