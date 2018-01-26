@@ -13,7 +13,7 @@ class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
     public var user: Person!
-    public var hans: Person!
+    public let hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
 
     public var teamRoster: [Person]!
     

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         globals.initialized = false
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
+        print("delegate!!")
         var initialViewController: UIViewController
         
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
