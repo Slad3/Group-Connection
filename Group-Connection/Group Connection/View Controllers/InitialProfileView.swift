@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -120,9 +120,19 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     
     func checkInputs(age: String?, email: String, phone: String) -> Bool {
-        if !checkAge(age: age) {return false}
-        if !checkEmail(email: email) {return false}
-        if !checkPhone(phone: phone) {return false}
+        if !checkAge(age: age) {return false}  // this is working
+        if !checkEmail(email: email)
+        {
+            print ("email is broken")
+            return false
+
+        }
+        if !checkPhone(phone: phone)
+        {
+            print("phone is broken")
+            return false
+
+        }
         
         return true
     }
@@ -141,20 +151,13 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     func checkPhone(phone: String)->Bool {
-        if isAllDigits(phone: phone) == true {
-            let phoneRegex = "[235689][0-9]{6}([0-9]{3})?"
+            let phoneRegex = "\\d*\\d*\\d*"
             let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
             return  predicate.evaluate(with: phone)
-        }
-        else {
-            return false
-        }
     }
     
-    func isAllDigits(phone: String)->Bool {
-        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
-        let inputString = phone.components(separatedBy: charcterSet)
-        let filtered = inputString.joined(separator: "")
-        return  phone == filtered
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
+
 }
