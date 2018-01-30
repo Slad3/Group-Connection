@@ -19,15 +19,27 @@ class Person {
     var email: String //essential
     var subteam: String //essential
     var additionalNotes: String //essential
-    var fullName: String
+    var fullName: String!
+    
     var peerid: MCPeerID! //essential
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
     
-    //    var isCreator: Bool? //optional so we can hold off initialization until later
-
+    init() {
+        firstName = ""
+        lastName = ""
+        isMentor = false
+        age = -1
+        phoneNumber = ""
+        email = ""
+        subteam = ""
+        additionalNotes = ""
+        
+        print("I hope you didn't use the default init, you jackass")
+    }
+    
     init(ffirstName: String, llastName: String, iisMentor: Bool, aage: Int, eemail: String, aaditionalNotes: String, ssubteam: String) {
         //Required Initialized Variables
         self.firstName = ffirstName
@@ -60,27 +72,14 @@ class Person {
         self.peerid = MCPeerID(displayName: fullName)
         return
     }
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func addCheck(check: Check) {
         self.checkArray?.append(check)
         return
     }
     
-    
-    
-    
+    func getValues() -> (String, String, Bool, Int, String, String, String, String) {
+        return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, additionalNotes)
+    }
 }
 
