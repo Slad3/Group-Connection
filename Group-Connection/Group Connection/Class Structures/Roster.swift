@@ -8,10 +8,10 @@
 
 import Foundation
 import os.log
+import MultipeerConnectivity
 
 class Roster: NSObject, NSCoding {
-    
-    
+
     var stringNames: [String]
     var fileStoredName: String
     
@@ -63,12 +63,12 @@ class Roster: NSObject, NSCoding {
     }
     
     static func toStrings(people: [Person]) -> [String] {
-        var things: (firstName: String, lastName: String, isMentor: Bool, age: Int, phoneNumber: String, email: String, subteam: String, additionalNotes: String)
+        var things: (firstName: String, lastName: String, isMentor: Bool, age: Int, phoneNumber: String, email: String, subteam: String, peerid: String, additionalNotes: String)
         var out: [String] = [] //1D array, one for each Manzana
         for person in people {
             things = person.getValues()
             out.append("""
-                \(things.firstName),\(things.lastName),\(things.isMentor),\(things.age),\(things.phoneNumber),\(things.email),\(things.subteam),\(things.additionalNotes);
+                \(things.firstName),\(things.lastName),\(things.isMentor),\(things.age),\(things.phoneNumber),\(things.email),\(things.subteam),\(things.peerid),\(things.additionalNotes);
                 """)
         }
         return out
@@ -120,6 +120,12 @@ class Roster: NSObject, NSCoding {
             ind =  temp.index(of: ",")
             range = temp.startIndex..<ind
             apple.subteam = temp.substring(with: range)
+            temp.removeSubrange(range)
+            temp.remove(at: temp.startIndex) //remove the comma
+            
+            ind =  temp.index(of: ",")
+            range = temp.startIndex..<ind
+            apple.peerid = MCPeerID(displayName: temp.substring(with: range))
             temp.removeSubrange(range)
             temp.remove(at: temp.startIndex) //remove the comma
             

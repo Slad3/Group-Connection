@@ -36,6 +36,7 @@ class Person {
         email = ""
         subteam = ""
         additionalNotes = ""
+        peerid = nil
         
         print("I hope you didn't use the default init, you jackass")
     }
@@ -50,7 +51,6 @@ class Person {
         self.additionalNotes = aaditionalNotes
         self.subteam = ssubteam
         self.fullName = self.firstName + " " + self.lastName
-        
         self.phoneNumber = ""
         self.checkArray = []
         self.peerid = MCPeerID(displayName: fullName)
@@ -78,8 +78,8 @@ class Person {
         return
     }
     
-    func getValues() -> (String, String, Bool, Int, String, String, String, String) {
-        return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, additionalNotes)
+    func getValues() -> (String, String, Bool, Int, String, String, String, String, String) {
+        return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, peerid.displayName, additionalNotes)
     }
 }
 

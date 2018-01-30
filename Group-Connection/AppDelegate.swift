@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        
         print("delegate!!")
 
+        recoverOldData()
+        
         Globals.globals.initialized = false
         print("\(Globals.globals.initialized)")
         
@@ -30,10 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
         else if !Globals.globals.inEvent{
-            if Globals.globals.isMentor /*|| user.isMentor */ { //Join or Create
+            if ( Globals.globals.user.isMentor ?? Globals.globals.inEvent) { //Join or Create
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
             }
-            else { //Join
+            else { //Join]
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
             }
         }
@@ -75,6 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
+    func recoverOldData() {
+        //stub!!!!!!
+    }
 }
 
