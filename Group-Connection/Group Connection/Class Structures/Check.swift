@@ -38,8 +38,8 @@ class Check: NSObject, MKAnnotation {
     }
     
     static func receiveCheck(check: Check) {
-        globals.user?.hasCheckIn = true
-        globals.user?.addCheck(check: check)
+        Globals.globals.user?.hasCheckIn = true
+        Globals.globals.user?.addCheck(check: check)
         print("Check \(check.sender.firstName) received")
     }
 }

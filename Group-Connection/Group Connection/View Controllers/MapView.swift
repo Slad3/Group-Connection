@@ -47,16 +47,16 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     
     func checkForIns() {
         //mentor-side only. looks to see if any check ins have gotten been sent to them
-        print("user.isMentor = \(globals.user?.isMentor)")
-        let mentor: Bool = (globals.user?.isMentor)!
+        print("user.isMentor = \(String(describing: Globals.globals.user?.isMentor))")
+        let mentor: Bool = (Globals.globals.user?.isMentor)!
         print("mentor = \(mentor)")
-        let hasCheck: Bool = (globals.user?.hasCheckIn)!
-        print("user.hasCheckIn = \(globals.user.hasCheckIn)")
+        let hasCheck: Bool = (Globals.globals.user?.hasCheckIn)!
+        print("user.hasCheckIn = \(Globals.globals.user.hasCheckIn)")
         print("hasCheck = \(hasCheck)")
         
         if mentor {
             if hasCheck {
-                for check in globals.user.checkArray {
+                for check in Globals.globals.user.checkArray {
                     //for each check waiting, make annotation on the map
                     mapView.addAnnotation(check)
                     print("Check \(check.sender.firstName) annotated")
@@ -83,9 +83,9 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         centerMapOnLocation(location: initialLocation!)
         
         //delete everything below this if I haven't already
-        globals.hans = Person(ffirstName: "hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "none", aaditionalNotes: "none", ssubteam: "none")
+        
         let lugar = CLLocation(latitude: 44.821152, longitude: -93.120435)
-        let check = Check(sender: globals.hans!, place: lugar, description: "ta da!")
+        let check = Check(sender: Globals.globals.hans, place: lugar, description: "ta da!")
         Check.receiveCheck(check: check)
         checkForIns()
     }

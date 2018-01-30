@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -68,6 +68,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
             let eMail = email.text!
             let notes = additionalNotes.text!
             let subteam = picker.description
+            let phone = phoneNumber.text
             var mentor = false
             var destination = "Join Event"
             
@@ -76,9 +77,13 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
                 print("iisMentor is true")
                 destination = "To Join or Create"
             }
-            
-            globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
-            performSegue(withIdentifier: destination, sender: nil)
+            if checkInputs(age: ageText.text, email: eMail, phone: phone!) {
+                Globals.globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
+                performSegue(withIdentifier: destination, sender: nil)
+            }
+            else {
+                 mistakeLabel.text = "Please input all values correctly before proceeding."
+            }
         }
         else { //if bad input
             mistakeLabel.text = "Please input all values correctly before proceeding."
@@ -91,6 +96,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
+
+     //   globals.teamRoster.append(globals.hans)
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,9 +120,19 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
     
     
     func checkInputs(age: String?, email: String, phone: String) -> Bool {
-        if !checkAge(age: age) {return false}
-        if !checkEmail(email: email) {return false}
-        if !checkPhone(phone: phone) {return false}
+        if !checkAge(age: age) {return false}  // this is working
+        if !checkEmail(email: email)
+        {
+            print ("email is broken")
+            return false
+
+        }
+        if !checkPhone(phone: phone)
+        {
+            print("phone is broken")
+            return false
+
+        }
         
         return true
     }
@@ -131,25 +148,16 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate{
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
-        
-        return true
     }
     
     func checkPhone(phone: String)->Bool {
-        if isAllDigits(phone: phone) == true {
-            let phoneRegex = "[235689][0-9]{6}([0-9]{3})?"
+            let phoneRegex = "\\d*\\d*\\d*"
             let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
             return  predicate.evaluate(with: phone)
-        }
-        else {
-            return false
-        }
     }
     
-    func isAllDigits(phone: String)->Bool {
-        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
-        let inputString = phone.components(separatedBy: charcterSet)
-        let filtered = inputString.joined(separator: "")
-        return  phone == filtered
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
+
 }
