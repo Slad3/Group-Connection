@@ -79,6 +79,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             }
             if checkInputs(age: ageText.text, email: eMail, phone: phone!) {
                 Globals.globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
+                Person.encodePerson(john: Globals.globals.user)
                 performSegue(withIdentifier: destination, sender: nil)
             }
             else {

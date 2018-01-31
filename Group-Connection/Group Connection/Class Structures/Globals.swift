@@ -5,8 +5,6 @@
 //  Created by Daniel e. Naranjo Sampson on 12/13/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
-/*  Complete and total stub; fields in here need to be alterable from other classes or straight up in other classes.
-*/
 import Foundation
 
 class Globals {
@@ -14,8 +12,9 @@ class Globals {
     
     var initialized, inEvent: Bool
     var isMentor: Bool
+    var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
     var user: Person!
-    let hans = Person(ffirstName: "colonel hans", llastName: "landa", iisMentor: false, aage: 15, eemail: "myPipeIsBiggerThanYours@aol.com", aaditionalNotes: "bwahahaha", ssubteam: "the jew hunter")
+    let hans = Person(ffirstName: "colonel hans", llastName: "landa", iisMentor: false, aage: 37, eemail: "myPipeIsBiggerThanYours@aol.com", aaditionalNotes: "bwahahaha", ssubteam: "the jew hunter")
 
     var teamRoster: [Person]!
     
