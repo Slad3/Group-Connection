@@ -20,13 +20,14 @@ class Person {
     var subteam: String //essential
     var additionalNotes: String //essential
     var fullName: String!
-    
+    var checkInStatus: Bool //essential
     var peerid: MCPeerID! //essential
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
-    
+
+    //
     static var jsonData: Data!
     static var json: Any?
     
@@ -43,6 +44,10 @@ class Person {
         //var checkArray: [Check]!
     }
     
+    struct Roster: Codable {
+        var people: [Persoon]
+    }
+    
     init() {
         firstName = ""
         lastName = ""
@@ -53,24 +58,8 @@ class Person {
         subteam = ""
         additionalNotes = ""
         peerid = nil
-        
+        checkInStatus = false
         print("I hope you didn't use the default init, you jackass")
-    }
-    
-    init(ffirstName: String, llastName: String, iisMentor: Bool, aage: Int, eemail: String, aaditionalNotes: String, ssubteam: String) {
-        //Required Initialized Variables
-        self.firstName = ffirstName
-        self.lastName = llastName
-        self.isMentor = iisMentor
-        self.age = aage
-        self.email = eemail
-        self.additionalNotes = aaditionalNotes
-        self.subteam = ssubteam
-        self.fullName = self.firstName + " " + self.lastName
-        self.phoneNumber = ""
-        self.checkArray = []
-        self.peerid = MCPeerID(displayName: fullName)
-        return
     }
     
     //Second initializer for when there is a phone number input
@@ -86,6 +75,7 @@ class Person {
         self.fullName = self.firstName + " " + self.lastName
         self.checkArray = []
         self.peerid = MCPeerID(displayName: fullName)
+        self.checkInStatus = false
         return
     }
     
@@ -119,9 +109,12 @@ class Person {
         }
     }
     
-    static func decodePerson() -> Any?  {
+    static func decodePeople() -> [Person]?  {
+        for i in Globals.globals.teamRoster {
+            
+        }
         if let dave = try? JSONDecoder().decode(Person.Persoon.self, from: jsonData){
-            let john = Person(ffirstName: dave.firstName, llastName: dave.lastName, iisMentor: dave.isMentor, aage: dave.age, eemail: dave.email, aaditionalNotes: dave.additionalNotes, ssubteam: dave.subteam)
+            let john = Person(firstName: dave.firstName, lastName: dave.lastName, isMentor: dave.isMentor, age: dave.age, email: dave.email, phoneNumber: dave.phoneNumber, additionalNotes: dave.additionalNotes, ssubteam: dave.subteam)
             return john
         }
         else {
