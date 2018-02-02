@@ -109,17 +109,17 @@ class Person {
         }
     }
     
-    static func decodePeople() -> [Person]?  {
-        for i in Globals.globals.teamRoster {
-            
-        }
-        if let dave = try? JSONDecoder().decode(Person.Persoon.self, from: jsonData){
-            let john = Person(firstName: dave.firstName, lastName: dave.lastName, isMentor: dave.isMentor, age: dave.age, email: dave.email, phoneNumber: dave.phoneNumber, additionalNotes: dave.additionalNotes, ssubteam: dave.subteam)
-            return john
-        }
-        else {
-            return nil
-        }
-    }
+//    static func decodePeople() -> [Person]?  {
+//        for _ in Globals.globals.teamRoster {
+//            
+//        }
+//        if let dave = try? JSONDecoder().decode(Person.Persoon.self, from: jsonData){
+//            let john = Person(firstName: dave.firstName, lastName: dave.lastName, isMentor: dave.isMentor, age: dave.age, email: dave.email, phoneNumber: dave.phoneNumber, additionalNotes: dave.additionalNotes, ssubteam: dave.subteam)
+//            return john
+//        }
+//        else {
+//            return nil
+//        }
+//    }
 }
 
