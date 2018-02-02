@@ -26,9 +26,7 @@
 		5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D128D151FE4EC3C00D38505 /* InitialProfileView.swift */; };
 		5D128D181FE4EC9000D38505 /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D128D171FE4EC9000D38505 /* JoinEventView.swift */; };
 		5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37D3F41FE44BF000A6114F /* Globals.swift */; };
-		5DF4460B202025A0007F4F74 /* Roster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4460A2020259F007F4F74 /* Roster.swift */; };
 		5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */; };
-		5DF487C91FF0093E00C2947F /* PersistentStringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF487C81FF0093E00C2947F /* PersistentStringArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,9 +72,7 @@
 		5D128D151FE4EC3C00D38505 /* InitialProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileView.swift; sourceTree = "<group>"; };
 		5D128D171FE4EC9000D38505 /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		5D37D3F41FE44BF000A6114F /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		5DF4460A2020259F007F4F74 /* Roster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roster.swift; sourceTree = "<group>"; };
 		5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremSwiftum.swift; sourceTree = "<group>"; };
-		5DF487C81FF0093E00C2947F /* PersistentStringArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStringArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +170,6 @@
 				0E8898BC1FE2F69500B671A0 /* Person.swift */,
 				5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */,
 				5D37D3F41FE44BF000A6114F /* Globals.swift */,
-				5DF487C81FF0093E00C2947F /* PersistentStringArray.swift */,
-				5DF4460A2020259F007F4F74 /* Roster.swift */,
 			);
 			path = "Class Structures";
 			sourceTree = "<group>";
@@ -263,6 +257,7 @@
 				TargetAttributes = {
 					0E9EF0221FD71D6500CD89CC = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -272,11 +267,13 @@
 					};
 					0E9EF0381FD71D6500CD89CC = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0E9EF0221FD71D6500CD89CC;
 					};
 					0E9EF0431FD71D6500CD89CC = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0E9EF0221FD71D6500CD89CC;
 					};
@@ -336,7 +333,6 @@
 			files = (
 				0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */,
 				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
-				5DF4460B202025A0007F4F74 /* Roster.swift in Sources */,
 				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
 				5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */,
 				0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */,
@@ -347,7 +343,6 @@
 				0E8898B31FE2ED9C00B671A0 /* CreateEventView.swift in Sources */,
 				0E8898B91FE2EED100B671A0 /* RosterView.swift in Sources */,
 				5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */,
-				5DF487C91FF0093E00C2947F /* PersistentStringArray.swift in Sources */,
 				0E1D348B1FFBF70D00D29832 /* AppDelegate.swift in Sources */,
 				5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */,
 			);
@@ -497,7 +492,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.District196.Group-Connection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -509,7 +505,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.District196.Group-Connection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -522,7 +519,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.District196.Group-ConnectionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Group Connection.app/Group Connection";
 			};
 			name = Debug;
@@ -536,7 +534,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.District196.Group-ConnectionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Group Connection.app/Group Connection";
 			};
 			name = Release;
@@ -549,7 +548,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.District196.Group-ConnectionUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Group Connection";
 			};
 			name = Debug;
@@ -562,7 +562,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.District196.Group-ConnectionUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Group Connection";
 			};
 			name = Release;
