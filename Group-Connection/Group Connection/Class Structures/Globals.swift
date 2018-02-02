@@ -6,6 +6,7 @@
 //  Copyright © 2017 District196. All rights reserved.
 //
 import Foundation
+import MultipeerConnectivity
 
 class Globals {
     static let globals: Globals! = Globals()
@@ -13,6 +14,7 @@ class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
+    public var Session: MCSession!
     var user: Person!
     let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
 

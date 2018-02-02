@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -150,13 +151,13 @@
                         <outlet property="profilePhoto" destination="fU8-Xb-QMW" id="TIY-My-6pR"/>
                         <outlet property="subLabel" destination="EQ3-F7-2xl" id="qeS-da-wPc"/>
                         <outlet property="subPicker" destination="t6h-MX-nEY" id="Jou-oO-GWr"/>
-                        <segue destination="mel-2j-Tzc" kind="show" identifier="Join Event" id="LG8-2G-iaW"/>
-                        <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="gSV-l4-P4W"/>
+                        <segue destination="mel-2j-Tzc" kind="show" identifier="To Join Event" id="LG8-2G-iaW"/>
+                        <segue destination="4MN-c9-e70" kind="show" identifier="To Create Event" id="ezE-1r-zet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4072.4637681159425" y="-960.32608695652186"/>
+            <point key="canvasLocation" x="-2886" y="-691"/>
         </scene>
         <!--JoinOrCreate-->
         <scene sceneID="ylA-xs-HiX">
@@ -185,7 +186,6 @@
                                 <state key="normal" title="Join "/>
                                 <connections>
                                     <action selector="checkCode:" destination="0Re-vt-O9v" eventType="touchUpInside" id="uM9-oU-mf6"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="INf-rf-5yz"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K04-Gt-anc">
@@ -195,9 +195,6 @@
                                     <navigationItem title="Join or Create Event" id="qll-ri-zjc">
                                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back" id="JJi-Qb-2t0">
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <segue destination="Xly-Nh-swL" kind="show" identifier="To Create" id="rrN-8q-eNJ"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -220,9 +217,6 @@
                                 <rect key="frame" x="59" y="275" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Event"/>
-                                <connections>
-                                    <segue destination="4MN-c9-e70" kind="show" id="p6P-aE-mQB"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Or Alternatively... " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGg-UA-tXx">
                                 <rect key="frame" x="59" y="246" width="157" height="21"/>
@@ -242,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2K-Ul-Ddi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3023.1884057971015" y="-960.32608695652186"/>
+            <point key="canvasLocation" x="-713" y="-1634"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
@@ -264,7 +258,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="opE-BL-hgG">
                                             <connections>
                                                 <action selector="back:" destination="4MN-c9-e70" id="L22-1y-3hV"/>
-                                                <segue destination="0Re-vt-O9v" kind="show" identifier="To Join or Create" id="kYt-s9-k8J"/>
+                                                <segue destination="Xly-Nh-swL" kind="show" id="ByP-vU-kVb"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -419,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCU-ay-9NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1780" y="-886"/>
+            <point key="canvasLocation" x="-1428" y="-605"/>
         </scene>
         <!--Join-->
         <scene sceneID="fg6-Rc-CwX">
@@ -440,14 +434,17 @@
                                     <navigationItem title="Join Event" id="Z4Y-fp-YgU">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="qqq-qv-cAZ">
                                             <connections>
-                                                <segue destination="0Re-vt-O9v" kind="show" id="U2s-Oj-PhL"/>
+                                                <segue destination="Xly-Nh-swL" kind="show" id="RyL-02-Khm"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Go " id="8ql-oK-8UY">
-                                            <connections>
-                                                <action selector="checkCode:" destination="mel-2j-Tzc" id="gpQ-bh-WeN"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Go " id="8ql-oK-8UY">
+                                                <connections>
+                                                    <action selector="checkCode:" destination="mel-2j-Tzc" id="gpQ-bh-WeN"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Show" id="nak-mg-Pi1"/>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -459,35 +456,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LxN-N9-bu7">
-                                <rect key="frame" x="20" y="150" width="224" height="30"/>
+                                <rect key="frame" x="196" y="87" width="198" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Access Code:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEZ-8t-t87">
-                                <rect key="frame" x="0.0" y="63" width="279" height="112"/>
+                                <rect key="frame" x="0.0" y="63" width="206" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6w-Jj-rpE">
-                                <rect key="frame" x="295" y="150" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go"/>
-                                <connections>
-                                    <action selector="checkCode:" destination="mel-2j-Tzc" eventType="touchUpInside" id="Ug3-bD-TE4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-f3-cRu">
-                                <rect key="frame" x="295" y="150" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go"/>
-                                <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="dmB-VU-4UA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -498,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd6-Ga-dUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3023" y="-1861"/>
+            <point key="canvasLocation" x="-1475.3623188405797" y="-1368.75"/>
         </scene>
         <!--Check In-->
         <scene sceneID="Row-Z4-a8m">
@@ -776,7 +757,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="INf-rf-5yz"/>
-        <segue reference="gSV-l4-P4W"/>
+        <segue reference="RyL-02-Khm"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E1D348B1FFBF70D00D29832 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1D348A1FFBF70D00D29832 /* AppDelegate.swift */; };
 		0E1D348D1FFBF77A00D29832 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E1D348C1FFBF77A00D29832 /* Main.storyboard */; };
+		0E5D271B2024DA9A002F360F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5D271A2024DA9A002F360F /* Manager.swift */; };
 		0E8898B31FE2ED9C00B671A0 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */; };
 		0E8898B51FE2EE1F00B671A0 /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */; };
 		0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8898B61FE2EEC000B671A0 /* MapView.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		0E1D348A1FFBF70D00D29832 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		0E1D348C1FFBF77A00D29832 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0E5D271A2024DA9A002F360F /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = "Group Connection/Class Structures/Manager.swift"; sourceTree = SOURCE_ROOT; };
 		0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
 		0E8898B61FE2EEC000B671A0 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */,
 				5D128D171FE4EC9000D38505 /* JoinEventView.swift */,
+				0E5D271A2024DA9A002F360F /* Manager.swift */,
 				0E8898B81FE2EED100B671A0 /* RosterView.swift */,
 				0E8898B61FE2EEC000B671A0 /* MapView.swift */,
 				5D128D151FE4EC3C00D38505 /* InitialProfileView.swift */,
@@ -335,6 +338,7 @@
 				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
 				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
 				5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */,
+				0E5D271B2024DA9A002F360F /* Manager.swift in Sources */,
 				0EA60DB31FDB03B700E6D6D2 /* JoinOrCreateViewContoller.swift in Sources */,
 				5D128D061FE4D82700D38505 /* Event.swift in Sources */,
 				5D128D181FE4EC9000D38505 /* JoinEventView.swift in Sources */,

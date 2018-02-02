@@ -70,19 +70,59 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             let subteam = picker.description
             let phone = phoneNumber.text!
             var mentor = false
-            var destination = "Join Event"
+            
             
             if age > 19 {
                 mentor = true
                 print("iisMentor is true")
-                destination = "To Join or Create"
+                
             }
             if checkInputs(age: ageText.text, email: eMail, phone: phone) {
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
                 Person.encodePerson(john: Globals.globals.user)
-                let temp = Person.decodePerson()!
-                print(temp.firstName + temp.lastName + temp.phoneNumber)
-                performSegue(withIdentifier: destination, sender: nil)
+                
+                if (Globals.globals.user.isMentor){
+                    
+                    //Action Sheet Stuff
+                    let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
+                    
+                    actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
+                        
+                        self.performSegue(withIdentifier: "To Create Event", sender: nil)
+                        
+                    }))
+                    
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
+                        
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        
+                    }))
+                    
+                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    
+                    self.present(actionSheet, animated: true, completion: nil)
+                    
+                }
+                else{
+                    //Action sheet Stuff
+                    let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
+                    
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
+                        
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        
+                    }))
+                    
+                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    
+                    self.present(actionSheet, animated: true, completion: nil)
+                    
+                    
+                    
+                }
+                
+                
+                
             }
             else {
                  mistakeLabel.text = "Please input all values correctly before proceeding."
