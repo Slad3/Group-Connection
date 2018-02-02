@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         print("delegate!!")
-
-        recoverOldData()
         
         Globals.globals.initialized = false
         print("\(Globals.globals.initialized)")
@@ -33,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
         else if !Globals.globals.inEvent{
-            if ( Globals.globals.user.isMentor ?? Globals.globals.inEvent) { //Join or Create
+            if ( Globals.globals.user.isMentor ?? Globals.globals.isMentor) { //Join or Create
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
             }
             else { //Join]
@@ -46,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else { //Initial Profile; Only if stuff really goes wrong
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }       
+        
+        
         
         self.window?.rootViewController = initialViewController
         
@@ -78,8 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func recoverOldData() {
-        //stub!!!!!!
-    }
+//    func recoverOldData() -> Bool{
+//        var thisWorked: Bool
+//        for person in Globals.globals.teamRoster {
+//            
+//        }
+//    }
 }
 

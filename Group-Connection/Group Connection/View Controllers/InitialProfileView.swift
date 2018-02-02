@@ -68,7 +68,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             let eMail = email.text!
             let notes = additionalNotes.text!
             let subteam = picker.description
-            let phone = phoneNumber.text
+            let phone = phoneNumber.text!
             var mentor = false
             var destination = "Join Event"
             
@@ -77,8 +77,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
                 print("iisMentor is true")
                 destination = "To Join or Create"
             }
-            if checkInputs(age: ageText.text, email: eMail, phone: phone!) {
-                Globals.globals.user = Person(ffirstName: fName, llastName: lName, iisMentor: mentor, aage: age, eemail: eMail, aaditionalNotes: notes, ssubteam: subteam)
+            if checkInputs(age: ageText.text, email: eMail, phone: phone) {
+                Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
+                Person.encodePerson(john: Globals.globals.user)
+                let temp = Person.decodePerson()!
+                print(temp.firstName + temp.lastName + temp.phoneNumber)
                 performSegue(withIdentifier: destination, sender: nil)
             }
             else {
