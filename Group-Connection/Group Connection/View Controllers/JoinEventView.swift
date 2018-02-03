@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import MultipeerConnectivity
 
-class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate {
+class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowserViewControllerDelegate {
+
     
     var accessCode: String = ""
     
@@ -19,16 +20,29 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate {
     @IBOutlet weak var accessCodeBox: UITextField!
     
     @IBAction func FindSessions(_ sender: Any) {
+        print("Start Function")
+       // let browserService = MCNearbyServiceBrowser(peer: Globals.globals.user.peerid, serviceType: accessCode)
+       // browserService.delegate = self
         
-        //var browserService = MCNearbyServiceBrowser(peer: Globals.globals.user.peerid, serviceType: accessCode)
-        var browserService = MCNearbyServiceBrowser(peer: Globals.globals.user.peerid, serviceType: accessCode)
-        browserService.delegate = self
-        //self.present(, animated: true, completion: nil)
+        //let browserView = MCBrowserViewController(browser: browserService, session: Globals.globals.Session)
+        let browserView = MCBrowserViewController(serviceType: "asdf", session: Globals.globals.Session)
+        print("Made Browser View")
+        browserView.delegate = self
+        print("made delegate")
+        
+        //browserService.startBrowsingForPeers()
+        self.present(browserView, animated: true, completion: nil)
+        print("making delegate")
+        
+       
+        
+        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Join Event View Loading")
    
         if (!accessCodeBox.hasText){
             accessCode = ""
@@ -49,12 +63,22 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print("Stuffs happenin")
+        print("found peer")
+        
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        print("Stuffs happenin")
+        print("lost peer")
     }
     
     
