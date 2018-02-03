@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
         else if !Globals.globals.inEvent{
-            if ( Globals.globals.user.isMentor ?? Globals.globals.isMentor) { //Join or Create
+            if ( Globals.globals.user.isMentor) { //Join or Create
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
             }
             else { //Join]
