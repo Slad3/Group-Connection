@@ -757,6 +757,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="LG8-2G-iaW"/>
         <segue reference="RyL-02-Khm"/>
     </inferredMetricsTieBreakers>
 </document>

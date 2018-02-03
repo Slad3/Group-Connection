@@ -16,32 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
         print("delegate!!")
         
-        Globals.globals.initialized = false
+        Person.jsonData = Data()
+        Globals.globals.initialized = recoverOldData()
         print("\(Globals.globals.initialized)")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         var initialViewController: UIViewController
         
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
-        if !Globals.globals.initialized { //Initial Profile
+        if !Globals.globals.initialized { //Initial Profile; only if decoding failed
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
         else if !Globals.globals.inEvent{
-            if ( Globals.globals.user.isMentor ?? Globals.globals.isMentor) { //Join or Create
+            if (Globals.globals.user.isMentor) { //Join or Create; only if they are a mentor
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
             }
-            else { //Join]
+            else { //Join; if they're not a mentor
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
             }
         }
         else if Globals.globals.inEvent { //Main Tab
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Main Tab VC")
         }
-        else { //Initial Profile; Only if stuff really goes wrong
+        else { //Initial Profile; Only if stuff really goes wrong, should never be arrived at
+            print("AppDelegate if/else sequence failed, defaulting to initialize")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }       
         
@@ -78,11 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-//    func recoverOldData() -> Bool{
-//        var thisWorked: Bool
-//        for person in Globals.globals.teamRoster {
-//            
-//        }
-//    }
+    func recoverOldData() -> Bool {
+        Globals.globals.teamRoster = Person.decodePeople()
+        if Globals.globals.teamRoster == nil {
+            print("people decoding failed")
+            return false
+        }
+        return true
+    }
 }
 
