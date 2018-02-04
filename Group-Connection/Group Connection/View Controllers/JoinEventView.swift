@@ -14,30 +14,37 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
 
     
     var accessCode: String = ""
-    
+    var creatorPeerid: MCPeerID!
     
     
     @IBOutlet weak var accessCodeBox: UITextField!
     
+    func updateTextFields() {
+        
+        
+        
+        
+        
+    }
+    
     @IBAction func FindSessions(_ sender: Any) {
         print("Start Function")
-       // let browserService = MCNearbyServiceBrowser(peer: Globals.globals.user.peerid, serviceType: accessCode)
-       // browserService.delegate = self
         
-        //let browserView = MCBrowserViewController(browser: browserService, session: Globals.globals.Session)
-        let browserView = MCBrowserViewController(serviceType: "asdf", session: Globals.globals.Session)
+        if (!accessCodeBox.hasText){
+            accessCode = ""
+        }
+        else{
+            accessCode = accessCodeBox.text!
+        }
+        
+        
+        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.Session)
         print("Made Browser View")
         browserView.delegate = self
         print("made delegate")
         
-        //browserService.startBrowsingForPeers()
         self.present(browserView, animated: true, completion: nil)
-        print("making delegate")
-        
-       
-        
-        
-        
+
     }
     
     override func viewDidLoad() {
@@ -73,12 +80,16 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print("found peer")
+        print("Found Peer")
+        
+        creatorPeerid = peerID
         
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         print("lost peer")
+        
+        
     }
     
     
