@@ -107,7 +107,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
-        updateTextFields(fg: info!["GroupName"]!, en: info!["EventName"]!, cn: info!["CreatorName"]!, di: info!["Discription"]!, connectionThere: true)
+        //updateTextFields(fg: info!["GroupName"]!, en: info!["EventName"]!, cn: info!["CreatorName"]!, di: info!["Discription"]!, connectionThere: true)
         self.connectedToSession = true
         dismiss(animated: true, completion: nil)
     }
