@@ -15,16 +15,43 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
     
     var accessCode: String = ""
     var creatorPeerid: MCPeerID!
+    var connectedToSession = false
     
     
     @IBOutlet weak var accessCodeBox: UITextField!
     
-    func updateTextFields() {
+    @IBOutlet weak var FoundGroupText: UILabel!
+    
+    @IBOutlet weak var EventNameText: UILabel!
+    
+    @IBOutlet weak var CreatorNameText: UILabel!
+    
+    @IBOutlet weak var DiscriptionText: UILabel!
+    
+    @IBOutlet weak var connectedOrNot: UILabel!
+    
+    @IBAction func advance(_ sender: Any) {
+        if(connectedToSession){
+            //add stuff here for session stuff if we need to
+            
+            
+            performSegue(withIdentifier: "To Main", sender: nil)
+        }
+    }
+    
+    
+    
+    func updateTextFields(fg: String, en: String, cn: String, di: String) {
         
+        FoundGroupText.text = fg
+        EventNameText.text = en
+        CreatorNameText.text = cn
+        DiscriptionText.text = di
+        connectedToSession = true
+        connectedOrNot.text = "Connected"
+        connectedOrNot.backgroundColor = UIColor.green
         
-        
-        
-        
+
     }
     
     @IBAction func FindSessions(_ sender: Any) {
@@ -58,10 +85,17 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
             accessCode = accessCodeBox.text!
         }
         
+        if(!connectedToSession){
+            connectedOrNot.backgroundColor = UIColor.red
+            connectedOrNot.text = "Not Connected"
+        }
+        
+        
+        
+        
         Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference(rawValue: 0)!)
         Globals.globals.Session.delegate = Manager()
-        
-        
+
     }
     
     
@@ -83,6 +117,8 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
         print("Found Peer")
         
         creatorPeerid = peerID
+        
+        //updateTextFields(fg: <#T##String#>, en: <#T##String#>, cn: <#T##String#>, di: <#T##String#>)
         
     }
     
