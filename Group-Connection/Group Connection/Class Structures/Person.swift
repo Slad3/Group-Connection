@@ -52,7 +52,7 @@ class Person {
             self.email = person.email
             self.subteam = person.subteam
             self.additionalNotes = person.additionalNotes
-            self.hasCheckIn = person.hasCheckIn
+            self.hasCheckIn = person.hasCheckIn ?? false 
         }
         
         func toPerson() -> Person {
