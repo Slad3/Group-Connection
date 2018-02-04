@@ -90,9 +90,6 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
             connectedOrNot.text = "Not Connected"
         }
         
-        
-        
-        
         Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference(rawValue: 0)!)
         Globals.globals.Session.delegate = Manager()
 
@@ -118,7 +115,7 @@ class JoinEventView: UIViewController, MCNearbyServiceBrowserDelegate, MCBrowser
         
         creatorPeerid = peerID
         
-        //updateTextFields(fg: <#T##String#>, en: <#T##String#>, cn: <#T##String#>, di: <#T##String#>)
+        updateTextFields(fg: info!["GroupName"]!, en: info!["EventName"]!, cn: info!["CreatorName"]!, di: info!["Discription"]!)
         
     }
     

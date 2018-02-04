@@ -16,6 +16,7 @@ class Event {
     var eventName: String
     var checkInLength: Double //minutes until required check-in
     var timeTillNotification: Double //minutes in between reminders to check in
+    var groupName: String //Name of the Group
     
     //init
     init(user: Person) {
@@ -32,8 +33,12 @@ class Event {
         eventName = ""
         checkInLength = -1.0
         timeTillNotification = -1.0
+        groupName = ""
         return
     }
+    
+    
+    
     
     //Generates random string of 3 words
     static func makeCode() -> String {
