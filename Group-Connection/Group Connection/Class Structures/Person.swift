@@ -32,20 +32,62 @@ class Person {
     static var json: Any?
     
     struct Persoon: Codable {
-        var firstName: String //essential
-        var lastName: String //essential
-        var isMentor: Bool //essential
-        var age: Int //essential
-        var phoneNumber: String //essential
-        var email: String //essential
-        var subteam: String //essential
-        var additionalNotes: String //essential
-        var hasCheckIn: Bool //the mentor has a check waiting
+        let firstName: String //essential
+        let lastName: String //essential
+        let isMentor: Bool //essential
+        let age: Int //essential
+        let phoneNumber: String //essential
+        let email: String //essential
+        let subteam: String //essential
+        let additionalNotes: String //essential
+        let hasCheckIn: Bool //the mentor has a check waiting
         //var checkArray: [Check]!
+        
+        init(person: Person){
+            self.firstName = person.firstName
+            self.lastName = person.lastName
+            self.isMentor = person.isMentor
+            self.age = person.age
+            self.phoneNumber = person.phoneNumber
+            self.email = person.email
+            self.subteam = person.subteam
+            self.additionalNotes = person.additionalNotes
+            self.hasCheckIn = person.hasCheckIn
+        }
+        
+        func toPerson() -> Person {
+            return Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
+        }
     }
     
-    struct Roster: Codable {
-        var people: [Persoon]
+    struct Roster: Codable, Sequence {
+        let people: [Persoon]
+        
+        func makeIterator() -> VoodooMagic {
+            return VoodooMagic(people: people)
+        }
+        
+        func makePeople() -> [Person] {
+            var temp: [Person] = []
+            for dude in people {
+                temp.append(dude.toPerson())
+            }
+            return temp
+        }
+    }
+    
+    struct VoodooMagic: IteratorProtocol {
+        let people: [Persoon]
+        var current = 0
+        
+        init(people: [Persoon]) {
+            self.people = people
+        }
+        
+        mutating func next() -> Persoon? {
+            defer {current += 1}
+            return people.count > current ? people[current] : nil
+        }
     }
     
     init() {
@@ -88,38 +130,34 @@ class Person {
         return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, peerid.displayName, additionalNotes)
     }
     
-    static func encodePerson(john: Person) {
-        let first = john.firstName
-        let last = john.lastName
-        let isMentor = john.isMentor
-        let age = john.age
-        let phone = john.phoneNumber
-        let email = john.email
-        let subteam = john.subteam
-        let add = john.additionalNotes
-        let hasCheck = john.hasCheckIn
-        
-        if let dave: Person.Persoon = Person.Persoon(firstName: first, lastName: last, isMentor: isMentor, age: age, phoneNumber: phone, email: email, subteam: subteam, additionalNotes: add, hasCheckIn: hasCheck ?? false) {
-            print("\(dave)")
-            jsonData = try? JSONEncoder().encode(dave)
-            print(String(data: jsonData, encoding: .utf8) ?? "didn't work bud")
+    static func encodeEveryone() {
+        if let people = Globals.globals.teamRoster {
+            var peoples: [Person.Persoon] = []
+            for person in people {
+                peoples.append(Persoon(person: person))
+            }
+            let roster = Person.Roster(people: peoples)
+            do {
+                jsonData = try JSONEncoder().encode(roster)
+                print(String(data: jsonData, encoding: .utf8) ?? "didn't work bud")
+            }
+            catch {
+                print("It didn't work and it's clearly all Nick's fault. Blame him.")
+            }
         }
         else {
-            print("NOOOOPE SHIT AIN'T WORK MAH CHILD")
         }
     }
     
-//    static func decodePeople() -> [Person]?  {
-//        for _ in Globals.globals.teamRoster {
-//            
-//        }
-//        if let dave = try? JSONDecoder().decode(Person.Persoon.self, from: jsonData){
-//            let john = Person(firstName: dave.firstName, lastName: dave.lastName, isMentor: dave.isMentor, age: dave.age, email: dave.email, phoneNumber: dave.phoneNumber, additionalNotes: dave.additionalNotes, ssubteam: dave.subteam)
-//            return john
-//        }
-//        else {
-//            return nil
-//        }
-//    }
+    static func decodePeople() -> [Person]?  {
+        do {
+            let roster = try JSONDecoder().decode(Roster.self, from: jsonData)
+            return roster.makePeople() ?? nil 
+        }
+        catch {
+            print("decoding unsuccessful.")
+            return nil
+        }
+    }
 }
 

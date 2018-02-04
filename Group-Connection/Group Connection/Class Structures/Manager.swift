@@ -11,15 +11,9 @@ import MultipeerConnectivity
 
 
 class Manager: NSObject, MCSessionDelegate {
-    
-    
     override init(){
         
     }
-    
-    
-    
-    
     
     @available(iOS 7.0, *)
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
@@ -36,8 +30,7 @@ class Manager: NSObject, MCSessionDelegate {
         }
         
     }
-    
-    
+
     // Received data from remote peer.
     @available(iOS 7.0, *)
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
@@ -46,34 +39,23 @@ class Manager: NSObject, MCSessionDelegate {
         
     }
     
-    
     // Received a byte stream from remote peer.
     @available(iOS 7.0, *)
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
         
-        
-        
-        
     }
-    
     
     // Start receiving a resource from remote peer.
     @available(iOS 7.0, *)
-    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){}
-    
+    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
+        
+    }
     
     // Finished receiving a resource from remote peer and saved the content
     // in a temporary location - the app is responsible for moving the file
     // to a permanent location within its sandbox.
     @available(iOS 7.0, *)
-    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){}
-    
-    
-    
-    
-    
-    
-    
-    
+    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
+        
+    }
 }
-

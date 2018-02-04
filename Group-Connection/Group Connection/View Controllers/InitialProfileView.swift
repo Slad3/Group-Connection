@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -41,10 +41,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
         return subTeam.count
     }
     
-    
-    
-    
     let picker = UIImagePickerController()
+    
+    
     
     @IBAction func photoFromLibrary(_ sender: Any) {
         picker.allowsEditing = false
@@ -58,10 +57,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
         
         
         if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
-            mistakeLabel.text = ""
             
-            
-            
+        
             let fName = firstName.text!
             let lName = lastName.text!
             let age: Int = Int(ageText.text!)!; print("user age is \(age)")
@@ -70,85 +67,59 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             let subteam = picker.description
             let phone = phoneNumber.text!
             var mentor = false
-            
-            
+        
             if age > 19 {
                 mentor = true
                 print("iisMentor is true")
-                
             }
+            
             if checkInputs(age: ageText.text, email: eMail, phone: phone) {
+                mistakeLabel.text = ""
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
-                Person.encodePerson(john: Globals.globals.user)
                 
-                if (Globals.globals.user.isMentor){
-                    
-                    //Action Sheet Stuff
+                if (Globals.globals.user.isMentor) { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
                     
-                    actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
-                        
-                        self.performSegue(withIdentifier: "To Create Event", sender: nil)
-                        
+                    actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler:{ (action:UIAlertAction) in self.performSegue(withIdentifier: "To Create Event", sender: nil)
                     }))
-                    
-                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
-                        
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
-                    
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
                     self.present(actionSheet, animated: true, completion: nil)
                     
                 }
-                else{
+                else {
                     //Action sheet Stuff
-                    let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
+                    let actionSheet = UIAlertController(title: "Join", message: "", preferredStyle: .actionSheet)
                     
-                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
-                        
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
-                    
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
                     self.present(actionSheet, animated: true, completion: nil)
-                    
-                    
-                    
                 }
-                
-                
-                
             }
-            else {
+            else { //if checkInputs() == false
                  mistakeLabel.text = "Please input all values correctly before proceeding."
             }
         }
-        else { //if bad input
+        else { //if no text
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-
-     //   globals.teamRoster.append(globals.hans)
+        additionalNotes.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //MARK: - Delegates
+
     @nonobjc func imagePickerController(_ picker: UIImagePickerController,
                                         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
@@ -197,6 +168,10 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             let phoneRegex = "\\d*\\d*\\d*"
             let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
             return  predicate.evaluate(with: phone)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        additionalNotes.text = ""
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -12,7 +12,7 @@ class Globals {
     static let globals: Globals! = Globals()
     
     var initialized, inEvent: Bool
-    var isMentor: Bool
+    var isMentor: Bool!
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
     public var Session: MCSession!
     var user: Person!
@@ -23,7 +23,7 @@ class Globals {
     init() {
         initialized = false
         inEvent = false
-        isMentor = false
+//        isMentor = false
         teamRoster = [hans]
     }
 }
