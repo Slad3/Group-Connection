@@ -80,7 +80,10 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 if (Globals.globals.user.isMentor) { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
                     
-                    actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler:{ (action:UIAlertAction) in self.performSegue(withIdentifier: "To Create Event", sender: nil)
+                    actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
+                        
+                        self.performSegue(withIdentifier: "To Create Event", sender: nil)
+                        
                     }))
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
