@@ -96,6 +96,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     }))
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
+                    actionSheet.addAction(UIAlertAction(title: "Save Profile", style: .default, handler: { (action:UIAlertAction) in
+                        
+                        print("Saved profile")
+                        
+                    }))
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
                     self.present(actionSheet, animated: true, completion: nil)
@@ -103,9 +108,14 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 }
                 else {
                     //Action sheet Stuff
-                    let actionSheet = UIAlertController(title: "Join", message: "", preferredStyle: .actionSheet)
+                    let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                    }))
+                    actionSheet.addAction(UIAlertAction(title: "Save Profile", style: .default, handler: { (action:UIAlertAction) in
+                        
+                        print("Saved profile")
+                        
                     }))
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
@@ -132,8 +142,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
 
-    @nonobjc func imagePickerController(_ picker: UIImagePickerController,
-                                        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    @nonobjc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4

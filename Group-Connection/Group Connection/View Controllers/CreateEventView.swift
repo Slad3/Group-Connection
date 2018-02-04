@@ -27,8 +27,10 @@ UINavigationControllerDelegate  {
     @IBOutlet weak var mapView: UIImageView!
     @IBOutlet weak var mistakeLabel: UILabel!
     
+    var checkInNumber: Int = 60
+    
     @IBAction func changeCheckInLength(_ sender: Any) {
-        let checkInNumber = Int(checkInLength.value)
+        checkInNumber = Int(checkInLength.value)
         stepperLabel.text = "\(checkInNumber) min"
     }
     
