@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -41,10 +41,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
         return subTeam.count
     }
     
-    
-    
-    
     let picker = UIImagePickerController()
+    
+    
     
     @IBAction func photoFromLibrary(_ sender: Any) {
         picker.allowsEditing = false
@@ -58,10 +57,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
         
         
         if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
-            mistakeLabel.text = ""
             
-            
-            
+        
             let fName = firstName.text!
             let lName = lastName.text!
             let age: Int = Int(ageText.text!)!; print("user age is \(age)")
@@ -70,47 +67,41 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             let subteam = picker.description
             let phone = phoneNumber.text!
             var mentor = false
-            var destination = "Join Event"
-            
+        
             if age > 19 {
                 mentor = true
                 print("iisMentor is true")
-                destination = "To Join or Create"
             }
+            
             if checkInputs(age: ageText.text, email: eMail, phone: phone) {
+                mistakeLabel.text = ""
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
                 Person.encodePerson(john: Globals.globals.user)
                 //let temp = Person.decodePerson()!
                // print(temp.firstName + temp.lastName + temp.phoneNumber)
                 performSegue(withIdentifier: destination, sender: nil)
             }
-            else {
+            else { //if checkInputs() == false
                  mistakeLabel.text = "Please input all values correctly before proceeding."
             }
         }
-        else { //if bad input
+        else { //if no text
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-
-     //   globals.teamRoster.append(globals.hans)
+        additionalNotes.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //MARK: - Delegates
-    @nonobjc func imagePickerController(_ picker: UIImagePickerController,
-                                        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+
+    @nonobjc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
@@ -157,6 +148,10 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             let phoneRegex = "\\d*\\d*\\d*"
             let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
             return  predicate.evaluate(with: phone)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        additionalNotes.text = ""
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

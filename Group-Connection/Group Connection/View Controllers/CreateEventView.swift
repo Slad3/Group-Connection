@@ -6,11 +6,14 @@
 //  Copyright © 2017 District196. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import MultipeerConnectivity
 
 class CreateEventView: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate  {
+    
     
     @IBOutlet weak var eventName: UITextField!
     
@@ -24,8 +27,10 @@ UINavigationControllerDelegate  {
     @IBOutlet weak var mapView: UIImageView!
     @IBOutlet weak var mistakeLabel: UILabel!
     
+    var checkInNumber: Int = 60
+    
     @IBAction func changeCheckInLength(_ sender: Any) {
-        let checkInNumber = Int(checkInLength.value)
+        checkInNumber = Int(checkInLength.value)
         stepperLabel.text = "\(checkInNumber) min"
     }
     
@@ -52,15 +57,26 @@ UINavigationControllerDelegate  {
     }
     
     @IBAction func makeEvent(_ sender: Any) {
-        if generalAccessCode.hasText && mentorAccessCode.hasText && eventName.hasText && (checkInLength.value > 0.0) {
+        if generalAccessCode.hasText && mentorAccessCode.hasText && eventName.hasText && groupName.hasText && (checkInLength.value > 0.0) {
             mistakeLabel.text = ""
             event.eventName = eventName.text!
             event.checkInLength = checkInLength.value
             event.generalAccessCode = generalAccessCode.text ?? Event.makeCode()
             event.mentorAccessCode = Event.makeCode()
+            event.groupName = groupName.text!
+            
+            
+            Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference(rawValue: 0)!)
+            Globals.globals.Session.delegate = Manager()
             
             print("Event has been made!!")
-            
+            print("GeneralAccessCode = " + event.generalAccessCode)
+            var accessCodesthing = event.generalAccessCode
+            var fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
+            var advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodesthing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
+            advertisementAssistant.start()
+            print("Advertising Started")
+
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
         else {
