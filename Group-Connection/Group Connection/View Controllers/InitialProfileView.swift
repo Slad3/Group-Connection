@@ -80,8 +80,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             if checkInputs(age: ageText.text, email: eMail, phone: phone) {
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
                 Person.encodePerson(john: Globals.globals.user)
-                let temp = Person.decodePerson()!
-                print(temp.firstName + temp.lastName + temp.phoneNumber)
+                //let temp = Person.decodePerson()!
+               // print(temp.firstName + temp.lastName + temp.phoneNumber)
                 performSegue(withIdentifier: destination, sender: nil)
             }
             else {
