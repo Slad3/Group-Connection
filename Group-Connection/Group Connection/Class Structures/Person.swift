@@ -30,6 +30,8 @@ class Person {
     //
     static var jsonData: Data!
     static var json: Any?
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("people")
     
     struct Persoon: Codable {
         let firstName: String //essential
@@ -131,6 +133,7 @@ class Person {
     }
     
     static func encodeEveryone() {
+        print("encoding people")
         if let people = Globals.globals.teamRoster {
             var peoples: [Person.Persoon] = []
             for person in people {
@@ -138,7 +141,9 @@ class Person {
             }
             let roster = Person.Roster(people: peoples)
             do {
+                
                 jsonData = try JSONEncoder().encode(roster)
+                try jsonData.write(to: ArchiveURL)
                 print(String(data: jsonData, encoding: .utf8) ?? "didn't work bud")
             }
             catch {
@@ -151,11 +156,11 @@ class Person {
     
     static func decodePeople() -> [Person]?  {
         do {
+            jsonData = try Data(contentsOf: ArchiveURL)
             let roster = try JSONDecoder().decode(Roster.self, from: jsonData)
-            return roster.makePeople() ?? nil 
+            return roster.makePeople()
         }
         catch {
-            print("decoding unsuccessful.")
             return nil
         }
     }
