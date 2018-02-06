@@ -7,9 +7,16 @@
 //
 
 import UIKit
+//import Foundation
+import MultipeerConnectivity
 
 class CheckInView: UIViewController {
     
+    @IBAction func Panic(_ sender: Any) {
+        
+        
+        
+    }
     
     
     
@@ -18,13 +25,7 @@ class CheckInView: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    
-    
-    
-    
-    
-    
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
