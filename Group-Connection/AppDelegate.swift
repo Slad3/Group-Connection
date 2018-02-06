@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         print("delegate!!")
         
-//        Person.jsonData = Data()
         Globals.globals.initialized = recoverOldData()
         print("user is \(Globals.globals.user)")
         
