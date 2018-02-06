@@ -75,16 +75,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             
             if checkInputs(age: ageText.text, email: eMail, phone: phone) {
                 mistakeLabel.text = ""
-                Globals.globals.initialized = true
-                Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
-                if Globals.globals.teamRoster != nil {
-                    Globals.globals.teamRoster.append(Globals.globals.user)
-                }
-                else {
-                    Globals.globals.teamRoster = [Globals.globals.user]
-                    print("roster was empty")
-                }
                 
+                Globals.globals.initialized = true
+                
+                Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
+                Globals.globals.teamRoster[0] = Globals.globals.user
                 
                 if (Globals.globals.user.isMentor) { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
@@ -101,7 +96,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         print("Saved profile")
                         
                     }))
-                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false } ))
                     
                     self.present(actionSheet, animated: true, completion: nil)
                     

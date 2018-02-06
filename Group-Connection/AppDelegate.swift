@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         print("delegate!!")
         
-        Person.jsonData = Data()
+//        Person.jsonData = Data()
         Globals.globals.initialized = recoverOldData()
-        print("\(Globals.globals.initialized)")
+        print("user is \(Globals.globals.user)")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !Globals.globals.initialized { //Initial Profile; only if decoding failed
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
-        else if !Globals.globals.inEvent{
-            if (Globals.globals.user.isMentor) { //Join or Create
+        else if !Globals.globals.inEvent {
+            if Globals.globals.user.isMentor ?? Globals.globals.isMentor { //Join or Create
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
             }
             else { //Join; if they're not a mentor
@@ -82,12 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func recoverOldData() -> Bool {
-        Globals.globals.teamRoster = Person.decodePeople()
-        if Globals.globals.teamRoster == nil {
-            print("people decoding failed")
-            return false
-        }
-        print(Globals.globals.teamRoster)
+        let temp = Person.decodePeople() ?? []
+        if temp.count < 1 {return false}
+        Globals.globals.teamRoster = temp
+        print(Globals.globals.teamRoster[0])
+        Globals.globals.user = Globals.globals.teamRoster[0]
         return true
     }
 }

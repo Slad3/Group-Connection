@@ -27,9 +27,8 @@ class Person {
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
 
-    //
+    //encoding stuff
     static var jsonData: Data!
-    static var json: Any?
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("people")
     
@@ -132,25 +131,26 @@ class Person {
         return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, peerid.displayName, additionalNotes)
     }
     
-    static func encodeEveryone() {
+    static func encodeEveryone(){
         print("encoding people")
-        if let people = Globals.globals.teamRoster {
-            var peoples: [Person.Persoon] = []
-            for person in people {
-                peoples.append(Persoon(person: person))
-            }
-            let roster = Person.Roster(people: peoples)
-            do {
-                
-                jsonData = try JSONEncoder().encode(roster)
-                try jsonData.write(to: ArchiveURL)
-                print(String(data: jsonData, encoding: .utf8) ?? "didn't work bud")
-            }
-            catch {
-                print("It didn't work and it's clearly all Nick's fault. Blame him.")
-            }
+        let people: [Person] = Globals.globals.teamRoster
+        var peoples: [Person.Persoon] = []
+        
+        for person in people {
+            peoples.append(Persoon(person: person))
+            print(person)
         }
-        else {
+        
+        let roster = Person.Roster(people: peoples)
+        
+        do {
+            jsonData = try JSONEncoder().encode(roster)
+            try jsonData.write(to: ArchiveURL)
+            print(ArchiveURL)
+            print(String(data: jsonData, encoding: .utf8) ?? "didn't work bud")
+        }
+        catch {
+            print("It didn't work and it's clearly all Nick's fault. Blame him.")
         }
     }
     
@@ -158,9 +158,11 @@ class Person {
         do {
             jsonData = try Data(contentsOf: ArchiveURL)
             let roster = try JSONDecoder().decode(Roster.self, from: jsonData)
+            print(String(data: jsonData, encoding: .utf8)!)
             return roster.makePeople()
         }
         catch {
+            print("decoding failed")
             return nil
         }
     }
