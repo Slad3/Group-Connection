@@ -26,42 +26,65 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     
     let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
     
-    func numberOfComponents(in subPicker: UIPickerView) -> Int
-    {
+    func numberOfComponents(in subPicker: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ subPicker: UIPickerView, titleForRow: Int, forComponent component: Int) -> String?
-    {
+    func pickerView(_ subPicker: UIPickerView, titleForRow: Int, forComponent component: Int) -> String? {
         return subTeam[titleForRow]
     }
     
-    func pickerView(_ subPicker: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
+    func pickerView(_ subPicker: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return subTeam.count
+    }
+    
+    //check user inputs
+    private func checkInputs(age: String?, email: String, phone: String) -> Bool {
+        if !checkAge(age: age) {
+            return false
+        }
+        
+        if !checkEmail(email: email) {
+            print ("email is broken")
+            return false
+        }
+        
+        if !checkPhone(phone: phone) {
+            print("phone is broken")
+            return false
+        }
+        
+        return true
+    }
+    
+    private func checkAge(age: String?) -> Bool {
+        let edad = age!
+        if Int(edad) == nil {return false}
+        return true
+    }
+    
+    private func checkEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+    
+    private func checkPhone(phone: String)->Bool {
+        let phoneRegex = "\\d*\\d*\\d*"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return  predicate.evaluate(with: phone)
     }
     
     let picker = UIImagePickerController()
     
     
-    
-    @IBAction func photoFromLibrary(_ sender: Any) {
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picker, animated: true, completion: nil)
-    }
-    
     @IBAction func makeUser(_ sender: Any) {
-        print("Button got pressed")
-        
-        
         if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
-            
         
             let fName = firstName.text!
             let lName = lastName.text!
-            let age: Int = Int(ageText.text!)!; print("user age is \(age)")
+            let age: Int = Int(ageText.text!)!
             let eMail = email.text!
             let notes = additionalNotes.text!
             let subteam = picker.description
@@ -70,7 +93,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         
             if age > 19 {
                 mentor = true
-                print("iisMentor is true")
             }
             
             if checkInputs(age: ageText.text, email: eMail, phone: phone) {
@@ -81,7 +103,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
                 Globals.globals.teamRoster[0] = Globals.globals.user
                 
-                if (Globals.globals.user.isMentor) { //Action Sheet Stuff
+                if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
@@ -130,68 +152,54 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         super.viewDidLoad()
         picker.delegate = self
         additionalNotes.delegate = self
+        
+        if Globals.globals.initialized {
+            let user = Globals.globals.user
+            firstName.text = user?.firstName
+            lastName.text = user?.lastName
+            var temp = String(describing: user?.age)
+            temp.removeFirst(9)
+            temp.removeLast()
+            ageText.text = temp
+            phoneNumber.text = user?.phoneNumber
+            email.text = user?.email
+            additionalNotes.text = user?.additionalNotes
+            
+            mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @nonobjc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    
+    //photo stuff
+    @objc  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
         dismiss(animated:true, completion: nil) //5
     }
     
+    @IBAction func photoFromLibrary(_ sender: Any) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+    }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    func checkInputs(age: String?, email: String, phone: String) -> Bool {
-        if !checkAge(age: age) {return false}  // this is working
-        if !checkEmail(email: email)
-        {
-            print ("email is broken")
-            return false
 
-        }
-        if !checkPhone(phone: phone)
-        {
-            print("phone is broken")
-            return false
-
-        }
-        
-        return true
-    }
-    
-    func checkAge(age: String?) -> Bool {
-        let edad = age!
-        if Int(edad) == nil {return false}
-        return true
-    }
-    
-    func checkEmail(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: email)
-    }
-    
-    func checkPhone(phone: String)->Bool {
-            let phoneRegex = "\\d*\\d*\\d*"
-            let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-            return  predicate.evaluate(with: phone)
-    }
-    
+    //started editing additionalNotes
     func textViewDidBeginEditing(_ textView: UITextView) {
         additionalNotes.text = ""
     }
     
+    //lower any keyboards when the user taps anywhere besides a text box
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
 }

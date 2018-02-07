@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("delegate!!")
         
         Globals.globals.initialized = recoverOldData()
-        print("user is \(Globals.globals.user)")
+        print("user is \(String(describing: Globals.globals.user))")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
         else if !Globals.globals.inEvent {
-            if Globals.globals.user.isMentor ?? Globals.globals.isMentor { //Join or Create
-                initialViewController = storyboard.instantiateViewController(withIdentifier: "Join or Create Event VC")
+            if Globals.globals.user.isMentor { //Initial Profile so mentors can choose what view to go to
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
             }
             else { //Join; if they're not a mentor
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
@@ -43,14 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("AppDelegate if/else sequence failed, defaulting to initialize")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }       
-        
-        
+        Event.makeCode()
+        Event.makeCode()
+        Event.makeCode()
         
         self.window?.rootViewController = initialViewController
         
         self.window?.makeKeyAndVisible()
-        
-        print("No break at app delegate")
         
         return true
     }

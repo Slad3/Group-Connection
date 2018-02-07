@@ -20,7 +20,6 @@ class Event {
     
     //init
     init(user: Person) {
-        
         generalAccessCode = ""
         mentorAccessCode = ""
         
@@ -37,12 +36,14 @@ class Event {
         return
     }
     
-    
-    
-    
     //Generates random string of 3 words
     static func makeCode() -> String {
-        let str = Lorem.words(3)
+        var str = Lorem.words(3)
+        var pop = str.index(str.startIndex, offsetBy: 8)
+        str.remove(at: pop)
+        pop = str.index(str.startIndex, offsetBy: 16)
+        str.remove(at: pop)
+        print("makeCode() gave us " + str)
         return str
     }
     

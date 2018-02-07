@@ -12,9 +12,15 @@ import MapKit
 class MapView: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tempLabel: UILabel!
     
     let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 500 //displayed region size = 0.5 km
+    
+    
+    @IBAction func swapMaps(_ sender: UILongPressGestureRecognizer) {
+        performSegue(withIdentifier: "To Import Map", sender: nil)
+    }
     
     func startReceivingLocationChanges(){
         let authorizationStatus = CLLocationManager.authorizationStatus()
@@ -90,8 +96,12 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         checkForIns()
     }
     
+    @objc func doStuff() {
+        tempLabel.text = ""
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)
     }
     
     override func didReceiveMemoryWarning() {

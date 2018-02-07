@@ -105,6 +105,10 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    //lower any keyboards when the user taps anywhere besides a text box
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
 //        updateTextFields(fg: info["GroupName"]!, en: info["EventName"]!, cn: info["CreatorName"]!, di: info["Discription"]!, connectionThere: true)
