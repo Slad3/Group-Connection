@@ -18,6 +18,7 @@ class ProfileView: UIViewController {
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var emailText: UILabel!
     @IBOutlet weak var addedNotes: UILabel!
+    @IBOutlet weak var profilePhoto: UIImageView!
     
     
     
@@ -39,6 +40,7 @@ class ProfileView: UIViewController {
         phoneNumber.text = "Phone: " + (user?.phoneNumber)!
         emailText.text = "Email: " + (user?.email)!
         addedNotes.text = (user?.additionalNotes)!
+        profilePhoto.image = user?.profilePhoto
     }
     
     override func didReceiveMemoryWarning() {
