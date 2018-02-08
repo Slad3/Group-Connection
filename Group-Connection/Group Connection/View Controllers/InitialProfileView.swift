@@ -121,6 +121,12 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     }))
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false } ))
                     
+                    if let popoverController = actionSheet.popoverPresentationController{
+                        popoverController.sourceView = self.view
+                        popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                        popoverController.permittedArrowDirections = []
+                    }
+                    
                     self.present(actionSheet, animated: true, completion: nil)
                     
                 }
@@ -136,6 +142,12 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         
                     }))
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    
+                    if let popoverController = actionSheet.popoverPresentationController{
+                        popoverController.sourceView = self.view
+                        popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                        popoverController.permittedArrowDirections = []
+                    }
                     
                     self.present(actionSheet, animated: true, completion: nil)
                 }
