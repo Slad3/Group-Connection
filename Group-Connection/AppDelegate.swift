@@ -42,10 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else { //Initial Profile; Only if stuff really goes wrong, should never be arrived at
             print("AppDelegate if/else sequence failed, defaulting to initialize")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-        }       
-        Event.makeCode()
-        Event.makeCode()
-        Event.makeCode()
+        }
         
         self.window?.rootViewController = initialViewController
         
