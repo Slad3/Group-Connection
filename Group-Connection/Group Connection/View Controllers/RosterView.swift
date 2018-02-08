@@ -8,7 +8,25 @@
 
 import UIKit
 
-class RosterView: UIViewController {
+class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
+    
+    // this is the Roll call Button. It will set the timers for everyone to false
+    @IBAction public func rollCall(_ sender: Any) {
+       print("Roll Call")
+        
+        
+        //sets the check in status for everyone to false
+        for index in 0...Globals.globals.teamRoster.count - 1
+        {
+            Globals.globals.teamRoster[index].checkInStatus = false
+        
+        }
+        // now people need to check in to make their pictures change
+        
+    }
+    
+    
     
     
     
@@ -31,8 +49,9 @@ class RosterView: UIViewController {
     {
         //test this here---------------
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = Globals.globals.teamRoster[indexPath.row].fullName
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RosterViewCellTableViewCell
+        
+        cell.fullName.text = Globals.globals.teamRoster[indexPath.row].fullName
         
         return cell
         
