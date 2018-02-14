@@ -27,4 +27,22 @@ class Globals {
         isMentor = false
         teamRoster = [hans]
     }
+    
+    func getMentors() -> [Person] {
+        var temp: [Person] = []
+        for dude in teamRoster {
+            if dude.isMentor {
+                temp.append(dude)
+            }
+        }
+        return temp
+    }
+    static func getIDs(_ peeps: [Person]) -> [MCPeerID] {
+        var temp: [MCPeerID] = []
+        for dude in peeps {
+            temp.append(dude.peerid)
+        }
+        return temp
+    }
 }
+

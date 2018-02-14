@@ -31,10 +31,7 @@ class Manager: NSObject, MCSessionDelegate {
     }
 
     // Received data from remote peer.
-
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
-        
-        
         
     }
     
