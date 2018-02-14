@@ -101,7 +101,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.initialized = true
                 
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
-                Globals.globals.user.profilePhoto = profilePhoto.image
+            //    Globals.globals.user.profilePhoto = profilePhoto.image
                 Globals.globals.teamRoster[0] = Globals.globals.user
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff

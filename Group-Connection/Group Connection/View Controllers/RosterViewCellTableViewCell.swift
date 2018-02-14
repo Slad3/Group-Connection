@@ -10,9 +10,11 @@ import UIKit
 
 class RosterViewCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var fullName: UILabel!
-   
   
+    @IBOutlet weak var fullName: UILabel!
+    
+    @IBOutlet weak var status: UILabel!
+    
     
     
     

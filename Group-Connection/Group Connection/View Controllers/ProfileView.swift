@@ -40,7 +40,7 @@ class ProfileView: UIViewController {
         phoneNumber.text = "Phone: " + (user?.phoneNumber)!
         emailText.text = "Email: " + (user?.email)!
         addedNotes.text = (user?.additionalNotes)!
-        profilePhoto.image = user?.profilePhoto
+      //  profilePhoto.image = user?.profilePhoto
     }
     
     override func didReceiveMemoryWarning() {

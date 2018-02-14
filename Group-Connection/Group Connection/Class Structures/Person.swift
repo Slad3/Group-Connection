@@ -69,7 +69,7 @@ class Person {
             return VoodooMagic(people: people)
         }
         
-        func makePeople() -> [Person] {
+        func sex() -> [Person] {
             var temp: [Person] = []
             for dude in people {
                 temp.append(dude.toPerson())
@@ -160,7 +160,7 @@ class Person {
             jsonData = try Data(contentsOf: ArchiveURL)
             let roster = try JSONDecoder().decode(Roster.self, from: jsonData)
             print(String(data: jsonData, encoding: .utf8)!)
-            return roster.makePeople()
+            return roster.sex()
         }
         catch {
             print("decoding failed")
