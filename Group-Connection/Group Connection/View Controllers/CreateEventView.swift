@@ -12,8 +12,7 @@ import MultipeerConnectivity
 
 class CreateEventView: UIViewController,
     UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,
-MCSessionDelegate {
+UINavigationControllerDelegate {
     
     @IBOutlet weak var eventName: UITextField!
     
@@ -31,15 +30,18 @@ MCSessionDelegate {
     var imageWasTapped = false
     var checkInNumber: Int = 60
     let picker = UIImagePickerController()
-    var SessionMC: MCSession!
+    //var SessionMC: MCSession!
     var advertisementAssistant: MCAdvertiserAssistant!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        SessionMC = MCSession(peer: Globals.globals.user.peerid)
-        SessionMC.delegate = Manager()
+        print("Loading View")
+        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
+        
+        Globals.globals.Session.delegate = Manager()
+        print("Session Loaded")
         picker.delegate = self
     }
     
@@ -81,11 +83,13 @@ MCSessionDelegate {
             
             let fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
             
-            advertisementAssistant = MCAdvertiserAssistant(serviceType: "accessCode", discoveryInfo: nil, session: SessionMC)
+            
+            
+            advertisementAssistant = MCAdvertiserAssistant(serviceType: "accessCode", discoveryInfo: nil, session: Globals.globals.Session)
             advertisementAssistant.start()
             print("Advertising Started")
             mistakeLabel.text = "Advertising Started"
-            print(accessCodeThing)
+        
 
             //performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
@@ -139,37 +143,6 @@ MCSessionDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        switch state {
-        case MCSessionState.connected:
-            print("Connected: \(peerID.displayName)")
-            
-        case MCSessionState.connecting:
-            print("Connecting: \(peerID.displayName)")
-            
-        case MCSessionState.notConnected:
-            print("Not Connected: \(peerID.displayName)")
-        }
-    }
-    
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        
-        
-        
-    }
-    
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        
-    }
-    
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        
-    }
-    
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        
-    }
     
     
 }

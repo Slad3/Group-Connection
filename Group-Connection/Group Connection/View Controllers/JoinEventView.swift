@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 import MultipeerConnectivity
 
-class JoinEventView: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate {
+class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     var accessCode: String = ""
     var creatorPeerid: MCPeerID!
     var connectedToSession = false
-    var SessionMC: MCSession!
+    
+    //var SessionMC: MCSession! Used for testing purposes
     
     
     @IBOutlet weak var accessCodeBox: UITextField!
@@ -76,8 +77,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate, MCSessio
         }
         
         //SessionMC = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .required)
-        SessionMC = MCSession(peer: Globals.globals.user.peerid)
-        SessionMC.delegate = Manager()
+        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
+        Globals.globals.Session.delegate = Manager()
         
     }
     
@@ -92,7 +93,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate, MCSessio
             accessCode = accessCodeBox.text!
         }
         accessCode = "accessCode"
-        let browserView = MCBrowserViewController(serviceType: "accessCode", session: SessionMC)
+        let browserView = MCBrowserViewController(serviceType: "accessCode", session: Globals.globals.Session)
         browserView.delegate = self
         
         print("Made Browser View")
@@ -134,36 +135,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate, MCSessio
         return true
     }
     
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        switch state {
-        case MCSessionState.connected:
-            print("Connected: \(peerID.displayName)")
-            
-        case MCSessionState.connecting:
-            print("Connecting: \(peerID.displayName)")
-            
-        case MCSessionState.notConnected:
-            print("Not Connected: \(peerID.displayName)")
-        }
-    }
-    
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        
-        
-        
-    }
-    
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        
-    }
-    
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        
-    }
-    
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        
-    }
     
     
 }

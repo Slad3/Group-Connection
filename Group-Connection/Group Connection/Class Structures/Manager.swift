@@ -38,8 +38,10 @@ class Manager: NSObject, MCSessionDelegate {
         
     }
     
+    
+    
     // Received a byte stream from remote peer.
-    @available(iOS 7.0, *)
+
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
         
     }
