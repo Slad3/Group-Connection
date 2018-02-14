@@ -15,7 +15,6 @@ class Manager: NSObject, MCSessionDelegate {
         
     }
     
-    @available(iOS 7.0, *)
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
         
         switch state {
@@ -32,7 +31,7 @@ class Manager: NSObject, MCSessionDelegate {
     }
 
     // Received data from remote peer.
-    @available(iOS 7.0, *)
+
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
         
         
@@ -46,7 +45,7 @@ class Manager: NSObject, MCSessionDelegate {
     }
     
     // Start receiving a resource from remote peer.
-    @available(iOS 7.0, *)
+
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
         
     }
@@ -54,7 +53,6 @@ class Manager: NSObject, MCSessionDelegate {
     // Finished receiving a resource from remote peer and saved the content
     // in a temporary location - the app is responsible for moving the file
     // to a permanent location within its sandbox.
-    @available(iOS 7.0, *)
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
         
     }

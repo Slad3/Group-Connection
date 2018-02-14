@@ -22,6 +22,7 @@ class Person {
     var fullName: String!
     var checkInStatus: Bool //essential
     var peerid: MCPeerID! //essential
+    var profilePhoto: UIImage!
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting

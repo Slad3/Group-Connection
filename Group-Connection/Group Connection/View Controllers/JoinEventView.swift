@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import MultipeerConnectivity
 
-class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
-
+class JoinEventView: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate {
     
     var accessCode: String = ""
     var creatorPeerid: MCPeerID!
     var connectedToSession = false
+    var SessionMC: MCSession!
     
     
     @IBOutlet weak var accessCodeBox: UITextField!
@@ -66,25 +66,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
 
     }
     
-    @IBAction func FindSessions(_ sender: Any) {
-        print("Start Function")
-        
-        if (!accessCodeBox.hasText){
-            accessCode = ""
-        }
-        else{
-            accessCode = accessCodeBox.text!
-        }
-        
-        
-        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.Session)
-        print("Made Browser View")
-        browserView.delegate = self
-        print("made delegate")
-        
-        self.present(browserView, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Join Event View Loading")
@@ -94,9 +75,31 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.text = "Not Connected"
         }
         
-        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference(rawValue: 0)!)
-        Globals.globals.Session.delegate = Manager()
-
+        //SessionMC = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .required)
+        SessionMC = MCSession(peer: Globals.globals.user.peerid)
+        SessionMC.delegate = Manager()
+        
+    }
+    
+    
+    @IBAction func FindSessions(_ sender: Any) {
+        print("Start Function")
+        
+        if (!accessCodeBox.hasText){
+            accessCode = ""
+        }
+        else{
+            accessCode = accessCodeBox.text!
+        }
+        accessCode = "accessCode"
+        let browserView = MCBrowserViewController(serviceType: "accessCode", session: SessionMC)
+        browserView.delegate = self
+        
+        print("Made Browser View")
+        //print(accessCode)
+        print("made delegate")
+        
+        self.present(browserView, animated: true, completion: nil)
     }
     
     
@@ -131,26 +134,36 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         return true
     }
     
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+        switch state {
+        case MCSessionState.connected:
+            print("Connected: \(peerID.displayName)")
+            
+        case MCSessionState.connecting:
+            print("Connecting: \(peerID.displayName)")
+            
+        case MCSessionState.notConnected:
+            print("Not Connected: \(peerID.displayName)")
+        }
+    }
     
-    /*
-    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print("Found Peer")
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
-        creatorPeerid = peerID
         
-        updateTextFields(fg: info!["GroupName"]!, en: info!["EventName"]!, cn: info!["CreatorName"]!, di: info!["Discription"]!, connectionThere = true)
         
     }
     
-    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        print("lost peer")
-        
-        updateTextFields(fg: "", en: "", cn: "", di: "", connectionThere = true)
-        
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
         
     }
     
-    */
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+        
+    }
+    
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+        
+    }
     
     
 }
