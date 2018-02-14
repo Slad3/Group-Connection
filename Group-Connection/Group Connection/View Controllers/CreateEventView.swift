@@ -91,7 +91,7 @@ UINavigationControllerDelegate {
             mistakeLabel.text = "Advertising Started"
         
 
-            //performSegue(withIdentifier: "To Main Tab", sender: nil)
+            performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
         else {
             mistakeLabel.text = "Please input all values correctly before proceeding."
