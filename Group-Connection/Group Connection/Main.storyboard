@@ -261,18 +261,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Build Your Profile" id="nIe-0z-CjP">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="hNL-or-EnZ">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cYc-lK-nFM">
-                                                <rect key="frame" x="348" y="7" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Go"/>
-                                                <connections>
-                                                    <action selector="makeUser:" destination="Xly-Nh-swL" eventType="touchUpInside" id="TpS-vV-Pdh"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Build Your Profile" id="nIe-0z-CjP"/>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wFW-DU-Esp">
@@ -298,6 +287,14 @@
                                     <outlet property="delegate" destination="Xly-Nh-swL" id="Utp-Dq-ROt"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yze-3D-Pug">
+                                <rect key="frame" x="279" y="631" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="makeUser:" destination="Xly-Nh-swL" eventType="touchUpInside" id="Xt6-tQ-H4B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -320,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1917" y="-1319"/>
+            <point key="canvasLocation" x="-1917.3913043478262" y="-1319.021739130435"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
@@ -344,16 +341,6 @@
                                                 <action selector="back:" destination="4MN-c9-e70" id="L22-1y-3hV"/>
                                                 <segue destination="Xly-Nh-swL" kind="show" id="ByP-vU-kVb"/>
                                             </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="wDJ-Gp-JNx">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="94b-EV-dje">
-                                                <rect key="frame" x="364" y="7" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Go"/>
-                                                <connections>
-                                                    <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
-                                                </connections>
-                                            </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -482,6 +469,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syI-nb-8gm">
+                                <rect key="frame" x="266" y="596" width="108" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="heI-C2-UdR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -494,12 +489,12 @@
                         <outlet property="mentorAccessCode" destination="pSo-XG-7T5" id="u5b-wB-URt"/>
                         <outlet property="mistakeLabel" destination="EyW-nz-w6X" id="fTg-Ea-5av"/>
                         <outlet property="stepperLabel" destination="2Re-pk-RAk" id="3zz-kP-R4Q"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="To Main View" id="4pw-7c-7hb"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="4pw-7c-7hb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCU-ay-9NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="-1319"/>
+            <point key="canvasLocation" x="128.98550724637681" y="-1319.8369565217392"/>
         </scene>
         <!--Check In-->
         <scene sceneID="Row-Z4-a8m">
@@ -513,19 +508,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViA-58-0pU">
-                                <rect key="frame" x="110" y="218" width="193" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.78139001129999996" green="0.090894259510000006" blue="0.098220847550000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Panic">
-                                    <color key="titleColor" red="0.97749195362117591" green="0.95249679974968782" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="MmK-hR-P9m" appends="YES" id="Ejh-CO-smC"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time since last Check in:       " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJO-nN-3v7">
                                 <rect key="frame" x="67" y="93" width="278" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -590,6 +572,14 @@
                                     <navigationItem title="Check In" id="omd-gb-9sp"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Panic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eja-Sy-gq7">
+                                <rect key="frame" x="111" y="219" width="193" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.78139001131057739" green="0.090894259512424469" blue="0.098220847547054291" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -598,6 +588,7 @@
                     <connections>
                         <outlet property="buddyList" destination="8GK-AW-VNa" id="cYC-Yf-7d3"/>
                         <outlet property="checkInLabel" destination="Rsh-c1-syW" id="tGI-h5-HxS"/>
+                        <outlet property="userView" destination="eja-Sy-gq7" id="Jff-y8-XZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEq-kV-IV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -813,6 +804,7 @@
                         <outlet property="fullName" destination="TeF-oD-UBs" id="nfB-00-MZl"/>
                         <outlet property="group" destination="hPe-oB-wmF" id="KB2-H9-TI3"/>
                         <outlet property="phoneNumber" destination="8tK-Gh-peW" id="Q6O-1Z-Nkd"/>
+                        <outlet property="profilePhoto" destination="few-fy-PZh" id="Aoy-cG-e79"/>
                         <outlet property="subteam" destination="Bru-Pg-Ovw" id="2HZ-o3-GfV"/>
                     </connections>
                 </viewController>
@@ -845,6 +837,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-vV-TBo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -859,6 +855,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="n8z-JY-D2l"/>
                     <connections>
+                        <outlet property="importMap" destination="rG1-vV-TBo" id="330-0e-GmM"/>
                         <outlet property="mapView" destination="8NB-ea-AGK" id="QpW-ze-6mx"/>
                         <outlet property="tempLabel" destination="6je-Nv-25e" id="WzS-7U-046"/>
                         <segue destination="E9d-Rj-wzh" kind="show" identifier="To Import Map" id="PUD-mA-aMe"/>
@@ -871,7 +868,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-492" y="278.57142857142856"/>
+            <point key="canvasLocation" x="-492.75362318840581" y="277.98913043478262"/>
         </scene>
         <!--Import Map View-->
         <scene sceneID="U4w-mk-piM">
@@ -915,7 +912,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyX-du-ugb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-492.75362318840581" y="953.804347826087"/>
+            <point key="canvasLocation" x="-493" y="945"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

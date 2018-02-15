@@ -43,9 +43,10 @@ class Person {
         let subteam: String //essential
         let additionalNotes: String //essential
         let hasCheckIn: Bool //the mentor has a check waiting
+        let profilePhoto: Data!
         //var checkArray: [Check]!
         
-        init(person: Person){
+        init(_ person: Person){
             self.firstName = person.firstName
             self.lastName = person.lastName
             self.isMentor = person.isMentor
@@ -55,10 +56,15 @@ class Person {
             self.subteam = person.subteam
             self.additionalNotes = person.additionalNotes
             self.hasCheckIn = person.hasCheckIn ?? false
+            self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
         }
         
         func toPerson() -> Person {
-            return Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
+            let tmp = UIImage(data: profilePhoto)
+            let person = Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
+            person.profilePhoto = tmp
+            print(tmp)
+            return person
         }
     }
     
@@ -138,7 +144,7 @@ class Person {
         var peoples: [Person.Persoon] = []
         
         for person in people {
-            peoples.append(Persoon(person: person))
+            peoples.append(Persoon(person))
             print(person)
         }
         
@@ -147,8 +153,8 @@ class Person {
         do {
             jsonDerulo = try JSONEncoder().encode(roster)
             try jsonDerulo.write(to: ArchiveURL)
-            print(ArchiveURL)
-            print(String(data: jsonDerulo, encoding: .utf8) ?? "didn't work bud")
+//            print(ArchiveURL)
+//            print(String(data: jsonDerulo, encoding: .utf8) ?? "didn't work bud")
         }
         catch {
             print("It didn't work and it's clearly all Nick's fault. Blame him.")
@@ -159,7 +165,7 @@ class Person {
         do {
             jsonDerulo = try Data(contentsOf: ArchiveURL)
             let roster = try JSONDecoder().decode(Roster.self, from: jsonDerulo)
-            print(String(data: jsonDerulo, encoding: .utf8)!)
+//            print(String(data: jsonDerulo, encoding: .utf8)!)
             return roster.makePeople()
         }
         catch {
