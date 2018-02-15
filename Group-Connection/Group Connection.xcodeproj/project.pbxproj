@@ -58,7 +58,7 @@
 		0E8898B81FE2EED100B671A0 /* RosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterView.swift; sourceTree = "<group>"; };
 		0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0E8898BC1FE2F69500B671A0 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		0E93E5BE2035FEA4003AD8EB /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarView.swift; path = "View Controllers/TabBarView.swift"; sourceTree = "<group>"; };
+		0E93E5BE2035FEA4003AD8EB /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		0E9EF0231FD71D6500CD89CC /* Group Connection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Group Connection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E9EF0321FD71D6500CD89CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -136,7 +136,6 @@
 				5D128D081FE4DB6300D38505 /* Class Structures */,
 				0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */,
 				F8693DFD2029712A00985CB0 /* Main.storyboard */,
-				0E93E5BE2035FEA4003AD8EB /* TabBarView.swift */,
 				0E9EF0311FD71D6500CD89CC /* LaunchScreen.storyboard */,
 				0E9EF0341FD71D6500CD89CC /* Info.plist */,
 			);
@@ -184,6 +183,7 @@
 		5D128D141FE4E03000D38505 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0E93E5BE2035FEA4003AD8EB /* TabBarView.swift */,
 				0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */,
 				0E5D271A2024DA9A002F360F /* Manager.swift */,
 				0E8898B81FE2EED100B671A0 /* RosterView.swift */,

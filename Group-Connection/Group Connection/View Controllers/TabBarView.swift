@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
-class TabBarView: UITabBar {
+class TabBarView: UITabBarController, UITabBarControllerDelegate {
+    
+    
+    
+    
+    
+    
     
     
     
