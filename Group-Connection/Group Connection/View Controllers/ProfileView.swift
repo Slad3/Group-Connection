@@ -20,27 +20,33 @@ class ProfileView: UIViewController {
     @IBOutlet weak var addedNotes: UILabel!
     @IBOutlet weak var profilePhoto: UIImageView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let user = Globals.globals.user
+//        let tmp = Person.decodePeople()
+//        let user = tmp?[0]
         fullName.text = user?.fullName
         subteam.text = "Subteam: " + (user?.subteam)!
+        
         var temp = String(describing: user?.age)
         temp.removeFirst(9)
         temp.removeLast()
         ageText.text = "Age: " + temp
+        
         group.text = "Group: " + ""
+        
         temp = String(describing: user?.checkInStatus)
         temp.removeFirst(9)
         temp.removeLast()
         checkInStatus.text = "Status: " + temp 
+        
         phoneNumber.text = "Phone: " + (user?.phoneNumber)!
         emailText.text = "Email: " + (user?.email)!
-        addedNotes.text = (user?.additionalNotes)!
-      //  profilePhoto.image = user?.profilePhoto
+        addedNotes.text = (user?.additionalNotes)
+        let tempImage = user?.profilePhoto
+        profilePhoto.contentMode = .scaleAspectFit
+        profilePhoto.image = tempImage
     }
     
     override func didReceiveMemoryWarning() {

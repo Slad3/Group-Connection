@@ -21,7 +21,7 @@ class Check: NSObject, MKAnnotation {
     
     init(sender: Person, place: CLLocation, description: String) {
         let location = place.coordinate
-       
+        
         self.sender = sender
         self.coordinate = location
         self.senderDescription = description
@@ -31,10 +31,17 @@ class Check: NSObject, MKAnnotation {
         self.hasBeenSent = false
     }
     
-    func sendThisCheck() {
+    func sendThisCheck(_ person: Person) {
         //fill in once we've gotten the connectivity stuff figured out
         //has to somehow trigger receiveCheck() on the receiver's phone
-        self.hasBeenSent = true
+        do {
+            let temp = try JSONEncoder().encode("receiveCheck")
+            try Globals.globals.Session.send(temp, toPeers: [person.peerid], with: .reliable)
+            self.hasBeenSent = true
+        }
+        catch {
+            print("sending check failed")
+        }
     }
     
     static func receiveCheck(check: Check) {
@@ -43,3 +50,4 @@ class Check: NSObject, MKAnnotation {
         print("Check \(check.sender.firstName) received")
     }
 }
+

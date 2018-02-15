@@ -27,9 +27,9 @@ class Person {
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
-
+    
     //encoding stuff
-    static var jsonData: Data!
+    static var jsonDerulo: Data!
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("people")
     
@@ -43,9 +43,10 @@ class Person {
         let subteam: String //essential
         let additionalNotes: String //essential
         let hasCheckIn: Bool //the mentor has a check waiting
+        let profilePhoto: Data!
         //var checkArray: [Check]!
         
-        init(person: Person){
+        init(_ person: Person){
             self.firstName = person.firstName
             self.lastName = person.lastName
             self.isMentor = person.isMentor
@@ -54,11 +55,16 @@ class Person {
             self.email = person.email
             self.subteam = person.subteam
             self.additionalNotes = person.additionalNotes
-            self.hasCheckIn = person.hasCheckIn ?? false 
+            self.hasCheckIn = person.hasCheckIn ?? false
+            self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
         }
         
         func toPerson() -> Person {
-            return Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
+            let tmp = UIImage(data: profilePhoto)
+            let person = Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
+            person.profilePhoto = tmp
+            print(tmp.debugDescription)
+            return person
         }
     }
     
@@ -69,7 +75,7 @@ class Person {
             return VoodooMagic(people: people)
         }
         
-        func sex() -> [Person] {
+        func makePeople() -> [Person] {
             var temp: [Person] = []
             for dude in people {
                 temp.append(dude.toPerson())
@@ -138,17 +144,16 @@ class Person {
         var peoples: [Person.Persoon] = []
         
         for person in people {
-            peoples.append(Persoon(person: person))
+            peoples.append(Persoon(person))
             print(person)
         }
         
         let roster = Person.Roster(people: peoples)
         
         do {
-            jsonData = try JSONEncoder().encode(roster)
-            try jsonData.write(to: ArchiveURL)
+            jsonDerulo = try JSONEncoder().encode(roster)
+            try jsonDerulo.write(to: ArchiveURL)
             print(ArchiveURL)
-            print(String(data: jsonData, encoding: .utf8) ?? "didn't work bud")
         }
         catch {
             print("It didn't work and it's clearly all Nick's fault. Blame him.")
@@ -157,10 +162,9 @@ class Person {
     
     static func decodePeople() -> [Person]?  {
         do {
-            jsonData = try Data(contentsOf: ArchiveURL)
-            let roster = try JSONDecoder().decode(Roster.self, from: jsonData)
-            print(String(data: jsonData, encoding: .utf8)!)
-            return roster.sex()
+            jsonDerulo = try Data(contentsOf: ArchiveURL)
+            let roster = try JSONDecoder().decode(Roster.self, from: jsonDerulo)
+            return roster.makePeople()
         }
         catch {
             print("decoding failed")
