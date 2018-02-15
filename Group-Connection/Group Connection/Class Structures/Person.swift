@@ -63,7 +63,7 @@ class Person {
             let tmp = UIImage(data: profilePhoto)
             let person = Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
             person.profilePhoto = tmp
-            print(tmp)
+            print(tmp.debugDescription)
             return person
         }
     }
@@ -153,8 +153,7 @@ class Person {
         do {
             jsonDerulo = try JSONEncoder().encode(roster)
             try jsonDerulo.write(to: ArchiveURL)
-//            print(ArchiveURL)
-//            print(String(data: jsonDerulo, encoding: .utf8) ?? "didn't work bud")
+            print(ArchiveURL)
         }
         catch {
             print("It didn't work and it's clearly all Nick's fault. Blame him.")
@@ -165,7 +164,6 @@ class Person {
         do {
             jsonDerulo = try Data(contentsOf: ArchiveURL)
             let roster = try JSONDecoder().decode(Roster.self, from: jsonDerulo)
-//            print(String(data: jsonDerulo, encoding: .utf8)!)
             return roster.makePeople()
         }
         catch {

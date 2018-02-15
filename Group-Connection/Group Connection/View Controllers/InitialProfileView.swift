@@ -192,7 +192,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             phoneNumber.text = user?.phoneNumber
             email.text = user?.email
             additionalNotes.text = user?.additionalNotes
-            
+            profilePhoto.image = user?.profilePhoto
+            buttonWasPressed = true 
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
         }
     }

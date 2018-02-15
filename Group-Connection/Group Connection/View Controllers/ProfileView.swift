@@ -24,7 +24,8 @@ class ProfileView: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let user = Globals.globals.user
-        
+//        let tmp = Person.decodePeople()
+//        let user = tmp?[0]
         fullName.text = user?.fullName
         subteam.text = "Subteam: " + (user?.subteam)!
         

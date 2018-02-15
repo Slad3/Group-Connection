@@ -12,7 +12,8 @@ import MapKit
 class MapView: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak
+    var tempLabel: UILabel!
     @IBOutlet weak var importMap: UIImageView!
     
     let locationManager = CLLocationManager()
