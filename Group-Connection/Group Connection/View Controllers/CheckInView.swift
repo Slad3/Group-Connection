@@ -23,6 +23,7 @@ class CheckInView: UIViewController {
         var originalRotation = CGFloat()
         let range = (CGFloat.pi / 3)...(2 * CGFloat.pi / 3)
         let range1 = (4 * CGFloat.pi / 3)...(5 * CGFloat.pi / 3)
+        
         if sender.state == .began {
             sender.rotation = rotation
             originalRotation = sender.rotation

@@ -80,18 +80,14 @@ UINavigationControllerDelegate {
             
             var accessCodeThing = event.generalAccessCode
             accessCodeThing = "accessCode"
-            
-            let fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
-            
-            
-            
+        
             advertisementAssistant = MCAdvertiserAssistant(serviceType: "accessCode", discoveryInfo: nil, session: Globals.globals.Session)
             advertisementAssistant.start()
             print("Advertising Started")
             mistakeLabel.text = "Advertising Started"
         
 
-            //performSegue(withIdentifier: "To Main Tab", sender: nil)
+            performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
         else {
             mistakeLabel.text = "Please input all values correctly before proceeding."
@@ -100,13 +96,14 @@ UINavigationControllerDelegate {
     
     //check all inputs
     func checkInputs() -> Bool {
+        return true
+        
         let genCode = generalAccessCode.hasText
         let mencode = mentorAccessCode.hasText
         let event = eventName.hasText
         let group =  groupName.hasText
         let checkLen = checkInLength.value > 20
         let map = imageWasTapped
-        print("there be a map = \(map)")
         return genCode && mencode && event && group && checkLen && map
     }
     

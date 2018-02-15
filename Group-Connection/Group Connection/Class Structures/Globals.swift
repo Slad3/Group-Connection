@@ -37,6 +37,7 @@ class Globals {
         }
         return temp
     }
+    
     static func getIDs(_ peeps: [Person]) -> [MCPeerID] {
         var temp: [MCPeerID] = []
         for dude in peeps {
