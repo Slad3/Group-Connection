@@ -77,7 +77,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         }
         
         //SessionMC = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .required)
-        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
+        //Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
+        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
         Globals.globals.Session.delegate = Manager()
         
     }

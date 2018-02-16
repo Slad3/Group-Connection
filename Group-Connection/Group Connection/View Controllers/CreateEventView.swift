@@ -38,8 +38,8 @@ UINavigationControllerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("Loading View")
-        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
-        
+        //Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
+        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
         Globals.globals.Session.delegate = Manager()
         print("Session Loaded")
         picker.delegate = self
