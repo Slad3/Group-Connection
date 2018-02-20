@@ -79,9 +79,11 @@ UINavigationControllerDelegate {
             Globals.globals.event = event
             
             var accessCodeThing = event.generalAccessCode
-            accessCodeThing = "accessCode"
-        
-            advertisementAssistant = MCAdvertiserAssistant(serviceType: "accessCode", discoveryInfo: nil, session: Globals.globals.Session)
+            //accessCodeThing = "accessCode"
+            
+            var fullName = Globals.globals.user.peerid.displayName
+            
+            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
             advertisementAssistant.start()
             print("Advertising Started")
             mistakeLabel.text = "Advertising Started"

@@ -93,8 +93,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         else{
             accessCode = accessCodeBox.text!
         }
-        accessCode = "accessCode"
-        let browserView = MCBrowserViewController(serviceType: "accessCode", session: Globals.globals.Session)
+        //accessCode = "accessCode"
+        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.Session)
         browserView.delegate = self
         
         print("Made Browser View")
