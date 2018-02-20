@@ -22,10 +22,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
     
+    
+    // Begin Pickerview-------------------------------------
     weak var pickerViewDataSource: UIPickerViewDataSource?
-    var buttonWasPressed = false
-
-    let subTeam = ["Mechanical", "Programming", "Control", "MTR", "Other"]
+    
+    let subTeam = ["Choose Subteam", "Mechanical", "Programming", "Control", "MTR", "Other"]
     
     func numberOfComponents(in subPicker: UIPickerView) -> Int {
         return 1
@@ -38,6 +39,17 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     func pickerView(_ subPicker: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return subTeam.count
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("did select row for subteam")
+        Globals.globals.user.subteam = subTeam[component]
+    }
+    
+    //End PickerView------------------------------------------
+    
+    
+    
+    
+    
     
     //check user inputs
     private func checkInputs(age: String?, email: String, phone: String) -> Bool {
@@ -55,10 +67,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             return false
         }
         
-        if !buttonWasPressed {
-            print("photo is broken")
-            return false
-        }
         return true
     }
     
@@ -93,6 +101,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             let eMail = email.text!
             let notes = additionalNotes.text!
             let subteam = picker.description
+            
             let phone = phoneNumber.text!
             var mentor = false
         
@@ -106,36 +115,27 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.initialized = true
                 
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
-                Globals.globals.user.profilePhoto = profilePhoto.image
+            //    Globals.globals.user.profilePhoto = profilePhoto.image
                 Globals.globals.teamRoster[0] = Globals.globals.user
-                Person.encodeEveryone()
                 
-                if Globals.globals.user.isMentor {
-                    
+                if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
+                        
                         self.performSegue(withIdentifier: "To Create Event", sender: nil)
                         
                     }))
-                    
-                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
-                        
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
-                    
                     actionSheet.addAction(UIAlertAction(title: "Save Profile", style: .default, handler: { (action:UIAlertAction) in
                         
                         print("Saved profile")
                         
                     }))
+                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false } ))
                     
-                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in
-                        Globals.globals.initialized = false
-                        
-                    } ))
-                    
-                    if let popoverController = actionSheet.popoverPresentationController {
+                    if let popoverController = actionSheet.popoverPresentationController{
                         popoverController.sourceView = self.view
                         popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
                         popoverController.permittedArrowDirections = []
@@ -177,7 +177,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         picker.delegate = self
         additionalNotes.delegate = self
         
@@ -192,8 +191,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             phoneNumber.text = user?.phoneNumber
             email.text = user?.email
             additionalNotes.text = user?.additionalNotes
-            profilePhoto.image = user?.profilePhoto
-            buttonWasPressed = true 
+            
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
         }
     }
@@ -208,7 +206,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
-        buttonWasPressed = true
         dismiss(animated:true, completion: nil) //5
     }
     
@@ -220,7 +217,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        buttonWasPressed = false
         dismiss(animated: true, completion: nil)
     }
 
@@ -234,3 +230,4 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         self.view.endEditing(true)
     }
 }
+
