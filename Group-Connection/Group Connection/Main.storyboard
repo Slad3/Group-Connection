@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -468,7 +470,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0XC-cS-EdE">
+                                <rect key="frame" x="36" y="483" width="217" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krO-Kc-epc">
+                                <rect key="frame" x="268" y="460" width="91" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Add Map"/>
+                                <connections>
+                                    <action selector="photoFromLibrary:" destination="4MN-c9-e70" eventType="touchUpInside" id="wQG-5T-qRq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -862,15 +876,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-vV-TBo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="629"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8NB-ea-AGK" firstAttribute="leading" secondItem="KMj-h3-idT" secondAttribute="leading" id="AGS-Jt-yEG"/>
-                            <constraint firstItem="8NB-ea-AGK" firstAttribute="top" secondItem="KMj-h3-idT" secondAttribute="top" id="EW5-rd-Ha8"/>
-                            <constraint firstItem="6je-Nv-25e" firstAttribute="leading" secondItem="KMj-h3-idT" secondAttribute="leadingMargin" id="NIM-eR-7kT"/>
-                            <constraint firstAttribute="trailing" secondItem="8NB-ea-AGK" secondAttribute="trailing" id="ewk-H6-TFg"/>
-                            <constraint firstItem="A36-kz-gX4" firstAttribute="top" secondItem="6je-Nv-25e" secondAttribute="bottom" constant="37" id="ltg-sB-dnZ"/>
-                            <constraint firstItem="A36-kz-gX4" firstAttribute="top" secondItem="8NB-ea-AGK" secondAttribute="bottom" id="wzg-TH-WC8"/>
+                            <constraint firstAttribute="trailing" secondItem="8NB-ea-AGK" secondAttribute="trailing" id="Gdh-lt-Tls"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rG1-vV-TBo" secondAttribute="trailing" constant="16" id="Qwi-0M-yKH"/>
+                            <constraint firstItem="8NB-ea-AGK" firstAttribute="top" secondItem="KMj-h3-idT" secondAttribute="top" constant="-11" id="ThQ-4k-acG"/>
+                            <constraint firstItem="rG1-vV-TBo" firstAttribute="leading" secondItem="KMj-h3-idT" secondAttribute="leadingMargin" constant="16" id="U9k-W1-WXa"/>
+                            <constraint firstItem="rG1-vV-TBo" firstAttribute="top" secondItem="KMj-h3-idT" secondAttribute="topMargin" constant="20" id="YCB-sq-IGL"/>
+                            <constraint firstItem="8NB-ea-AGK" firstAttribute="leading" secondItem="KMj-h3-idT" secondAttribute="leading" id="cRS-rI-GtI"/>
+                            <constraint firstItem="A36-kz-gX4" firstAttribute="top" secondItem="rG1-vV-TBo" secondAttribute="bottom" constant="38" id="nzu-9f-4sN"/>
+                            <constraint firstItem="A36-kz-gX4" firstAttribute="top" secondItem="8NB-ea-AGK" secondAttribute="bottom" constant="49" id="oo3-rb-1yd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="n8z-JY-D2l"/>
@@ -1077,7 +1096,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-
         <segue reference="Ogk-I9-q8l"/>
         <segue reference="XDm-Nz-ct1"/>
         <segue reference="HhO-5U-GJv"/>
