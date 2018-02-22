@@ -72,7 +72,6 @@ UINavigationControllerDelegate {
             event.eventName = eventName.text!
             event.checkInLength = checkInLength.value
             event.generalAccessCode = generalAccessCode.text!
-            event.mentorAccessCode = mentorAccessCode.text!
             event.groupName = groupName.text!
             event.importedMap = mapView.image
             
@@ -90,6 +89,7 @@ UINavigationControllerDelegate {
 
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
+            
         else {
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
@@ -99,13 +99,31 @@ UINavigationControllerDelegate {
     func checkInputs() -> Bool {
         return true
         
-        let genCode = generalAccessCode.hasText
-        let mencode = mentorAccessCode.hasText
+        
         let event = eventName.hasText
         let group =  groupName.hasText
         let checkLen = checkInLength.value > 20
         let map = imageWasTapped
-        return genCode && mencode && event && group && checkLen && map
+        var genCode: Bool
+        
+        
+        if (generalAccessCode.hasText){
+            var lengthGood = (generalAccessCode.text!.count < 16) && (generalAccessCode.text!.count > 1)
+            var charactors = "[A-Z0-9a-z]"
+            let charactorTest = NSPredicate(format:"SELF MATCHES %@", charactors)
+            var charactorsGood = charactorTest.evaluate(with: generalAccessCode.text!)
+            
+            if (lengthGood && charactorsGood){
+            genCode = true
+            }
+            else{
+                genCode = false
+            }
+        }
+        else {
+            genCode = false
+        }
+        return genCode && event && group && checkLen && map
     }
     
     
