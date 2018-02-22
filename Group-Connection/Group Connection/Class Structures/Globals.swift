@@ -15,7 +15,7 @@ class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
-    public var Session: MCSession!
+    public var session: MCSession!
     var user: Person!
     let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
     var event: Event!
@@ -26,6 +26,16 @@ class Globals {
         inEvent = false
         isMentor = false
         teamRoster = [hans]
+    }
+    
+    func getStudents() -> [Person] {
+        var temp: [Person] = []
+        for dude in teamRoster {
+            if !dude.isMentor {
+                temp.append(dude)
+            }
+        }
+        return temp
     }
     
     func getMentors() -> [Person] {

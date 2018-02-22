@@ -22,6 +22,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
     
+    var subteam = Globals.globals.user.subteam
+    let picker = UIImagePickerController()
     
     // Begin Pickerview-------------------------------------
     weak var pickerViewDataSource: UIPickerViewDataSource?
@@ -41,15 +43,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("did select row for subteam")
-        Globals.globals.user.subteam = subTeam[component]
+        subteam = subTeam[component]
     }
-    
     //End PickerView------------------------------------------
-    
-    
-    
-    
-    
     
     //check user inputs
     private func checkInputs(age: String?, email: String, phone: String) -> Bool {
@@ -89,9 +85,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         return  predicate.evaluate(with: phone)
     }
     
-    let picker = UIImagePickerController()
-    
-    
     @IBAction func makeUser(_ sender: Any) {
         if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
         
@@ -100,7 +93,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             let age: Int = Int(ageText.text!)!
             let eMail = email.text!
             let notes = additionalNotes.text!
-            let subteam = picker.description
+            let subteam = self.subteam
             
             let phone = phoneNumber.text!
             var mentor = false
@@ -115,25 +108,22 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.initialized = true
                 
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
-            //    Globals.globals.user.profilePhoto = profilePhoto.image
+                Globals.globals.user.profilePhoto = profilePhoto.image
                 Globals.globals.teamRoster[0] = Globals.globals.user
+                Person.encodeEveryone()
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
-                        
                         self.performSegue(withIdentifier: "To Create Event", sender: nil)
-                        
                     }))
+                    
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
-                    actionSheet.addAction(UIAlertAction(title: "Save Profile", style: .default, handler: { (action:UIAlertAction) in
-                        
-                        print("Saved profile")
-                        
-                    }))
-                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false } ))
+                    
+                    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false
+                    } ))
                     
                     if let popoverController = actionSheet.popoverPresentationController{
                         popoverController.sourceView = self.view
@@ -150,11 +140,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
-                    actionSheet.addAction(UIAlertAction(title: "Save Profile", style: .default, handler: { (action:UIAlertAction) in
-                        
-                        print("Saved profile")
-                        
-                    }))
+
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
                     if let popoverController = actionSheet.popoverPresentationController{
@@ -181,6 +167,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         additionalNotes.delegate = self
         
         if Globals.globals.initialized {
+            
             let user = Globals.globals.user
             firstName.text = user?.firstName
             lastName.text = user?.lastName
@@ -191,7 +178,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             phoneNumber.text = user?.phoneNumber
             email.text = user?.email
             additionalNotes.text = user?.additionalNotes
-            
+            profilePhoto.image = user?.profilePhoto
+            let sub = user?.subteam
+            let pickerNum: Int! = subTeam.index(of: sub!)
+            print(subPicker.numberOfComponents)
+            subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
         }
     }
@@ -202,7 +193,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     
     //photo stuff
-    @objc  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4

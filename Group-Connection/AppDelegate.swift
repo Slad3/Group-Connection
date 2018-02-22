@@ -16,10 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        print("delegate!!")
         
         Globals.globals.initialized = recoverOldData()
-        print("user is \(String(describing: Globals.globals.user))")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
@@ -27,13 +25,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
         if !Globals.globals.initialized { //Initial Profile; only if decoding failed
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
+//            //delete
+//            Globals.globals.user.subteam = "Choose Subteam"
+            print(Globals.globals.user.subteam)
         }
         else if !Globals.globals.inEvent {
             if Globals.globals.user.isMentor { //Initial Profile so mentors can choose what view to go to
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
+//                //delete
+//                Globals.globals.user.subteam = "Programming"//"Choose Subteam"
+                print(Globals.globals.user.subteam)
             }
             else { //Join; if they're not a mentor
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
+//                //delete
+//                Globals.globals.user.subteam = "Choose Subteam"
+                print(Globals.globals.user.subteam)
             }
         }
         else if Globals.globals.inEvent { //Main Tab

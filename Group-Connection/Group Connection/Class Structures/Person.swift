@@ -139,13 +139,11 @@ class Person {
     }
     
     static func encodeEveryone(){
-        print("encoding people")
         let people: [Person] = Globals.globals.teamRoster
         var peoples: [Person.Persoon] = []
         
         for person in people {
             peoples.append(Persoon(person))
-            print(person)
         }
         
         let roster = Person.Roster(people: peoples)
@@ -153,7 +151,6 @@ class Person {
         do {
             jsonDerulo = try JSONEncoder().encode(roster)
             try jsonDerulo.write(to: ArchiveURL)
-            print(ArchiveURL)
         }
         catch {
             print("It didn't work and it's clearly all Nick's fault. Blame him.")

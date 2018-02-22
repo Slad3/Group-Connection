@@ -37,11 +37,11 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("Loading View")
-        //Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
-        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
-        Globals.globals.Session.delegate = Manager()
-        print("Session Loaded")
+
+        //Globals.globals.session = MCSession(peer: Globals.globals.user.peerid)
+        Globals.globals.session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
+        Globals.globals.session.delegate = Manager()
+
         picker.delegate = self
     }
     
@@ -78,15 +78,14 @@ UINavigationControllerDelegate {
             
             Globals.globals.event = event
             
-            var accessCodeThing = event.generalAccessCode
+            let accessCodeThing = event.generalAccessCode
             //accessCodeThing = "accessCode"
             
-            var fullName = Globals.globals.user.peerid.displayName
+            let fullName = Globals.globals.user.peerid.displayName
             
-            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
-            advertisementAssistant.start()
-            print("Advertising Started")
-            mistakeLabel.text = "Advertising Started"
+//            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
+//            advertisementAssistant.start()
+//            mistakeLabel.text = "Advertising Started"
         
 
             performSegue(withIdentifier: "To Main Tab", sender: nil)

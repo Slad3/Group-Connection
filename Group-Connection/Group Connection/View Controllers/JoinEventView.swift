@@ -77,9 +77,9 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         }
         
         //SessionMC = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .required)
-        //Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid)
-        Globals.globals.Session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
-        Globals.globals.Session.delegate = Manager()
+        //Globals.globals.session = MCSession(peer: Globals.globals.user.peerid)
+        Globals.globals.session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
+        Globals.globals.session.delegate = Manager()
         
     }
     
@@ -94,7 +94,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             accessCode = accessCodeBox.text!
         }
         //accessCode = "accessCode"
-        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.Session)
+        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.session)
         browserView.delegate = self
         
         print("Made Browser View")

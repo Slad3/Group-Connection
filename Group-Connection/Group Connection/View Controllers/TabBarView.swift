@@ -12,13 +12,4 @@ import UIKit
 class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
