@@ -98,25 +98,23 @@ UINavigationControllerDelegate {
     //check all inputs
     func checkInputs() -> Bool {
         return true
-        
-        
+    
         let event = eventName.hasText
         let group =  groupName.hasText
         let checkLen = checkInLength.value > 20
         let map = imageWasTapped
         var genCode: Bool
         
-        
-        if (generalAccessCode.hasText){
-            var lengthGood = (generalAccessCode.text!.count < 16) && (generalAccessCode.text!.count > 1)
-            var charactors = "[A-Z0-9a-z]"
-            let charactorTest = NSPredicate(format:"SELF MATCHES %@", charactors)
-            var charactorsGood = charactorTest.evaluate(with: generalAccessCode.text!)
+        if generalAccessCode.hasText{
+            let lengthGood = (generalAccessCode.text!.count < 16) && (generalAccessCode.text!.count > 1)
+            let characters = "[A-Z0-9a-z]"
+            let characterTest = NSPredicate(format:"SELF MATCHES %@", characters)
+            let charactersGood = characterTest.evaluate(with: generalAccessCode.text!)
             
-            if (lengthGood && charactorsGood){
-            genCode = true
+            if lengthGood && charactersGood {
+                genCode = true
             }
-            else{
+            else {
                 genCode = false
             }
         }
