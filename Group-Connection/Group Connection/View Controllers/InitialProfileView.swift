@@ -43,7 +43,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("did select row for subteam")
-        subteam = subTeam[component]
+        subteam = subTeam[row]
     }
     //End PickerView------------------------------------------
     
@@ -110,16 +110,20 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
                 Globals.globals.user.profilePhoto = profilePhoto.image
                 Globals.globals.teamRoster[0] = Globals.globals.user
+                print(Globals.globals.teamRoster[0].subteam)
                 Person.encodeEveryone()
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Create Event", style: .default, handler: { (action:UIAlertAction) in
+                        Person.encodeEveryone()
                         self.performSegue(withIdentifier: "To Create Event", sender: nil)
                     }))
                     
-                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
+                        Person.encodeEveryone()
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false
@@ -171,17 +175,20 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             let user = Globals.globals.user
             firstName.text = user?.firstName
             lastName.text = user?.lastName
+            
             var temp = String(describing: user?.age)
             temp.removeFirst(9)
             temp.removeLast()
             ageText.text = temp
+            
             phoneNumber.text = user?.phoneNumber
             email.text = user?.email
             additionalNotes.text = user?.additionalNotes
             profilePhoto.image = user?.profilePhoto
+            
             let sub = user?.subteam
             let pickerNum: Int! = subTeam.index(of: sub!)
-            print(subPicker.numberOfComponents)
+            print(user?.subteam)
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
         }

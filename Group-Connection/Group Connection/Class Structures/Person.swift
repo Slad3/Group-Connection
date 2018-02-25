@@ -168,5 +168,19 @@ class Person {
             return nil
         }
     }
+    
+    static func reachedFortyAndIsDesperate() -> Person {
+        var str = ""
+        let age = Int(arc4random_uniform(99))
+        
+        for _ in 0...10 {
+            let tmp = arc4random_uniform(9)
+            str.append("\(tmp)")
+        }
+        
+        
+        let child = Person(firstName: Lorem.firstName, lastName: Lorem.lastName, isMentor: false, age: age, email: Lorem.emailAddress, phoneNumber: str, additionalNotes: Lorem.paragraph, ssubteam: "Programming")
+        return child
+    }
 }
 

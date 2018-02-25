@@ -48,6 +48,23 @@ class Globals {
         return temp
     }
     
+    func findPerson(full name: String) -> Person! {
+        for i in teamRoster {
+            if i.fullName == name {
+                return i
+            }
+        }
+        return nil
+    }
+    
+    func autopopulateRoster() {
+        let upperbound = Int(arc4random_uniform(200))
+        for _ in 0...upperbound {
+            teamRoster.append(Person.reachedFortyAndIsDesperate())
+        }
+        return
+    }
+    
     static func getIDs(_ peeps: [Person]) -> [MCPeerID] {
         var temp: [MCPeerID] = []
         for dude in peeps {

@@ -21,26 +21,39 @@ class RosterProfileView: UIViewController {
     @IBOutlet weak var rEmail: UILabel!
     @IBOutlet weak var rAdditionalNotes: UILabel!
     
+    var user: Person = Person()
+    
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let user = Globals.globals.user
-        rFullName.text = user?.fullName
-        rSubteam.text = "Subteam: " + (user?.subteam)!
-        var temp = String(describing: user?.age)
-        temp.removeFirst(9)
-        temp.removeLast()
+        user = Globals.globals.user
+        rFullName.text = user.fullName
+        rSubteam.text = "Subteam: " + user.subteam
+        
+        var temp = String(describing: user.age)
+        if temp.count > 3 {
+            temp.removeFirst(9)
+            temp.removeLast()
+        }
+        
         rAge.text = "Age: " + temp
         rGroup.text = "Group: " + ""
-        temp = String(describing: user?.checkInStatus)
-        temp.removeFirst(9)
-        temp.removeLast()
+        temp = String(describing: user.checkInStatus)
+        
+        if temp.count > 6 {
+            temp.removeFirst(9)
+            temp.removeLast()
+        }
+        
         rStatus.text = "Status: " + temp
-        rPhone.text = "Phone: " + (user?.phoneNumber)!
-        rEmail.text = "Email: " + (user?.email)!
-        rAdditionalNotes.text = (user?.additionalNotes)!
-        //  rProfilePhoto.image = user?.profilePhoto
+        rPhone.text = "Phone: " + user.phoneNumber
+        rEmail.text = "Email: " + user.email
+        rAdditionalNotes.text = user.additionalNotes
+        rProfilePhoto.image = user.profilePhoto
     }
     
     override func didReceiveMemoryWarning() {
