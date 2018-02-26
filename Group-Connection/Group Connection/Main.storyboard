@@ -465,7 +465,7 @@
         <!--Check In-->
         <scene sceneID="Row-Z4-a8m">
             <objects>
-                <viewController id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Check In" title="Check In" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y9Z-1U-nXW"/>
                         <viewControllerLayoutGuide type="bottom" id="PPp-Fi-Q2a"/>
@@ -637,7 +637,7 @@
                                                 <connections>
                                                     <outlet property="fullName" destination="CQh-eD-Eo6" id="5Q3-pA-Epd"/>
                                                     <outlet property="status" destination="dgH-Hx-wTp" id="dcw-8G-nm7"/>
-                                                    <segue destination="LUV-YT-ZAB" kind="show" id="Ogk-I9-q8l"/>
+                                                    <segue destination="LUV-YT-ZAB" kind="show" identifier="toRosterProfileVC" id="Ogk-I9-q8l"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -654,9 +654,9 @@
                                     <constraint firstAttribute="bottom" secondItem="iEl-h1-rHS" secondAttribute="bottom" id="k0s-Kx-eEz"/>
                                 </constraints>
                             </scrollView>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Sua-vq-Uc8">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Sua-vq-Uc8">
                                 <rect key="frame" x="10" y="78.5" width="394" height="56"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -679,7 +679,9 @@
                     <tabBarItem key="tabBarItem" title="Roster" id="kTC-Ji-mbx"/>
                     <size key="freeformSize" width="414" height="2500"/>
                     <connections>
+                        <outlet property="searchBar" destination="Sua-vq-Uc8" id="uFC-up-tKV"/>
                         <outlet property="searchDisplayController" destination="N7W-f2-T1K" id="hX8-FC-jrU"/>
+                        <outlet property="table" destination="iEl-h1-rHS" id="hdh-26-lLk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yha-fq-bI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -817,9 +819,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="UMR-m3-56t" appends="YES" id="Htn-SP-TvU"/>
-                                </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap and hold anywhere to switch maps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6je-Nv-25e">
                                 <rect key="frame" x="20" y="456" width="297" height="194"/>
@@ -843,18 +842,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggW-nt-H3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="UMR-m3-56t">
-                    <connections>
-                        <action selector="swapMaps:" destination="Fkr-nc-els" id="gUi-xG-mog"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-492" y="278.41079460269867"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="Main Tab VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main Tab VC" title="Main Tab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

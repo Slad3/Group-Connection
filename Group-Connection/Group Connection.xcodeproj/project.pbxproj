@@ -30,7 +30,6 @@
 		B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8C7082025676300B507C7 /* JoinEventView.swift */; };
 		F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */; };
 		F8693DFE2029712A00985CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8693DFD2029712A00985CB0 /* Main.storyboard */; };
-		F8AD96F1202A95650016496C /* ImportMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AD96F0202A95650016496C /* ImportMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		B5B8C7082025676300B507C7 /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RosterProfile.swift; path = ../../RosterProfile.swift; sourceTree = "<group>"; };
 		F8693DFD2029712A00985CB0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F8AD96F0202A95650016496C /* ImportMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +193,6 @@
 				5D128D151FE4EC3C00D38505 /* InitialProfileView.swift */,
 				0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */,
 				0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */,
-				F8AD96F0202A95650016496C /* ImportMapView.swift */,
 				B5B8C7082025676300B507C7 /* JoinEventView.swift */,
 			);
 			path = "View Controllers";
@@ -360,7 +357,6 @@
 				7FE223A0202CC3410029775C /* RosterViewCellTableViewCell.swift in Sources */,
 				5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */,
 				0E1D348B1FFBF70D00D29832 /* AppDelegate.swift in Sources */,
-				F8AD96F1202A95650016496C /* ImportMapView.swift in Sources */,
 				5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

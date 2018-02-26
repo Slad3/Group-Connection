@@ -21,13 +21,15 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     
     var whatView = 1
     
-    @IBAction func swapMaps(_ sender: UILongPressGestureRecognizer) {
-        whatView = -whatView
-        if whatView < 0 {
-            view.bringSubview(toFront: importMap)
-        }
-        else {
-            view.bringSubview(toFront: mapView)
+    @objc private func swapMaps(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .ended {
+            whatView = -whatView
+            if whatView < 0 {
+                view.bringSubview(toFront: importMap)
+            }
+            else {
+                view.bringSubview(toFront: mapView)
+            }
         }
     }
     
@@ -100,6 +102,9 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         let bibbity = Globals.globals.event.importedMap
         importMap.image = bibbity ?? UIImage(named: "download (1)")
         
+        let presser = UILongPressGestureRecognizer(target: self, action: #selector(swapMaps(_:)))
+        presser.minimumPressDuration = 0.33
+        view.addGestureRecognizer(presser)
         view.bringSubview(toFront: mapView)
         view.bringSubview(toFront: tempLabel)
         
