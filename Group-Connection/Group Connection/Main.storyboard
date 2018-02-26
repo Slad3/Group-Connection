@@ -337,7 +337,6 @@
                                                 <state key="normal" title="Go"/>
                                                 <connections>
                                                     <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
-                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="XDm-Nz-ct1"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -403,22 +402,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-wG-6RV">
-                                <rect key="frame" x="236" y="172" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Auto-Generate"/>
-                                <connections>
-                                    <action selector="makeGeneralCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="089-od-Jdj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7h-oV-QjG">
-                                <rect key="frame" x="234" y="235" width="112" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Auto-Generate"/>
-                                <connections>
-                                    <action selector="makeMentorCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="Msb-gF-8PY"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyW-nz-w6X">
                                 <rect key="frame" x="139" y="645" width="259" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -472,6 +455,7 @@
                         <outlet property="mapView" destination="0XC-cS-EdE" id="hjh-Kb-n4z"/>
                         <outlet property="mistakeLabel" destination="EyW-nz-w6X" id="fTg-Ea-5av"/>
                         <outlet property="stepperLabel" destination="2Re-pk-RAk" id="3zz-kP-R4Q"/>
+                        <segue destination="49e-Tb-3d3" kind="show" id="OLK-fx-p5I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCU-ay-9NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -596,7 +580,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nJ3-RR-MII"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AVT-0H-nZX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="2500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="2451"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roster" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2p-7a-O3S">
@@ -606,7 +590,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bX0-Ok-j8d">
-                                <rect key="frame" x="0.0" y="144.5" width="414" height="2355.5"/>
+                                <rect key="frame" x="0.0" y="144.5" width="414" height="2306.5"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iEl-h1-rHS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2500"/>
@@ -974,7 +958,7 @@
                                     <navigationItem title="Title" id="rTa-OV-4Ko">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="LUS-lw-tbe">
                                             <connections>
-                                                <segue destination="GQF-7z-LfS" kind="show" id="AyJ-j8-USg"/>
+                                                <segue destination="49e-Tb-3d3" kind="show" id="pjk-tj-866"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1010,9 +994,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ezE-1r-zet"/>
-        <segue reference="XDm-Nz-ct1"/>
-        <segue reference="AyJ-j8-USg"/>
+        <segue reference="OLK-fx-p5I"/>
         <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
 </document>

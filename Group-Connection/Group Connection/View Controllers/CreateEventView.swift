@@ -97,7 +97,7 @@ UINavigationControllerDelegate {
     
     //check all inputs
     func checkInputs() -> Bool {
-        return true
+        //return true
     
         let event = eventName.hasText
         let group =  groupName.hasText
@@ -121,6 +121,8 @@ UINavigationControllerDelegate {
         else {
             genCode = false
         }
+        
+        
         return genCode && event && group && checkLen && map
     }
     
