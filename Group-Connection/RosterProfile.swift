@@ -8,6 +8,7 @@
 import Foundation 
 import UIKit
 
+
 class RosterProfileView: UIViewController {
     
     
@@ -25,6 +26,10 @@ class RosterProfileView: UIViewController {
     
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "To Main Tab", sender: nil)
+        
+        
+        
     }
     
     override func viewDidLoad() {

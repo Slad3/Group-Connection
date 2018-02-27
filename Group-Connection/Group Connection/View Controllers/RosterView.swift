@@ -42,6 +42,10 @@ class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         table.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        Globals.globals.currentView = self
+    }
+    
     // tells how many cells you want to have in the roster. This will be the number of people at the competition
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return filterD.count }
     

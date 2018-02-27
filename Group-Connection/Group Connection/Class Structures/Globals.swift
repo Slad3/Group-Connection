@@ -20,6 +20,7 @@ class Globals {
     let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
     var event: Event!
     var teamRoster: [Person]
+    var currentView: UIViewController = CheckInView()
     
     init() {
         initialized = false

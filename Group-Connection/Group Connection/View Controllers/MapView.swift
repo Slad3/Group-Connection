@@ -115,12 +115,15 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         checkForIns()
     }
     
+
+    
     @objc func doStuff() {
         tempLabel.text = ""
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)
+        Globals.globals.currentView = self
     }
     
     override func didReceiveMemoryWarning() {

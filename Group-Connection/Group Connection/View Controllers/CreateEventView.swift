@@ -103,9 +103,9 @@ UINavigationControllerDelegate {
         let group =  groupName.hasText
         let checkLen = checkInLength.value > 20
         let map = imageWasTapped
-        var genCode: Bool
+        var genCode: Bool = true
         
-        if generalAccessCode.hasText{
+        /*if generalAccessCode.hasText{
             let lengthGood = (generalAccessCode.text!.count < 16) && (generalAccessCode.text!.count > 1)
             let characters = "[A-Z0-9a-z]"
             let characterTest = NSPredicate(format:"SELF MATCHES %@", characters)
@@ -121,7 +121,7 @@ UINavigationControllerDelegate {
         else {
             genCode = false
         }
-        
+        */
         
         return genCode && event && group && checkLen && map
     }
