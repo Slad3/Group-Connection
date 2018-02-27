@@ -46,6 +46,7 @@ class CheckInView: UIViewController {
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
+        
     }
     
     @IBAction func changeBuddies(_ sender: Any) {

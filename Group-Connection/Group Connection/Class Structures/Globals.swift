@@ -20,6 +20,7 @@ class Globals {
     let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
     var event: Event!
     var teamRoster: [Person]
+    var selectedIndex: Int!
     
     init() {
         initialized = false
@@ -58,7 +59,8 @@ class Globals {
     }
     
     func autopopulateRoster() {
-        let upperbound = Int(arc4random_uniform(200))
+        let upperbound = Int(arc4random_uniform(50))
+        teamRoster.reserveCapacity(upperbound)
         for _ in 0...upperbound {
             teamRoster.append(Person.reachedFortyAndIsDesperate())
         }

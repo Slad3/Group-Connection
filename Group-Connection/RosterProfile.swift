@@ -21,8 +21,6 @@ class RosterProfileView: UIViewController {
     @IBOutlet weak var rEmail: UILabel!
     @IBOutlet weak var rAdditionalNotes: UILabel!
     
-    var user: Person = Person()
-    
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -30,8 +28,10 @@ class RosterProfileView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        user = Globals.globals.user
+        let user = Globals.globals.teamRoster[Globals.globals.selectedIndex]
+        
         rFullName.text = user.fullName
+        
         rSubteam.text = "Subteam: " + user.subteam
         
         var temp = String(describing: user.age)
@@ -54,6 +54,10 @@ class RosterProfileView: UIViewController {
         rEmail.text = "Email: " + user.email
         rAdditionalNotes.text = user.additionalNotes
         rProfilePhoto.image = user.profilePhoto
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        Globals.globals.selectedIndex = 0 
     }
     
     override func didReceiveMemoryWarning() {

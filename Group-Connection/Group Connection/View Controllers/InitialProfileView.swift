@@ -187,7 +187,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             profilePhoto.image = user?.profilePhoto
             
             let sub = user?.subteam
-            let pickerNum: Int! = subTeam.index(of: sub!)
+            let pickerNum: Int! = subTeam.index(of: sub!) ?? 0
             print(user?.subteam)
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
