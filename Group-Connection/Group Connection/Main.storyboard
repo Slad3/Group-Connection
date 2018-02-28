@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Join Event View-->
+        <!--Join Event VC-->
         <scene sceneID="aQl-Bl-Hmd">
             <objects>
-                <viewController storyboardIdentifier="Join Event VC" id="Iw0-hi-peY" customClass="JoinEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Join Event VC" title="Join Event VC" id="Iw0-hi-peY" customClass="JoinEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="to8-t3-VqK"/>
                         <viewControllerLayoutGuide type="bottom" id="s7P-Jb-btP"/>
@@ -307,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="-2886" y="-691"/>
         </scene>
-        <!--Create-->
+        <!--Create Event VC-->
         <scene sceneID="4QD-J6-kLa">
             <objects>
-                <viewController storyboardIdentifier="Create Event VC" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MN-c9-e70" customClass="CreateEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Create Event VC" title="Create Event VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MN-c9-e70" customClass="CreateEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ROj-dn-Fge"/>
                         <viewControllerLayoutGuide type="bottom" id="mh0-XI-ZbU"/>
@@ -337,7 +337,6 @@
                                                 <state key="normal" title="Go"/>
                                                 <connections>
                                                     <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
-                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="XDm-Nz-ct1"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -403,22 +402,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-wG-6RV">
-                                <rect key="frame" x="236" y="172" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Auto-Generate"/>
-                                <connections>
-                                    <action selector="makeGeneralCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="089-od-Jdj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7h-oV-QjG">
-                                <rect key="frame" x="234" y="235" width="112" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Auto-Generate"/>
-                                <connections>
-                                    <action selector="makeMentorCode:" destination="4MN-c9-e70" eventType="touchUpInside" id="Msb-gF-8PY"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyW-nz-w6X">
                                 <rect key="frame" x="139" y="645" width="259" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -472,16 +455,17 @@
                         <outlet property="mapView" destination="0XC-cS-EdE" id="hjh-Kb-n4z"/>
                         <outlet property="mistakeLabel" destination="EyW-nz-w6X" id="fTg-Ea-5av"/>
                         <outlet property="stepperLabel" destination="2Re-pk-RAk" id="3zz-kP-R4Q"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="OLK-fx-p5I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCU-ay-9NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1429.5999999999999" y="-606.74662668665667"/>
         </scene>
-        <!--Check In-->
+        <!--Check In VC-->
         <scene sceneID="Row-Z4-a8m">
             <objects>
-                <viewController storyboardIdentifier="Check In" title="Check In" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Check In" title="Check In VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y9Z-1U-nXW"/>
                         <viewControllerLayoutGuide type="bottom" id="PPp-Fi-Q2a"/>
@@ -587,10 +571,10 @@
             </objects>
             <point key="canvasLocation" x="-1272.8" y="220.83958020989508"/>
         </scene>
-        <!--Roster-->
+        <!--Roster VC-->
         <scene sceneID="T5D-DX-SsD">
             <objects>
-                <viewController id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Roster VC" id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XrL-Pq-foW"/>
                         <viewControllerLayoutGuide type="bottom" id="nJ3-RR-MII"/>
@@ -712,10 +696,10 @@
             </objects>
             <point key="canvasLocation" x="881" y="1179"/>
         </scene>
-        <!--Profile-->
+        <!--Profile VC-->
         <scene sceneID="Ygy-WI-ez1">
             <objects>
-                <viewController storyboardIdentifier="ProfileView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileView" title="Profile VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="acD-Rv-CI5"/>
                         <viewControllerLayoutGuide type="bottom" id="4fY-JD-Wll"/>
@@ -864,7 +848,7 @@
         <!--Main Tab-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="Main Tab VC" title="Main Tab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main Tab VC" title="Main Tab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="TabBarView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -968,7 +952,7 @@
                                     <navigationItem title="Title" id="rTa-OV-4Ko">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="LUS-lw-tbe">
                                             <connections>
-                                                <action selector="back:" destination="LUV-YT-ZAB" id="eJz-h5-4VC"/>
+                                                <action selector="back:" destination="LUV-YT-ZAB" id="2z9-cS-lmZ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -996,6 +980,7 @@
                         <outlet property="rProfilePhoto" destination="KwM-zs-bSJ" id="khT-Q4-9yl"/>
                         <outlet property="rStatus" destination="pTx-Vt-Blq" id="HaA-LM-bB9"/>
                         <outlet property="rSubteam" destination="fcH-V9-DZ2" id="JdJ-qI-PsK"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="4W6-x3-iUW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uYZ-bp-NXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1004,7 +989,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="srJ-Gd-0es"/>
+        <segue reference="OLK-fx-p5I"/>
         <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
 </document>

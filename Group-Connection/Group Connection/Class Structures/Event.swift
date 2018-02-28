@@ -44,6 +44,15 @@ class Event {
         pop = str.index(str.startIndex, offsetBy: 16)
         str.remove(at: pop)
         print("makeCode() gave us " + str)
+        //Make the String 10 charactors
+        if(str.count > 10){
+            let index = str.index(str.startIndex, offsetBy: 10)
+            //str = str.prefix(upTo: index) // Hello
+        }
+        
+        
+        
+        print("Refined makeCode() gave us " + str)
         return str
     }
     

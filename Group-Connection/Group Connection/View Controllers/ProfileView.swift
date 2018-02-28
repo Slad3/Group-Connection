@@ -20,6 +20,9 @@ class ProfileView: UIViewController {
     @IBOutlet weak var addedNotes: UILabel!
     @IBOutlet weak var profilePhoto: UIImageView!
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,6 +49,10 @@ class ProfileView: UIViewController {
         let tempImage = user?.profilePhoto
         profilePhoto.contentMode = .scaleAspectFit
         profilePhoto.image = tempImage
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Globals.globals.currentView = self
     }
     
     override func didReceiveMemoryWarning() {
