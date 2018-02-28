@@ -21,6 +21,7 @@ class Globals {
     var event: Event!
     var teamRoster: [Person]
     var selectedIndex: Int!
+    var notificationCentre = NotificationCenter.default
     
     init() {
         initialized = false
