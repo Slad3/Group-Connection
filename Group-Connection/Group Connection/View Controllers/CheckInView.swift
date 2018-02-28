@@ -18,6 +18,9 @@ class CheckInView: UIViewController {
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
     
+    @objc func sayHi(_: Any) {
+        print("sup")
+    }
     @objc func rotating(_ sender: UIRotationGestureRecognizer) {
         self.view.bringSubview(toFront: userView)
         var originalRotation = CGFloat()
@@ -46,6 +49,10 @@ class CheckInView: UIViewController {
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
+//        let notification = Notification(name: Notification.Name("Notification mah boy"))
+        print("Notification")
+        Globals.globals.notificationCentre.post(Notification(name: Notification.Name("Notification mah boy")))
+        Globals.globals.notificationCentre.addObserver(self, selector: #selector(sayHi(_:)), name: Notification.Name("Notification mah boy"), object: nil)
     }
     
     @IBAction func changeBuddies(_ sender: Any) {

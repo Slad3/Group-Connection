@@ -50,8 +50,18 @@ class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return filterD.count }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        Globals.globals.selectedIndex = indexPath.row
+        
+        if Globals.globals.selectedIndex == indexPath.row {
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "toRosterProfileVC", sender: nil )
+        }
+        else {
+            dismiss(animated: false, completion: nil)
+        }
     }
+        
     
     // tells what should be displayed in each cell.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +69,12 @@ class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RosterViewCellTableViewCell
         cell.fullName.text = filterD[indexPath.row].fullName
         
+        if filterD[indexPath.row].checkInStatus {
+            cell.status.text = "Checked In"
+        }
+        else {
+            cell.status.text = "Not checked in"
+        }
         return cell
     }
     

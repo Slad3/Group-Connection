@@ -637,7 +637,6 @@
                                                 <connections>
                                                     <outlet property="fullName" destination="CQh-eD-Eo6" id="5Q3-pA-Epd"/>
                                                     <outlet property="status" destination="dgH-Hx-wTp" id="dcw-8G-nm7"/>
-                                                    <segue destination="LUV-YT-ZAB" kind="show" identifier="toRosterProfileVC" id="Ogk-I9-q8l"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -682,6 +681,7 @@
                         <outlet property="searchBar" destination="Sua-vq-Uc8" id="uFC-up-tKV"/>
                         <outlet property="searchDisplayController" destination="N7W-f2-T1K" id="hX8-FC-jrU"/>
                         <outlet property="table" destination="iEl-h1-rHS" id="hdh-26-lLk"/>
+                        <segue destination="LUV-YT-ZAB" kind="show" identifier="toRosterProfileVC" id="7bL-EX-UB8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yha-fq-bI6" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,11 +13,12 @@ class RosterViewCellTableViewCell: UITableViewCell {
    
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var status: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.orange
+        self.backgroundColor = UIColor.cyan
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
