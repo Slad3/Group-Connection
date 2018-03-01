@@ -6,6 +6,7 @@
 //  Copyright © 2017 District196. All rights reserved.
 //
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,9 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
         if !Globals.globals.initialized { //Initial Profile; only if decoding failed
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-//            //delete
+            
             Globals.globals.user.subteam = "Choose Subteam"
-            print(Globals.globals.user.subteam)
+            print("Subteam is \(Globals.globals.user.subteam)")
         }
         else if !Globals.globals.inEvent {
             if Globals.globals.user.isMentor { //Initial Profile so mentors can choose what view to go to
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         
         self.window?.makeKeyAndVisible()
+        
+        registerForPushNotifications()
         
         return true
     }
@@ -82,13 +85,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            
+            guard granted else { return }
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("didRegister....")
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        
+        Globals.globals.tempToke = tokenParts
+        
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
     func recoverOldData() -> Bool {
-        let temp = Person.decodePeople() ?? []
-        if temp.count < 1 {return false}
-        Globals.globals.teamRoster = temp
-        print(Globals.globals.teamRoster[0])
-        Globals.globals.user = Globals.globals.teamRoster[0]
-        return true
+        if let temp = Person.decodePeople() {
+            if temp.count < 1 {return false}
+            Globals.globals.teamRoster = temp
+            print("User is \(Globals.globals.teamRoster[0].firstName)")
+            Globals.globals.user = Globals.globals.teamRoster[0]
+            return true
+        }
+        else {
+            print("recover old data really failed")
+            Globals.globals.teamRoster[0] = Person()
+            Globals.globals.user = Globals.globals.teamRoster[0]
+            return false
+        }
+        
     }
 }
 
+//Device Token: 5fd529426ea1edda6c6a62f36daa8b97e2e7a24e290404072afd15da2a0c3281 

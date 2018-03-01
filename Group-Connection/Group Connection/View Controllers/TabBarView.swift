@@ -24,10 +24,6 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        storyboard?.instantiateViewController(withIdentifier: currentView.title!)
-    }
     
     public func toSpecificTab (viewController: UIViewController){
         

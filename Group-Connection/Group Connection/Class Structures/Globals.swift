@@ -23,6 +23,8 @@ class Globals {
     var selectedIndex: Int!
     var notificationCentre = NotificationCenter.default
     
+    var tempToke: [String]! 
+    
     init() {
         initialized = false
         inEvent = false

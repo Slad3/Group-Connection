@@ -22,7 +22,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
     
-    var subteam = Globals.globals.user.subteam
+    var subteam: String! = Globals.globals.teamRoster[0].subteam 
+    
     let picker = UIImagePickerController()
     
     // Begin Pickerview-------------------------------------
@@ -107,7 +108,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 
                 Globals.globals.initialized = true
                 
-                Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam)
+                Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam!)
                 Globals.globals.user.profilePhoto = profilePhoto.image
                 Globals.globals.teamRoster[0] = Globals.globals.user
                 print(Globals.globals.teamRoster[0].subteam)
@@ -167,6 +168,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print(Globals.globals.tempToke.joined() ?? "Found nil for token")
+        
         picker.delegate = self
         additionalNotes.delegate = self
         
