@@ -22,12 +22,14 @@ class Globals {
     var teamRoster: [Person]
     var selectedIndex: Int!
     var notificationCentre = NotificationCenter.default
+    var passingData: (String, String, String, String, String )
     
     init() {
         initialized = false
         inEvent = false
         isMentor = false
         teamRoster = [hans]
+        passingData = ("", "", "", "", "")
     }
     
     func getStudents() -> [Person] {

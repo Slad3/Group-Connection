@@ -83,10 +83,10 @@ UINavigationControllerDelegate {
             let fullName = Globals.globals.user.peerid.displayName
             
 //            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
-//            advertisementAssistant.start()
-//            mistakeLabel.text = "Advertising Started"
-        
-
+            advertisementAssistant.start()
+            mistakeLabel.text = "Advertising Started"
+            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
+            let (tup1,tup2, tup3) = (1,2,3)
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             
@@ -94,6 +94,9 @@ UINavigationControllerDelegate {
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
+    
+
+    
     
     //check all inputs
     func checkInputs() -> Bool {

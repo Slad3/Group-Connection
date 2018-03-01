@@ -52,7 +52,6 @@ class ProfileView: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Globals.globals.currentView = self
     }
     
     override func didReceiveMemoryWarning() {
