@@ -83,12 +83,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func recoverOldData() -> Bool {
-        let temp = Person.decodePeople() ?? []
-        if temp.count < 1 {return false}
-        Globals.globals.teamRoster = temp
-        print(Globals.globals.teamRoster[0])
-        Globals.globals.user = Globals.globals.teamRoster[0]
-        return true
+        if let temp = Person.decodePeople() {
+            if temp.count < 1 {return false}
+            Globals.globals.teamRoster = temp
+            print(Globals.globals.teamRoster[0])
+            Globals.globals.user = Globals.globals.teamRoster[0]
+            return true
+        }
+        else {
+            print("recover old data failed as fuck")
+            Globals.globals.teamRoster[0] = Person()
+            Globals.globals.user = Globals.globals.teamRoster[0]
+            return false
+        }
     }
 }
 

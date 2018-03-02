@@ -23,6 +23,7 @@ class Globals {
     var selectedIndex: Int!
     var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
+    var isCreator = false
     
     init() {
         initialized = false

@@ -130,8 +130,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     func browserViewController(_ browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool{
         
         creatorPeerid = peerID
-        //updateTextFields(fg: info!["GroupName"]!, en: info!["EventName"]!, cn: info!["CreatorName"]!, di: info!["Discription"]!, connectionThere: true)
-        self.updateTextFields(fg: "The Group Name", en: "The Event Name", cn: "The Creator Name", di: "The Discription", connectionThere: true)
+        self.updateTextFields(fg: info!["The Group Name"]!, en: info!["Event Name"]!, cn: info!["Full Name"]!, di: info!["Discription"]!, connectionThere: true)
+        //self.updateTextFields(fg: "The Group Name", en: "The Event Name", cn: "The Creator Name", di: "The Discription", connectionThere: true)
 
         return true
     }
