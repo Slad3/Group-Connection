@@ -87,10 +87,7 @@ UINavigationControllerDelegate {
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
-    
 
-    
-    
     //check all inputs
     func checkInputs() -> Bool {
     

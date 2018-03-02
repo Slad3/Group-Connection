@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MultipeerConnectivity
+import MapKit
 
 class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
@@ -21,12 +22,17 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         print("Using custom tab bar view controller")
         //currentView = CreateEventView()
         
-        if (Globals.globals.isCreator){
+        if Globals.globals.isCreator {
             advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
             //advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: nil, session: Globals.globals.Session)
             advertisementAssistant.start()
             print("Advertising Started")
         }
+        
+        //delete everything below this if I haven't already
+        let lugar = CLLocation(latitude: 44.821152, longitude: -93.120435)
+        let check = Check(sender: Globals.globals.hans, place: lugar, description: "ta da!")
+        Check.receiveCheck(check: check)
     }
     
     override func viewDidAppear(_ animated: Bool) {
