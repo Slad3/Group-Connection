@@ -77,12 +77,9 @@ UINavigationControllerDelegate {
             //accessCodeThing = "accessCode"
             
             let fullName = Globals.globals.user.peerid.displayName
-            
-////            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
-////            advertisementAssistant.start()
-//            mistakeLabel.text = "Advertising Started"
-//            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
-//            let (tup1,tup2, tup3) = (1,2,3)
+            Globals.globals.isCreator = true
+            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
+
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             
@@ -96,7 +93,6 @@ UINavigationControllerDelegate {
     
     //check all inputs
     func checkInputs() -> Bool {
-        return true
     
         let event = eventName.hasText
         let group =  groupName.hasText
@@ -155,8 +151,5 @@ UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
 }
 

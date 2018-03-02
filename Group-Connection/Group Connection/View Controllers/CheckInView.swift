@@ -11,7 +11,8 @@ import Foundation
 import MultipeerConnectivity
 import UserNotifications
 
-class CheckInView: UIViewController {
+class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
+    
     @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
     @IBOutlet weak var userView: UILabel!
@@ -56,7 +57,7 @@ class CheckInView: UIViewController {
         content.title = "Hellooooo"
         content.subtitle = "It worked biatchhhhh"
         content.sound = UNNotificationSound.default()
-        content.body = "What is the square root of pi"
+        content.body = "fuck you michael"
         content.badge = 1
         content.categoryIdentifier = "testNotification"
         
@@ -82,7 +83,25 @@ class CheckInView: UIViewController {
         }
         
     }
+    //14 -
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        //15 -
+        completionHandler([.alert, .sound])
+    }
     
+    //16 -
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        //17 -
+        if response.actionIdentifier == "y = mx + b" {
+            checkInLabel.text = "That's the correct answer!"
+        } else if response.actionIdentifier == "Ax + By = C" {
+            checkInLabel.text = "Sorry, that's the standard form equation."
+        } else {
+            checkInLabel.text = "Keep trying!"
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -90,6 +109,9 @@ class CheckInView: UIViewController {
         userView.addGestureRecognizer(rotate)
         userView.isUserInteractionEnabled = true
         userView.isMultipleTouchEnabled = true
+        
+        UNUserNotificationCenter.current().delegate = self
+        
     }
     
     override func didReceiveMemoryWarning() {

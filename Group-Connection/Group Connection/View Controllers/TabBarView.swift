@@ -21,13 +21,12 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         print("Using custom tab bar view controller")
         //currentView = CreateEventView()
         
-//        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: [Globals.globals.passingData.1: Globals.globals.passingData.2, Globals.globals.passingData.3: Globals.globals.passingData.4 ], session: Globals.globals.session)
-        //advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: nil, session: Globals.globals.Session)
-//        advertisementAssistant.start()
-        print("Advertising Started")
-    }
-        
-        
+        if (Globals.globals.isCreator){
+            advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
+            //advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: nil, session: Globals.globals.Session)
+            advertisementAssistant.start()
+            print("Advertising Started")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

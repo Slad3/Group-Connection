@@ -9,7 +9,6 @@
 import Foundation
 import MultipeerConnectivity
 
-
 class Manager: NSObject, MCSessionDelegate {
     
     override init(){
@@ -62,5 +61,5 @@ class Manager: NSObject, MCSessionDelegate {
     // to a permanent location within its sandbox.
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
         
-    }
+    } 
 }

@@ -8,8 +8,7 @@
 import UIKit
 import UserNotifications
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 
@@ -130,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         else {
-            print("recover old data failed as fuck")
+            print("recover old data really failed")
             Globals.globals.teamRoster[0] = Person()
             Globals.globals.user = Globals.globals.teamRoster[0]
             return false
