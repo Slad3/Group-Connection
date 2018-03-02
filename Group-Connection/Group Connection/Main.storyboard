@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Join Event VC-->
+        <!--Join Event View-->
         <scene sceneID="aQl-Bl-Hmd">
             <objects>
                 <viewController storyboardIdentifier="Join Event VC" title="Join Event VC" id="Iw0-hi-peY" customClass="JoinEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
@@ -310,7 +310,7 @@
         <!--Create Event VC-->
         <scene sceneID="4QD-J6-kLa">
             <objects>
-                <viewController storyboardIdentifier="Create Event VC" title="Create Event VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MN-c9-e70" customClass="CreateEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Create Event VC" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MN-c9-e70" customClass="CreateEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ROj-dn-Fge"/>
                         <viewControllerLayoutGuide type="bottom" id="mh0-XI-ZbU"/>
@@ -337,6 +337,7 @@
                                                 <state key="normal" title="Go"/>
                                                 <connections>
                                                     <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
+                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="XDm-Nz-ct1"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -574,7 +575,7 @@
         <!--Roster VC-->
         <scene sceneID="T5D-DX-SsD">
             <objects>
-                <viewController title="Roster VC" id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XrL-Pq-foW"/>
                         <viewControllerLayoutGuide type="bottom" id="nJ3-RR-MII"/>

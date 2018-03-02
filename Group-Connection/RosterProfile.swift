@@ -8,7 +8,6 @@
 import Foundation 
 import UIKit
 
-
 class RosterProfileView: UIViewController {
     
     
@@ -36,7 +35,6 @@ class RosterProfileView: UIViewController {
         let user = Globals.globals.teamRoster[Globals.globals.selectedIndex]
         
         rFullName.text = user.fullName
-        
         rSubteam.text = "Subteam: " + user.subteam
         
         var temp = String(describing: user.age)
@@ -59,10 +57,6 @@ class RosterProfileView: UIViewController {
         rEmail.text = "Email: " + user.email
         rAdditionalNotes.text = user.additionalNotes
         rProfilePhoto.image = user.profilePhoto
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-//        Globals.globals.selectedIndex = 0 
     }
     
     override func didReceiveMemoryWarning() {

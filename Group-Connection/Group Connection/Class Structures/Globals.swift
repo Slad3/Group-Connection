@@ -25,6 +25,8 @@ class Globals {
     var passingData: (String, String, String, String, String )
     var isCreator = false
     
+    var tempToke: [String]! 
+    
     init() {
         initialized = false
         inEvent = false
