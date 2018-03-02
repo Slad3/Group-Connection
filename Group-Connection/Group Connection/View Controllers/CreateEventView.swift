@@ -30,7 +30,7 @@ UINavigationControllerDelegate {
     var checkInNumber: Int = 60
     let picker = UIImagePickerController()
     //var SessionMC: MCSession!
-    var advertisementAssistant: MCAdvertiserAssistant!
+
     
     
     override func viewDidLoad() {

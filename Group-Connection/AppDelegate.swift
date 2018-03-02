@@ -125,17 +125,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let temp = Person.decodePeople() {
             if temp.count < 1 {return false}
             Globals.globals.teamRoster = temp
-            print("User is \(Globals.globals.teamRoster[0].firstName)")
+            print(Globals.globals.teamRoster[0])
             Globals.globals.user = Globals.globals.teamRoster[0]
             return true
         }
         else {
-            print("recover old data really failed")
+            print("recover old data failed as fuck")
             Globals.globals.teamRoster[0] = Person()
             Globals.globals.user = Globals.globals.teamRoster[0]
             return false
         }
-        
     }
 }
 

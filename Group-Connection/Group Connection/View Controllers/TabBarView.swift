@@ -12,24 +12,28 @@ import MultipeerConnectivity
 
 class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
-    var currentView: UIViewController!
+    //var currentView: UIViewController!
     var advertisementAssistant: MCAdvertiserAssistant!
     
     
     
     override func viewDidLoad() {
         print("Using custom tab bar view controller")
-        currentView = CreateEventView()
+        //currentView = CreateEventView()
         
 //        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: [Globals.globals.passingData.1: Globals.globals.passingData.2, Globals.globals.passingData.3: Globals.globals.passingData.4 ], session: Globals.globals.session)
         //advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: nil, session: Globals.globals.Session)
 //        advertisementAssistant.start()
         print("Advertising Started")
-        
+    }
         
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //storyboard?.instantiateViewController(withIdentifier: currentView.title!)
+    }
     
     public func toSpecificTab (viewController: UIViewController){
         
@@ -44,8 +48,8 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     @available(iOS 3.0, *)
     public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool{
-        currentView = viewController
-        print(currentView.title!)
+        //currentView = viewController
+        //print(currentView.title!)
         storyboard?.instantiateViewController(withIdentifier: viewController.title!)
         return true
     }
@@ -53,8 +57,8 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     @available(iOS 2.0, *)
     public func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
-        currentView = viewController
-        print("did select" + currentView.title!)
+        //currentView = viewController
+        //print("did select" + currentView.title!)
         storyboard?.instantiateViewController(withIdentifier: viewController.title!)
         
         
