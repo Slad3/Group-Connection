@@ -40,6 +40,7 @@ class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         data = Globals.globals.teamRoster
         filterD = data
         table.reloadData()
+        
     }
     
     // tells how many cells you want to have in the roster. This will be the number of people at the competition

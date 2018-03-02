@@ -17,7 +17,6 @@ UINavigationControllerDelegate {
     @IBOutlet weak var eventName: UITextField!
     
     @IBOutlet weak var generalAccessCode: UITextField!
-    @IBOutlet weak var mentorAccessCode: UITextField!
     @IBOutlet weak var groupName: UITextField!
     
     @IBOutlet weak var stepperLabel: UILabel!
@@ -58,10 +57,7 @@ UINavigationControllerDelegate {
         generalAccessCode.text = Event.makeCode()
     }
     
-    @IBAction func makeMentorCode(_ sender: Any) {
-        mentorAccessCode.text = Event.makeCode()
-    }
-    
+
     @IBAction func makeEvent(_ sender: Any) {
         if checkInputs() {
             
@@ -82,11 +78,11 @@ UINavigationControllerDelegate {
             
             let fullName = Globals.globals.user.peerid.displayName
             
-//            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
-            advertisementAssistant.start()
-            mistakeLabel.text = "Advertising Started"
-            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
-            let (tup1,tup2, tup3) = (1,2,3)
+////            advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCodeThing, discoveryInfo: ["GroupName": groupName.text!, "EventName": event.eventName, "CreatorName": fullName, "DiscriptionText": "Discription" ], session: Globals.globals.Session)
+////            advertisementAssistant.start()
+//            mistakeLabel.text = "Advertising Started"
+//            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
+//            let (tup1,tup2, tup3) = (1,2,3)
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             

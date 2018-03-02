@@ -7,8 +7,9 @@
 //
 
 import UIKit
-//import Foundation
+import Foundation
 import MultipeerConnectivity
+import UserNotifications
 
 class CheckInView: UIViewController {
     @IBOutlet weak var buddyList: UILabel!
@@ -21,6 +22,7 @@ class CheckInView: UIViewController {
     @objc func sayHi(_: Any) {
         print("sup")
     }
+    
     @objc func rotating(_ sender: UIRotationGestureRecognizer) {
         self.view.bringSubview(toFront: userView)
         var originalRotation = CGFloat()
@@ -49,10 +51,18 @@ class CheckInView: UIViewController {
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
-//        let notification = Notification(name: Notification.Name("Notification mah boy"))
         print("Notification")
-        Globals.globals.notificationCentre.post(Notification(name: Notification.Name("Notification mah boy")))
-        Globals.globals.notificationCentre.addObserver(self, selector: #selector(sayHi(_:)), name: Notification.Name("Notification mah boy"), object: nil)
+        let content = UNMutableNotificationContent()
+        content.title = "Hellooooo"
+        content.subtitle = "It worked biatchhhhh"
+        content.sound = UNNotificationSound.default()
+        content.body = "What is the square root of pi"
+        content.badge = 1
+        content.categoryIdentifier = "testNotification"
+        
+        let identifier = "testNotification"
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     @IBAction func changeBuddies(_ sender: Any) {
