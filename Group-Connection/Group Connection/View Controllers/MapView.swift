@@ -12,8 +12,7 @@ import MapKit
 class MapView: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak
-    var tempLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var importMap: UIImageView!
     
     let locationManager = CLLocationManager()
@@ -108,10 +107,6 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         view.bringSubview(toFront: mapView)
         view.bringSubview(toFront: tempLabel)
         
-        //delete everything below this if I haven't already
-        let lugar = CLLocation(latitude: 44.821152, longitude: -93.120435)
-        let check = Check(sender: Globals.globals.hans, place: lugar, description: "ta da!")
-        Check.receiveCheck(check: check)
         checkForIns()
     }
     

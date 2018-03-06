@@ -7,10 +7,12 @@
 //
 
 import UIKit
-//import Foundation
+import Foundation
 import MultipeerConnectivity
+import UserNotifications
 
-class CheckInView: UIViewController {
+class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
+    
     @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
     @IBOutlet weak var userView: UILabel!
@@ -21,6 +23,7 @@ class CheckInView: UIViewController {
     @objc func sayHi(_: Any) {
         print("sup")
     }
+    
     @objc func rotating(_ sender: UIRotationGestureRecognizer) {
         self.view.bringSubview(toFront: userView)
         var originalRotation = CGFloat()
@@ -49,10 +52,18 @@ class CheckInView: UIViewController {
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
-//        let notification = Notification(name: Notification.Name("Notification mah boy"))
         print("Notification")
-        Globals.globals.notificationCentre.post(Notification(name: Notification.Name("Notification mah boy")))
-        Globals.globals.notificationCentre.addObserver(self, selector: #selector(sayHi(_:)), name: Notification.Name("Notification mah boy"), object: nil)
+        let content = UNMutableNotificationContent()
+        content.title = "Hellooooo"
+        content.subtitle = "It worked biatchhhhh"
+        content.sound = UNNotificationSound(named: "tumblr_lj0d24Q9FD1qbgpplo1.ma4")
+        content.body = "fuck you michael"
+        content.badge = 1
+        content.categoryIdentifier = "testNotification"
+        
+        let identifier = "testNotification"
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     @IBAction func changeBuddies(_ sender: Any) {
@@ -72,7 +83,25 @@ class CheckInView: UIViewController {
         }
         
     }
+    //14 -
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        //15 -
+        completionHandler([.alert, .sound])
+    }
     
+    //16 -
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        //17 -
+        if response.actionIdentifier == "y = mx + b" {
+            checkInLabel.text = "That's the correct answer!"
+        } else if response.actionIdentifier == "Ax + By = C" {
+            checkInLabel.text = "Sorry, that's the standard form equation."
+        } else {
+            checkInLabel.text = "Keep trying!"
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -80,6 +109,9 @@ class CheckInView: UIViewController {
         userView.addGestureRecognizer(rotate)
         userView.isUserInteractionEnabled = true
         userView.isMultipleTouchEnabled = true
+        
+        UNUserNotificationCenter.current().delegate = self
+        
     }
     
     override func didReceiveMemoryWarning() {

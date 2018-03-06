@@ -5,7 +5,6 @@
 //  Created by BARCASKEY, BENJAMIN on 12/14/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
-
 import UIKit
 
 class ProfileView: UIViewController {

@@ -46,32 +46,30 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     
     func updateTextFields(fg: String, en: String, cn: String, di: String, connectionThere: Bool) {
-        
         FoundGroupText.text = fg
         EventNameText.text = en
         CreatorNameText.text = cn
         DiscriptionText.text = di
         connectedToSession = connectionThere
         
-        if(!connectedToSession){
+        if !connectedToSession {
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
             TellUser.text = "Please find a session"
-            
         }
-        else{
+            
+        else {
             connectedOrNot.text = "Connected"
             connectedOrNot.backgroundColor = UIColor.green
             TellUser.text = ""
         }
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Join Event View Loading")
         
-        if(!connectedToSession){
+        if !connectedToSession{
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
         }
@@ -80,17 +78,16 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         //Globals.globals.session = MCSession(peer: Globals.globals.user.peerid)
         Globals.globals.session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
         Globals.globals.session.delegate = Manager()
-        
     }
     
-    
     @IBAction func FindSessions(_ sender: Any) {
+        
         print("Start Function")
         
-        if (!accessCodeBox.hasText){
+        if !accessCodeBox.hasText {
             accessCode = ""
         }
-        else{
+        else {
             accessCode = accessCodeBox.text!
         }
         //accessCode = "accessCode"
@@ -103,7 +100,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         
         self.present(browserView, animated: true, completion: nil)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -127,7 +123,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    func browserViewController(_ browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool{
+    func browserViewController(_ browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
         
         creatorPeerid = peerID
         self.updateTextFields(fg: info!["The Group Name"]!, en: info!["Event Name"]!, cn: info!["Full Name"]!, di: info!["Discription"]!, connectionThere: true)
@@ -135,7 +131,4 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
 
         return true
     }
-    
-    
-    
 }

@@ -17,7 +17,6 @@ UINavigationControllerDelegate {
     @IBOutlet weak var eventName: UITextField!
     
     @IBOutlet weak var generalAccessCode: UITextField!
-    @IBOutlet weak var mentorAccessCode: UITextField!
     @IBOutlet weak var groupName: UITextField!
     
     @IBOutlet weak var stepperLabel: UILabel!
@@ -58,10 +57,7 @@ UINavigationControllerDelegate {
         generalAccessCode.text = Event.makeCode()
     }
     
-    @IBAction func makeMentorCode(_ sender: Any) {
-        mentorAccessCode.text = Event.makeCode()
-    }
-    
+
     @IBAction func makeEvent(_ sender: Any) {
         if checkInputs() {
             
@@ -91,13 +87,9 @@ UINavigationControllerDelegate {
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
-    
 
-    
-    
     //check all inputs
     func checkInputs() -> Bool {
-        return true
     
         let event = eventName.hasText
         let group =  groupName.hasText
@@ -156,8 +148,5 @@ UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
 }
 

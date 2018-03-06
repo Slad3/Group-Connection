@@ -181,6 +181,6 @@ class Person {
         
         let child = Person(firstName: Lorem.firstName, lastName: Lorem.lastName, isMentor: false, age: age, email: Lorem.emailAddress, phoneNumber: str, additionalNotes: Lorem.paragraph, ssubteam: "Programming")
         return child
-    }
+    } 
 }
 
