@@ -56,7 +56,8 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
         let content = UNMutableNotificationContent()
         content.title = "Hellooooo"
         content.subtitle = "It worked biatchhhhh"
-        content.sound = UNNotificationSound(named: "tumblr_lj0d24Q9FD1qbgpplo1.ma4")
+        content.sound = UNNotificationSound.init(named: "toolur_sbCiis.aiff")
+        print(Bool(UNNotificationSound(named: "toolur_sbCiis.wav") == content.sound))
         content.body = "fuck you michael"
         content.badge = 1
         content.categoryIdentifier = "testNotification"
