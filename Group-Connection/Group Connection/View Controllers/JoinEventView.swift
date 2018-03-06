@@ -122,7 +122,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     }
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
-        self.updateTextFields(fg: "The Group Name", en: "The Event Name", cn: "The Creator Name", di: "The Discription", connectionThere: false)
+        //self.updateTextFields(fg: "The Group Name", en: "The Event Name", cn: "The Creator Name", di: "The Discription", connectionThere: false)
         self.connectedToSession = false
         dismiss(animated: true, completion: nil)
     }
