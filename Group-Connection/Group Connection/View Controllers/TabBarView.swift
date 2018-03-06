@@ -25,6 +25,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         if Globals.globals.isCreator {
             //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
             advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.session)
+            print(Globals.globals.passingData.0)
             advertisementAssistant.start()
             print("Advertising Started")
         }

@@ -17,6 +17,11 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var checkInLabel: UILabel!
     @IBOutlet weak var userView: UILabel!
     
+
+    
+    
+    //@IBOutlet weak var title: UINavigationBar!
+    
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
     
