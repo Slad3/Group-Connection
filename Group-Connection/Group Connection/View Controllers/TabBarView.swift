@@ -42,7 +42,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     public func toSpecificTab (viewController: UIViewController){
         
-        print(viewController.title)
+        print(String(describing: viewController.title))
         storyboard?.instantiateViewController(withIdentifier: "Main Tab VC")
         storyboard?.instantiateViewController(withIdentifier: viewController.title!)
         
