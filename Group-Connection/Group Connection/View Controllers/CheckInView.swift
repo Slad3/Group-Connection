@@ -77,7 +77,7 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
         do {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
-            content.subtitle = "You was an inspiration to me"
+            content.subtitle = "Chlamydia, your dad's here!"
             content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
             content.badge = 31
             content.categoryIdentifier = "tupac"
