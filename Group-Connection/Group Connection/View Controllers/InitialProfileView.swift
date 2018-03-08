@@ -23,6 +23,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     @IBOutlet weak var subPicker: UIPickerView!
     
     var subteam: String! = Globals.globals.teamRoster[0].subteam 
+    var imagePressed: Bool = false
     
     let picker = UIImagePickerController()
     
@@ -48,43 +49,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     //End PickerView------------------------------------------
     
-    //check user inputs
-    private func checkInputs(age: String?, email: String, phone: String) -> Bool {
-        if !checkAge(age: age) {
-            return false
-        }
-        
-        if !checkEmail(email: email) {
-            print ("email is broken")
-            return false
-        }
-        
-        if !checkPhone(phone: phone) {
-            print("phone is broken")
-            return false
-        }
-        
-        return true
-    }
-    
-    private func checkAge(age: String?) -> Bool {
-        let edad = age!
-        if Int(edad) == nil {return false}
-        return true
-    }
-    
-    private func checkEmail(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: email)
-    }
-    
-    private func checkPhone(phone: String)->Bool {
-        let phoneRegex = "\\d*\\d*\\d*"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return  predicate.evaluate(with: phone)
-    }
     
     @IBAction func makeUser(_ sender: Any) {
         if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
@@ -169,13 +133,13 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(Globals.globals.tempToke.joined() ?? "Found nil for token")
-        
         picker.delegate = self
         additionalNotes.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         if Globals.globals.initialized {
-            
             let user = Globals.globals.user
             firstName.text = user?.firstName
             lastName.text = user?.lastName
@@ -194,6 +158,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             let pickerNum: Int! = subTeam.index(of: sub!) ?? 0
             print(user?.subteam)
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
+            imagePressed = true
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
         }
     }
@@ -203,11 +168,28 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y <= self.additionalNotes.frame.origin.y {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
     //photo stuff
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         profilePhoto.contentMode = .scaleAspectFit //3
         profilePhoto.image = chosenImage //4
+        imagePressed = true
         dismiss(animated:true, completion: nil) //5
     }
     
@@ -219,12 +201,55 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        imagePressed = false
         dismiss(animated: true, completion: nil)
     }
 
     //started editing additionalNotes
     func textViewDidBeginEditing(_ textView: UITextView) {
         additionalNotes.text = ""
+    }
+    //check user inputs
+    private func checkInputs(age: String?, email: String, phone: String) -> Bool {
+        if !checkAge(age: age) {
+            return false
+        }
+        
+        if !checkEmail(email: email) {
+            print ("email is broken")
+            return false
+        }
+        
+        if !checkPhone(phone: phone) {
+            print("phone is broken")
+            return false
+        }
+        
+        if !imagePressed {
+            print("no photo input")
+            return false
+        }
+        
+        return true
+    }
+    
+    private func checkAge(age: String?) -> Bool {
+        let edad = age!
+        if Int(edad) == nil {return false}
+        return true
+    }
+    
+    private func checkEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+    
+    private func checkPhone(phone: String)->Bool {
+        let phoneRegex = "\\d*\\d*\\d*"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return  predicate.evaluate(with: phone)
     }
     
     //lower any keyboards when the user taps anywhere besides a text box

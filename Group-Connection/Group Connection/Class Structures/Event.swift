@@ -10,7 +10,7 @@ class Event {
     //properties
     var generalAccessCode: String //access code to hook people up to the right compeititon
     var mentorAccessCode: String //access code to verify status as a mentor
-    var importedMap: UIImage? //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
+    var importedMap: UIImage! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
     var competitionRoster: [Person] //list of all the users in the competion
     var teamRoster: [String] //list of all the people in the team
     var eventName: String

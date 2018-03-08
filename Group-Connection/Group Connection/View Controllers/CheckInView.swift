@@ -58,17 +58,19 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         print("Notification")
-        let content = UNMutableNotificationContent()
-        content.title = "Hellooooo"
-        content.subtitle = "It worked biatchhhhh"
-        content.sound = UNNotificationSound(named: "tumblr_lj0d24Q9FD1qbgpplo1.ma4")
-        content.body = "fuck you michael"
-        content.badge = 1
-        content.categoryIdentifier = "testNotification"
-        
-        let identifier = "testNotification"
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        if Globals.globals.user.firstName == "Tupac" {
+            let content = UNMutableNotificationContent()
+            content.title = "RIP Bro"
+            content.subtitle = "You was an inspiration to me"
+            content.sound = UNNotificationSound.init(named: "toolur_5C4U7D.wav")
+            print(Bool(UNNotificationSound(named: "toolur_sbCiis.wav") == content.sound))
+            content.badge = 31
+            content.categoryIdentifier = "tupac"
+            
+            let identifier = "tupac"
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
     }
     
     @IBAction func changeBuddies(_ sender: Any) {
@@ -78,6 +80,16 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     private func panic() {
         //stub
         do {
+            let content = UNMutableNotificationContent()
+            content.title = "RIP Bro"
+            content.subtitle = "Chlamydia, your dad's here!"
+            content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
+            content.badge = 31
+            content.categoryIdentifier = "tupac"
+            let identifier = "tupac"
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
             let data = try JSONEncoder().encode("panic")
             let mentors = Globals.getIDs(Globals.globals.getMentors())
             try Globals.globals.session.send(data, toPeers: mentors, with: .reliable)
