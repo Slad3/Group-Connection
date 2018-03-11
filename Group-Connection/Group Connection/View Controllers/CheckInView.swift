@@ -57,7 +57,7 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
             content.subtitle = "You was an inspiration to me"
-            content.sound = UNNotificationSound.init(named: "toolur_5C4U7D.wav")
+            //content.sound = UNNotificationSound.init(named: "toolur_5C4U7D.wav")
             print(Bool(UNNotificationSound(named: "toolur_sbCiis.wav") == content.sound))
             content.badge = 31
             content.categoryIdentifier = "tupac"
@@ -78,7 +78,7 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
             content.subtitle = "You was an inspiration to me"
-            content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
+            //content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
             content.badge = 31
             content.categoryIdentifier = "tupac"
             let identifier = "tupac"

@@ -78,8 +78,9 @@ UINavigationControllerDelegate {
             
             let fullName = Globals.globals.user.peerid.displayName
             Globals.globals.isCreator = true
+            print(Globals.globals.isCreator)
             Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
-
+            print("Doing Segue")
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             
@@ -113,6 +114,7 @@ UINavigationControllerDelegate {
         else {
             genCode = false
         }
+        genCode = true
         return genCode && event && group && checkLen && map
     }
     

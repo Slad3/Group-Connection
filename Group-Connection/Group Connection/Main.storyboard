@@ -307,7 +307,7 @@
             </objects>
             <point key="canvasLocation" x="-2886" y="-691"/>
         </scene>
-        <!--Create Event VC-->
+        <!--Create-->
         <scene sceneID="4QD-J6-kLa">
             <objects>
                 <viewController storyboardIdentifier="Create Event VC" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MN-c9-e70" customClass="CreateEventView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
@@ -337,7 +337,6 @@
                                                 <state key="normal" title="Go"/>
                                                 <connections>
                                                     <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
-                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="XDm-Nz-ct1"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -990,8 +989,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7bL-EX-UB8"/>
-        <segue reference="4W6-x3-iUW"/>
+        <segue reference="OLK-fx-p5I"/>
         <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
 </document>
