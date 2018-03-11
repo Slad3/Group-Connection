@@ -70,6 +70,7 @@
 		0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group_ConnectionUITests.swift; sourceTree = "<group>"; };
 		0E9EF04A1FD71D6500CD89CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E9018F92047203A005ACA2F /* Group Connection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Group Connection.entitlements"; sourceTree = "<group>"; };
+		4EFC81AF205064700035AC0C /* GroupMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMessageView.swift; sourceTree = "<group>"; };
 		5D0503C62000831A00C21049 /* Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		5D0503C920013A8A00C21049 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5D128D051FE4D82700D38505 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 				5D128D141FE4E03000D38505 /* View Controllers */,
 				5D128D081FE4DB6300D38505 /* Class Structures */,
 				0E9EF02F1FD71D6500CD89CC /* Assets.xcassets */,
+				4E10D2D920505D3900A3684D /* Supporting Files */,
 				F8693DFD2029712A00985CB0 /* Main.storyboard */,
 				0E9EF0311FD71D6500CD89CC /* LaunchScreen.storyboard */,
 				0E9EF0341FD71D6500CD89CC /* Info.plist */,
@@ -160,6 +162,15 @@
 				0E9EF04A1FD71D6500CD89CC /* Info.plist */,
 			);
 			path = "Group ConnectionUITests";
+			sourceTree = "<group>";
+		};
+		4E10D2D920505D3900A3684D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E10D2DA20505D5C00A3684D /* Surprise Motherfcker Sound Effect ORIGINAL.mp3 */,
+				4E10D2DB20505D5C00A3684D /* toolur_5C4U7D.wav */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5D0503C820013A8A00C21049 /* Frameworks */ = {
@@ -196,6 +207,7 @@
 				0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */,
 				0E8898B21FE2ED9C00B671A0 /* CreateEventView.swift */,
 				B5B8C7082025676300B507C7 /* JoinEventView.swift */,
+				4EFC81AF205064700035AC0C /* GroupMessageView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -350,6 +362,7 @@
 				0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */,
 				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
 				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
+				4EFC81B0205064700035AC0C /* GroupMessageView.swift in Sources */,
 				5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */,
 				B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */,
 				F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */,
@@ -453,6 +466,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -debug-time-function-bodies";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
