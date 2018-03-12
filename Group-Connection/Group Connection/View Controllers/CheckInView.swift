@@ -16,9 +16,9 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
     @IBOutlet weak var userView: UILabel!
-    
-
-    
+    @IBOutlet weak var timeSinceLabel: UILabel!
+    @IBOutlet weak var timeDisplay: UILabel!
+    @IBOutlet weak var groupMessage: UIButton!
     
     //@IBOutlet weak var title: UINavigationBar!
     
@@ -100,6 +100,21 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
         }
         
     }
+    
+    @IBAction func swapToMentor() {
+        let f = CGFloat(100.0) //temp values for the leaveVenue frame
+        let venueFrame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: 2 * f, height: f)
+        let leaveVenue = UIButton(frame: venueFrame)
+        leaveVenue.frame = venueFrame
+        leaveVenue.setTitle("Leave Venue", for: .normal)
+        leaveVenue.backgroundColor = UIColor(displayP3Red: CGFloat(239), green: CGFloat(239), blue: CGFloat(244), alpha: CGFloat(0.1))
+        view.addSubview(leaveVenue)
+        leaveVenue.center = view.center
+        leaveVenue.setTitleColor(.black, for: .normal)
+        leaveVenue.showsTouchWhenHighlighted = true
+        
+    }
+    
     //14 -
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
