@@ -305,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2886" y="-691"/>
+            <point key="canvasLocation" x="-2772" y="-808"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
@@ -337,7 +337,6 @@
                                                 <state key="normal" title="Go"/>
                                                 <connections>
                                                     <action selector="makeEvent:" destination="4MN-c9-e70" eventType="touchUpInside" id="BIR-cj-BY7"/>
-                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="To Main Tab" id="XDm-Nz-ct1"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -654,7 +653,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dB6-oR-5Rb" id="UV9-Rf-rxX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQh-eD-Eo6">
@@ -1040,7 +1039,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4W6-x3-iUW"/>
+        <segue reference="ezE-1r-zet"/>
+        <segue reference="OLK-fx-p5I"/>
         <segue reference="JyV-gP-apm"/>
         <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
