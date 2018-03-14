@@ -24,6 +24,11 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
+   
+    @objc func leaveVenue(_: Any) {
+        //stub
+        print("leaving venue")
+    }
     
     @objc func sayHi(_: Any) {
         print("sup")
@@ -102,16 +107,22 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     }
     
     @IBAction func swapToMentor() {
-        let f = CGFloat(100.0) //temp values for the leaveVenue frame
-        let venueFrame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: 2 * f, height: f)
+        print("swapping to mint")
+        
+        groupMessage.frame = CGRect(x: 34, y: 89, width: 143, height: 54)
+        
+        let venueFrame = groupMessage.frame
         let leaveVenue = UIButton(frame: venueFrame)
         leaveVenue.frame = venueFrame
         leaveVenue.setTitle("Leave Venue", for: .normal)
-        leaveVenue.backgroundColor = UIColor(displayP3Red: CGFloat(239), green: CGFloat(239), blue: CGFloat(244), alpha: CGFloat(0.1))
+        let color = UIColor(red: 0.9370916485786438, green: 0.93694382905960083, blue: 0.95754462480545044, alpha: 1)
+        leaveVenue.backgroundColor = color
+        
         view.addSubview(leaveVenue)
-        leaveVenue.center = view.center
+        leaveVenue.center = CGPoint(x: 34 * 2,y: view.center.y - 50)
         leaveVenue.setTitleColor(.black, for: .normal)
-        leaveVenue.showsTouchWhenHighlighted = true
+        
+        leaveVenue.addTarget(nil, action: #selector(leaveVenue(_:)), for: .touchDown)
         
     }
     
