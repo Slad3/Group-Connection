@@ -11,7 +11,7 @@ import Foundation
 import MultipeerConnectivity
 import UserNotifications
 
-class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
+class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITableViewDelegate, UITableViewDataSource*/ {
     
     @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
@@ -19,12 +19,16 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var timeSinceLabel: UILabel!
     @IBOutlet weak var timeDisplay: UILabel!
     @IBOutlet weak var groupMessage: UIButton!
+    @IBOutlet weak var buddyListExtension: UILabel!
+    @IBOutlet weak var buddyListTitle: UILabel!
     
     //@IBOutlet weak var title: UINavigationBar!
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
    
+    var students: [Person]!
+    
     @objc func leaveVenue(_: Any) {
         //stub
         print("leaving venue")
@@ -109,34 +113,48 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
     @IBAction func swapToMentor() {
         print("swapping to mint")
         
-        groupMessage.frame = CGRect(x: 34, y: 89, width: 143, height: 54)
+        groupMessage.frame = CGRect(x: 34, y: 120, width: 143, height: 54)
         
         let venueFrame = groupMessage.frame
+        
         let leaveVenue = UIButton(frame: venueFrame)
+        
         leaveVenue.frame = venueFrame
+        
         leaveVenue.setTitle("Leave Venue", for: .normal)
+        
         let color = UIColor(red: 0.9370916485786438, green: 0.93694382905960083, blue: 0.95754462480545044, alpha: 1)
+        
         leaveVenue.backgroundColor = color
         
         view.addSubview(leaveVenue)
-        leaveVenue.center = CGPoint(x: 34 * 2,y: view.center.y - 50)
+        
+        leaveVenue.center = CGPoint(x: 300,y: groupMessage.center.y)
+        
         leaveVenue.setTitleColor(.black, for: .normal)
         
         leaveVenue.addTarget(nil, action: #selector(leaveVenue(_:)), for: .touchDown)
         
+        timeDisplay.center = view.center
+        timeSinceLabel.center = CGPoint(x: view.center.x, y: timeDisplay.center.y - 40)
+        
+        userView.center = CGPoint(x: view.center.x, y: 230)
+        
+//        buddyList.delete(self)
+//        buddyListExtension.delete(self)
+
+//        let buddyframe = CGRect(x: view.center.x, y: buddyList.center.y, width: buddyList.frame.width, height: 300)
+//        let buddies = UITableView(frame: buddyframe)
+//        buddies.dataSource = self
+//        students = Globals.globals.getStudents()
     }
     
-    //14 -
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        //15 -
         completionHandler([.alert, .sound])
     }
     
-    //16 -
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        //17 -
         if response.actionIdentifier == "y = mx + b" {
             checkInLabel.text = "That's the correct answer!"
         } else if response.actionIdentifier == "Ax + By = C" {
@@ -145,6 +163,31 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate {
             checkInLabel.text = "Keep trying!"
         }
     }
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return students.count }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        Globals.globals.selectedIndex = indexPath.row
+//
+//        if Globals.globals.selectedIndex == indexPath.row {
+//            tableView.deselectRow(at: indexPath, animated: true)
+//            //do something
+//        }
+//        else {
+//            dismiss(animated: false, completion: nil)
+//        }
+//    }
+//
+//
+//    // tells what should be displayed in each cell.
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        //test this here
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
+//
+//        return cell
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
