@@ -14,7 +14,6 @@ import MapKit
 class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     //var currentView: UIViewController!
-    var advertisementAssistant: MCAdvertiserAssistant!
     
     
     
@@ -22,14 +21,11 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         print("Using custom tab bar view controller")
         
         
-        print(Globals.globals.isCreator)
+        print("Is Creator?: ",  Globals.globals.isCreator)
         if Globals.globals.isCreator {
-            print("Is Creator")
-            //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-            advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.session)
-            print("Access Code: " + Globals.globals.passingData.0)
-            advertisementAssistant.start()
-            print("Advertising Started")
+            
+            Globals.globals.manager.setupAdvertising()
+            
         }
         
         //delete everything below this if I haven't already

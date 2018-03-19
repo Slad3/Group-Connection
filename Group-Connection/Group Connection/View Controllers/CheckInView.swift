@@ -101,7 +101,7 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
             
             let data = try JSONEncoder().encode("panic")
             let mentors = Globals.getIDs(Globals.globals.getMentors())
-            try Globals.globals.session.send(data, toPeers: mentors, with: .reliable)
+            try Globals.globals.manager.session.send(data, toPeers: mentors, with: .reliable)
             print("triggered")
         }
         catch {

@@ -67,6 +67,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Globals.globals.manager = Manager()
         print("Join Event View Loading")
         
         if !connectedToSession{
@@ -74,10 +75,9 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.text = "Not Connected"
         }
         
-        //SessionMC = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .required)
-        //Globals.globals.session = MCSession(peer: Globals.globals.user.peerid)
-        Globals.globals.session = MCSession(peer: Globals.globals.globalPeerid, securityIdentity: nil, encryptionPreference: .required)
-        Globals.globals.session.delegate = Manager()
+        Globals.globals.manager.setupSession()
+
+
     }
     
     @IBAction func FindSessions(_ sender: Any) {
@@ -91,7 +91,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             accessCode = accessCodeBox.text!
         }
         //accessCode = "accessCode"
-        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.session)
+        let browserView = MCBrowserViewController(serviceType: accessCode, session: Globals.globals.manager.session)
         browserView.delegate = self
         
         print("Made Browser View")

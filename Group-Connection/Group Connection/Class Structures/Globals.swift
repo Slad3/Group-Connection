@@ -25,6 +25,7 @@ class Globals {
     var passingData: (String, String, String, String, String )
     var isCreator = false
     var globalPeerid: MCPeerID!
+    var manager: Manager!
     
     var tempToke: [String]! 
     

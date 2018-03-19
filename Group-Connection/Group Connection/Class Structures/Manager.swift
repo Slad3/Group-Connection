@@ -12,16 +12,32 @@ import MultipeerConnectivity
 class Manager: NSObject, MCSessionDelegate {
     
     public var session: MCSession!
-    
+    var advertisementAssistant: MCAdvertiserAssistant!
     
     
     
     
     override init(){
         
-        session = MCSession(peer: Globals.globals.globalPeerid, securityIdentity: nil, encryptionPreference: .required)
-        session.delegate = self
+    }
+    
+    public func setupAdvertising(){
         
+        print("Is Creator")
+        //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
+        print("Access Code: " + Globals.globals.passingData.0)
+        advertisementAssistant.start()
+        print("Advertising Started")
+
+        
+    }
+    
+    public func setupSession(){
+        
+        session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+        session.delegate = Manager()
+    
     }
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
