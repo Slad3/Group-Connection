@@ -24,6 +24,7 @@ class Globals {
     var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
+    var globalPeerid: MCPeerID!
     
     var tempToke: [String]! 
     
@@ -33,6 +34,7 @@ class Globals {
         isMentor = false
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
+   
     }
     
     func getStudents() -> [Person] {

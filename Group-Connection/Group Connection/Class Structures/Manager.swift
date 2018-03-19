@@ -33,6 +33,7 @@ class Manager: NSObject, MCSessionDelegate {
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
         do {
+            print("Recieved Data")
             let temp = try JSONDecoder().decode(String.self, from: data)
             print(temp)
         }
