@@ -27,6 +27,10 @@ class Person {
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
+    var studentList: [Person]!
+    
+    //student-specific stuff
+    var buddyList: [Person]!
     
     //encoding stuff
     static var jsonDerulo: Data!
@@ -45,6 +49,7 @@ class Person {
         let hasCheckIn: Bool //the mentor has a check waiting
         let profilePhoto: Data!
         //var checkArray: [Check]!
+        //var peerList:
         
         init(_ person: Person){
             self.firstName = person.firstName
@@ -98,6 +103,7 @@ class Person {
         }
     }
     
+    //default initializer, for when things go wrong
     init() {
         firstName = ""
         lastName = ""
