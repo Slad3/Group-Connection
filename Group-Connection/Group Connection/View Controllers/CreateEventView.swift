@@ -36,7 +36,7 @@ UINavigationControllerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
 
         //Globals.globals.session = MCSession(peer: Globals.globals.user.peerid)
-        Globals.globals.session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
+        MCSession(peer: Globals.globals.globalPeerid, securityIdentity: nil, encryptionPreference: .required)
         Globals.globals.session.delegate = Manager()
 
         picker.delegate = self
@@ -48,7 +48,7 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func back(_ sender: Any) {
-        performSegue(withIdentifier: "To Join or Create", sender: nil)
+        //performSegue(withIdentifier: "To Join or Create", sender: nil)
     }
 
     @IBAction func makeGeneralCode(_ sender: Any) {

@@ -11,7 +11,16 @@ import MultipeerConnectivity
 
 class Manager: NSObject, MCSessionDelegate {
     
+    public var session: MCSession!
+    
+    
+    
+    
+    
     override init(){
+        
+        session = MCSession(peer: Globals.globals.globalPeerid, securityIdentity: nil, encryptionPreference: .required)
+        session.delegate = self
         
     }
     
