@@ -15,7 +15,7 @@ class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
-    public var session: MCSession!
+    //public var session: MCSession!
     var user: Person!
     let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
     var event: Event!
@@ -24,6 +24,8 @@ class Globals {
     var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
+    var globalPeerid: MCPeerID!
+    var manager: Manager!
     
     var tempToke: [String]! 
     
@@ -33,6 +35,7 @@ class Globals {
         isMentor = false
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
+   
     }
     
     func getStudents() -> [Person] {

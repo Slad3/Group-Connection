@@ -36,7 +36,7 @@ class Check: NSObject, MKAnnotation {
         //has to somehow trigger receiveCheck() on the receiver's phone
         do {
             let temp = try JSONEncoder().encode("receiveCheck")
-            try Globals.globals.session.send(temp, toPeers: [person.peerid], with: .reliable)
+            try Globals.globals.manager.session.send(temp, toPeers: [person.peerid], with: .reliable)
             self.hasBeenSent = true
         }
         catch {

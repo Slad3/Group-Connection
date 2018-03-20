@@ -34,12 +34,10 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        //Globals.globals.session = MCSession(peer: Globals.globals.user.peerid)
-        Globals.globals.session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: .optional)
-        Globals.globals.session.delegate = Manager()
-
+        Globals.globals.manager = Manager()
         picker.delegate = self
+        
+        Globals.globals.manager.setupSession()
     }
     
     @IBAction func changeCheckInLength(_ sender: Any) {
@@ -48,7 +46,7 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func back(_ sender: Any) {
-        performSegue(withIdentifier: "To Join or Create", sender: nil)
+        //performSegue(withIdentifier: "To Join or Create", sender: nil)
     }
 
     @IBAction func makeGeneralCode(_ sender: Any) {
@@ -74,11 +72,11 @@ UINavigationControllerDelegate {
             let accessCodeThing = event.generalAccessCode
             //accessCodeThing = "accessCode"
             
-//            let fullName = Globals.globals.user.peerid.displayName
-//            Globals.globals.isCreator = true
-//            print(Globals.globals.isCreator)
-//            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
-//            print("Doing Segue")
+            let fullName = Globals.globals.user.peerid.displayName
+            Globals.globals.isCreator = true
+            print(Globals.globals.isCreator)
+            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
+            print("Doing Segue")
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             
