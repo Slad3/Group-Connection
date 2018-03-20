@@ -111,42 +111,6 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
     }
     
     @IBAction func swapToMentor() {
-        print("swapping to mint")
-        
-        groupMessage.frame = CGRect(x: 34, y: 120, width: 143, height: 54)
-        
-        let venueFrame = groupMessage.frame
-        
-        let leaveVenue = UIButton(frame: venueFrame)
-        
-        leaveVenue.frame = venueFrame
-        
-        leaveVenue.setTitle("Leave Venue", for: .normal)
-        
-        let color = UIColor(red: 0.9370916485786438, green: 0.93694382905960083, blue: 0.95754462480545044, alpha: 1)
-        
-        leaveVenue.backgroundColor = color
-        
-        view.addSubview(leaveVenue)
-        
-        leaveVenue.center = CGPoint(x: 300,y: groupMessage.center.y)
-        
-        leaveVenue.setTitleColor(.black, for: .normal)
-        
-        leaveVenue.addTarget(nil, action: #selector(leaveVenue(_:)), for: .touchDown)
-        
-        timeDisplay.center = view.center
-        timeSinceLabel.center = CGPoint(x: view.center.x, y: timeDisplay.center.y - 40)
-        
-        userView.center = CGPoint(x: view.center.x, y: 230)
-        
-//        buddyList.delete(self)
-//        buddyListExtension.delete(self)
-
-//        let buddyframe = CGRect(x: view.center.x, y: buddyList.center.y, width: buddyList.frame.width, height: 300)
-//        let buddies = UITableView(frame: buddyframe)
-//        buddies.dataSource = self
-//        students = Globals.globals.getStudents()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

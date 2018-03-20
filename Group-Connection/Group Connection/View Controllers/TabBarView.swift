@@ -23,9 +23,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         
         print("Is Creator?: ",  Globals.globals.isCreator)
         if Globals.globals.isCreator {
-            
             Globals.globals.manager.setupAdvertising()
-            
         }
         
         //delete everything below this if I haven't already
