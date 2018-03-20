@@ -72,7 +72,7 @@ UINavigationControllerDelegate {
             let accessCodeThing = event.generalAccessCode
             //accessCodeThing = "accessCode"
             
-            let fullName = Globals.globals.user.peerid.displayName
+            let fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
             Globals.globals.isCreator = true
             print(Globals.globals.isCreator)
             Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")

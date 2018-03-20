@@ -41,9 +41,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = vcs.map { UINavigationController(rootViewController: $0)}
         
         if Globals.globals.isCreator {
-            
             Globals.globals.manager.setupAdvertising()
-            
         }
         
         //delete everything below this if I haven't already

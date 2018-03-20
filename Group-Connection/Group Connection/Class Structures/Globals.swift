@@ -24,7 +24,7 @@ class Globals {
     var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
-    var globalPeerid: MCPeerID!
+    
     var manager: Manager!
     
     var tempToke: [String]! 
@@ -67,6 +67,12 @@ class Globals {
         return nil
     }
     
+    func setPeerid(fullname: String){
+        
+        let peerid = MCPeerID(displayName: fullname)
+        
+    }
+    
     func autopopulateRoster() {
         let upperbound = Int(arc4random_uniform(50))
         teamRoster.reserveCapacity(upperbound)
@@ -79,7 +85,7 @@ class Globals {
     static func getIDs(_ peeps: [Person]) -> [MCPeerID] {
         var temp: [MCPeerID] = []
         for dude in peeps {
-            temp.append(dude.peerid)
+            //temp.append(dude.peerid)
         }
         return temp
     }

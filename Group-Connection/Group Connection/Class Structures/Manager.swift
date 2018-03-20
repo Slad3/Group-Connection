@@ -13,7 +13,7 @@ class Manager: NSObject, MCSessionDelegate {
     
     public var session: MCSession!
     var advertisementAssistant: MCAdvertiserAssistant!
-    
+    let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
     
     
     
@@ -35,7 +35,7 @@ class Manager: NSObject, MCSessionDelegate {
     
     public func setupSession(){
         
-        session = MCSession(peer: Globals.globals.user.peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+        session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
         session.delegate = Manager()
     
     }
