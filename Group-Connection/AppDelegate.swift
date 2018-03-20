@@ -31,15 +31,13 @@ import UserNotifications
         else if !Globals.globals.inEvent {
             if Globals.globals.user.isMentor { //Initial Profile so mentors can choose what view to go to
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-//                //delete
+                //delete
                 Globals.globals.user.subteam = "Programming"//"Choose Subteam"
                 print(Globals.globals.user.subteam)
             }
             else { //Join; if they're not a mentor
-                initialViewController = storyboard.instantiateViewController(withIdentifier: "Join Event VC")
-//                //delete
-//                Globals.globals.user.subteam = "Choose Subteam"
-                print(Globals.globals.user.subteam)
+                //temporary send to init, since join event doesn't work yet (BENNNNNN)
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC") //"Join Event VC")
             }
         }
         else if Globals.globals.inEvent { //Main Tab

@@ -301,6 +301,7 @@
                         <outlet property="subPicker" destination="t6h-MX-nEY" id="Jou-oO-GWr"/>
                         <segue destination="4MN-c9-e70" kind="show" identifier="To Create Event" id="ezE-1r-zet"/>
                         <segue destination="Iw0-hi-peY" kind="show" identifier="To Join Event" id="vXA-KB-PWb"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="toTabTemp" id="pUr-sM-1Mi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,10 +463,10 @@
             </objects>
             <point key="canvasLocation" x="-1429.5999999999999" y="-606.74662668665667"/>
         </scene>
-        <!--Check In Student-->
+        <!--Check In-->
         <scene sceneID="Row-Z4-a8m">
             <objects>
-                <viewController storyboardIdentifier="Check In" title="Check In Student" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Check In" title="Check In" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ej3-oA-gbH" customClass="CheckInView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y9Z-1U-nXW"/>
                         <viewControllerLayoutGuide type="bottom" id="PPp-Fi-Q2a"/>
@@ -513,7 +514,6 @@
                                 </state>
                                 <connections>
                                     <action selector="composeMessage:" destination="ej3-oA-gbH" eventType="touchUpInside" id="mTj-fn-C9I"/>
-                                    <action selector="swapToMentor" destination="ej3-oA-gbH" eventType="touchUpInside" id="Uok-fW-Irj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Buddies:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhO-Ak-AS0">
@@ -565,6 +565,7 @@
                         <outlet property="buddyList" destination="8GK-AW-VNa" id="cYC-Yf-7d3"/>
                         <outlet property="buddyListExtension" destination="Ere-wb-kcD" id="qqg-9K-aii"/>
                         <outlet property="buddyListTitle" destination="bhO-Ak-AS0" id="5SD-Tt-2Sm"/>
+                        <outlet property="changeBuddy" destination="1tD-JU-qem" id="7y5-xc-7hK"/>
                         <outlet property="checkInLabel" destination="Rsh-c1-syW" id="tGI-h5-HxS"/>
                         <outlet property="groupMessage" destination="xiK-Dy-eMf" id="cWb-qv-gd0"/>
                         <outlet property="timeDisplay" destination="Rsh-c1-syW" id="UPS-KX-epV"/>
@@ -580,7 +581,7 @@
         <!--Roster-->
         <scene sceneID="T5D-DX-SsD">
             <objects>
-                <viewController id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Roster" title="Roster" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GQF-7z-LfS" customClass="RosterView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XrL-Pq-foW"/>
                         <viewControllerLayoutGuide type="bottom" id="nJ3-RR-MII"/>
@@ -702,10 +703,10 @@
             </objects>
             <point key="canvasLocation" x="881" y="1179"/>
         </scene>
-        <!--Profile VC-->
+        <!--Profile \-->
         <scene sceneID="Ygy-WI-ez1">
             <objects>
-                <viewController storyboardIdentifier="ProfileView" title="Profile VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileView" title="Profile \" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="acD-Rv-CI5"/>
                         <viewControllerLayoutGuide type="bottom" id="4fY-JD-Wll"/>
@@ -809,10 +810,10 @@
             </objects>
             <point key="canvasLocation" x="2343" y="221"/>
         </scene>
-        <!--Map View VC-->
+        <!--Map-->
         <scene sceneID="VZo-iy-o8R">
             <objects>
-                <viewController title="Map View VC" id="Fkr-nc-els" customClass="MapView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" title="Map" id="Fkr-nc-els" customClass="MapView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hQh-Cm-R3w"/>
                         <viewControllerLayoutGuide type="bottom" id="A36-kz-gX4"/>
@@ -993,19 +994,19 @@
             </objects>
             <point key="canvasLocation" x="1654" y="854"/>
         </scene>
-        <!--Student Test-->
-        <scene sceneID="yYZ-jH-Ezp">
+        <!--Check In-->
+        <scene sceneID="C2a-Wc-ejd">
             <objects>
-                <viewController title="Student Test" id="9T1-XQ-J4Q" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Mentor" title="Check In" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cEp-ny-NHH" customClass="MentorView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="P68-VN-OPB"/>
-                        <viewControllerLayoutGuide type="bottom" id="C2N-zO-nnF"/>
+                        <viewControllerLayoutGuide type="top" id="bSd-pB-ItJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="AgA-7u-qXg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xcy-uB-PQA">
+                    <view key="view" contentMode="scaleToFill" id="AhN-8A-FCn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofH-U6-xMu">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBG-Mj-kwq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1014,92 +1015,106 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time since last Check in:       " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88T-Cq-eg6">
-                                <rect key="frame" x="49" y="288" width="278" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HH:MM:SS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LH-28-6RF">
-                                <rect key="frame" x="48" y="333" width="278" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Buddies:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm9-wd-oKz">
-                                <rect key="frame" x="91" y="385" width="193" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mp-dF-fv7">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0si-Or-vWu">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Check In" id="9o8-Oc-hcE"/>
+                                    <navigationItem title="Check In" id="6E6-hl-vJx"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89M-Ng-u8o">
-                                <rect key="frame" x="34" y="89" width="143" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time between Check ins:       " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPz-Aj-O9K">
+                                <rect key="frame" x="52" y="90" width="278" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HH:MM:SS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-07-RrX">
+                                <rect key="frame" x="52" y="138" width="278" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GW6-Xh-Q4o">
+                                <rect key="frame" x="52" y="306" width="134" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Group Message">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="composeMessage:" destination="9T1-XQ-J4Q" eventType="touchUpInside" id="GkK-Oy-qkQ"/>
-                                    <action selector="swapToMentor" destination="9T1-XQ-J4Q" eventType="touchUpInside" id="PXw-Tl-bXk"/>
+                                    <action selector="composeMessage:" destination="cEp-ny-NHH" eventType="touchUpInside" id="rIM-0m-CTP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xF7-aD-rjj">
-                                <rect key="frame" x="216" y="89" width="143" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="hahahaha ">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="composeMessage:" destination="9T1-XQ-J4Q" eventType="touchUpInside" id="S8l-HR-91D"/>
-                                    <action selector="swapToMentor" destination="9T1-XQ-J4Q" eventType="touchUpInside" id="kbT-mk-Ezs"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Panic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-A0-fba">
-                                <rect key="frame" x="91" y="188" width="193" height="46"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Panic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ln0-tU-IDa">
+                                <rect key="frame" x="95" y="223" width="193" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.78139001129999996" green="0.090894259510000006" blue="0.098220847550000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KWC-ms-TCZ">
-                                <rect key="frame" x="92" y="455" width="192" height="131"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Students:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9D-8P-Aa9">
+                                <rect key="frame" x="91" y="395" width="193" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCi-T5-pDK">
+                                <rect key="frame" x="91" y="430" width="193" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gd-dv-6Pc">
+                                <rect key="frame" x="132" y="569" width="110" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeBuddies:" destination="cEp-ny-NHH" eventType="touchUpInside" id="cCH-QW-iif"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpQ-2k-20a">
+                                <rect key="frame" x="196" y="306" width="134" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Leave Venue">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NZX-bm-pei" appends="YES" id="gJU-qA-0yQ"/>
+                        </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Check In" id="G2N-PD-FEA"/>
+                    <tabBarItem key="tabBarItem" title="Check In" id="9y2-di-Rwo"/>
                     <connections>
-                        <outlet property="checkInLabel" destination="8LH-28-6RF" id="4AU-Uc-ZKj"/>
-                        <outlet property="groupMessage" destination="89M-Ng-u8o" id="NWg-QX-SHD"/>
-                        <outlet property="timeDisplay" destination="8LH-28-6RF" id="5Zv-Nn-cqj"/>
-                        <outlet property="timeSinceLabel" destination="88T-Cq-eg6" id="2eM-1y-FKS"/>
-                        <outlet property="userView" destination="bQV-A0-fba" id="kvV-Ot-iwr"/>
+                        <outlet property="buddyList" destination="eCi-T5-pDK" id="Gwc-kg-2Jc"/>
+                        <outlet property="buddyListTitle" destination="z9D-8P-Aa9" id="xBG-1n-d5J"/>
+                        <outlet property="changeBuddy" destination="2gd-dv-6Pc" id="yJ8-bZ-rKH"/>
+                        <outlet property="groupMessage" destination="GW6-Xh-Q4o" id="SxX-AM-J4m"/>
+                        <outlet property="leaveVenue" destination="GpQ-2k-20a" id="8Cf-i2-cFi"/>
+                        <outlet property="timeDisplay" destination="fdY-07-RrX" id="2W3-tm-8UR"/>
+                        <outlet property="timeSinceLabel" destination="hPz-Aj-O9K" id="29J-v4-3U5"/>
+                        <outlet property="userView" destination="ln0-tU-IDa" id="dQU-wL-cfU"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h90-W8-Y6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <rotationGestureRecognizer id="Q7t-gY-X7e"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cx3-oG-ftB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <rotationGestureRecognizer id="NZX-bm-pei"/>
             </objects>
-            <point key="canvasLocation" x="-2036" y="488.90554722638683"/>
+            <point key="canvasLocation" x="-1834" y="131"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OLK-fx-p5I"/>
+        <segue reference="pUr-sM-1Mi"/>
         <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
 </document>

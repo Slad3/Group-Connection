@@ -110,7 +110,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     //Action sheet Stuff
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
-                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                    actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
+                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
 
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

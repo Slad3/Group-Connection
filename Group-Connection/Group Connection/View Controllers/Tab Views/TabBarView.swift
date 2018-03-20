@@ -20,8 +20,26 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         print("Using custom tab bar view controller")
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vcs: [UIViewController]
         
-        print("Is Creator?: ",  Globals.globals.isCreator)
+        let map = storyboard.instantiateViewController(withIdentifier: "Map")
+        let roster = storyboard.instantiateViewController(withIdentifier: "Roster")
+        let profile = storyboard.instantiateViewController(withIdentifier: "ProfileView")
+        
+        if Globals.globals.user.isMentor {
+            let mentor = storyboard.instantiateViewController(withIdentifier: "Mentor")
+            
+            vcs = [mentor, map, roster, profile]
+            
+        }
+        else {
+            let student = storyboard.instantiateViewController(withIdentifier: "Check In")
+            vcs = [student, map, roster, profile]
+        }
+        
+        self.viewControllers = vcs.map { UINavigationController(rootViewController: $0)}
+        
         if Globals.globals.isCreator {
             Globals.globals.manager.setupAdvertising()
         }
@@ -87,3 +105,4 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     
 }
+

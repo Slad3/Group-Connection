@@ -11,7 +11,7 @@ import Foundation
 import MultipeerConnectivity
 import UserNotifications
 
-class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITableViewDelegate, UITableViewDataSource*/ {
+class CheckInView: Sub, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
@@ -21,6 +21,7 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
     @IBOutlet weak var groupMessage: UIButton!
     @IBOutlet weak var buddyListExtension: UILabel!
     @IBOutlet weak var buddyListTitle: UILabel!
+    @IBOutlet weak var changeBuddy: UIButton!
     
     //@IBOutlet weak var title: UINavigationBar!
     
@@ -84,6 +85,8 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
     
     @IBAction func changeBuddies(_ sender: Any) {
         //stub
+//        performSegue(withIdentifier: "toMentor", sender: nil)
+
     }
     
     private func panic() {
@@ -127,34 +130,14 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
             checkInLabel.text = "Keep trying!"
         }
     }
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return students.count }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        Globals.globals.selectedIndex = indexPath.row
-//
-//        if Globals.globals.selectedIndex == indexPath.row {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//            //do something
-//        }
-//        else {
-//            dismiss(animated: false, completion: nil)
-//        }
-//    }
-//
-//
-//    // tells what should be displayed in each cell.
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        //test this here
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
-//
-//        return cell
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        super.isCheckInView = true
+    
         rotate = UIRotationGestureRecognizer(target: self, action: #selector(self.rotating(_:)) )
         userView.addGestureRecognizer(rotate)
         userView.isUserInteractionEnabled = true
@@ -162,6 +145,7 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
         
         UNUserNotificationCenter.current().delegate = self
         
+        self.hidesBottomBarWhenPushed = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,4 +153,3 @@ class CheckInView: UIViewController, UNUserNotificationCenterDelegate/*, UITable
         // Dispose of any resources that can be recreated.
     }
 }
-
