@@ -8,13 +8,14 @@
 
 import UIKit
 
-class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class RosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
     var data: [Person] = Globals.globals.teamRoster
     var filterD: [Person]! = nil
+    
     
     // this is the Roll call Button. It will set the timers for everyone to false
     @IBAction public func rollCall(_ sender: Any) {
@@ -29,7 +30,7 @@ class RosterView: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.        
         table.sectionIndexColor = .none
         searchBar.delegate = self
         table.dataSource = self

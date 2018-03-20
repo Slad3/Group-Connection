@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ProfileView: UIViewController {
+class ProfileView: Sub {
     
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var subteam: UILabel!
@@ -19,12 +19,10 @@ class ProfileView: UIViewController {
     @IBOutlet weak var addedNotes: UILabel!
     @IBOutlet weak var profilePhoto: UIImageView!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+                
         let user = Globals.globals.user
         
         fullName.text = user?.fullName
