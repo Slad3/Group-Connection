@@ -22,7 +22,6 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
     @IBOutlet weak var buddyListExtension: UILabel!
     @IBOutlet weak var buddyListTitle: UILabel!
     @IBOutlet weak var changeBuddy: UIButton!
-    @IBOutlet weak var accessCode: UILabel!
     
     //@IBOutlet weak var title: UINavigationBar!
     
@@ -147,13 +146,6 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().delegate = self
         
         self.hidesBottomBarWhenPushed = false
-        
-        if Globals.globals.event != nil {
-            accessCode.text = Globals.globals.event.generalAccessCode
-        }
-        else {
-            accessCode.text = "Here's your code, Ben"
-        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -67,7 +67,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Globals.globals.manager = Manager()
         print("Join Event View Loading")
         
         if !connectedToSession{
@@ -75,9 +74,9 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.text = "Not Connected"
         }
         
-        Globals.globals.manager.setupSession()
 
 
+        print("Finished View Did Load")
     }
     
     @IBAction func FindSessions(_ sender: Any) {
