@@ -29,15 +29,15 @@ UINavigationControllerDelegate {
     var imageWasTapped = false
     var checkInNumber: Int = 60
     let picker = UIImagePickerController()
-    //var SessionMC: MCSession!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Globals.globals.manager = Manager()
+
         picker.delegate = self
         
-        Globals.globals.manager.setupSession()
+
     }
     
     @IBAction func changeCheckInLength(_ sender: Any) {
