@@ -14,21 +14,34 @@ import MapKit
 class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     //var currentView: UIViewController!
-    var advertisementAssistant: MCAdvertiserAssistant!
     
     
     
     override func viewDidLoad() {
         print("Using custom tab bar view controller")
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vcs: [UIViewController]
         
-        print(Globals.globals.isCreator)
+        let map = storyboard.instantiateViewController(withIdentifier: "Map")
+        let roster = storyboard.instantiateViewController(withIdentifier: "Roster")
+        let profile = storyboard.instantiateViewController(withIdentifier: "ProfileView")
+        
+        if Globals.globals.user.isMentor {
+            let mentor = storyboard.instantiateViewController(withIdentifier: "Mentor")
+            
+            vcs = [mentor, map, roster, profile]
+            
+        }
+        else {
+            let student = storyboard.instantiateViewController(withIdentifier: "Check In")
+            vcs = [student, map, roster, profile]
+        }
+        
+        self.viewControllers = vcs.map { UINavigationController(rootViewController: $0)}
+        
         if Globals.globals.isCreator {
-            print("Is Creator")
-            //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-            advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.session)
-            advertisementAssistant.start()
-            print("Advertising Started")
+            Globals.globals.manager.setupAdvertising()
         }
         
         //delete everything below this if I haven't already
@@ -92,3 +105,4 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     
 }
+

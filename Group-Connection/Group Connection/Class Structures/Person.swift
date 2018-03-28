@@ -21,12 +21,15 @@ class Person {
     var additionalNotes: String //essential
     var fullName: String!
     var checkInStatus: Bool //essential
-    var peerid: MCPeerID! //essential
     var profilePhoto: UIImage!
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
+    var studentList: [Person]!
+    
+    //student-specific stuff
+    var buddyList: [Person]!
     
     //encoding stuff
     static var jsonDerulo: Data!
@@ -45,6 +48,7 @@ class Person {
         let hasCheckIn: Bool //the mentor has a check waiting
         let profilePhoto: Data!
         //var checkArray: [Check]!
+        //var peerList:
         
         init(_ person: Person){
             self.firstName = person.firstName
@@ -57,6 +61,7 @@ class Person {
             self.additionalNotes = person.additionalNotes
             self.hasCheckIn = person.hasCheckIn ?? false
             self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
+            let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
         }
         
         func toPerson() -> Person {
@@ -98,6 +103,7 @@ class Person {
         }
     }
     
+    //default initializer, for when things go wrong
     init() {
         firstName = ""
         lastName = ""
@@ -107,7 +113,6 @@ class Person {
         email = ""
         subteam = ""
         additionalNotes = ""
-        peerid = nil
         checkInStatus = false
         print("I hope you didn't use the default init, you jackass")
     }
@@ -124,7 +129,6 @@ class Person {
         self.subteam = ssubteam
         self.fullName = self.firstName + " " + self.lastName
         self.checkArray = []
-        self.peerid = MCPeerID(displayName: fullName)
         self.checkInStatus = false
         return
     }
@@ -134,8 +138,8 @@ class Person {
         return
     }
     
-    func getValues() -> (String, String, Bool, Int, String, String, String, String, String) {
-        return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, peerid.displayName, additionalNotes)
+    func getValues() -> (String, String, Bool, Int, String, String, String, String) {
+        return (firstName, lastName, isMentor, age, phoneNumber, email, subteam, additionalNotes)
     }
     
     static func encodeEveryone(){
@@ -168,6 +172,7 @@ class Person {
             return nil
         }
     }
+    
     
     static func reachedFortyAndIsDesperate() -> Person {
         var str = ""

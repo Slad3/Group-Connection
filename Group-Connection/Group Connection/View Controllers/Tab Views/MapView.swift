@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapView: UIViewController, CLLocationManagerDelegate {
+class MapView: Sub, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -85,7 +85,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus != .authorizedWhenInUse {
             //if they haven't given permission already
@@ -97,8 +97,12 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         let initialLocation = locationManager.location
         mapView.showsUserLocation = true
         centerMapOnLocation(location: initialLocation ?? CLLocation(latitude: 44.821152, longitude: -93.120435))
+        var bibbity = UIImage(named: "download (1)")
         
-        let bibbity = Globals.globals.event.importedMap ?? UIImage(named: "download (1)")
+        if Globals.globals.event != nil {
+            bibbity = Globals.globals.event.importedMap
+        }
+        
         importMap.image = bibbity 
         
         let presser = UILongPressGestureRecognizer(target: self, action: #selector(swapMaps(_:)))

@@ -15,7 +15,7 @@ class Globals {
     var initialized, inEvent: Bool
     var isMentor: Bool
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
-    public var session: MCSession!
+    //public var session: MCSession!
     var user: Person!
     let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
     var event: Event!
@@ -25,6 +25,8 @@ class Globals {
     var passingData: (String, String, String, String, String )
     var isCreator = false
     
+    var manager: Manager!
+    
     var tempToke: [String]! 
     
     init() {
@@ -33,6 +35,7 @@ class Globals {
         isMentor = false
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
+   
     }
     
     func getStudents() -> [Person] {
@@ -64,6 +67,12 @@ class Globals {
         return nil
     }
     
+    func setPeerid(fullname: String){
+        
+        let peerid = MCPeerID(displayName: fullname)
+        
+    }
+    
     func autopopulateRoster() {
         let upperbound = Int(arc4random_uniform(50))
         teamRoster.reserveCapacity(upperbound)
@@ -76,7 +85,7 @@ class Globals {
     static func getIDs(_ peeps: [Person]) -> [MCPeerID] {
         var temp: [MCPeerID] = []
         for dude in peeps {
-            temp.append(dude.peerid)
+            //temp.append(dude.peerid)
         }
         return temp
     }
