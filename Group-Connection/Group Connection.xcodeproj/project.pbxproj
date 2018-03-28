@@ -27,6 +27,7 @@
 		5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37D3F41FE44BF000A6114F /* Globals.swift */; };
 		5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */; };
 		7FE223A0202CC3410029775C /* RosterViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */; };
+		B53D5D19206B1644006295E9 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53D5D18206B1644006295E9 /* NetworkExtension.framework */; };
 		B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8C7082025676300B507C7 /* JoinEventView.swift */; };
 		F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */; };
 		F8693DFE2029712A00985CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8693DFD2029712A00985CB0 /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		5D37D3F41FE44BF000A6114F /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremSwiftum.swift; sourceTree = "<group>"; };
 		7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		B53D5D18206B1644006295E9 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		B5B8C7082025676300B507C7 /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RosterProfile.swift; path = ../../RosterProfile.swift; sourceTree = "<group>"; };
 		F8693DFD2029712A00985CB0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0503CA20013A8A00C21049 /* MapKit.framework in Frameworks */,
+				B53D5D19206B1644006295E9 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,8 +170,6 @@
 		4E10D2D920505D3900A3684D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4E10D2DA20505D5C00A3684D /* Surprise Motherfcker Sound Effect ORIGINAL.mp3 */,
-				4E10D2DB20505D5C00A3684D /* toolur_5C4U7D.wav */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -176,6 +177,7 @@
 		5D0503C820013A8A00C21049 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B53D5D18206B1644006295E9 /* NetworkExtension.framework */,
 				5D0503C920013A8A00C21049 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -287,6 +289,15 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Multipath = {
+								enabled = 0;
+							};
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -362,7 +373,6 @@
 				0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */,
 				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
 				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
-				4EFC81B0205064700035AC0C /* GroupMessageView.swift in Sources */,
 				5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */,
 				B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */,
 				F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */,
