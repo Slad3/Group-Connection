@@ -87,7 +87,6 @@ UINavigationControllerDelegate {
 
     //check all inputs
     func checkInputs() -> Bool {
-        return true 
         
         let event = eventName.hasText
         let group =  groupName.hasText
@@ -106,12 +105,14 @@ UINavigationControllerDelegate {
             }
             else {
                 genCode = false
+                print("false")
             }
         }
         else {
             genCode = false
+            print("false")
         }
-        genCode = true
+        
         return genCode && event && group && checkLen && map
     }
     

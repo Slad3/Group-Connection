@@ -111,7 +111,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     }
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
-//        updateTextFields(fg: info["GroupName"]!, en: info["EventName"]!, cn: info["CreatorName"]!, di: info["Discription"]!, connectionThere: true)
+        //updateTextFields(fg: info["GroupName"]!, en: info["EventName"]!, cn: info["CreatorName"]!, di: info["Discription"]!, connectionThere: true)
         self.connectedToSession = true
         dismiss(animated: true, completion: nil)
     }
@@ -129,7 +129,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             self.updateTextFields(fg: info!["Group Name"]!, en: info!["Event Name"]!, cn: info!["Full Name"]!, di: info!["Discription"]!, connectionThere: true)
         }
         else{
-            self.updateTextFields(fg: "The Group Name", en: "The Event Name", cn: "The Creator Name", di: "The Discription", connectionThere: true)
+            self.updateTextFields(fg: "The slajkdfGroup Name", en: "The asdfEvent Name", cn: "The asdfCreator Name", di: "The asdfDiscription", connectionThere: true)
         }
 
         return true

@@ -41,7 +41,29 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = vcs.map { UINavigationController(rootViewController: $0)}
         
         if Globals.globals.isCreator {
-            Globals.globals.manager.setupAdvertising()
+            
+            //Globals.globals.manager.setupAdvertising(accessCode: Globals.globals.passingData.0)
+            
+            Globals.globals.session.delegate = Manager()
+            print("Is Creator")
+            var service = true
+            
+            if (service){
+                let serviceBrowser = MCNearbyServiceBrowser(peer: Globals.globals.manager.peerid, serviceType: Globals.globals.passingData.0)
+                serviceBrowser.delegate = Globals.globals.manager
+                print("Access Code: " + Globals.globals.passingData.0)
+                serviceBrowser.startBrowsingForPeers()
+                print("Advertising Started")
+                
+            }
+            else {
+                //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
+                let advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
+                //advertisementAssistant.delegate = self
+                print("Access Code: " + Globals.globals.passingData.0)
+                advertisementAssistant.start()
+                print("Advertising Started")
+            }
         }
         
         //delete everything below this if I haven't already
