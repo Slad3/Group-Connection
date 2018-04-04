@@ -21,6 +21,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBOutlet weak var buddyListTitle: UILabel!
     @IBOutlet weak var changeBuddy: UIButton!
     @IBOutlet weak var leaveVenue: UIButton!
+    @IBOutlet weak var accessCode: UILabel!
     
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
@@ -107,7 +108,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
             
             let data = try JSONEncoder().encode("panic")
             let mentors = Globals.getIDs(Globals.globals.getMentors())
-            try Globals.globals.session.send(data, toPeers: mentors, with: .reliable)
+            try Globals.globals.manager.session.send(data, toPeers: mentors, with: .reliable)
             print("triggered")
         }
         catch {
@@ -139,6 +140,13 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         let tapper = UITapGestureRecognizer(target: self, action: #selector(editTime(_:)))
         tapper.numberOfTapsRequired = 2
         timeDisplay.addGestureRecognizer(tapper)
+        
+        if Globals.globals.event != nil {
+            accessCode.text = Globals.globals.event.generalAccessCode
+        }
+        else {
+            accessCode.text = "Here's your code, Ben"
+        }
     }
     
     override func didReceiveMemoryWarning() {
