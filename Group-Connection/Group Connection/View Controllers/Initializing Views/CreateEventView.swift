@@ -50,7 +50,8 @@ UINavigationControllerDelegate {
     }
 
     @IBAction func makeGeneralCode(_ sender: Any) {
-        generalAccessCode.text = Event.makeCode()
+        //generalAccessCode.text = Event.makeCode()
+        generalAccessCode.text = "asdf"
     }
     
 
@@ -104,6 +105,8 @@ UINavigationControllerDelegate {
             }
             else {
                 genCode = false
+                print(lengthGood)
+                print(charactersGood)
                 print("false 1st")
             }
         }
@@ -112,6 +115,7 @@ UINavigationControllerDelegate {
             print("false 2nd")
         }
         print("got to return statement")
+        genCode = true
         return genCode && event && group && checkLen && map
     }
     

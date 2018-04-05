@@ -44,7 +44,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
             
             //Globals.globals.manager.setupAdvertising(accessCode: Globals.globals.passingData.0)
             
-            Globals.globals.session.delegate = Globals.globals.manager
+            
             print("Is Creator")
             var service = true
             
