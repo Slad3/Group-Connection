@@ -41,19 +41,23 @@ class Event {
     
     //Generates random string of 3 words
     static func makeCode() -> String {
-        var str = Lorem.words(3)
-        var pop = str.index(str.startIndex, offsetBy: 8)
+        var str = Lorem.words(2)
+        /*var pop = str.index(str.startIndex, offsetBy: 8)
         str.remove(at: pop)
         pop = str.index(str.startIndex, offsetBy: 16)
         str.remove(at: pop)
-        print("makeCode() gave us " + str)
+        print("makeCode() gave us " + str)*/
         //Make the String 10 charactors
+        
         if(str.count > 10){
-            let index = str.index(str.startIndex, offsetBy: 10)
+            let rangeOne = str.index(str.startIndex, offsetBy: 0)
+            let rangeTwo = str.index(str.startIndex, offsetBy: 10)
+            let stringRange = Range(uncheckedBounds: (lower: rangeOne, upper: rangeTwo))
+            str = str.replacingCharacters(in: stringRange, with: str)
             //str = str.prefix(upTo: index) // Hello
         }
         
-        
+
         
         print("Refined makeCode() gave us " + str)
         return str

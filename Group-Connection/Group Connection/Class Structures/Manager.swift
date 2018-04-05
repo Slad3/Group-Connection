@@ -70,6 +70,9 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
             print("Recieved Data")
             let temp = try JSONDecoder().decode(String.self, from: data)
             print(temp)
+            
+            
+            
         }
         catch {
             
@@ -126,7 +129,7 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
         
         
-        
+         
         
     }
 }

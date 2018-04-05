@@ -98,21 +98,20 @@ UINavigationControllerDelegate {
             let lengthGood = (generalAccessCode.text!.count < 16) && (generalAccessCode.text!.count > 1)
             let characters = "[A-Z0-9a-z]"
             let characterTest = NSPredicate(format:"SELF MATCHES %@", characters)
-            let charactersGood = characterTest.evaluate(with: generalAccessCode.text!)
-            
+            var charactersGood = characterTest.evaluate(with: generalAccessCode.text!)
             if lengthGood && charactersGood {
                 genCode = true
             }
             else {
                 genCode = false
-                print("false")
+                print("false 1st")
             }
         }
         else {
             genCode = false
-            print("false")
+            print("false 2nd")
         }
-        
+        print("got to return statement")
         return genCode && event && group && checkLen && map
     }
     
