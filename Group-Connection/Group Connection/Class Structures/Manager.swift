@@ -17,9 +17,10 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
     
     public let session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+
     
     override init(){
-        session.delegate = Manager()
+        
         
     }
     

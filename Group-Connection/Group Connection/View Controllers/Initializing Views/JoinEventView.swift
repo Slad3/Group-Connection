@@ -67,6 +67,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Globals.globals.session.delegate = Manager()
         print("Join Event View Loading")
         
         if !connectedToSession{
