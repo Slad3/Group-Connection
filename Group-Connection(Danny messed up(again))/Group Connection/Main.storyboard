@@ -809,6 +809,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="sendThatEmail:" destination="5pG-ab-PXM" eventType="touchUpInside" id="7Mn-Ht-Jmk"/>
                                     <action selector="sendThatEmail:" destination="LBx-Gq-3P1" eventType="touchUpInside" id="ieg-SI-5hb"/>
                                 </connections>
                             </button>
@@ -1008,6 +1009,19 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wud-2R-0lY">
+                                <rect key="frame" x="310" y="442" width="55" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.72148895260000001" green="0.72161453959999999" blue="0.72148102520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendThatEmail:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="3n5-4M-eeG"/>
+                                    <action selector="sendThatEmail:" destination="LBx-Gq-3P1" eventType="touchUpInside" id="CDM-aZ-rFz"/>
+                                    <action selector="sendThatEmail:" destination="5pG-ab-PXM" eventType="touchUpInside" id="UQn-cT-b2i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
