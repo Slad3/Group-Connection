@@ -618,7 +618,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dB6-oR-5Rb" id="UV9-Rf-rxX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQh-eD-Eo6">
@@ -711,10 +711,10 @@
             </objects>
             <point key="canvasLocation" x="881" y="1179"/>
         </scene>
-        <!--Profile \-->
+        <!--Profile-->
         <scene sceneID="Ygy-WI-ez1">
             <objects>
-                <viewController storyboardIdentifier="ProfileView" title="Profile \" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileView" title="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="acD-Rv-CI5"/>
                         <viewControllerLayoutGuide type="bottom" id="4fY-JD-Wll"/>
@@ -1130,7 +1130,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pUr-sM-1Mi"/>
+        <segue reference="OLK-fx-p5I"/>
         <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
 </document>

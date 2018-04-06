@@ -21,7 +21,6 @@
 		0E9EF03E1FD71D6500CD89CC /* Group_ConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF03D1FD71D6500CD89CC /* Group_ConnectionTests.swift */; };
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
 		4E0B488D205C2B350089AD46 /* Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488C205C2B350089AD46 /* Sub.swift */; };
-		4E0B488F205C2E990089AD46 /* MentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488E205C2E990089AD46 /* MentorView.swift */; };
 		5D0503C72000831A00C21049 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0503C62000831A00C21049 /* Check.swift */; };
 		5D0503CA20013A8A00C21049 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0503C920013A8A00C21049 /* MapKit.framework */; };
 		5D128D061FE4D82700D38505 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D128D051FE4D82700D38505 /* Event.swift */; };
@@ -29,7 +28,6 @@
 		5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37D3F41FE44BF000A6114F /* Globals.swift */; };
 		5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */; };
 		7FE223A0202CC3410029775C /* RosterViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */; };
-		B53D5D19206B1644006295E9 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53D5D18206B1644006295E9 /* NetworkExtension.framework */; };
 		B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8C7082025676300B507C7 /* JoinEventView.swift */; };
 		F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */; };
 		F8693DFE2029712A00985CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8693DFD2029712A00985CB0 /* Main.storyboard */; };
@@ -82,7 +80,6 @@
 		5D37D3F41FE44BF000A6114F /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremSwiftum.swift; sourceTree = "<group>"; };
 		7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewCellTableViewCell.swift; sourceTree = "<group>"; };
-		B53D5D18206B1644006295E9 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		B5B8C7082025676300B507C7 /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterProfile.swift; sourceTree = "<group>"; };
 		F8693DFD2029712A00985CB0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -94,7 +91,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0503CA20013A8A00C21049 /* MapKit.framework in Frameworks */,
-				B53D5D19206B1644006295E9 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +202,6 @@
 		5D0503C820013A8A00C21049 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B53D5D18206B1644006295E9 /* NetworkExtension.framework */,
 				5D0503C920013A8A00C21049 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -313,10 +308,10 @@
 								enabled = 0;
 							};
 							com.apple.NearFieldCommunicationTagReading = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.NetworkExtensions.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;

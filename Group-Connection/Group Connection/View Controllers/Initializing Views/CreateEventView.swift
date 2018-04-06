@@ -29,15 +29,15 @@ UINavigationControllerDelegate {
     var imageWasTapped = false
     var checkInNumber: Int = 60
     let picker = UIImagePickerController()
-    //var SessionMC: MCSession!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Globals.globals.manager = Manager()
+
         picker.delegate = self
         
-        Globals.globals.manager.setupSession()
+
     }
     
     @IBAction func changeCheckInLength(_ sender: Any) {
@@ -50,7 +50,8 @@ UINavigationControllerDelegate {
     }
 
     @IBAction func makeGeneralCode(_ sender: Any) {
-        generalAccessCode.text = Event.makeCode()
+        //generalAccessCode.text = Event.makeCode()
+        generalAccessCode.text = "asdf"
     }
     
 
@@ -87,7 +88,6 @@ UINavigationControllerDelegate {
 
     //check all inputs
     func checkInputs() -> Bool {
-        return true 
         
         let event = eventName.hasText
         let group =  groupName.hasText
@@ -99,18 +99,22 @@ UINavigationControllerDelegate {
             let lengthGood = (generalAccessCode.text!.count < 16) && (generalAccessCode.text!.count > 1)
             let characters = "[A-Z0-9a-z]"
             let characterTest = NSPredicate(format:"SELF MATCHES %@", characters)
-            let charactersGood = characterTest.evaluate(with: generalAccessCode.text!)
-            
+            var charactersGood = characterTest.evaluate(with: generalAccessCode.text!)
             if lengthGood && charactersGood {
                 genCode = true
             }
             else {
                 genCode = false
+                print(lengthGood)
+                print(charactersGood)
+                print("false 1st")
             }
         }
         else {
             genCode = false
+            print("false 2nd")
         }
+        print("got to return statement")
         genCode = true
         return genCode && event && group && checkLen && map
     }

@@ -9,36 +9,48 @@
 import Foundation
 import MultipeerConnectivity
 
-class Manager: NSObject, MCSessionDelegate {
-    
-    public var session: MCSession!
-    var advertisementAssistant: MCAdvertiserAssistant!
-    let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
+class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAdvertiserAssistantDelegate {
     
     
+   
+    
+    public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
+    
+    public let session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+
     
     override init(){
         
+        
     }
     
-    public func setupAdvertising(){
+    
+    public func setupAdvertising(accessCode: String){
         
+        self.session.delegate = Manager()
         print("Is Creator")
+        var service = true
+        
+        if (service){
+            let serviceBrowser = MCNearbyServiceBrowser(peer: self.peerid, serviceType: accessCode)
+            serviceBrowser.delegate = self
+            print("Access Code: " + Globals.globals.passingData.0)
+            serviceBrowser.startBrowsingForPeers()
+            print("Advertising Started")
+            
+        }
+        else {
         //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
+        let advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCode, discoveryInfo: nil, session: Globals.globals.manager.session)
+            //advertisementAssistant.delegate = self
         print("Access Code: " + Globals.globals.passingData.0)
         advertisementAssistant.start()
         print("Advertising Started")
+        }
+    }
 
-        
-    }
     
-    public func setupSession(){
-        
-        session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-        session.delegate = Manager()
-    
-    }
+    //Delagate Stuff
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
         
@@ -61,6 +73,9 @@ class Manager: NSObject, MCSessionDelegate {
             print("Recieved Data")
             let temp = try JSONDecoder().decode(String.self, from: data)
             print(temp)
+            
+            
+            
         }
         catch {
             
@@ -90,5 +105,36 @@ class Manager: NSObject, MCSessionDelegate {
     // to a permanent location within its sandbox.
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
         
-    } 
+    }
+    
+    //Service Browser Delagate stuff
+    
+    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+     
+     
+        
+    }
+    
+    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+       
+  
+    }
+    
+    
+    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
+        
+        
+        
+    }
+    
+    
+    // An invitation was dismissed from screen.
+    public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
+        
+        
+         
+        
+    }
 }
+    
+

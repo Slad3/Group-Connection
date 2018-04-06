@@ -61,7 +61,7 @@ class Person {
             self.additionalNotes = person.additionalNotes
             self.hasCheckIn = person.hasCheckIn ?? false
             self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
-            let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
+            //let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
         }
         
         func toPerson() -> Person {

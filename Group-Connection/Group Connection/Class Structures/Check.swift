@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import MultipeerConnectivity
 
 class Check: NSObject, MKAnnotation {
     var sender: Person
@@ -36,7 +37,7 @@ class Check: NSObject, MKAnnotation {
         //has to somehow trigger receiveCheck() on the receiver's phone
         do {
             let temp = try JSONEncoder().encode("receiveCheck")
-            try Globals.globals.manager.session.send(temp, toPeers: [Globals.globals.manager.peerid], with: .reliable)
+            try Globals.globals.manager.session.send(temp, toPeers: [], with: .reliable)
             self.hasBeenSent = true
         }
         catch {
