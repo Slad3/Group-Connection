@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import MultipeerConnectivity
 class Event {
     //properties
     var generalAccessCode: String //access code to hook people up to the right compeititon
@@ -13,6 +14,7 @@ class Event {
     var importedMap: UIImage! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
     var competitionRoster: [Person] //list of all the users in the competion
     var teamRoster: [String] //list of all the people in the team
+    var peeridRoster: [MCPeerID] //list of all the peer ids on the team
     var eventName: String
     var checkInLength: Double //minutes until required check-in
     var timeTillNotification: Double //minutes in between reminders to check in
@@ -27,6 +29,7 @@ class Event {
         competitionRoster = []
         competitionRoster.append(user)
         teamRoster = []
+        peeridRoster = []
         teamRoster.append(user.firstName)
         
         eventName = ""
@@ -38,19 +41,23 @@ class Event {
     
     //Generates random string of 3 words
     static func makeCode() -> String {
-        var str = Lorem.words(3)
-        var pop = str.index(str.startIndex, offsetBy: 8)
+        var str = Lorem.words(2)
+        /*var pop = str.index(str.startIndex, offsetBy: 8)
         str.remove(at: pop)
         pop = str.index(str.startIndex, offsetBy: 16)
         str.remove(at: pop)
-        print("makeCode() gave us " + str)
+        print("makeCode() gave us " + str)*/
         //Make the String 10 charactors
+        
         if(str.count > 10){
-            let index = str.index(str.startIndex, offsetBy: 10)
+            let rangeOne = str.index(str.startIndex, offsetBy: 0)
+            let rangeTwo = str.index(str.startIndex, offsetBy: 10)
+            let stringRange = Range(uncheckedBounds: (lower: rangeOne, upper: rangeTwo))
+            str = str.replacingCharacters(in: stringRange, with: str)
             //str = str.prefix(upTo: index) // Hello
         }
         
-        
+
         
         print("Refined makeCode() gave us " + str)
         return str
