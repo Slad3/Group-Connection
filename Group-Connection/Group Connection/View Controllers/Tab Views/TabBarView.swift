@@ -21,6 +21,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         print("Using custom tab bar view controller")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         var vcs: [UIViewController]
         
         let map = storyboard.instantiateViewController(withIdentifier: "Map")

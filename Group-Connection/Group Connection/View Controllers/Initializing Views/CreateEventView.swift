@@ -69,6 +69,11 @@ UINavigationControllerDelegate {
             
             Globals.globals.event = event
             
+            //temp here; delete this eventually 
+            performSegue(withIdentifier: "To Main Tab", sender: nil)
+            //temp here
+            
+            
             let accessCodeThing = event.generalAccessCode
             //accessCodeThing = "accessCode"
             
