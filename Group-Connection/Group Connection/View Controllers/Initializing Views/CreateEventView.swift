@@ -92,7 +92,7 @@ UINavigationControllerDelegate {
 
     //check all inputs
     func checkInputs() -> Bool {
-        return true
+//        return true
         
         let event = eventName.hasText
         let group =  groupName.hasText
