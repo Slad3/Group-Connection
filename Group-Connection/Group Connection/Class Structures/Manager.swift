@@ -25,31 +25,6 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     }
     
     
-    public func setupAdvertising(accessCode: String){
-        
-        self.session.delegate = Manager()
-        print("Is Creator")
-        var service = true
-        
-        if (service){
-            let serviceBrowser = MCNearbyServiceBrowser(peer: self.peerid, serviceType: accessCode)
-            serviceBrowser.delegate = self
-            print("Access Code: " + Globals.globals.passingData.0)
-            serviceBrowser.startBrowsingForPeers()
-            print("Advertising Started")
-            
-        }
-        else {
-            //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-            let advertisementAssistant = MCAdvertiserAssistant(serviceType: accessCode, discoveryInfo: nil, session: Globals.globals.manager.session)
-            //advertisementAssistant.delegate = self
-            print("Access Code: " + Globals.globals.passingData.0)
-            advertisementAssistant.start()
-            print("Advertising Started")
-        }
-    }
-    
-    
     //Delagate Stuff
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){

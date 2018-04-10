@@ -171,13 +171,13 @@
 			isa = PBXGroup;
 			children = (
 				0E93E5BE2035FEA4003AD8EB /* TabBarView.swift */,
+				4E0B488E205C2E990089AD46 /* MentorView.swift */,
 				4E0B488C205C2B350089AD46 /* Sub.swift */,
 				0E8898BA1FE2EEF500B671A0 /* ProfileView.swift */,
 				0E8898B81FE2EED100B671A0 /* RosterView.swift */,
 				7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */,
 				F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */,
 				0E8898B61FE2EEC000B671A0 /* MapView.swift */,
-				4E0B488E205C2E990089AD46 /* MentorView.swift */,
 				0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */,
 			);
 			path = "Tab Views";
