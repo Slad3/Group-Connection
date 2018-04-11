@@ -15,6 +15,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     //var currentView: UIViewController!
     
+    var advertisementAssistant: MCAdvertiserAssistant!
     
     
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
             
             
             print("Is Creator")
-            var service = true
+            var service = false
             
             if (service){
                 let serviceBrowser = MCNearbyServiceBrowser(peer: Globals.globals.manager.peerid, serviceType: Globals.globals.passingData.0)
@@ -58,8 +59,9 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
             }
             else {
                 //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-                let advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
-                //advertisementAssistant.delegate = self
+                advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
+                advertisementAssistant.delegate = Globals.globals.manager
+                print("delegate setup")
                 print("Access Code: " + Globals.globals.passingData.0)
                 advertisementAssistant.start()
                 print("Advertising Started")

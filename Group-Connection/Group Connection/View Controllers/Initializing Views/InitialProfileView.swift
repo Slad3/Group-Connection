@@ -80,6 +80,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 print(Globals.globals.teamRoster[0].subteam)
                 Person.encodeEveryone()
                 Globals.globals.manager = Manager()
+                Globals.globals.manager.session.delegate = Manager()
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
