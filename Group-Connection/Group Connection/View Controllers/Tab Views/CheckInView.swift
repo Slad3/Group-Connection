@@ -114,8 +114,12 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
         
     }
     
-    @IBAction func swapToMentor() {
+    @IBAction func checkIn(_ sender: Any) {
+        //stubby stub stub
+        print("checking in")
+        
     }
+    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
