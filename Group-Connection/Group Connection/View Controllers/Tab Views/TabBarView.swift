@@ -58,13 +58,17 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
                 
             }
             else {
-                //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-                advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
-                advertisementAssistant.delegate = Globals.globals.manager
-                print("delegate setup")
-                print("Access Code: " + Globals.globals.passingData.0)
-                advertisementAssistant.start()
-                print("Advertising Started")
+                
+                Globals.globals.manager.advertisementHandler(code: Globals.globals.passingData.0)
+                
+                
+//                //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
+//                advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
+//                advertisementAssistant.delegate = Globals.globals.manager
+//                print("delegate setup")
+//                print("Access Code: " + Globals.globals.passingData.0)
+//                advertisementAssistant.start()
+//                print("Advertising Started")
             }
         }
         

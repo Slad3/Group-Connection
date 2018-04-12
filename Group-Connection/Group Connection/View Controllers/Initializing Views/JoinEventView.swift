@@ -34,17 +34,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     @IBOutlet weak var TellUser: UILabel!
     
     
-    @IBAction func advance(_ sender: Any) {
-        if(connectedToSession){
-            //add stuff here for session stuff if we need to
-            
-            
-            performSegue(withIdentifier: "To Main", sender: nil)
-        }
-    }
-    
-    
-    
     func updateTextFields(fg: String, en: String, cn: String, di: String, connectionThere: Bool) {
         FoundGroupText.text = fg
         EventNameText.text = en
@@ -73,11 +62,27 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
         }
+       
         
 
 
         print("Finished View Did Load")
     }
+    
+  /*  func checkAccessCode() -> Bool {
+        var good = false
+        if accessCodeBox.hasText {
+            for index in 0...accessCodeBox.text.count {
+                if
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    */
     
     @IBAction func FindSessions(_ sender: Any) {
         
@@ -100,6 +105,15 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         self.present(browserView, animated: true, completion: nil)
     }
     
+    @IBAction func forward(_ sender: Any) {
+        advance()
+    }
+    
+    func advance(){
+        performSegue(withIdentifier: "To Main", sender: nil)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -112,6 +126,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         //updateTextFields(fg: info["GroupName"]!, en: info["EventName"]!, cn: info["CreatorName"]!, di: info["Discription"]!, connectionThere: true)
+        
         self.connectedToSession = true
         dismiss(animated: true, completion: nil)
     }

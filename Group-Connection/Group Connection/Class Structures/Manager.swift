@@ -18,8 +18,24 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     
     public let session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
     
+    public var advertisementAssistant: MCAdvertiserAssistant!
     
     override init(){
+        
+        
+    }
+    
+    public func advertisementHandler(code: String) {
+        
+        //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
+        //advertisementAssistant.delegate = Globals.globals.manager
+        print("delegate setup")
+        print("Access Code: " + code)
+        advertisementAssistant.start()
+        print("Advertising Started")
+        
+        
         
         
     }
@@ -32,12 +48,15 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         switch state {
         case MCSessionState.connected:
             print("Connected: \(peerID.displayName)")
+            print(MCSessionState.self)
             
         case MCSessionState.connecting:
             print("Connecting: \(peerID.displayName)")
+            print(MCSessionState.self)
             
         case MCSessionState.notConnected:
             print("Not Connected: \(peerID.displayName)")
+            print(MCSessionState.self)
         }
         
     }
@@ -45,12 +64,27 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
         do {
-            print("Recieved Data")
-            let temp = try JSONDecoder().decode(String.self, from: data)
-            print(temp)
+            /*print("Recieved Data")
+            let sentData = try JSONDecoder().decode( Tuple.self, from: data)
+            print(sentData)
+            
+            switch(sentData.0){
+                
+                case "check":
+                    print("check")
+                
+                case "panic":
+                    print("panic")
+                
+                
+                default:
+                    print(sentData.0 + " is not recognized yet")
+                
+            }
             
             
             
+            */
         }
         catch {
             
