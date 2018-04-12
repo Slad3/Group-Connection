@@ -76,7 +76,7 @@ class ProfileView: Sub,  MFMailComposeViewControllerDelegate{
             
             // Configure the fields of the interface.
         composeVC.setToRecipients([Globals.globals.user.email])
-            composeVC.setSubject("Hello!")
+            composeVC.setSubject("Group Connection!")
             composeVC.setMessageBody("", isHTML: false)
             
             // Present the view controller modally.

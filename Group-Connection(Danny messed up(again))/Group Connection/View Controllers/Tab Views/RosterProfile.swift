@@ -78,7 +78,7 @@ class RosterProfileView: UIViewController ,MFMailComposeViewControllerDelegate {
             
             // Configure the fields of the interface.
             composeVC.setToRecipients([Globals.globals.teamRoster[Globals.globals.selectedIndex].email])
-            composeVC.setSubject("Hello!")
+            composeVC.setSubject("Group Connection")
             composeVC.setMessageBody("", isHTML: false)
             
             // Present the view controller modally.
