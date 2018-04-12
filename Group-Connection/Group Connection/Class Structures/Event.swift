@@ -57,7 +57,6 @@ class Event {
             //str = str.prefix(upTo: index) // Hello
         }
         
-
         
         print("Refined makeCode() gave us " + str)
         return str

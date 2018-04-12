@@ -14,9 +14,9 @@ import MultipeerConnectivity
 class MentorView: Sub, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var buddyList: UILabel!
-    @IBOutlet weak var userView: UILabel!
-    @IBOutlet weak var timeSinceLabel: UILabel!
-    @IBOutlet weak var timeDisplay: UILabel!
+    @IBOutlet weak var userView: UILabel! //the panic button, why I didn't call it panic is beyond me
+    @IBOutlet weak var timeSinceLabel: UILabel! //the label
+    @IBOutlet weak var timeEditor: UIDatePicker!
     @IBOutlet weak var groupMessage: UIButton!
     @IBOutlet weak var buddyListTitle: UILabel!
     @IBOutlet weak var changeBuddy: UIButton!
@@ -25,7 +25,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
-    
+    var textBox: UITextField!
     var students: [Person]!
     
     @objc func leaveVenue(_: Any) {
@@ -37,12 +37,8 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         print("sup")
     }
     
-    @objc func editTime(_ sender: Any?) {
-        //stub
-        print("editing time")
-        let textBox = UITextField(frame: timeDisplay.frame)
-        self.view.addSubview(textBox)
-        self.reloadInputViews()
+    @objc func editTime(_ sender: UIDatePicker) {
+        accessCode.text = timeEditor.countDownDuration.stringFormatted()
     }
     
     @objc func rotating(_ sender: UIRotationGestureRecognizer) {
@@ -74,6 +70,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         print("Notification")
+        
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
@@ -96,16 +93,6 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     private func panic() {
         //stub
         do {
-            let content = UNMutableNotificationContent()
-            content.title = "RIP Bro"
-            content.subtitle = "You was an inspiration to me"
-            //content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
-            content.badge = 31
-            content.categoryIdentifier = "tupac"
-            let identifier = "tupac"
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
             let data = try JSONEncoder().encode("panic")
             let mentors = Globals.getIDs(Globals.globals.getMentors())
             try Globals.globals.manager.session.send(data, toPeers: mentors, with: .reliable)
@@ -117,29 +104,36 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
     }
     
+    private func tupac() {
+        
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         super.isCheckInView = true
+        UNUserNotificationCenter.current().delegate = self
         
+        //rotate panic
         rotate = UIRotationGestureRecognizer(target: self, action: #selector(self.rotating))
         userView.addGestureRecognizer(rotate)
         userView.isUserInteractionEnabled = true
         userView.isMultipleTouchEnabled = true
         
-        UNUserNotificationCenter.current().delegate = self
+        //timer thing
+        timeEditor.addTarget(self, action: #selector(editTime(_:)), for: .valueChanged)
+        timeEditor.countDownDuration = TimeInterval()
         
-        let tapper = UITapGestureRecognizer(target: self, action: #selector(editTime(_:)))
-        tapper.numberOfTapsRequired = 2
-        timeDisplay.addGestureRecognizer(tapper)
+        //delete 
+        accessCode.text = "00:00.0"
+
         
         if Globals.globals.event != nil {
             accessCode.text = Globals.globals.event.generalAccessCode
@@ -159,5 +153,21 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         print("mentor disappear")
     }
     
+    //lower any keyboards when the user taps anywhere besides a text box
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}
 
+extension TimeInterval {
+    // builds string in app's labels format 00:00.0
+    func stringFormatted() -> String {
+//        var miliseconds = self.rounded(.towardZero)
+//        miliseconds = miliseconds.truncatingRemainder(dividingBy: 10)
+        let interval = Int(self)
+//        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d.%.f", hours, minutes)
+    }
 }

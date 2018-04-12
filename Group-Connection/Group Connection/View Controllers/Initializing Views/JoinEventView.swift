@@ -67,7 +67,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Globals.globals.session.delegate = Manager()
         print("Join Event View Loading")
         
         if !connectedToSession{
@@ -85,7 +84,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         print("Start Function")
         
         if !accessCodeBox.hasText {
-            accessCode = ""
+            accessCode = "asdf"
         }
         else {
             accessCode = accessCodeBox.text!
