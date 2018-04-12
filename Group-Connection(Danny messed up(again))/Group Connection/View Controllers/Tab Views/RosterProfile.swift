@@ -77,9 +77,9 @@ class RosterProfileView: UIViewController ,MFMailComposeViewControllerDelegate {
             composeVC.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
             
             // Configure the fields of the interface.
-            composeVC.setToRecipients([Globals.globals.user.email])
+            composeVC.setToRecipients([Globals.globals.teamRoster[Globals.globals.selectedIndex].email])
             composeVC.setSubject("Hello!")
-            composeVC.setMessageBody("Hello from California!", isHTML: false)
+            composeVC.setMessageBody("", isHTML: false)
             
             // Present the view controller modally.
             self.present(composeVC, animated: true, completion: nil)

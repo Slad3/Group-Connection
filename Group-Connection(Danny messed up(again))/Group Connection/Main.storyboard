@@ -174,10 +174,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU8-Xb-QMW">
-                                <rect key="frame" x="34" y="123" width="206" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqp-XT-vkl">
                                 <rect key="frame" x="45" y="259" width="185" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,6 +279,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
                             </textView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU8-Xb-QMW">
+                                <rect key="frame" x="16" y="128" width="206" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -306,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2673" y="-915"/>
+            <point key="canvasLocation" x="-2674.4000000000001" y="-915.29235382308855"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">
@@ -703,10 +703,10 @@
             </objects>
             <point key="canvasLocation" x="881" y="1179"/>
         </scene>
-        <!--Profile \-->
+        <!--Profile -->
         <scene sceneID="Ygy-WI-ez1">
             <objects>
-                <viewController storyboardIdentifier="ProfileView" title="Profile \" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileView" title="Profile " useStoryboardIdentifierAsRestorationIdentifier="YES" id="5pG-ab-PXM" customClass="ProfileView" customModule="Group_Connection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="acD-Rv-CI5"/>
                         <viewControllerLayoutGuide type="bottom" id="4fY-JD-Wll"/>

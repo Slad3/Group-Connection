@@ -48,6 +48,8 @@ class ProfileView: Sub,  MFMailComposeViewControllerDelegate{
         let tempImage = user?.profilePhoto
         profilePhoto.contentMode = .scaleAspectFit
         profilePhoto.image = tempImage
+        //-------------
+      
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,7 +77,7 @@ class ProfileView: Sub,  MFMailComposeViewControllerDelegate{
             // Configure the fields of the interface.
         composeVC.setToRecipients([Globals.globals.user.email])
             composeVC.setSubject("Hello!")
-            composeVC.setMessageBody("Hello from California!", isHTML: false)
+            composeVC.setMessageBody("", isHTML: false)
             
             // Present the view controller modally.
             self.present(composeVC, animated: true, completion: nil)
