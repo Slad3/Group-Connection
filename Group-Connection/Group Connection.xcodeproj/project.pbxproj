@@ -21,6 +21,7 @@
 		0E9EF03E1FD71D6500CD89CC /* Group_ConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF03D1FD71D6500CD89CC /* Group_ConnectionTests.swift */; };
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
 		4E0B488D205C2B350089AD46 /* Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488C205C2B350089AD46 /* Sub.swift */; };
+		4E134FA7207FC4EA00A6C042 /* SendCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E134FA6207FC4EA00A6C042 /* SendCheck.swift */; };
 		4EDC7F93207BD0F10041AB0B /* MentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488E205C2E990089AD46 /* MentorView.swift */; };
 		5D0503C72000831A00C21049 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0503C62000831A00C21049 /* Check.swift */; };
 		5D0503CA20013A8A00C21049 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0503C920013A8A00C21049 /* MapKit.framework */; };
@@ -73,6 +74,7 @@
 		0E9EF04A1FD71D6500CD89CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E0B488C205C2B350089AD46 /* Sub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sub.swift; sourceTree = "<group>"; };
 		4E0B488E205C2E990089AD46 /* MentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorView.swift; sourceTree = "<group>"; };
+		4E134FA6207FC4EA00A6C042 /* SendCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCheck.swift; sourceTree = "<group>"; };
 		4E9018F92047203A005ACA2F /* Group Connection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Group Connection.entitlements"; sourceTree = "<group>"; };
 		5D0503C62000831A00C21049 /* Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		5D0503C920013A8A00C21049 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -179,6 +181,7 @@
 				F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */,
 				0E8898B61FE2EEC000B671A0 /* MapView.swift */,
 				0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */,
+				4E134FA6207FC4EA00A6C042 /* SendCheck.swift */,
 			);
 			path = "Tab Views";
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */,
 				0E1D348B1FFBF70D00D29832 /* AppDelegate.swift in Sources */,
 				5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */,
+				4E134FA7207FC4EA00A6C042 /* SendCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,7 +32,7 @@ class Check: NSObject, MKAnnotation {
         self.hasBeenSent = false
     }
     
-    func sendThisCheck(_ person: Person) {
+    func sendThisCheck(_ toPerson: Person) {
         //fill in once we've gotten the connectivity stuff figured out
         //has to somehow trigger receiveCheck() on the receiver's phone
         do {

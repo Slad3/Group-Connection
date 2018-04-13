@@ -152,12 +152,12 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
         
         self.hidesBottomBarWhenPushed = false
         
-        if Globals.globals.event != nil {
-            accessCode.text = Globals.globals.event.generalAccessCode
-        }
-        else {
-            accessCode.text = "Here's your code, Ben"
-        }
+//        if Globals.globals.event != nil {
+//            accessCode.text = Globals.globals.event.generalAccessCode
+//        }
+//        else {
+//            accessCode.text = "Here's your code, Ben"
+//        }
     }
     
     override func didReceiveMemoryWarning() {
