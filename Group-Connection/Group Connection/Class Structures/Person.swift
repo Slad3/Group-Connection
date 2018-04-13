@@ -27,11 +27,9 @@ class Person {
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
     var studentList: [Person]!
-    var checkInTime: Int! //may be changed
     
     //student-specific stuff
     var buddyList: [Person]!
-    var mentor: Person! 
     
     //encoding stuff
     static var jsonDerulo: Data!
@@ -63,7 +61,8 @@ class Person {
             self.additionalNotes = person.additionalNotes
             self.hasCheckIn = person.hasCheckIn ?? false
             self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
-            //let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
+            let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
+            
         }
         
         func toPerson() -> Person {
@@ -116,6 +115,7 @@ class Person {
         subteam = ""
         additionalNotes = ""
         checkInStatus = false
+        buddyList = []
         print("I hope you didn't use the default init, you jackass")
     }
     
@@ -132,6 +132,7 @@ class Person {
         self.fullName = self.firstName + " " + self.lastName
         self.checkArray = []
         self.checkInStatus = false
+        self.buddyList = []
         return
     }
     
@@ -188,6 +189,6 @@ class Person {
         
         let child = Person(firstName: Lorem.firstName, lastName: Lorem.lastName, isMentor: false, age: age, email: Lorem.emailAddress, phoneNumber: str, additionalNotes: Lorem.paragraph, ssubteam: "Programming")
         return child
-    } 
+    }
 }
 

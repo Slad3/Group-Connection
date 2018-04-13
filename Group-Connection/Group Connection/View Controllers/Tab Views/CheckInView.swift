@@ -11,25 +11,25 @@ import Foundation
 import MultipeerConnectivity
 import UserNotifications
 
-class CheckInView: Sub, UNUserNotificationCenterDelegate {
+class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var buddyList: UILabel!
+    // @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
     @IBOutlet weak var userView: UILabel!
     @IBOutlet weak var timeSinceLabel: UILabel!
     @IBOutlet weak var timeDisplay: UILabel!
     @IBOutlet weak var groupMessage: UIButton!
-    @IBOutlet weak var buddyListExtension: UILabel!
-    @IBOutlet weak var buddyListTitle: UILabel!
+    // @IBOutlet weak var buddyListExtension: UILabel!
+    // @IBOutlet weak var buddyListTitle: UILabel!
     @IBOutlet weak var changeBuddy: UIButton!
-    @IBOutlet weak var accessCode: UILabel!
-    
     //@IBOutlet weak var title: UINavigationBar!
+    @IBOutlet weak var table: UITableView!
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
-   
+    
     var students: [Person]!
+    
     
     @objc func leaveVenue(_: Any) {
         //stub
@@ -84,10 +84,45 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
         }
     }
     
+    
+    
+    
+    // tells how many cells you want to have in the roster. This will be the number of people at the competition
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(Globals.globals.user.buddyList.count )
+        print("Buddy count")
+        
+        return Globals.globals.user.buddyList.count
+    }
+    
+    
+    // tells what should be displayed in each cell.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //test this here
+        let buddyCell = tableView.dequeueReusableCell(withIdentifier: "buddyCell", for: indexPath) as! BuddyTable
+        buddyCell.buddyName.text = Globals.globals.user.buddyList[indexPath.row].fullName
+        if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
+            print("buddy thing is yes true da")
+            buddyCell.statusPic.image = UIImage(contentsOfFile: "heavy-check-,arl_2714.png")
+            buddyCell.statusPic.contentMode = .scaleAspectFit
+        }
+        else {
+            print("buddy thing is yes true da")
+            
+            buddyCell.statusPic.image = UIImage(contentsOfFile: "Red-X.svg")
+            buddyCell.statusPic.contentMode = .scaleAspectFit
+        }
+        return buddyCell
+    }
+    
+    
     @IBAction func changeBuddies(_ sender: Any) {
-        //stub
-//        performSegue(withIdentifier: "toMentor", sender: nil)
-
+        
+        performSegue(withIdentifier: "ToBuddyRoster", sender: nil)
+        
+        print("change buddies")
+        
     }
     
     private func panic() {
@@ -111,15 +146,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
         catch {
             print("panicking failed")
         }
-        
     }
-    
-    @IBAction func checkIn(_ sender: Any) {
-        //stubby stub stub
-        print("checking in")
-        
-    }
-    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
@@ -135,14 +162,18 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
             checkInLabel.text = "Keep trying!"
         }
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        table.delegate = self
+        table.dataSource = self
+        
+        table.reloadData()
         
         super.isCheckInView = true
-    
+        
         rotate = UIRotationGestureRecognizer(target: self, action: #selector(self.rotating(_:)) )
         userView.addGestureRecognizer(rotate)
         userView.isUserInteractionEnabled = true
@@ -160,8 +191,20 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate {
 //        }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        table.reloadData()
+        print("viewdid appear")
+    }
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
+
+

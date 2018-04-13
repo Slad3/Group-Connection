@@ -29,6 +29,8 @@
 		5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D128D151FE4EC3C00D38505 /* InitialProfileView.swift */; };
 		5D37D3F51FE44BF100A6114F /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37D3F41FE44BF000A6114F /* Globals.swift */; };
 		5DF487C71FF008FE00C2947F /* LoremSwiftum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */; };
+		7F75D7052081102300AEDB30 /* BuddyRosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F75D7042081102200AEDB30 /* BuddyRosterView.swift */; };
+		7F75D707208110A500AEDB30 /* BuddyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F75D706208110A400AEDB30 /* BuddyTable.swift */; };
 		7FE223A0202CC3410029775C /* RosterViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */; };
 		B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8C7082025676300B507C7 /* JoinEventView.swift */; };
 		F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */; };
@@ -82,6 +84,8 @@
 		5D128D151FE4EC3C00D38505 /* InitialProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileView.swift; sourceTree = "<group>"; };
 		5D37D3F41FE44BF000A6114F /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremSwiftum.swift; sourceTree = "<group>"; };
+		7F75D7042081102200AEDB30 /* BuddyRosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuddyRosterView.swift; path = "../../../../../Group-Connection5/Group-Connection/Group Connection/View Controllers/Tab Views/BuddyRosterView.swift"; sourceTree = "<group>"; };
+		7F75D706208110A400AEDB30 /* BuddyTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuddyTable.swift; path = "../../../../../Group-Connection4/Group-Connection/Group Connection/View Controllers/BuddyTable.swift"; sourceTree = "<group>"; };
 		7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		B5B8C7082025676300B507C7 /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterProfile.swift; sourceTree = "<group>"; };
@@ -390,9 +394,11 @@
 			files = (
 				4EDC7F93207BD0F10041AB0B /* MentorView.swift in Sources */,
 				0E93E5BF2035FEA4003AD8EB /* TabBarView.swift in Sources */,
+				7F75D7052081102300AEDB30 /* BuddyRosterView.swift in Sources */,
 				0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */,
 				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
 				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
+				7F75D707208110A500AEDB30 /* BuddyTable.swift in Sources */,
 				5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */,
 				B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */,
 				F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */,
