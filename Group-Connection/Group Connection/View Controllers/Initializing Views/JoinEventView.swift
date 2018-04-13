@@ -56,7 +56,9 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("Join Event View Loading")
+
         
         if !connectedToSession{
             connectedOrNot.backgroundColor = UIColor.red

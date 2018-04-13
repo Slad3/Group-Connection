@@ -14,14 +14,21 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     
     
     
-    public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
-    
-    public let session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-    
-    public var advertisementAssistant: MCAdvertiserAssistant!
+        public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
+//
+        public var session: MCSession!
+//
+        public var advertisementAssistant: MCAdvertiserAssistant!
     
     override init(){
         
+        super.init()
+        
+        session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: .none)
+        
+        session.delegate = self
+        
+
         
     }
     
@@ -35,7 +42,7 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         advertisementAssistant.start()
         print("Advertising Started")
         
-        
+    
         
         
     }
