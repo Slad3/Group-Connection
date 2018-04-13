@@ -27,9 +27,11 @@ class Person {
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
     var studentList: [Person]!
+    var checkInTime: Int! //may be changed
     
     //student-specific stuff
     var buddyList: [Person]!
+    var mentor: Person! 
     
     //encoding stuff
     static var jsonDerulo: Data!

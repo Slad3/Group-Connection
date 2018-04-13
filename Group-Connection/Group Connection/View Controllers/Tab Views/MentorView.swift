@@ -131,7 +131,6 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         timeEditor.addTarget(self, action: #selector(editTime(_:)), for: .valueChanged)
         timeEditor.countDownDuration = TimeInterval()
         
-        
         //delete 
         accessCode.text = "00:00.0"
 
