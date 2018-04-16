@@ -24,7 +24,7 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         
         super.init()
         
-        session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: .none)
+        session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.required)
         
         session.delegate = self
         
@@ -36,7 +36,7 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         
         //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
         advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
-        //advertisementAssistant.delegate = Globals.globals.manager
+        advertisementAssistant.delegate = Globals.globals.manager
         print("delegate setup")
         print("Access Code: " + code)
         advertisementAssistant.start()
@@ -51,28 +51,28 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     //Delagate Stuff
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
-        
+        print("got to connection state")
         switch state {
         case MCSessionState.connected:
             print("Connected: \(peerID.displayName)")
-            print(MCSessionState.self)
+  
             
         case MCSessionState.connecting:
             print("Connecting: \(peerID.displayName)")
-            print(MCSessionState.self)
+
             
         case MCSessionState.notConnected:
             print("Not Connected: \(peerID.displayName)")
-            print(MCSessionState.self)
+
         }
         
     }
     
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
-        do {
-            /*print("Recieved Data")
-            let sentData = try JSONDecoder().decode( Tuple.self, from: data)
+        /*do {
+            print("Recieved Data")
+            let sentData = try JSONDecoder().decode( , from: data)
             print(sentData)
             
             switch(sentData.0){
@@ -91,11 +91,12 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
             
             
             
-            */
+            
         }
         catch {
             
         }
+        */
     }
     
     func session (_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
@@ -126,13 +127,13 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     //Service Browser Delagate stuff
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        
+        print("found peer")
         
         
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        
+        print("lost peer")
         
     }
     
