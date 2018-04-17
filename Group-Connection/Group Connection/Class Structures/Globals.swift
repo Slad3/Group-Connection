@@ -17,7 +17,7 @@ class Globals {
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
     //public var session: MCSession!
     var user: Person!
-    let hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
+    var hans: Person
     var event: Event!
     var teamRoster: [Person]
     var selectedIndex: Int!
@@ -27,15 +27,18 @@ class Globals {
     
     var manager: Manager!
     
-    var tempToke: [String]! 
+    var tempToke: [String]!
     
     init() {
         initialized = false
         inEvent = false
         isMentor = false
+        hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
+        hans.checkInStatus = true
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
-   
+        
+        
     }
     
     func getStudents() -> [Person] {
@@ -78,6 +81,7 @@ class Globals {
         teamRoster.reserveCapacity(upperbound)
         for _ in 0...upperbound {
             teamRoster.append(Person.reachedFortyAndIsDesperate())
+            
         }
         return
     }

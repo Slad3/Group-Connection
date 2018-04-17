@@ -23,7 +23,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var subPicker: UIPickerView!
     
-    var subteam: String! = Globals.globals.teamRoster[0].subteam 
+    var subteam: String! = Globals.globals.teamRoster[0].subteam
     var imagePressed: Bool = false
     
     let picker = UIImagePickerController()
@@ -53,7 +53,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     
     @IBAction func makeUser(_ sender: Any) {
         if (firstName.hasText && lastName.hasText && ageText.hasText && phoneNumber.hasText && email.hasText)   {
-        
+            
             let fName = firstName.text!
             let lName = lastName.text!
             let age: Int = Int(ageText.text!)!
@@ -63,7 +63,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             
             let phone = phoneNumber.text!
             var mentor = false
-        
+            
             if age > 19 {
                 mentor = true
             }
@@ -92,7 +92,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
                         Person.encodeEveryone()
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        print("join event")
+                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in Globals.globals.initialized = false
@@ -115,7 +117,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         self.performSegue(withIdentifier: "toTabTemp", sender: nil)
                         //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
-
+                    
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
                     if let popoverController = actionSheet.popoverPresentationController{
@@ -128,7 +130,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 }
             }
             else { //if checkInputs() == false
-                 mistakeLabel.text = "Please input all values correctly before proceeding."
+                mistakeLabel.text = "Please input all values correctly before proceeding."
             }
         }
         else { //if no text
@@ -142,8 +144,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         picker.delegate = self
         additionalNotes.delegate = self
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         if Globals.globals.initialized {
             let user = Globals.globals.user
@@ -210,7 +212,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
         imagePressed = false
         dismiss(animated: true, completion: nil)
     }
-
+    
     //started editing additionalNotes
     func textViewDidBeginEditing(_ textView: UITextView) {
         additionalNotes.text = ""
@@ -235,7 +237,9 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             print("no photo input")
             return false
         }
-        
+        print("Hans will be added to the buddy roster")
+        Globals.globals.user.buddyList.append(Globals.globals.hans)
+        print(Globals.globals.user.buddyList[0].fullName)
         return true
     }
     
