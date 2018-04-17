@@ -22,6 +22,7 @@
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
 		0EFCDF6F208657D300F13155 /* BuddyRosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCDF6D208657D300F13155 /* BuddyRosterView.swift */; };
 		0EFCDF70208657D300F13155 /* BuddyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCDF6E208657D300F13155 /* BuddyTable.swift */; };
+		0EFCDF7420865EE700F13155 /* Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCDF7320865EE700F13155 /* Present.swift */; };
 		4E0B488D205C2B350089AD46 /* Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488C205C2B350089AD46 /* Sub.swift */; };
 		4EDC7F93207BD0F10041AB0B /* MentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488E205C2E990089AD46 /* MentorView.swift */; };
 		5D0503C72000831A00C21049 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0503C62000831A00C21049 /* Check.swift */; };
@@ -75,6 +76,7 @@
 		0E9EF04A1FD71D6500CD89CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFCDF6D208657D300F13155 /* BuddyRosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyRosterView.swift; sourceTree = "<group>"; };
 		0EFCDF6E208657D300F13155 /* BuddyTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTable.swift; sourceTree = "<group>"; };
+		0EFCDF7320865EE700F13155 /* Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Present.swift; sourceTree = "<group>"; };
 		4E0B488C205C2B350089AD46 /* Sub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sub.swift; sourceTree = "<group>"; };
 		4E0B488E205C2E990089AD46 /* MentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorView.swift; sourceTree = "<group>"; };
 		4E9018F92047203A005ACA2F /* Group Connection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Group Connection.entitlements"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				0E8898BC1FE2F69500B671A0 /* Person.swift */,
 				5DF487C61FF008FE00C2947F /* LoremSwiftum.swift */,
 				5D37D3F41FE44BF000A6114F /* Globals.swift */,
+				0EFCDF7320865EE700F13155 /* Present.swift */,
 			);
 			path = "Class Structures";
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				0E5D271B2024DA9A002F360F /* Manager.swift in Sources */,
 				4E0B488D205C2B350089AD46 /* Sub.swift in Sources */,
 				5D128D061FE4D82700D38505 /* Event.swift in Sources */,
+				0EFCDF7420865EE700F13155 /* Present.swift in Sources */,
 				0E8898B51FE2EE1F00B671A0 /* CheckInView.swift in Sources */,
 				5D0503C72000831A00C21049 /* Check.swift in Sources */,
 				0E8898B31FE2ED9C00B671A0 /* CreateEventView.swift in Sources */,

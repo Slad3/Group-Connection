@@ -32,6 +32,17 @@ class Check: NSObject, MKAnnotation {
         self.hasBeenSent = false
     }
     
+    override init(){
+        self.sender = Person()
+        self.coordinate  = CLLocation(latitude: 44.821152, longitude: -93.120435)
+        self.senderDescription = ""
+        self.timeSent = Date()
+        self.title = ""
+        self.subtitle = ""
+        self.hasBeenSent = false
+        
+    }
+    
     func sendThisCheck(_ person: Person) {
         //fill in once we've gotten the connectivity stuff figured out
         //has to somehow trigger receiveCheck() on the receiver's phone
