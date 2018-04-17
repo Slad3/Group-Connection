@@ -74,7 +74,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.initialized = true
                 
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam!)
-                Globals.globals.setPeerid(fullname: Globals.globals.user.fullName)
                 Globals.globals.user.profilePhoto = profilePhoto.image
                 Globals.globals.teamRoster[0] = Globals.globals.user
                 print(Globals.globals.teamRoster[0].subteam)
