@@ -19,8 +19,6 @@ class Present {
     
     
     
-    
-    
     init(){
         identifier = "Nothing"
         check = Check()

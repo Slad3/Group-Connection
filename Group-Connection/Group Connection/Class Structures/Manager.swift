@@ -8,6 +8,7 @@
 
 import Foundation
 import MultipeerConnectivity
+import CloudKit
 
 class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAdvertiserAssistantDelegate {
     
@@ -15,9 +16,9 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     
     
         public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
-//
+
         public var session: MCSession!
-//
+
         public var advertisementAssistant: MCAdvertiserAssistant!
     
     override init(){
@@ -70,12 +71,12 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
-        /*do {
+        do {
             print("Recieved Data")
-            let sentData = try JSONDecoder().decode( , from: data)
-            print(sentData)
+            let sentData = try JSONDecoder().decode(Present.self, from: data)
+            print(sentData.identifier)
             
-            switch(sentData.0){
+            switch(sentData.identfier){
                 
                 case "check":
                     print("check")
@@ -96,7 +97,7 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         catch {
             
         }
-        */
+        
     }
     
     func session (_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
