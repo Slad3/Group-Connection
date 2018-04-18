@@ -34,7 +34,8 @@ class Check: NSObject, MKAnnotation {
     
     override init(){
         self.sender = Person()
-        self.coordinate  = CLLocation(latitude: 44.821152, longitude: -93.120435)
+        //self.coordinate  = CLLocation(latitude: 44.821152, longitude: -93.120435)
+        self.coordinate = CLLocationCoordinate2D(latitude: 23, longitude: 34)
         self.senderDescription = ""
         self.timeSent = Date()
         self.title = ""
