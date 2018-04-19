@@ -51,7 +51,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
             
             if (service){
                 let serviceBrowser = MCNearbyServiceBrowser(peer: Globals.globals.manager.peerid, serviceType: Globals.globals.passingData.0)
-                serviceBrowser.delegate = Globals.globals.manager
+                //serviceBrowser.delegate = Globals.globals.manager
                 print("Access Code: " + Globals.globals.passingData.0)
                 serviceBrowser.startBrowsingForPeers()
                 print("Advertising Started")

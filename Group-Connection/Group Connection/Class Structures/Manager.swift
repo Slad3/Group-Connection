@@ -10,7 +10,7 @@ import Foundation
 import MultipeerConnectivity
 import CloudKit
 
-class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAdvertiserAssistantDelegate {
+class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     
     
@@ -73,20 +73,21 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
         do {
             print("Recieved Data")
-            let sentData = try JSONDecoder().decode(Present.self, from: data)
-            print(sentData.identifier)
+            //let sentData = try JSONDecoder().decode(Present.self, from: data)
+            let sentData = try JSONDecoder().decode(String.self, from: data)
+            print(sentData)
             
-            switch(sentData.identfier){
+            switch(sentData){
                 
                 case "check":
-                    print("check")
+                    print("check received")
                 
                 case "panic":
-                    print("panic")
+                    print("panicm received")
                 
                 
                 default:
-                    print(sentData.0 + " is not recognized yet")
+                    print(" is not recognized yet")
                 
             }
             
@@ -100,10 +101,7 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         
     }
     
-    func session (_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
-        certificateHandler (true)
-    }
-    
+   
     
     
     // Received a byte stream from remote peer.
@@ -125,34 +123,6 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         
     }
     
-    //Service Browser Delagate stuff
-    
-    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print("found peer")
-        
-        
-    }
-    
-    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        print("lost peer")
-        
-    }
-    
-    
-    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
-        
-        
-        
-    }
-    
-    
-    // An invitation was dismissed from screen.
-    public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
-        
-        
-        
-        
-    }
 }
 
 

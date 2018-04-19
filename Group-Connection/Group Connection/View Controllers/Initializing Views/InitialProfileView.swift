@@ -92,7 +92,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
                         Person.encodeEveryone()
                         print("join event")
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
@@ -113,7 +113,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
