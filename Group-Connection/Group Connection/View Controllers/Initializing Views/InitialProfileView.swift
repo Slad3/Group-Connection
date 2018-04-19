@@ -74,10 +74,20 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.initialized = true
                 
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam!)
+                
+                if !Globals.globals.user.isMentor {
+                    Globals.globals.user.mentor = Globals.globals.hans
+                    print("hans is a mentor now")
+                }
+                
                 Globals.globals.setPeerid(fullname: Globals.globals.user.fullName)
+                
                 Globals.globals.user.profilePhoto = profilePhoto.image
+                
                 Globals.globals.teamRoster[0] = Globals.globals.user
+                
                 print(Globals.globals.teamRoster[0].subteam)
+                
                 Person.encodeEveryone()
                 
                 
@@ -92,6 +102,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
                         Person.encodeEveryone()
                         print("join event")
+                        Globals.globals.inEvent = true
                         self.performSegue(withIdentifier: "toTabTemp", sender: nil)
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
@@ -216,6 +227,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     func textViewDidBeginEditing(_ textView: UITextView) {
         additionalNotes.text = ""
     }
+    
     //check user inputs
     private func checkInputs(age: String?, email: String, phone: String) -> Bool {
         if !checkAge(age: age) {
@@ -236,9 +248,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             print("no photo input")
             return false
         }
-        print("Hans will be added to the buddy roster")
-        Globals.globals.user.buddyList.append(Globals.globals.hans)
-        print(Globals.globals.user.buddyList[0].fullName)
+
         return true
     }
     

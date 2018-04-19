@@ -35,13 +35,16 @@ class Check: NSObject, MKAnnotation {
     func sendThisCheck(_ toPerson: Person) {
         //fill in once we've gotten the connectivity stuff figured out
         //has to somehow trigger receiveCheck() on the receiver's phone
+    
+        print("sending check")
         do {
             let temp = try JSONEncoder().encode("receiveCheck")
             try Globals.globals.manager.session.send(temp, toPeers: [], with: .reliable)
             self.hasBeenSent = true
+            print("sent")
         }
         catch {
-            print("sending check failed")
+            print("failed")
         }
     }
     

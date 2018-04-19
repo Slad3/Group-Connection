@@ -37,11 +37,13 @@ class RosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearchBarDe
         filterD = data
         
         //delete everything below here eventually
-        Globals.globals.autopopulateRoster()
-        data = Globals.globals.teamRoster
-        filterD = data
-        table.reloadData()
-        
+        if !Globals.globals.visitedRoster{
+            Globals.globals.autopopulateRoster()
+            data = Globals.globals.teamRoster
+            filterD = data
+            table.reloadData()
+            Globals.globals.visitedRoster = true
+        }
     }
     
     // tells how many cells you want to have in the roster. This will be the number of people at the competition

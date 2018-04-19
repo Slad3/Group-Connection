@@ -25,9 +25,10 @@ class Globals {
     var passingData: (String, String, String, String, String )
     var isCreator = false
     
+    var visitedRoster: Bool = false
+        
     var manager: Manager!
     
-    var tempToke: [String]!
     
     init() {
         initialized = false
@@ -84,6 +85,19 @@ class Globals {
             
         }
         return
+    }
+    
+    func autopopulate(_ persons: [Person]) -> [Person]{
+        let upperbound = 3
+        var peeps = persons
+        
+        peeps.reserveCapacity(upperbound)
+        
+        for _ in 0...upperbound {
+            peeps.append(Person.reachedFortyAndIsDesperate())
+        }
+        
+        return peeps
     }
     
     static func getIDs(_ peeps: [Person]) -> [MCPeerID] {
