@@ -76,12 +76,12 @@ UINavigationControllerDelegate {
 
             let accessCodeThing = event.generalAccessCode
             //accessCodeThing = "accessCode"
-//
-//            let fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
-//            Globals.globals.isCreator = true
-//            print(Globals.globals.isCreator)
-//            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
-//            print("Doing Segue")
+
+            let fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
+            Globals.globals.isCreator = true
+            print(Globals.globals.isCreator)
+            Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
+            print("Doing Segue")
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             

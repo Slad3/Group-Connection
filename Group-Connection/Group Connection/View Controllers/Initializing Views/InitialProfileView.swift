@@ -89,7 +89,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 print(Globals.globals.teamRoster[0].subteam)
                 
                 Person.encodeEveryone()
-                
+                Globals.globals.manager = Manager()
+
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
@@ -124,7 +125,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     

@@ -70,12 +70,7 @@ class Globals {
         }
         return nil
     }
-    
-    func setPeerid(fullname: String){
-        
-        let peerid = MCPeerID(displayName: fullname)
-        
-    }
+     
     
     func autopopulateRoster() {
         let upperbound = Int(arc4random_uniform(50))

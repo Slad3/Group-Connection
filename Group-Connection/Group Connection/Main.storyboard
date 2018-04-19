@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,11 +32,18 @@
                                                 <segue destination="Xly-Nh-swL" kind="show" id="haS-TD-5Sn"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Go" id="I6V-ok-78l">
-                                            <connections>
-                                                <action selector="advance:" destination="Iw0-hi-peY" id="URc-GB-Iws"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Go" id="dS9-CD-tlQ">
+                                                <connections>
+                                                    <action selector="forward:" destination="Iw0-hi-peY" id="XML-3T-0Ds"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Find Events" id="t8q-dh-gvV">
+                                                <connections>
+                                                    <action selector="FindSessions:" destination="Iw0-hi-peY" id="5VD-mH-QC2"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -47,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yhx-en-xl9">
-                                <rect key="frame" x="212" y="80" width="74" height="30"/>
+                                <rect key="frame" x="212" y="80" width="147" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -128,15 +136,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-WG-R2q">
-                                <rect key="frame" x="317" y="77" width="42" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Find"/>
-                                <connections>
-                                    <action selector="FindSessions:" destination="Iw0-hi-peY" eventType="touchUpInside" id="dsC-Qf-SXe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -306,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l55-ht-6Us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161" y="-1639"/>
+            <point key="canvasLocation" x="-2394" y="-1280"/>
         </scene>
         <!--Create-->
         <scene sceneID="4QD-J6-kLa">

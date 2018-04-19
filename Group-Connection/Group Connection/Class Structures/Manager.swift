@@ -8,18 +8,42 @@
 
 import Foundation
 import MultipeerConnectivity
+import CloudKit
 
-class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAdvertiserAssistantDelegate {
+class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     
     
     
-    public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
-    
-    public let session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-    
+        public let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
+
+        public var session: MCSession!
+
+        public var advertisementAssistant: MCAdvertiserAssistant!
     
     override init(){
+        
+        super.init()
+        
+        session = MCSession(peer: MCPeerID(displayName: Globals.globals.user.fullName), securityIdentity: nil, encryptionPreference: MCEncryptionPreference.required)
+        
+        session.delegate = self
+        
+
+        
+    }
+    
+    public func advertisementHandler(code: String) {
+        
+        //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
+        advertisementAssistant.delegate = Globals.globals.manager
+        print("delegate setup")
+        print("Access Code: " + code)
+        advertisementAssistant.start()
+        print("Advertising Started")
+        
+    
         
         
     }
@@ -28,16 +52,19 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     //Delagate Stuff
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
-        
+        print("got to connection state")
         switch state {
         case MCSessionState.connected:
             print("Connected: \(peerID.displayName)")
+  
             
         case MCSessionState.connecting:
             print("Connecting: \(peerID.displayName)")
+
             
         case MCSessionState.notConnected:
             print("Not Connected: \(peerID.displayName)")
+
         }
         
     }
@@ -46,8 +73,24 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
         do {
             print("Recieved Data")
-            let temp = try JSONDecoder().decode(String.self, from: data)
-            print(temp)
+            //let sentData = try JSONDecoder().decode(Present.self, from: data)
+            let sentData = try JSONDecoder().decode(String.self, from: data)
+            print(sentData)
+            
+            switch(sentData){
+                
+                case "check":
+                    print("check received")
+                
+                case "panic":
+                    print("panicm received")
+                
+                
+                default:
+                    print(" is not recognized yet")
+                
+            }
+            
             
             
             
@@ -55,12 +98,10 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         catch {
             
         }
+        
     }
     
-    func session (_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
-        certificateHandler (true)
-    }
-    
+   
     
     
     // Received a byte stream from remote peer.
@@ -82,34 +123,6 @@ class Manager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCAd
         
     }
     
-    //Service Browser Delagate stuff
-    
-    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        
-        
-        
-    }
-    
-    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        
-        
-    }
-    
-    
-    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
-        
-        
-        
-    }
-    
-    
-    // An invitation was dismissed from screen.
-    public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
-        
-        
-        
-        
-    }
 }
 
 

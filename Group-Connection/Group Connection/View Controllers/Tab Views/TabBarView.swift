@@ -20,7 +20,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         print("Using custom tab bar view controller")
-        
+        print(Globals.globals.manager.peerid.displayName)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vcs: [UIViewController]
         
@@ -51,20 +51,16 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
             
             if (service){
                 let serviceBrowser = MCNearbyServiceBrowser(peer: Globals.globals.manager.peerid, serviceType: Globals.globals.passingData.0)
-                serviceBrowser.delegate = Globals.globals.manager
+                //serviceBrowser.delegate = Globals.globals.manager
                 print("Access Code: " + Globals.globals.passingData.0)
                 serviceBrowser.startBrowsingForPeers()
                 print("Advertising Started")
                 
             }
             else {
-                //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-                advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: nil, session: Globals.globals.manager.session)
-                advertisementAssistant.delegate = Globals.globals.manager
-                print("delegate setup")
-                print("Access Code: " + Globals.globals.passingData.0)
-                advertisementAssistant.start()
-                print("Advertising Started")
+                
+                Globals.globals.manager.advertisementHandler(code: Globals.globals.passingData.0)
+                
             }
         }
         
