@@ -20,7 +20,7 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         print("Using custom tab bar view controller")
-        print(Globals.globals.manager.peerid.displayName)
+//        print(Globals.globals.manager.peerid.displayName)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vcs: [UIViewController]
         

@@ -80,8 +80,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     print("hans is a mentor now")
                 }
                 
-                Globals.globals.setPeerid(fullname: Globals.globals.user.fullName)
-                
+  
                 Globals.globals.user.profilePhoto = profilePhoto.image
                 
                 Globals.globals.teamRoster[0] = Globals.globals.user
@@ -125,7 +124,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
                         //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     

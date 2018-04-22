@@ -31,21 +31,24 @@ class SendCheck: UIViewController, UITableViewDelegate, UITableViewDataSource, C
     @IBAction func finish(_ sender: Any) {
         //stub
         
-        let person = Globals.globals.user ?? Person()
         let place = locationManager.location ?? CLLocation()
         let description = messageBox.text ?? "default"
-        
         let mentor = Globals.globals.user.mentor ?? Person()
-        
-        check = Check.init(sender: person, place: place, description: description)
-        print(check.coordinate)
-        check.sendThisCheck(mentor)
-        print(mentor.firstName)
         
         print("who checking in")
         
-        for i in checkingIn {
-            print(i.firstName)
+        if let selectedIndexes = table.indexPathsForSelectedRows {
+            for i in selectedIndexes {
+                checkingIn.append(Globals.globals.user.buddyList[i.row])
+            }
+        }
+        
+        for person in checkingIn {
+            print(person.firstName)
+            let check = Check.init(sender: person, place: place, description: description)
+            print(check.coordinate)
+            check.sendThisCheck(to: mentor)
+            print(mentor.firstName)
         }
         
         performSegue(withIdentifier: "back", sender: nil)
@@ -54,8 +57,8 @@ class SendCheck: UIViewController, UITableViewDelegate, UITableViewDataSource, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.sectionIndexColor = .cyan
         table.dataSource = self
+        table.allowsMultipleSelection = true
         
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus != .authorizedWhenInUse {
@@ -84,18 +87,7 @@ class SendCheck: UIViewController, UITableViewDelegate, UITableViewDataSource, C
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //stub
-        
-        print("did select row")
-//        Globals.globals.selectedIndex = indexPath.row
-        checkingIn.append(Globals.globals.user.buddyList[indexPath.row])
-//        if Globals.globals.selectedIndex == indexPath.row {
-//            checkingIn.append(Globals.globals.user.buddyList[indexPath.row])
-//            print(checkingIn.count)
-//        }
-//        else {
-//            dismiss(animated: false, completion: nil)
-//        }
+        tableView.cellForRow(at: indexPath)?.backgroundColor = .purple
     }
     
     //started editing additionalNotes

@@ -20,8 +20,6 @@
 		0E9EF0331FD71D6500CD89CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9EF0311FD71D6500CD89CC /* LaunchScreen.storyboard */; };
 		0E9EF03E1FD71D6500CD89CC /* Group_ConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF03D1FD71D6500CD89CC /* Group_ConnectionTests.swift */; };
 		0E9EF0491FD71D6500CD89CC /* Group_ConnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EF0481FD71D6500CD89CC /* Group_ConnectionUITests.swift */; };
-		0EFCDF6F208657D300F13155 /* BuddyRosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCDF6D208657D300F13155 /* BuddyRosterView.swift */; };
-		0EFCDF70208657D300F13155 /* BuddyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCDF6E208657D300F13155 /* BuddyTable.swift */; };
 		0EFCDF7420865EE700F13155 /* Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCDF7320865EE700F13155 /* Present.swift */; };
 		4E0B488D205C2B350089AD46 /* Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488C205C2B350089AD46 /* Sub.swift */; };
 		4E134FA7207FC4EA00A6C042 /* SendCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E134FA6207FC4EA00A6C042 /* SendCheck.swift */; };
@@ -38,6 +36,8 @@
 		B5B8C7092025676300B507C7 /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8C7082025676300B507C7 /* JoinEventView.swift */; };
 		F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */; };
 		F8693DFE2029712A00985CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8693DFD2029712A00985CB0 /* Main.storyboard */; };
+		F8D96352208BEA0800A50983 /* zucc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8D96351208BEA0600A50983 /* zucc.jpg */; };
+		F8D96354208CD35200A50983 /* obama.jpg_large in Resources */ = {isa = PBXBuildFile; fileRef = F8D96353208CD35200A50983 /* obama.jpg_large */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +96,8 @@
 		B5B8C7082025676300B507C7 /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterProfile.swift; sourceTree = "<group>"; };
 		F8693DFD2029712A00985CB0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F8D96351208BEA0600A50983 /* zucc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zucc.jpg; path = ../../../../../Desktop/zucc.jpg; sourceTree = "<group>"; };
+		F8D96353208CD35200A50983 /* obama.jpg_large */ = {isa = PBXFileReference; lastKnownFileType = file; name = obama.jpg_large; path = ../../../../../Desktop/obama.jpg_large; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,8 @@
 		4E10D2D920505D3900A3684D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8D96353208CD35200A50983 /* obama.jpg_large */,
+				F8D96351208BEA0600A50983 /* zucc.jpg */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -376,7 +380,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D96352208BEA0800A50983 /* zucc.jpg in Resources */,
 				0E9EF0331FD71D6500CD89CC /* LaunchScreen.storyboard in Resources */,
+				F8D96354208CD35200A50983 /* obama.jpg_large in Resources */,
 				0E9EF0301FD71D6500CD89CC /* Assets.xcassets in Resources */,
 				F8693DFE2029712A00985CB0 /* Main.storyboard in Resources */,
 			);

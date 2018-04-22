@@ -13,7 +13,12 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
-    var data: [Person] = Globals.globals.teamRoster
+    var data: [Person] = Globals.globals.teamRoster.filter({(person: Person) -> Bool in
+        if Globals.globals.user.buddyList.contains(person){
+            return false
+        }
+        return true
+    })
     var filterD: [Person]! = nil
     
     override func viewDidLoad() {
@@ -23,12 +28,6 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         searchBar.delegate = self
         table.dataSource = self
         filterD = data
-        
-        //delete everything below here eventually
-        Globals.globals.autopopulateRoster()
-        data = Globals.globals.teamRoster
-        filterD = data
-        table.reloadData()
     }
     
     // tells how many cells you want to have in the roster. This will be the number of people at the competition

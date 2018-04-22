@@ -103,27 +103,29 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         
         buddyCell.buddyName.text = Globals.globals.user.buddyList[indexPath.row].fullName
         
-        if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
-            
-            print("buddy thing is yes true da")
-            
-            buddyCell.statusPic.image = UIImage(contentsOfFile: "heavy-check-,arl_2714.png")
-            buddyCell.statusPic.contentMode = .scaleAspectFit
+        //delete
+        Globals.globals.user.buddyList[indexPath.row].checkInStatus = true
+        //------
         
+        if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
+            //change for obvious reasons
+            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
+            //--------------------------
+            
+            buddyCell.statusPic.contentMode = .scaleAspectFit
         }
         else {
-            print("buddy thing is nah true man")
+            //change for obvious reasons (again)
+            let chosenImage = UIImage(named: "zucc.jpg")
+            //-------------------------
             
-            buddyCell.statusPic.image = UIImage(contentsOfFile: "Red-X.svg")
-            buddyCell.statusPic.contentMode = .scaleAspectFit
+            buddyCell.statusPic.image = chosenImage
+            buddyCell.statusPic.clipsToBounds = true
         }
         return buddyCell
     }
     
-    
     @IBAction func changeBuddies(_ sender: Any) {
-        print("change buddies")
-        
         performSegue(withIdentifier: "ToBuddyRoster", sender: nil)
     }
     

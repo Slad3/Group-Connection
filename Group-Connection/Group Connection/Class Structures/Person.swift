@@ -190,7 +190,17 @@ class Person {
         
         
         let child = Person(firstName: Lorem.firstName, lastName: Lorem.lastName, isMentor: false, age: age, email: Lorem.emailAddress, phoneNumber: str, additionalNotes: Lorem.paragraph, ssubteam: "Programming")
+        child.checkInStatus = false
         return child
     }
 }
 
+extension Person: Equatable {
+    static func == (dave: Person, jim: Person) -> Bool {
+        return dave.fullName == jim.fullName
+    }
+    
+    static func != (dave: Person, jim: Person) -> Bool {
+        return dave.fullName != jim.fullName
+    }
+}

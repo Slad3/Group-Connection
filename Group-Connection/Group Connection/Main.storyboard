@@ -686,8 +686,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sne-Yn-uCe">
-                                                    <rect key="frame" x="268" y="0.0" width="60" height="60"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="zucc.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sne-Yn-uCe">
+                                                    <rect key="frame" x="140" y="-1" width="203" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1399,6 +1399,9 @@
             <point key="canvasLocation" x="-3850" y="1822"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="zucc.jpg" width="1280" height="720"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ecS-Qb-DrJ"/>
         <segue reference="pUr-sM-1Mi"/>
