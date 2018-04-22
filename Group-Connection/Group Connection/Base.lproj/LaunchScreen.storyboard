@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,13 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Screen Shot 2018-01-04 at 11.24.31 AM" translatesAutoresizingMaskIntoConstraints="NO" id="GvK-sV-61k">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Screen Shot 2018-01-04 at 11.24.31 AM" translatesAutoresizingMaskIntoConstraints="NO" id="GvK-sV-61k">
                                 <rect key="frame" x="24" y="84" width="326" height="361"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GvK-sV-61k" secondAttribute="height" multiplier="326:361" id="QOU-5o-TKc"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-Du-fKU">
-                                <rect key="frame" x="49" y="443" width="277" height="104"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-Du-fKU">
+                                <rect key="frame" x="49" y="469" width="277" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="b5k-Du-fKU" secondAttribute="height" multiplier="277:104" id="F5J-bw-0ll"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="We promise nothing's broken. For now though, just enjoy this picture of a kitten.">
                                         <attributes>
@@ -41,6 +46,14 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="b5k-Du-fKU" firstAttribute="top" secondItem="GvK-sV-61k" secondAttribute="bottom" constant="24" id="7AM-Wi-gIO"/>
+                            <constraint firstAttribute="trailing" secondItem="GvK-sV-61k" secondAttribute="trailing" constant="25" id="Cp1-ZX-RRl"/>
+                            <constraint firstItem="b5k-Du-fKU" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="49" id="TbF-Kq-nv7"/>
+                            <constraint firstItem="GvK-sV-61k" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="24" id="ket-t2-x26"/>
+                            <constraint firstAttribute="trailing" secondItem="b5k-Du-fKU" secondAttribute="trailing" constant="49" id="s0r-SV-rW6"/>
+                            <constraint firstItem="GvK-sV-61k" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="64" id="u3a-vB-Mw1"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

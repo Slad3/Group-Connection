@@ -19,7 +19,7 @@ import UserNotifications
         Globals.globals.initialized = recoverOldData()
         
         //delete
-        Globals.globals.inEvent = Globals.globals.initialized
+//        Globals.globals.inEvent = Globals.globals.initialized
         //------
         
         
