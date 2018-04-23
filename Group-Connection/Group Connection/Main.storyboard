@@ -1489,9 +1489,8 @@
         <image name="zucc.jpg" width="1280" height="720"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vXA-KB-PWb"/>
-        <segue reference="pUr-sM-1Mi"/>
+        <segue reference="OLK-fx-p5I"/>
         <segue reference="1g9-qH-AoM"/>
-        <segue reference="haS-TD-5Sn"/>
+        <segue reference="ByP-vU-kVb"/>
     </inferredMetricsTieBreakers>
 </document>

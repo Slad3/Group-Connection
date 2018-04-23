@@ -12,7 +12,7 @@ import IQKeyboardManagerSwift
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         IQKeyboardManager.shared.enable = true
@@ -28,11 +28,11 @@ import IQKeyboardManagerSwift
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
-        
+
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
         if !Globals.globals.initialized { //Initial Profile; only if decoding failed
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-            
+
             Globals.globals.user.subteam = "Choose Subteam"
             print("Subteam is \(Globals.globals.user.subteam)")
         }
@@ -55,7 +55,7 @@ import IQKeyboardManagerSwift
             print("AppDelegate if/else sequence failed, defaulting to initialize")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
-        
+
         self.window?.rootViewController = initialViewController
         
         self.window?.makeKeyAndVisible()
@@ -155,6 +155,8 @@ import IQKeyboardManagerSwift
         }
         
     }
+    
+    
 }
 
 //Device Token: 5fd529426ea1edda6c6a62f36daa8b97e2e7a24e290404072afd15da2a0c3281 

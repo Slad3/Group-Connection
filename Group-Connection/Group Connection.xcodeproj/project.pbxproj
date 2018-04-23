@@ -39,6 +39,7 @@
 		D907534D80BAA56AF8AD7E32 /* Pods_Group_ConnectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB708771332CB608CC8B607 /* Pods_Group_ConnectionTests.framework */; };
 		F80FCE40203E7BBA0029CD8C /* RosterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */; };
 		F8693DFE2029712A00985CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8693DFD2029712A00985CB0 /* Main.storyboard */; };
+		F86C8CF7208D61B60011C3F5 /* hail_jesus.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = F86C8CF6208D61B60011C3F5 /* hail_jesus.MP4 */; };
 		F8D96352208BEA0800A50983 /* zucc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8D96351208BEA0600A50983 /* zucc.jpg */; };
 		F8D96354208CD35200A50983 /* obama.jpg_large in Resources */ = {isa = PBXBuildFile; fileRef = F8D96353208CD35200A50983 /* obama.jpg_large */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		F40E731FE554B81AD345B6BF /* Pods-Group Connection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group Connection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Group Connection/Pods-Group Connection.debug.xcconfig"; sourceTree = "<group>"; };
 		F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterProfile.swift; sourceTree = "<group>"; };
 		F8693DFD2029712A00985CB0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F86C8CF6208D61B60011C3F5 /* hail_jesus.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = hail_jesus.MP4; path = ../../../../../Desktop/hail_jesus.MP4; sourceTree = "<group>"; };
 		F86D32C83E34EC86E889B5C0 /* Pods-Group ConnectionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group ConnectionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Group ConnectionUITests/Pods-Group ConnectionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8D96351208BEA0600A50983 /* zucc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zucc.jpg; path = ../../../../../Desktop/zucc.jpg; sourceTree = "<group>"; };
 		F8D96353208CD35200A50983 /* obama.jpg_large */ = {isa = PBXFileReference; lastKnownFileType = file; name = obama.jpg_large; path = ../../../../../Desktop/obama.jpg_large; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		4E10D2D920505D3900A3684D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F86C8CF6208D61B60011C3F5 /* hail_jesus.MP4 */,
 				F8D96353208CD35200A50983 /* obama.jpg_large */,
 				F8D96351208BEA0600A50983 /* zucc.jpg */,
 			);
@@ -416,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86C8CF7208D61B60011C3F5 /* hail_jesus.MP4 in Resources */,
 				F8D96352208BEA0800A50983 /* zucc.jpg in Resources */,
 				0E9EF0331FD71D6500CD89CC /* LaunchScreen.storyboard in Resources */,
 				F8D96354208CD35200A50983 /* obama.jpg_large in Resources */,
@@ -466,11 +470,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Group Connection/Pods-Group Connection-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Onboard/Onboard.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Onboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

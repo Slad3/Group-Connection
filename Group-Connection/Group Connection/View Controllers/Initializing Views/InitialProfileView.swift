@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MultipeerConnectivity
+
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
@@ -174,7 +175,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             
             let sub = user?.subteam
             let pickerNum: Int! = subTeam.index(of: sub!) ?? 0
-            print(user?.subteam)
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
             imagePressed = true
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
