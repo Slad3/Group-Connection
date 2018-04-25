@@ -27,9 +27,11 @@ class Person {
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held
     var studentList: [Person]!
+    var checkInTime: Int! //may be changed
     
     //student-specific stuff
     var buddyList: [Person]!
+    var mentor: Person! 
     
     //encoding stuff
     static var jsonDerulo: Data!
@@ -188,7 +190,17 @@ class Person {
         
         
         let child = Person(firstName: Lorem.firstName, lastName: Lorem.lastName, isMentor: false, age: age, email: Lorem.emailAddress, phoneNumber: str, additionalNotes: Lorem.paragraph, ssubteam: "Programming")
+        child.checkInStatus = false
         return child
     }
 }
 
+extension Person: Equatable {
+    static func == (dave: Person, jim: Person) -> Bool {
+        return dave.fullName == jim.fullName
+    }
+    
+    static func != (dave: Person, jim: Person) -> Bool {
+        return dave.fullName != jim.fullName
+    }
+}

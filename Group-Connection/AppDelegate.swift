@@ -7,24 +7,32 @@
 //
 import UIKit
 import UserNotifications
+import IQKeyboardManagerSwift
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        IQKeyboardManager.shared.enable = true
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         Globals.globals.initialized = recoverOldData()
         
+        //delete
+//        Globals.globals.inEvent = Globals.globals.initialized
+        //------
+        
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
-        
+
         //if-else sequence to determine what UIView to start on based on if unitialized,mentor, and in competition
         if !Globals.globals.initialized { //Initial Profile; only if decoding failed
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
-            
+
             Globals.globals.user.subteam = "Choose Subteam"
             print("Subteam is \(Globals.globals.user.subteam)")
         }
@@ -47,7 +55,7 @@ import UserNotifications
             print("AppDelegate if/else sequence failed, defaulting to initialize")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "Initial Profile VC")
         }
-        
+
         self.window?.rootViewController = initialViewController
         
         self.window?.makeKeyAndVisible()
@@ -65,6 +73,9 @@ import UserNotifications
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        if Globals.globals.initialized {
+            Person.encodeEveryone()
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -80,6 +91,7 @@ import UserNotifications
         if Globals.globals.initialized {
             Person.encodeEveryone()
         }
+        
     }
     
     func registerForPushNotifications() {
@@ -107,8 +119,6 @@ import UserNotifications
             return String(format: "%02.2hhx", data)
         }
         
-        Globals.globals.tempToke = tokenParts
-        
         let token = tokenParts.joined()
         print("Device Token: \(token)")
     }
@@ -120,10 +130,21 @@ import UserNotifications
     
     func recoverOldData() -> Bool {
         if let temp = Person.decodePeople() {
-            if temp.count < 1 {return false}
+            if temp.count < 1 {
+                return false
+            }
+            
             Globals.globals.teamRoster = temp
             print("User is \(Globals.globals.teamRoster[0].firstName)")
             Globals.globals.user = Globals.globals.teamRoster[0]
+            
+            //delete
+            if !Globals.globals.user.isMentor {
+                Globals.globals.user.mentor = Globals.globals.hans
+                print("hans is a mentor now")
+            }
+            //------
+            
             return true
         }
         else {
@@ -134,6 +155,8 @@ import UserNotifications
         }
         
     }
+    
+    
 }
 
 //Device Token: 5fd529426ea1edda6c6a62f36daa8b97e2e7a24e290404072afd15da2a0c3281 

@@ -13,7 +13,12 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
-    var data: [Person] = Globals.globals.teamRoster
+    var data: [Person] = Globals.globals.teamRoster.filter({(person: Person) -> Bool in
+        if Globals.globals.user.buddyList.contains(person){
+            return false
+        }
+        return true
+    })
     var filterD: [Person]! = nil
     
     override func viewDidLoad() {
@@ -23,34 +28,12 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         searchBar.delegate = self
         table.dataSource = self
         filterD = data
-        
-        //delete everything below here eventually
-        Globals.globals.autopopulateRoster()
-        data = Globals.globals.teamRoster
-        filterD = data
-        table.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//         table.reloadData()
     }
     
     // tells how many cells you want to have in the roster. This will be the number of people at the competition
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return filterD.count }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filterD.count
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -58,6 +41,7 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         
       //  Globals.globals.user.buddyList.append(Globals.globals.teamRoster[indexPath.row])
          Globals.globals.user.buddyList.insert(Globals.globals.teamRoster[indexPath.row], at: 0)
+        
         if Globals.globals.user.buddyList.count >= 4
         {
             print("if is running")

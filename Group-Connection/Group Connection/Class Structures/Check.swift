@@ -20,6 +20,15 @@ class Check: NSObject, MKAnnotation {
     
     var hasBeenSent: Bool
     
+    override init() {
+        print("I hope you didn't use the default init you jackass")
+        sender = Globals.globals.hans
+        coordinate = CLLocationCoordinate2D()
+        senderDescription = ""
+        timeSent = Date()
+        hasBeenSent = false
+    }
+    
     init(sender: Person, place: CLLocation, description: String) {
         let location = place.coordinate
         
@@ -32,28 +41,19 @@ class Check: NSObject, MKAnnotation {
         self.hasBeenSent = false
     }
     
-    override init(){
-        self.sender = Person()
-        //self.coordinate  = CLLocation(latitude: 44.821152, longitude: -93.120435)
-        self.coordinate = CLLocationCoordinate2D(latitude: 23, longitude: 34)
-        self.senderDescription = ""
-        self.timeSent = Date()
-        self.title = ""
-        self.subtitle = ""
-        self.hasBeenSent = false
-        
-    }
-    
-    func sendThisCheck(_ person: Person) {
+    func sendThisCheck( to: Person) {
         //fill in once we've gotten the connectivity stuff figured out
         //has to somehow trigger receiveCheck() on the receiver's phone
+    
+        print("sending check")
         do {
             let temp = try JSONEncoder().encode("receiveCheck")
             try Globals.globals.manager.session.send(temp, toPeers: [], with: .reliable)
             self.hasBeenSent = true
+            print("sent")
         }
         catch {
-            print("sending check failed")
+            print("failed")
         }
     }
     

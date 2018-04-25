@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MultipeerConnectivity
+
 class InitialProfileView: UIViewController,
     UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
@@ -74,9 +75,19 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 Globals.globals.initialized = true
                 
                 Globals.globals.user = Person(firstName: fName, lastName: lName, isMentor: mentor, age: age, email: eMail, phoneNumber: phone ,additionalNotes: notes, ssubteam: subteam!)
+                
+                if !Globals.globals.user.isMentor {
+                    Globals.globals.user.mentor = Globals.globals.hans
+                    print("hans is a mentor now")
+                }
+                
+  
                 Globals.globals.user.profilePhoto = profilePhoto.image
+                
                 Globals.globals.teamRoster[0] = Globals.globals.user
+                
                 print(Globals.globals.teamRoster[0].subteam)
+                
                 Person.encodeEveryone()
                 Globals.globals.manager = Manager()
                 Globals.globals.manager.setupSession()
@@ -93,7 +104,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
                         Person.encodeEveryone()
                         print("join event")
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        Globals.globals.inEvent = true
+                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
@@ -114,7 +126,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
                         //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
@@ -164,7 +176,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             
             let sub = user?.subteam
             let pickerNum: Int! = subTeam.index(of: sub!) ?? 0
-            print(user?.subteam)
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
             imagePressed = true
             mistakeLabel.text = "Nothing's broken. For real. Just tap Go and select where you want to go."
@@ -217,6 +228,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
     func textViewDidBeginEditing(_ textView: UITextView) {
         additionalNotes.text = ""
     }
+    
     //check user inputs
     private func checkInputs(age: String?, email: String, phone: String) -> Bool {
         if !checkAge(age: age) {
@@ -237,9 +249,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             print("no photo input")
             return false
         }
-        print("Hans will be added to the buddy roster")
-        Globals.globals.user.buddyList.append(Globals.globals.hans)
-        print(Globals.globals.user.buddyList[0].fullName)
+
         return true
     }
     

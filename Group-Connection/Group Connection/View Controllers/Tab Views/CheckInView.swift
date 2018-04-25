@@ -69,6 +69,8 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         print("Notification")
+        
+        //general asshattery
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
@@ -82,16 +84,13 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         }
+        
+        performSegue(withIdentifier: "toCheck", sender: nil)
+        
     }
-    
-    
-    
-    
+
     // tells how many cells you want to have in the roster. This will be the number of people at the competition
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(Globals.globals.user.buddyList.count )
-        print("Buddy count")
-        
         return Globals.globals.user.buddyList.count
     }
     
@@ -101,46 +100,38 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         
         //test this here
         let buddyCell = tableView.dequeueReusableCell(withIdentifier: "buddyCell", for: indexPath) as! BuddyTable
+        
         buddyCell.buddyName.text = Globals.globals.user.buddyList[indexPath.row].fullName
+        
+        //delete
+        Globals.globals.user.buddyList[indexPath.row].checkInStatus = true
+        //------
+        
         if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
-            print("buddy thing is yes true da")
-            buddyCell.statusPic.image = UIImage(contentsOfFile: "heavy-check-,arl_2714.png")
+            //change for obvious reasons
+            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
+            //--------------------------
+            
             buddyCell.statusPic.contentMode = .scaleAspectFit
         }
         else {
-            print("buddy thing is yes true da")
+            //change for obvious reasons (again)
+            let chosenImage = UIImage(named: "zucc.jpg")
+            //-------------------------
             
-            buddyCell.statusPic.image = UIImage(contentsOfFile: "Red-X.svg")
-            buddyCell.statusPic.contentMode = .scaleAspectFit
+            buddyCell.statusPic.image = chosenImage
+            buddyCell.statusPic.clipsToBounds = true
         }
         return buddyCell
     }
     
-    
     @IBAction func changeBuddies(_ sender: Any) {
-        
         performSegue(withIdentifier: "ToBuddyRoster", sender: nil)
-        
-        print("change buddies")
-        
     }
     
     private func panic() {
         //stub
         do {
-            let content = UNMutableNotificationContent()
-            content.title = "RIP Bro"
-            content.subtitle = "You was an inspiration to me"
-            //content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
-            content.badge = 31
-            content.categoryIdentifier = "tupac"
-            let identifier = "tupac"
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
-            let data = try JSONEncoder().encode("panic")
-            let mentors = Globals.getIDs(Globals.globals.getMentors())
-            try Globals.globals.manager.session.send(data, toPeers: mentors, with: .reliable)
             print("triggered")
         }
         catch {
@@ -153,14 +144,6 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        if response.actionIdentifier == "y = mx + b" {
-            checkInLabel.text = "That's the correct answer!"
-        } else if response.actionIdentifier == "Ax + By = C" {
-            checkInLabel.text = "Sorry, that's the standard form equation."
-        } else {
-            checkInLabel.text = "Keep trying!"
-        }
     }
     
     
@@ -182,17 +165,15 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         UNUserNotificationCenter.current().delegate = self
         
         self.hidesBottomBarWhenPushed = false
+        
+        if Globals.globals.user.buddyList.count < 2 {
+            changeBuddy.titleLabel?.text = "Add Buddy"
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         table.reloadData()
-        print("viewdid appear")
     }
-    
-    
-    
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
