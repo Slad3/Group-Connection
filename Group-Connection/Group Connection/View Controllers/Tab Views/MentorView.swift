@@ -72,7 +72,8 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
         print("Notification")
         do{
-            let dataa: Data = try JSONEncoder().encode("Message")
+            let message = "Message"
+            let dataa: Data = try JSONEncoder().encode(message)
             print("Data is \(dataa == nil)")
             try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
             print("message Sent")
