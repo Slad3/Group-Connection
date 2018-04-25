@@ -69,14 +69,24 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
+        
         print("Notification")
+        do{
+            let dataa: Data = try JSONEncoder().encode("Message")
+            print("Data is \(dataa == nil)")
+            try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
+            print("message Sent")
+        }catch{
+            print("not sent")
+            
+        }
         
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
             content.subtitle = "You was an inspiration to me"
             //content.sound = UNNotificationSound.init(named: "toolur_5C4U7D.wav")
-            print(Bool(UNNotificationSound(named: "toolur_sbCiis.wav") == content.sound))
+            //print(Bool(UNNotificationSound(named: "toolur_sbCiis.wav") == content.sound))
             content.badge = 31
             content.categoryIdentifier = "tupac"
             
@@ -96,6 +106,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
             let data = try JSONEncoder().encode("panic")
             let mentors = Globals.getIDs(Globals.globals.getMentors())
             try Globals.globals.manager.session.send(data, toPeers: mentors, with: .reliable)
+            print("sent data")
             print("triggered")
         }
         catch {

@@ -79,6 +79,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 print(Globals.globals.teamRoster[0].subteam)
                 Person.encodeEveryone()
                 Globals.globals.manager = Manager()
+                Globals.globals.manager.setupSession()
 
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff
