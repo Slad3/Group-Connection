@@ -102,5 +102,40 @@ class Globals {
         }
         return temp
     }
+    
+    static func sendData(message: String){
+        
+        if let dataa = message.data(using: .utf8){
+            do{
+                print("Encoded data")
+                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
+                print("sent check")
+            }
+            catch {
+                print("[Error] \(error)")
+            }
+        }
+
+    }
+    
+    static func sendData(message: Present){
+        
+//        let message = message
+//        if let dataa = message.data(using: .utf8){
+//            do{
+//                print("Encoded data")
+//                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
+//                print("sent check")
+//            }
+//            catch {
+//                print("[Error] \(error)")
+//            }
+//        }
+        
+    }
+    
+    
+    
+    
 }
 

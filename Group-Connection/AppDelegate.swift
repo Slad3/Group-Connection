@@ -7,7 +7,7 @@
 //
 import UIKit
 import UserNotifications
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -15,7 +15,7 @@ import IQKeyboardManagerSwift
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enable = true
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         

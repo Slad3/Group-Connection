@@ -68,8 +68,9 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
-        print("Notification")
-        
+       Globals.sendData(message: "panic")
+            
+
         //general asshattery
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()

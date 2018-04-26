@@ -24,6 +24,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     override init(){
         
+        session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+        session.delegate = Manager()
+        
     }
     
     
@@ -44,8 +47,8 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     public func setupSession(){
         
-        session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-        session.delegate = Manager()
+//        session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+//        session.delegate = Manager()
         
     }
     

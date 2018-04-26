@@ -772,15 +772,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="zucc.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sne-Yn-uCe">
-                                                    <rect key="frame" x="140" y="-1" width="203" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="buddyName" destination="Ve9-S4-gV0" id="MZS-by-TC6"/>
-                                            <outlet property="statusPic" destination="sne-Yn-uCe" id="onr-Aa-XiD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1485,12 +1480,10 @@
             <point key="canvasLocation" x="-3850" y="1822"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="zucc.jpg" width="1280" height="720"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t7V-AH-jqC"/>
+        <segue reference="vXA-KB-PWb"/>
         <segue reference="pUr-sM-1Mi"/>
+        <segue reference="gEE-Y6-yYc"/>
         <segue reference="haS-TD-5Sn"/>
     </inferredMetricsTieBreakers>
 </document>

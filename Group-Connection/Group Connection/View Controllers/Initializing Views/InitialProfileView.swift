@@ -105,7 +105,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         Person.encodeEveryone()
                         print("join event")
                         Globals.globals.inEvent = true
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     

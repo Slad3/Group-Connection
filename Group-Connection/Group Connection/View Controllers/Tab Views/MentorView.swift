@@ -70,17 +70,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         
-        print("Notification")
-        do{
-            let message = "Message"
-            let dataa: Data = try JSONEncoder().encode(message)
-            print("Data is \(dataa == nil)")
-            try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
-            print("message Sent")
-        }catch{
-            print("not sent")
-            
-        }
+        Globals.sendData(message: "panic")
         
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
