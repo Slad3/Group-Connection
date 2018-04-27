@@ -27,7 +27,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
-    
+    public var panicTriggered
     var students: [Person]!
     
     
@@ -133,6 +133,8 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     private func panic() {
         //stub
         do {
+            var temp = Present(ident: "panic")
+            Globals.sendData(message: temp)
             print("triggered")
         }
         catch {
