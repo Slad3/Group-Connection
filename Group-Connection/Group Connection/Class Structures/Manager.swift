@@ -24,8 +24,11 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     override init(){
         
+        super.init()
         session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-        session.delegate = Manager()
+        print("setup session")
+        session.delegate = self
+        print("set delegate")
         
     }
     
@@ -114,7 +117,8 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         do {
             print("Recieved Data")
             //var sentData = try JSONDecoder().decode(Present.self, from: data)
-            var sentData = try JSONDecoder().decode(String.self, from: data)
+            var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
+                //JSONDecoder().decode(String.self, from: data)
             print(sentData)
             
             switch(sentData){
