@@ -90,7 +90,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 
                 Person.encodeEveryone()
                 Globals.globals.manager = Manager()
-                Globals.globals.manager.setupSession()
 
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff

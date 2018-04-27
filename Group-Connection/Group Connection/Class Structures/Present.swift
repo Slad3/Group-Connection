@@ -9,7 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-class Present {
+class Present: NSObject {
     
     var identifier: String
     
@@ -17,9 +17,20 @@ class Present {
     
     var message: String
     
+    struct present : Codable{
+        var identifier: String
+        var check: Check.Xeck
+        var message: String
+        
+        init(_ pres: Present) {
+            check = Check.Xeck(pres.check)
+            identifier = pres.identifier
+            message = pres.message
+        }
+    }
     
+    override init(){
     
-    init(){
         identifier = "Nothing"
         check = Check()
         message = ""
@@ -47,6 +58,13 @@ class Present {
         identifier = ident
         check = Check()
         message = note
+    }
+    
+    init(present: Present){
+        identifier = present.identifier
+        check = present.check
+        message = present.message
+        
     }
     
     

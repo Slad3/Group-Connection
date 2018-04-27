@@ -105,6 +105,8 @@ class Globals {
     
     static func sendData(message: String){
         
+        //Seding String using .utf8 D/encoding
+        print("Seding using .utf8 D/encoding. 0000000000000000000")
         if let dataa = message.data(using: .utf8){
             do{
                 print("Encoded data")
@@ -115,13 +117,16 @@ class Globals {
                 print("[Error] \(error)")
             }
         }
-
-    }
-    
-    static func sendData(message: Present){
         
-//        let message = message
-//        if let dataa = message.data(using: .utf8){
+        
+        
+//        //Seding Present using .JSON D/encoding
+//        print("Seding using .JSON D/encoding. 0000000000000000000")
+//        var temp = Present(ident: message)
+//
+//        //if let dataa = temp.data(using: .utf8)
+//        if let dataa = try JSONEncoder().encode(temp){
+//
 //            do{
 //                print("Encoded data")
 //                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
@@ -130,10 +135,42 @@ class Globals {
 //            catch {
 //                print("[Error] \(error)")
 //            }
+//
 //        }
-        
+//        catch{
+//            print("Encoding data did not work.")
+//
+//        }
+
+
     }
     
+    
+    
+    static func sendData(message: Present){
+        
+        //Seding Present using .JSON D/encoding
+        print("Seding using JSON D/encoding. 0000000000000000000")
+        var temp: Present! = message
+        
+        //if let dataa = temp.data(using: .utf8)
+        do{
+        let dataa = try JSONEncoder().encode(temp)
+        
+            do{
+                print("Encoded data")
+                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
+                print("sent check")
+            }
+            catch {
+                print("[Error] \(error)")
+            }
+        }
+        catch{
+            print("Encoding object did not work")
+        }
+    
+    }
     
     
     

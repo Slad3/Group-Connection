@@ -23,10 +23,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     
     override init(){
-        
         super.init()
         session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-        print("setup session")
+        print("set session")
         session.delegate = self
         print("set delegate")
         
@@ -48,13 +47,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         
     }
     
-    public func setupSession(){
-        
-//        session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
-//        session.delegate = Manager()
-        
-    }
-    
     
     
     public func receivedCheck(check1: Check) {
@@ -63,12 +55,12 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     
     
-    public func receivedPanic() {
+    public func receivedPanic(peer: MCPeerID) {
         
         do {
             let content = UNMutableNotificationContent()
             content.title = "PANIC"
-            content.subtitle = "USER *INSERT USER* HAS PANICED"
+            content.subtitle = "USER " + peer.displayName + " HAS PANICED"
             //content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
             content.badge = 31
             content.categoryIdentifier = "panic"
@@ -76,9 +68,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
-            let data = try JSONEncoder().encode("panic")
-            let mentors = Globals.getIDs(Globals.globals.getMentors())
-            try Globals.globals.manager.session.send(data, toPeers: mentors, with: .reliable)
             print("triggered")
         }
         catch {
@@ -95,7 +84,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     //Delagate Stuff
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
-        print("got to connection state")
+        print("Got to connection state")
         switch state {
         case MCSessionState.connected:
             print("Connected: \(peerID.displayName)")
@@ -112,24 +101,27 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         
     }
     
+    
+    
+    
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
         do {
             print("Recieved Data")
-            //var sentData = try JSONDecoder().decode(Present.self, from: data)
-            var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
-                //JSONDecoder().decode(String.self, from: data)
-            print(sentData)
+            //var sentData1: Present! = try Present(data: data, encoding: .utf8)
+            //var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
+            var sentData: Present! = try JSONDecoder().decode(Present.self, from: data)
+            print(sentData.identifier)
             
-            switch(sentData){
+            switch(sentData.identifier){
                 
                 case "check":
-                    print("check received " + sentData)
-                    //receivedCheck(check1: sentData.check)
+                    print("check received " + sentData.identifier)
+                    receivedCheck(check1: sentData.check)
                 
                 case "panic":
-                    print("panic received " + sentData)
-                    //receivedPanic()
+                    print("panic received " + sentData.identifier)
+                    receivedPanic(peer: peerID)
                 
                 default:
                     print(" is not recognized yet")
@@ -137,7 +129,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
             }
         }
         catch{
-            print("asdf")
+            print("Decoding Encoded message failed")
         }
         
     }
