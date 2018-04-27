@@ -27,7 +27,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
-    public var panicTriggered
+    public var panicTriggered = false
     var students: [Person]!
     
     
