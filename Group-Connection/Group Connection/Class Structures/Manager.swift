@@ -106,31 +106,31 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
-        do {
-            print("Recieved Data")
-            //var sentData1: Present! = try Present(data: data, encoding: .utf8)
-            //var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
-            var sentData: Present! = try JSONDecoder().decode(Present.self, from: data)
-            print(sentData.identifier)
-            
-            switch(sentData.identifier){
-                
-                case "check":
-                    print("check received " + sentData.identifier)
-                    receivedCheck(check1: sentData.check)
-                
-                case "panic":
-                    print("panic received " + sentData.identifier)
-                    receivedPanic(peer: peerID)
-                
-                default:
-                    print(" is not recognized yet")
-                
-            }
-        }
-        catch{
-            print("Decoding Encoded message failed")
-        }
+//        do {
+//            print("Recieved Data")
+//            //var sentData1: Present! = try Present(data: data, encoding: .utf8)
+//            //var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
+//            var sentData: Present! = try JSONDecoder().decode(Present.self, from: data)
+//            print(sentData.identifier)
+//
+//            switch(sentData.identifier){
+//
+//                case "check":
+//                    print("check received " + sentData.identifier)
+//                    receivedCheck(check1: sentData.check)
+//
+//                case "panic":
+//                    print("panic received " + sentData.identifier)
+//                    receivedPanic(peer: peerID)
+//
+//                default:
+//                    print(" is not recognized yet")
+//
+//            }
+//        }
+//        catch{
+//            print("Decoding Encoded message failed")
+//      }
         
     }
     
@@ -139,6 +139,10 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     // Received a byte stream from remote peer.
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
+        
+        
+        
+        
         
     }
     

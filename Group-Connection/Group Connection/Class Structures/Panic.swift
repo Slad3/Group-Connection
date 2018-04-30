@@ -16,7 +16,7 @@
 //    var timeSent: Date
 //
 //    struct penac: Codable{
-//        var sender: Person
+//        var sender: Person.Persoon
 //        var coordinate: CLLocationCoordinate2D
 //        var timeSent: Date
 //        var latitude: Double
@@ -28,13 +28,14 @@
 //            formatter.dateStyle = .medium
 //            formatter.timeStyle = .medium
 //            formatter.locale = Locale(identifier: "en_US")
-//            timeSent = formatter.string(from: panic.timeSent)
-//            sender = Person.Persoon(panic.sender)
+//            timeSent = String(panic.timeSent)
+//            
 //            latitude = panic.coordinate.latitude
 //            longitude = panic.coordinate.longitude
+//            sender = Person.Persoon(panic.sender)
 //        }
 //
-//
+//      
 //
 //
 //
@@ -51,15 +52,9 @@
 //
 //
 //    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
+//    
+//    
+//    
 //
 //}
-
+//
