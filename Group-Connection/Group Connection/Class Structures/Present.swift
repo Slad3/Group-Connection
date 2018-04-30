@@ -17,15 +17,19 @@ class Present: NSObject {
     
     var message: String
     
+    var panic: Panic
+    
     struct present : Codable{
         var identifier: String
         var check: Check.Xeck
         var message: String
+        var panic: Panic.penac
         
         init(_ pres: Present) {
             check = Check.Xeck(pres.check)
             identifier = pres.identifier
             message = pres.message
+            panic = Panic.penac(pres.panic)
         }
     }
     
@@ -34,36 +38,42 @@ class Present: NSObject {
         identifier = "Nothing"
         check = Check()
         message = ""
+        panic = Panic()
     }
     
     init(ident: String){
         identifier = ident
         check = Check()
         message = ""
+        panic = Panic()
     }
     
     init(ident: String, theCheck: Check){
         identifier = ident
         check = theCheck
         message = ""
+        panic = Panic()
     }
     
     init(ident: String, theCheck: Check, note: String){
         identifier = ident
         check = theCheck
         message = note
+        panic = Panic()
     }
     
     init(ident: String, note: String){
         identifier = ident
         check = Check()
         message = note
+        panic = Panic()
     }
     
-    init(present: Present){
+    init(present: Present.present){
         identifier = present.identifier
-        check = present.check
+        check = Check(present.check)
         message = present.message
+        panic = Panic(present.panic)
         
     }
     

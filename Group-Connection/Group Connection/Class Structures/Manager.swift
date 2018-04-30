@@ -55,12 +55,12 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     
     
-    public func receivedPanic(peer: MCPeerID) {
+    public func receivedPanic(panic: Panic) {
         
         do {
             let content = UNMutableNotificationContent()
             content.title = "PANIC"
-            content.subtitle = "USER " + peer.displayName + " HAS PANICED"
+            content.subtitle = "USER " + panic.sender.fullName + " HAS PANICED"
             //content.sound = UNNotificationSound.init(named: "Surprise Motherfcker Sound Effect ORIGINAL.mp3")
             content.badge = 31
             content.categoryIdentifier = "panic"
@@ -68,7 +68,11 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
-            print("triggered")
+           //Add code to add user on the map here
+            
+            
+            
+
         }
         catch {
             print("panicking failed")
@@ -110,18 +114,19 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
             print("Recieved Data")
             //var sentData1: Present! = try Present(data: data, encoding: .utf8)
             //var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
-            var sentData: Present! = try JSONDecoder().decode(Present.self, from: data)
+            var sentData: Present.present! = try JSONDecoder().decode(Present.present.self, from: data)
+            let actualPresent = Present(present: sentData)
             print(sentData.identifier)
             
             switch(sentData.identifier){
                 
                 case "check":
-                    print("check received " + sentData.identifier)
-                    receivedCheck(check1: sentData.check)
+                    print("check received " + actualPresent.identifier)
+                    receivedCheck(check1: actualPresent.check)
                 
                 case "panic":
-                    print("panic received " + sentData.identifier)
-                    receivedPanic(peer: peerID)
+                    print("panic received " + actualPresent.identifier)
+                    receivedPanic(panic: actualPresent.panic)
                 
                 default:
                     print(" is not recognized yet")
