@@ -104,7 +104,12 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         Person.encodeEveryone()
                         print("join event")
                         Globals.globals.inEvent = true
+                        if Globals.globals.user.firstName != "Nick" && Globals.globals.user.lastName != "Burright"{
                         self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        }
+                        else{
+                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        }
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
@@ -125,7 +130,12 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        if Globals.globals.user.firstName != "Nick"{
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        }
+                        else{
+                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        }
                         //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     

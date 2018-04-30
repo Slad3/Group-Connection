@@ -27,7 +27,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
-    
+    var panicTriggered = true
     var students: [Person]!
     
     
@@ -46,29 +46,31 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         let range = (CGFloat.pi / 3)...(2 * CGFloat.pi / 3)
         let range1 = (4 * CGFloat.pi / 3)...(5 * CGFloat.pi / 3)
         
-        if sender.state == .began {
-            sender.rotation = rotation
-            originalRotation = sender.rotation
-            print("begin")
-        } else if sender.state == .changed {
-            let newRotation = sender.rotation + originalRotation
-            sender.view?.transform = CGAffineTransform(rotationAngle: newRotation)
-            print(range.contains(newRotation))
-            if range.contains(abs(newRotation)) || range1.contains(abs(newRotation)){
-                //trigger panic
-                panic()
-                print("panic triggered")
+        
+            if sender.state == .began {
+                sender.rotation = rotation
+                originalRotation = sender.rotation
+                print("begin")
+            } else if sender.state == .changed {
+                let newRotation = sender.rotation + originalRotation
+                sender.view?.transform = CGAffineTransform(rotationAngle: newRotation)
+                print(range.contains(newRotation))
+                if range.contains(abs(newRotation)) || range1.contains(abs(newRotation)){
+                    //trigger panic
+                    panic()
+                    print("panic triggered")
+                }
+            } else if sender.state == .ended {
+                rotation = 0
+                sender.view?.transform = CGAffineTransform(rotationAngle: rotation)
+                print("end")
             }
-        } else if sender.state == .ended {
-            rotation = 0
-            sender.view?.transform = CGAffineTransform(rotationAngle: rotation)
-            print("end")
-        }
+        
     }
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
-       Globals.sendData(message: "panic")
+       Globals.sendData(message: "message")
             
 
         //general asshattery
@@ -132,7 +134,11 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     private func panic() {
         //stub
+        panicTriggered = true
         do {
+            var temp = Present(ident: "panic")
+            Globals.sendData(message: temp)
+            //Globals.globals.manager.session.startStream(withName: "Panic", toPeer: Globals.globals.manager.session.)
             print("triggered")
         }
         catch {

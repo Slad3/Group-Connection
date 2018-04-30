@@ -145,6 +145,10 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     // Received a byte stream from remote peer.
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
         
+        
+        
+        
+        
     }
     
     // Start receiving a resource from remote peer.

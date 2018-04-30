@@ -145,6 +145,17 @@ UINavigationControllerDelegate {
         present(picker, animated: true, completion: nil)
     }
     
+    @IBAction func autoFill(_ sender: Any) {
+        
+        generalAccessCode.text = "asdf"
+        eventName.text = "The Event Name"
+        groupName.text = "The Group Name"
+        
+        
+    }
+    
+    
+    
     @objc func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage 
