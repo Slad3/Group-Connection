@@ -56,18 +56,11 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("Join Event View Loading")
 
-        
         if !connectedToSession{
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
         }
-       
-        
-
-
         print("Finished View Did Load")
     }
     
@@ -108,6 +101,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     }
     
     @IBAction func forward(_ sender: Any) {
+        
+        
         advance()
     }
     

@@ -104,11 +104,14 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         Person.encodeEveryone()
                         print("join event")
                         Globals.globals.inEvent = true
-                        if Globals.globals.user.firstName != "Nick" && Globals.globals.user.lastName != "Burright"{
-                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        
+                        //Separates people so Nick can do his stuff without going through creating an event
+                        if Globals.globals.user.firstName == "Nick" && Globals.globals.user.lastName == "Burright"{
+                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         }
                         else{
-                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         }
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
@@ -130,13 +133,15 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        if Globals.globals.user.firstName != "Nick"{
+                        
+                        //Separates people so Nick can do his stuff without going through creating an event
+                        if Globals.globals.user.firstName == "Nick" && Globals.globals.user.lastName == "Burright"{
+                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
                             self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         }
                         else{
-                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         }
-                        //self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

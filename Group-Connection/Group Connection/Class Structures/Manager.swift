@@ -31,30 +31,26 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         
     }
     
-    
+    //For making and starting advertisment system
     public func advertisementHandler(code: String) {
         
-        //advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.session)
-        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.manager.session)
+        //advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
         advertisementAssistant.delegate = Globals.globals.manager
         print("delegate setup")
         print("Access Code: " + code)
         advertisementAssistant.start()
         print("Advertising Started")
-        
-    
-        
-        
     }
     
     
-    
+    //Receiving Check
     public func receivedCheck(check1: Check) {
         Check.receiveCheck(check: check1)
     }
     
     
-    
+    //Receiving Panic
     public func receivedPanic(panic: Panic) {
         
         do {
@@ -77,10 +73,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         catch {
             print("panicking failed")
         }
-        
-        
-        
-        
     }
     
     
@@ -144,11 +136,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     // Received a byte stream from remote peer.
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
-        
-        
-        
-        
-        
+  
     }
     
     // Start receiving a resource from remote peer.
