@@ -15,6 +15,8 @@ class Event {
     var competitionRoster: [Person] //list of all the users in the competion
     var teamRoster: [String] //list of all the people in the team
     var peeridRoster: [MCPeerID] //list of all the peer ids on the team
+    var mentorRoster: [Person] = []//List of all mentors in roster
+    var creator: Person //Creator of the event
     var eventName: String
     var checkInLength: Double //minutes until required check-in
     var timeTillNotification: Double //minutes in between reminders to check in
@@ -30,12 +32,14 @@ class Event {
         competitionRoster.append(user)
         teamRoster = []
         peeridRoster = []
+        mentorRoster.append(user)
         teamRoster.append(user.firstName)
         
         eventName = ""
         checkInLength = -1.0
         timeTillNotification = -1.0
         groupName = ""
+        creator = user
         return
     }
     

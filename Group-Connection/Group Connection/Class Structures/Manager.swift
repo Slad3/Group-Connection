@@ -46,7 +46,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     //Receiving Check
     public func receivedCheck(check1: Check) {
-        Check.receiveCheck(check: check1)
+        Check.receiveCheck(check: check1)  
     }
     
     
@@ -115,6 +115,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
                 case "check":
                     print("check received " + actualPresent.identifier)
                     receivedCheck(check1: actualPresent.check)
+                    
                 
                 case "panic":
                     print("panic received " + actualPresent.identifier)
