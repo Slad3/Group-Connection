@@ -23,6 +23,7 @@ class Person {
     var checkInStatus: Bool //essential
     var profilePhoto: UIImage!
     
+    
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
     var checkArray: [Check]! //where the checks get held

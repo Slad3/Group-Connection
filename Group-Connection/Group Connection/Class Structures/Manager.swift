@@ -11,11 +11,9 @@ import MultipeerConnectivity
 import CloudKit
 import UserNotifications
 
-class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
-    
-    
-    
-    
+class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNearbyServiceAdvertiserDelegate {
+   
+
     public var session: MCSession!
     var advertisementAssistant: MCAdvertiserAssistant!
     let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
@@ -33,14 +31,29 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     
     //For making and starting advertisment system
     public func advertisementHandler(code: String) {
+        var service = true
         
-        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.manager.session)
-        //advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
-        advertisementAssistant.delegate = Globals.globals.manager
-        print("delegate setup")
-        print("Access Code: " + code)
-        advertisementAssistant.start()
-        print("Advertising Started")
+        if (service){//Advertising using the Nearby Service Advertiser
+            
+            let serviceNearby = MCNearbyServiceAdvertiser(peer: Globals.globals.manager.peerid, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], serviceType: code)
+            
+            print("Access Code: " + code)
+            serviceNearby.delegate = self
+            print("Delegate Setup")
+            serviceNearby.startAdvertisingPeer()
+            print("Advertising Started")
+            
+        }
+        else {//Advertising using the Advertisement Assistant
+            
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.manager.session)
+            
+            print("Access Code: " + code)
+            advertisementAssistant.delegate = self
+            print("Delegate setup")
+            advertisementAssistant.start()
+            print("Advertising Started")
+        }
     }
     
     
@@ -115,14 +128,20 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
                 case "check":
                     print("check received " + actualPresent.identifier)
                     receivedCheck(check1: actualPresent.check)
-                    
+                break
                 
                 case "panic":
                     print("panic received " + actualPresent.identifier)
                     receivedPanic(panic: actualPresent.panic)
+                break
+                
+                case "initialCheck":
+                    print("Connected to session. Received Initial Check")
+                break
                 
                 default:
                     print(" is not recognized yet")
+                break
                 
             }
         }
@@ -132,8 +151,20 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         
     }
     
-    
-    
+    //Did receive invite to join from someone
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        
+        //Accept invite
+        invitationHandler(true, Globals.globals.manager.session)
+        
+        //Send Initial Event Stuff
+        print("Sending invited peer starting files")
+        //Change this to sending Event class once event class becomes D/Encodable
+        Globals.sendData(message: Present(ident: "initialCheck"))
+        
+        
+        
+    }
     
     // Received a byte stream from remote peer.
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
