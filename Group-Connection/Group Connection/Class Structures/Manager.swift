@@ -162,8 +162,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         //Change this to sending Event class once event class becomes D/Encodable
         Globals.sendData(message: Present(ident: "initialCheck"))
         
-        
-        
     }
     
     // Received a byte stream from remote peer.

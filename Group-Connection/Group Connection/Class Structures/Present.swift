@@ -77,6 +77,8 @@ class Present: NSObject {
         
     }
     
+    init(present: Event){}
+    
     
     
     

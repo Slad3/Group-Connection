@@ -148,8 +148,8 @@ UINavigationControllerDelegate {
     @IBAction func autoFill(_ sender: Any) {
         
         generalAccessCode.text = "asdf"
-        eventName.text = "The Event Name"
-        groupName.text = "The Group Name"
+        eventName.text = "EvEnT NamE"
+        groupName.text = "GrOuP NamE hehehehe"
         
         
     }
