@@ -70,7 +70,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         
-        Globals.sendData(message: "panic")
+        Globals.sendData(message: Present(ident: "panic", thePanic: Panic()))
         
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()

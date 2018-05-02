@@ -104,7 +104,7 @@ class Globals {
     }
     
     static func sendData(message: String){
-        
+        print("DONT USE THIS METHOD YOU METH HEAD")
         //Seding String using .utf8 D/encoding
         print("Seding using .utf8 D/encoding. 0000000000000000000")
         if let dataa = message.data(using: .utf8){
@@ -149,14 +149,14 @@ class Globals {
     
     static func sendData(message: Present){
         
-        //Seding Present using .JSON D/encoding
-        print("Seding using JSON D/encoding. 0000000000000000000")
-        var temp: Present! = message
+        //Sending Present using .JSON D/encoding
+        print("Sending using JSON D/encoding. 0000000000000000000")
+        let tmp: Present! = message
+        var temp: Present.present! = Present.present(message)
         
-        //if let dataa = temp.data(using: .utf8)
         do{
         let dataa = try JSONEncoder().encode(temp)
-        
+
             do{
                 print("Encoded data")
                 try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)

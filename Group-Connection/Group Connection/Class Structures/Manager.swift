@@ -31,11 +31,11 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     
     //For making and starting advertisment system
     public func advertisementHandler(code: String) {
-        var service = true
+        var service = false
         
         if (service){//Advertising using the Nearby Service Advertiser
             
-            let serviceNearby = MCNearbyServiceAdvertiser(peer: Globals.globals.manager.peerid, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], serviceType: code)
+            let serviceNearby = MCNearbyServiceAdvertiser(peer: Globals.globals.manager.peerid, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4], serviceType: code)
             
             print("Access Code: " + code)
             serviceNearby.delegate = self
@@ -46,7 +46,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         }
         else {//Advertising using the Advertisement Assistant
             
-        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.manager.session)
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4], session: Globals.globals.manager.session)
             
             print("Access Code: " + code)
             advertisementAssistant.delegate = self
@@ -121,9 +121,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
             //var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
             var sentData: Present.present! = try JSONDecoder().decode(Present.present.self, from: data)
             let actualPresent = Present(present: sentData)
-            print(sentData.identifier)
+            print(actualPresent.identifier)
             
-            switch(sentData.identifier){
+            switch(actualPresent.identifier){
                 
                 case "check":
                     print("check received " + actualPresent.identifier)
@@ -151,9 +151,10 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         
     }
     
+    
     //Did receive invite to join from someone
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        
+        print("found peer")
         //Accept invite
         invitationHandler(true, Globals.globals.manager.session)
         
@@ -180,4 +181,17 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
         
     }
+    
+//    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
+//
+//
+//
+//    }
+//
+//
+//    public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
+//
+//
+//    }
+    
 }

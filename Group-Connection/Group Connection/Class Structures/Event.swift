@@ -43,6 +43,13 @@ class Event {
         return
     }
     
+    struct evant {
+        
+        
+        
+        
+    }
+    
     //Generates random string of 3 words
     static func makeCode() -> String {
         var str = Lorem.words(2)
@@ -74,5 +81,10 @@ class Event {
     //Never call if mentor code isn't initialized
     func isMentorAccessCode(inputCode: String) -> Bool {
         return (inputCode == mentorAccessCode)
+    }
+    
+    func matchUpPeerIds(){
+        //set function to re order the array to the peerid array
+        
     }
 }

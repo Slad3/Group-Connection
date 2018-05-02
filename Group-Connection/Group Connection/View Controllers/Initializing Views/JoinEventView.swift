@@ -102,8 +102,10 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     @IBAction func forward(_ sender: Any) {
         
-        
+        if(connectedToSession){
         advance()
+        }
+        
     }
     
     func advance(){
