@@ -11,9 +11,8 @@ import UIKit
 import UserNotifications
 import MultipeerConnectivity
 
-class MentorView: Sub, UNUserNotificationCenterDelegate {
+class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var userView: UILabel! //the panic button. Why I didn't call it panic is beyond me
     @IBOutlet weak var timeSinceLabel: UILabel! //the label
     @IBOutlet weak var timeEditor: UIDatePicker!
@@ -22,10 +21,12 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBOutlet weak var changeBuddy: UIButton!
     @IBOutlet weak var leaveVenue: UIButton!
     @IBOutlet weak var accessCode: UILabel!
-    
+    @IBOutlet weak var table: UITableView!
+
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
     var textBox: UITextField!
+    
     var students: [Person]!
     
     @objc func leaveVenue(_: Any) {
@@ -90,7 +91,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     }
     
     @IBAction func changeBuddies(_ sender: Any) {
-        //stub
+        performSegue(withIdentifier: "toBuddyRoster", sender: nil)
     }
     
     private func panic() {
@@ -109,6 +110,42 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     
     private func tupac() {
         
+    }
+    
+    // tells how many cells you want to have in the roster. This will be the number of people at the competition
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Globals.globals.user.buddyList.count
+    }
+    
+    
+    // tells what should be displayed in each cell.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //test this here
+        let buddyCell = tableView.dequeueReusableCell(withIdentifier: "buddyCell", for: indexPath) as! BuddyTable
+        
+        buddyCell.buddyName.text = Globals.globals.user.buddyList[indexPath.row].fullName
+        
+        //delete
+        Globals.globals.user.buddyList[indexPath.row].checkInStatus = true
+        //------
+        
+        if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
+            //change for obvious reasons
+            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
+            //--------------------------
+            
+            buddyCell.statusPic.contentMode = .scaleAspectFit
+        }
+        else {
+            //change for obvious reasons (again)
+            let chosenImage = UIImage(named: "zucc.jpg")
+            //-------------------------
+            
+            buddyCell.statusPic.image = chosenImage
+            buddyCell.statusPic.clipsToBounds = true
+        }
+        return buddyCell
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -136,7 +173,16 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
         //delete 
         accessCode.text = "00:00.0"
+        //------
         
+        table.delegate = self
+        table.dataSource = self
+        
+        table.reloadData()
+    
+        if Globals.globals.user.buddyList.count < 2 {
+            changeBuddy.titleLabel?.text = "Add Student"
+        }
         
         if Globals.globals.event != nil {
             accessCode.text = Globals.globals.event.generalAccessCode
