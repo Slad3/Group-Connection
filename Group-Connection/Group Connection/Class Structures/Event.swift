@@ -83,8 +83,32 @@ class Event {
         return (inputCode == mentorAccessCode)
     }
     
-    func matchUpPeerIds(){
-        //set function to re order the array to the peerid array
+    func findPeerID(name: String) -> MCPeerID {
         
+        for nam in Globals.globals.manager.session.connectedPeers {
+            if (name == nam.displayName){
+                return nam
+            }
+   
+        }
+        return Globals.globals.manager.peerid
+  
     }
+    
+    
+    
+    func findPeerIDs(names: [String]) -> [MCPeerID]{
+    
+        var list: [MCPeerID] = []
+        
+        for na in names{
+            list.append(findPeerID(name: na))
+        }
+        return list
+    }
+    
+    
+    
+    
+
 }
