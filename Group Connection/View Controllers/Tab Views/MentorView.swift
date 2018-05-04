@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import UserNotifications
 import MultipeerConnectivity
+import SnapKit
 
 class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -189,6 +190,22 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
         }
         else {
             accessCode.text = "Here's your code, Ben"
+        }
+        
+        constrain()
+    }
+    
+    private func constrain() {
+        changeBuddy.snp.makeConstraints { (snap) -> Void in
+            snap.bottom.greaterThanOrEqualTo(self.view.snp.bottomMargin)
+            snap.centerX.equalTo(self.view.snp.centerX)
+        }
+        
+        table.snp.makeConstraints { (snap) -> Void in
+            snap.bottom.greaterThanOrEqualTo(changeBuddy.snp.top)
+            snap.centerX.equalTo(self.view.snp.centerX)
+            snap.margins.lessThanOrEqualTo(self.view.snp.margins)
+            snap.top.lessThanOrEqualTo(buddyListTitle.snp.bottom)
         }
     }
     
