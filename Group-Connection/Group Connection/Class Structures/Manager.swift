@@ -135,8 +135,16 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     receivedPanic(panic: actualPresent.panic)
                 break
                 
-                case "initialCheck":
+                case "Send Initial Check":
                     print("Connected to session. Received Initial Check")
+                    
+                break
+                
+            case "Send Event":
+                    print("Receiving event")
+                    Globals.globals.event = actualPresent.event
+                    Globals.globals.receivedEvent = true
+                    print("Received Event")
                 break
                 
                 default:

@@ -108,7 +108,6 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         //Separates people so Nick can do his stuff without going through creating an event
                         if Globals.globals.user.firstName == "Nick" && Globals.globals.user.lastName == "Burright"{
                             self.performSegue(withIdentifier: "toTabTemp", sender: nil)
-                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
                         }
                         else{
                             self.performSegue(withIdentifier: "To Join Event", sender: nil)

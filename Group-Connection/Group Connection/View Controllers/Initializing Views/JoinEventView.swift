@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 import MultipeerConnectivity
+import MapKit
 
 class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     var accessCode: String = ""
     var creatorPeerid: MCPeerID!
     var connectedToSession = false
+
     
     //var SessionMC: MCSession! Used for testing purposes
     
@@ -103,7 +105,12 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     @IBAction func forward(_ sender: Any) {
         
         if(connectedToSession){
+            Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
+            
+            
+            if(Globals.globals.receivedEvent){
         advance()
+            }
         }
         
     }

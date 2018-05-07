@@ -78,7 +78,7 @@ class Person {
     }
     
     struct Roster: Codable, Sequence {
-        let people: [Persoon]
+        var people: [Persoon]
         
         func makeIterator() -> VoodooMagic {
             return VoodooMagic(people: people)

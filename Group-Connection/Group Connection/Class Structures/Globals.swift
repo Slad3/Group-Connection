@@ -24,6 +24,7 @@ class Globals {
     var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
+    var receivedEvent = false
     
     var visitedRoster: Bool = false
         
@@ -103,6 +104,7 @@ class Globals {
         return temp
     }
     
+    //Seding String using .utf8 D/encoding
     static func sendData(message: String){
         print("DONT USE THIS METHOD YOU METH HEAD")
         //Seding String using .utf8 D/encoding
@@ -117,36 +119,11 @@ class Globals {
                 print("[Error] \(error)")
             }
         }
-        
-        
-        
-//        //Seding Present using .JSON D/encoding
-//        print("Seding using .JSON D/encoding. 0000000000000000000")
-//        var temp = Present(ident: message)
-//
-//        //if let dataa = temp.data(using: .utf8)
-//        if let dataa = try JSONEncoder().encode(temp){
-//
-//            do{
-//                print("Encoded data")
-//                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
-//                print("sent check")
-//            }
-//            catch {
-//                print("[Error] \(error)")
-//            }
-//
-//        }
-//        catch{
-//            print("Encoding data did not work.")
-//
-//        }
-
 
     }
     
     
-    
+    //Sending Present using .JSON D/encoding
     static func sendData(message: Present){
         
         //Sending Present using .JSON D/encoding

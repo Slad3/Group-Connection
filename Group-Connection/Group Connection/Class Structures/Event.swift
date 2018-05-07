@@ -10,7 +10,7 @@ import MultipeerConnectivity
 class Event {
     //properties
     var generalAccessCode: String //access code to hook people up to the right compeititon
-    var mentorAccessCode: String //access code to verify status as a mentor
+    
     var importedMap: UIImage! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
     var competitionRoster: [Person] //list of all the users in the competion
     var teamRoster: [String] //list of all the people in the team
@@ -25,7 +25,6 @@ class Event {
     //init
     init(user: Person) {
         generalAccessCode = ""
-        mentorAccessCode = ""
         
         importedMap = nil
         competitionRoster = []
@@ -42,10 +41,47 @@ class Event {
         creator = user
         return
     }
+
+    init(_ event: evant) {
+        generalAccessCode = event.generalAccessCode
+        importedMap = UIImage(data: event.importedMap)
+        
+    }
     
     struct evant {
         
+        var generalAccessCode: String //access code to hook people up to the right compeititon
         
+        var importedMap: Data! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
+        var competitionRoster: [Person] //list of all the users in the competion
+        var teamRoster: [String] //list of all the people in the team
+        var mentorRoster: Person.Roster//List of all mentors in roster
+        var creator: Person.Persoon //Creator of the event
+        var eventName: String
+        var checkInLength: Double //minutes until required check-in
+        var timeTillNotification: Double //minutes in between reminders to check in
+        var groupName: String //Name of the Group
+        
+        init(_ evint: Event){
+            
+            generalAccessCode = evint.generalAccessCode //access code to hook people up to the right compeititon
+            
+            importedMap = UIImagePNGRepresentation(evint.importedMap) //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
+            competitionRoster = evint.competitionRoster //list of all the users in the competion
+            teamRoster = evint.teamRoster//list of all the people in the team
+            
+            var temp: [Person.Persoon] = []
+            for i in evint.mentorRoster {
+                temp.append(Person.Persoon(i))
+            }
+            mentorRoster = Person.Roster(people: temp) //List of all mentors in roster
+            creator = Person.Persoon(evint.creator)//Creator of the event
+            eventName = evint.eventName
+            checkInLength = evint.checkInLength//minutes until required check-in
+            timeTillNotification = evint.timeTillNotification //minutes in between reminders to check in
+            groupName = evint.groupName //Name of the Group
+            
+        }
         
         
     }
@@ -78,10 +114,6 @@ class Event {
         return (inputCode == generalAccessCode)
     }
     
-    //Never call if mentor code isn't initialized
-    func isMentorAccessCode(inputCode: String) -> Bool {
-        return (inputCode == mentorAccessCode)
-    }
     
     func findPeerID(name: String) -> MCPeerID {
         
@@ -108,6 +140,7 @@ class Event {
     }
     
     
+
     
     
 

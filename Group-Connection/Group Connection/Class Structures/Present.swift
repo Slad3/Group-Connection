@@ -9,6 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
+
 class Present: NSObject {
     
     var identifier: String
@@ -19,21 +20,21 @@ class Present: NSObject {
     
     var panic: Panic
     
+    var event : Event
     
-    //var event : Event
-    
-    struct present : Codable{
+    struct present: Codable {
         var identifier: String
         var check: Check.Xeck
         var message: String
         var panic: Panic.penac
-        //var event: Event.evant
+        var event: Event.evant
         
         init(_ pres: Present) {
             check = Check.Xeck(pres.check)
             identifier = pres.identifier
             message = pres.message
             panic = Panic.penac(pres.panic)
+            event = Event.evant(pres.event)
         }
     }
     
@@ -43,7 +44,7 @@ class Present: NSObject {
         check = Check()
         message = ""
         panic = Panic()
-        //event = Event(user: Globals.globals.user)
+        event = Event(user: Globals.globals.user)
     }
     
     init(ident: String){
@@ -51,7 +52,7 @@ class Present: NSObject {
         check = Check()
         message = ""
         panic = Panic()
-        //event = Event(user: Globals.globals.user)
+        event = Event(user: Globals.globals.user)
     }
     
     init(ident: String, theCheck: Check){
@@ -59,7 +60,7 @@ class Present: NSObject {
         check = theCheck
         message = ""
         panic = Panic()
-        //event = Event(user: Globals.globals.user)
+        event = Event(user: Globals.globals.user)
     }
     
     init(ident: String, theCheck: Check, note: String){
@@ -67,7 +68,7 @@ class Present: NSObject {
         check = theCheck
         message = note
         panic = Panic()
-        //event = Event(user: Globals.globals.user)
+        event = Event(user: Globals.globals.user)
     }
     
     init(ident: String, note: String){
@@ -75,7 +76,7 @@ class Present: NSObject {
         check = Check()
         message = ""
         panic = Panic()
-        //event = Event(user: Globals.globals.user)
+        event = Event(user: Globals.globals.user)
     }
     
     init(ident: String, thePanic: Panic){
@@ -83,7 +84,7 @@ class Present: NSObject {
         check = Check()
         message = ""
         panic = thePanic
-        //event = Event(user: Globals.globals.user)
+        event = Event(user: Globals.globals.user)
     }
     
     init(present: Present.present){
@@ -91,21 +92,18 @@ class Present: NSObject {
         check = Check(present.check)
         message = present.message
         panic = Panic(present.panic)
-        //event = present.event
+        event = Event(user: present.event)
     }
     
-    init(present: Event){
+    init(ident: String, evant: Event){
         
-        identifier = "Nothing"
+        identifier = "Send Event"
         check = Check()
         message = ""
         panic = Panic()
-        //event = present
+        event = evant
         
-    }
-    
-    
-    
+    }    
     
     
     
