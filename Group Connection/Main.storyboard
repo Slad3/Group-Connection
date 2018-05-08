@@ -1055,9 +1055,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8NB-ea-AGK">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8NB-ea-AGK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap and hold anywhere to switch maps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6je-Nv-25e">
@@ -1067,12 +1066,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-vV-TBo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-vV-TBo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rG1-vV-TBo" firstAttribute="top" secondItem="KMj-h3-idT" secondAttribute="top" id="Eez-jF-eJQ"/>
+                            <constraint firstItem="A36-kz-gX4" firstAttribute="top" secondItem="8NB-ea-AGK" secondAttribute="bottom" id="EnC-MJ-S1o"/>
+                            <constraint firstItem="8NB-ea-AGK" firstAttribute="leading" secondItem="KMj-h3-idT" secondAttribute="leading" id="JRj-7h-v3H"/>
+                            <constraint firstAttribute="trailing" secondItem="rG1-vV-TBo" secondAttribute="trailing" id="RWB-qZ-5AL"/>
+                            <constraint firstAttribute="trailing" secondItem="8NB-ea-AGK" secondAttribute="trailing" id="hdt-j5-iKN"/>
+                            <constraint firstItem="A36-kz-gX4" firstAttribute="top" secondItem="rG1-vV-TBo" secondAttribute="bottom" id="pPZ-hL-scx"/>
+                            <constraint firstItem="rG1-vV-TBo" firstAttribute="leading" secondItem="KMj-h3-idT" secondAttribute="leading" id="s3e-QJ-qkn"/>
+                            <constraint firstItem="8NB-ea-AGK" firstAttribute="top" secondItem="KMj-h3-idT" secondAttribute="top" id="uc4-sg-cf3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="n8z-JY-D2l"/>
                     <connections>
@@ -1528,8 +1536,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mhn-fi-mhm"/>
-        <segue reference="OLK-fx-p5I"/>
+        <segue reference="srJ-Gd-0es"/>
         <segue reference="1g9-qH-AoM"/>
-        <segue reference="ByP-vU-kVb"/>
+        <segue reference="haS-TD-5Sn"/>
     </inferredMetricsTieBreakers>
 </document>
