@@ -92,7 +92,7 @@ class Present: NSObject {
         check = Check(present.check)
         message = present.message
         panic = Panic(present.panic)
-        event = Event(user: present.event)
+        event = Event(user: present.event.creator.toPerson())
     }
     
     init(ident: String, evant: Event){

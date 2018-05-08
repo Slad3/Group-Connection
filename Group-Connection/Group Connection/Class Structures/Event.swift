@@ -46,14 +46,25 @@ class Event {
         generalAccessCode = event.generalAccessCode
         importedMap = UIImage(data: event.importedMap)
         
+        competitionRoster = event.competitionRoster.makePeople()
+        teamRoster = event.teamRoster
+        mentorRoster = event.mentorRoster.makePeople()
+        creator = event.creator.toPerson()
+        eventName = event.eventName
+        checkInLength = event.checkInLength
+        timeTillNotification = event.timeTillNotification
+        groupName = event.groupName
+        peeridRoster = []
+        
+        return
     }
     
-    struct evant {
+    struct evant: Codable {
         
         var generalAccessCode: String //access code to hook people up to the right compeititon
         
         var importedMap: Data! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
-        var competitionRoster: [Person] //list of all the users in the competion
+        var competitionRoster: Person.Roster //list of all the users in the competion
         var teamRoster: [String] //list of all the people in the team
         var mentorRoster: Person.Roster//List of all mentors in roster
         var creator: Person.Persoon //Creator of the event
@@ -67,10 +78,16 @@ class Event {
             generalAccessCode = evint.generalAccessCode //access code to hook people up to the right compeititon
             
             importedMap = UIImagePNGRepresentation(evint.importedMap) //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
-            competitionRoster = evint.competitionRoster //list of all the users in the competion
-            teamRoster = evint.teamRoster//list of all the people in the team
             
             var temp: [Person.Persoon] = []
+            for i in evint.competitionRoster {
+                temp.append(Person.Persoon(i))
+            }
+            competitionRoster = Person.Roster(people: temp) //list of all the users in the competion
+            
+            teamRoster = evint.teamRoster//list of all the people in the team
+            
+            temp = []
             for i in evint.mentorRoster {
                 temp.append(Person.Persoon(i))
             }
@@ -114,7 +131,6 @@ class Event {
         return (inputCode == generalAccessCode)
     }
     
-    
     func findPeerID(name: String) -> MCPeerID {
         
         for nam in Globals.globals.manager.session.connectedPeers {
@@ -127,8 +143,6 @@ class Event {
   
     }
     
-    
-    
     func findPeerIDs(names: [String]) -> [MCPeerID]{
     
         var list: [MCPeerID] = []
@@ -138,10 +152,4 @@ class Event {
         }
         return list
     }
-    
-    
-
-    
-    
-
 }
