@@ -126,16 +126,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
                     //receivePanic()
                     break
                 
-                case "personAdded":
-                    print("new person received")
-                    //receivePerson()
-                    break
-                
-                case "personRemoved":
-                    print("person will be removed")
-                    //removePerson()
-                    break
-                
                 case "changingBuddies":
                     print("changing buddies")
                     //changeBuddies()
@@ -144,11 +134,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
                 case "timerSync":
                     print("syncing timer to mentor's")
                     //syncTimer()
-                    break
-                
-                case "alterJoinCode":
-                    print("changing code to join")
-                    //changeCode()
                     break
                 
                 default:

@@ -197,26 +197,24 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
     
     private func constrain() {
         changeBuddy.snp.makeConstraints { (snap) -> Void in
-            snap.bottom.greaterThanOrEqualTo(self.view.snp.bottomMargin)
+            print(changeBuddy.frame.maxY)
+            snap.bottom.equalTo(self.view.snp.bottomMargin)//view.snp.bottomMargin)
+            print(changeBuddy.frame.maxY)
             snap.centerX.equalTo(self.view.snp.centerX)
         }
-        
+
         table.snp.makeConstraints { (snap) -> Void in
-            snap.bottom.greaterThanOrEqualTo(changeBuddy.snp.top)
-            snap.centerX.equalTo(self.view.snp.centerX)
-            snap.margins.lessThanOrEqualTo(self.view.snp.margins)
-            snap.top.lessThanOrEqualTo(buddyListTitle.snp.bottom)
+//            snap.centerX.equalTo(self.view.snp.centerX)
+//            snap.bottom.greaterThanOrEqualTo(changeBuddy.snp.top)
+//            snap.margins.lessThanOrEqualTo(self.view.snp.margins)
+//            snap.top.equalTo(buddyListTitle.frame.minY)
         }
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("mentor disappear")
     }
     
     //lower any keyboards when the user taps anywhere besides a text box
