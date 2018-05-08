@@ -137,7 +137,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                 
                 case "Send Initial Check":
                     print("Connected to session. Received Initial Check")
-                    
+                    var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
+                    Globals.sendData(message: lamp, toPeer: peerID)
+                    print("Sent event and inital data")
                 break
                 
             case "Send Event":

@@ -21,6 +21,7 @@ class Event {
     var checkInLength: Double //minutes until required check-in
     var timeTillNotification: Double //minutes in between reminders to check in
     var groupName: String //Name of the Group
+
     
     //init
     init(user: Person) {
