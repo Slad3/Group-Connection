@@ -207,10 +207,10 @@
 				0E8898B81FE2EED100B671A0 /* RosterView.swift */,
 				7FE2239F202CC3410029775C /* RosterViewCellTableViewCell.swift */,
 				F80FCE3F203E7BBA0029CD8C /* RosterProfile.swift */,
-				0E8898B61FE2EEC000B671A0 /* MapView.swift */,
 				0E8898B41FE2EE1F00B671A0 /* CheckInView.swift */,
 				4E68033C2081187600380FE5 /* BuddyRosterView.swift */,
 				4E68033A2081186B00380FE5 /* BuddyTable.swift */,
+				0E8898B61FE2EEC000B671A0 /* MapView.swift */,
 				4E134FA6207FC4EA00A6C042 /* SendCheck.swift */,
 			);
 			path = "Tab Views";

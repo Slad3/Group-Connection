@@ -71,6 +71,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         //stub
         
         Globals.sendData(message: Present(ident: "panic", thePanic: Panic()))
+        //Globals.sendD
         
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()

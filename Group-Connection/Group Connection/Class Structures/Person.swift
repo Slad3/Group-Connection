@@ -63,7 +63,12 @@ class Person {
             self.subteam = person.subteam
             self.additionalNotes = person.additionalNotes
             self.hasCheckIn = person.hasCheckIn ?? false
-            self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
+            if(person.profilePhoto != nil){
+                self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
+            }
+            else{
+                self.profilePhoto = UIImagePNGRepresentation(#imageLiteral(resourceName: "download (1)"))
+            }
             let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
             
         }

@@ -145,6 +145,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
             case "Send Event":
                     print("Receiving event")
                     Globals.globals.event = actualPresent.event
+                    print(actualPresent.identifier)
                     Globals.globals.receivedEvent = true
                     print("Received Event")
                 break

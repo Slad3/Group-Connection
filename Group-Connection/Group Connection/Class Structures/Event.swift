@@ -46,7 +46,6 @@ class Event {
     init(_ event: evant) {
         generalAccessCode = event.generalAccessCode
         importedMap = UIImage(data: event.importedMap)
-        
         competitionRoster = event.competitionRoster.makePeople()
         teamRoster = event.teamRoster
         mentorRoster = event.mentorRoster.makePeople()
@@ -77,8 +76,13 @@ class Event {
         init(_ evint: Event){
             
             generalAccessCode = evint.generalAccessCode //access code to hook people up to the right compeititon
-            
-            importedMap = UIImagePNGRepresentation(evint.importedMap) //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
+            if(evint.importedMap != nil){
+                importedMap = UIImagePNGRepresentation(evint.importedMap)
+            }
+            else{
+                importedMap = UIImagePNGRepresentation(UIImage(named: "download (1)")!)
+            }
+            //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
             
             var temp: [Person.Persoon] = []
             for i in evint.competitionRoster {

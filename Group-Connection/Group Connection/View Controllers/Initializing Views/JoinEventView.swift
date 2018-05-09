@@ -107,16 +107,13 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         if(connectedToSession){
             Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
             
+            print("Received Event: " + String(Globals.globals.receivedEvent))
             if(Globals.globals.receivedEvent){
-        advance()
+                performSegue(withIdentifier: "To Main", sender: nil)
             }
         }
     }
-    
-    func advance(){
-        performSegue(withIdentifier: "To Main", sender: nil)
-        
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
