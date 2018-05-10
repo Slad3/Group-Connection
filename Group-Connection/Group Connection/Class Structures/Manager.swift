@@ -142,12 +142,13 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     print("Sent event and inital data")
                 break
                 
-            case "Send Event":
+                case "Send Event":
                     print("Receiving event")
                     Globals.globals.event = actualPresent.event
                     print(actualPresent.identifier)
                     Globals.globals.receivedEvent = true
                     print("Received Event")
+                    
                 break
                 
                 default:

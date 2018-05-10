@@ -64,6 +64,11 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.text = "Not Connected"
         }
         print("Finished View Did Load")
+        
+    }
+    
+    public func move() {
+        performSegue(withIdentifier: "To Main", sender: nil)
     }
     
   /*  func checkAccessCode() -> Bool {
@@ -102,15 +107,18 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         self.present(browserView, animated: true, completion: nil)
     }
     
+    public func BeAdvance() {
+        performSegue(withIdentifier: "To Main", sender: nil)
+    }
+    
     @IBAction func forward(_ sender: Any) {
         
         if(connectedToSession){
             Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
             
             print("Received Event: " + String(Globals.globals.receivedEvent))
-            if(Globals.globals.receivedEvent){
-                performSegue(withIdentifier: "To Main", sender: nil)
-            }
+            
+            BeAdvance()
         }
     }
 

@@ -83,6 +83,7 @@ class Globals {
         return
     }
     
+    
     func autopopulate(_ persons: [Person]) -> [Person]{
         let upperbound = 3
         var peeps = persons
