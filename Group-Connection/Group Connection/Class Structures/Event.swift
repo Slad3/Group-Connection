@@ -136,6 +136,31 @@ class Event {
         return (inputCode == generalAccessCode)
     }
     
+    
+    //Find Person Stuff
+    func findPerson(name: String) -> Person {
+        
+        for nam in Globals.globals.event.competitionRoster {
+            if (name == nam.fullName){
+                return nam
+            }
+            
+        }
+        return Globals.globals.user
+        
+    }
+    
+    func findPeerIDs(names: [String]) -> [Person]{
+        
+        var list: [Person] = []
+        
+        for na in names{
+            list.append(findPerson(name: na))
+        }
+        return list
+    }
+    
+    //Find Peer ID Stuff
     func findPeerID(name: String) -> MCPeerID {
         
         for nam in Globals.globals.manager.session.connectedPeers {
@@ -147,6 +172,8 @@ class Event {
         return Globals.globals.manager.peerid
   
     }
+    
+    
     
     func findPeerIDs(names: [String]) -> [MCPeerID]{
     

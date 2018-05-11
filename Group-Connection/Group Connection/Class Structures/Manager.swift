@@ -137,8 +137,10 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                 
                 case "Send Initial Check":
                     print("Connected to session. Received Initial Check")
+                    Globals.globals.event.competitionRoster.append(actualPresent.check.sender)
                     var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
                     Globals.sendData(message: lamp, toPeer: peerID)
+                    
                     print("Sent event and inital data")
                 break
                 
@@ -184,6 +186,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     
     // Start receiving a resource from remote peer.
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
+        print(progress)
         
     }
     
@@ -191,8 +194,33 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     // in a temporary location - the app is responsible for moving the file
     // to a permanent location within its sandbox.
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
+        switch(resourceName){
+            case "importedMap":
+                print("got imported map")
+                break
+            
+        default:
+
+            print(resourceName)
+            var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
+            
+            let destinationURL = URL(fileURLWithPath: .documentDirectory)
+            do {
+                try FileManager.default.moveItem(at: localURL, to: destinationURL)
+                print("Finished receiving resource")
+                try chair.profilePhoto = UIImage(named: resourceName)
+                print("Done Set profile photo")
+            } catch {
+                print("[Error] \(error)")
+            }
+            break
+            
+        }
+        
         
     }
+    
+    
     
 //    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
 //
