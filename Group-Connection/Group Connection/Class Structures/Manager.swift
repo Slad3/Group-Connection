@@ -17,6 +17,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     public var session: MCSession!
     var advertisementAssistant: MCAdvertiserAssistant!
     let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
+    var until: Progress
     
     
     
@@ -26,6 +27,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         print("set session")
         session.delegate = self
         print("set delegate")
+        until = Progress()
         
     }
     
@@ -140,6 +142,8 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     Globals.globals.event.competitionRoster.append(actualPresent.check.sender)
                     var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
                     Globals.sendData(message: lamp, toPeer: peerID)
+                    var fileURL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                    Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
                     
                     print("Sent event and inital data")
                 break
@@ -197,18 +201,28 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         switch(resourceName){
             case "importedMap":
                 print("got imported map")
+                print(resourceName)
+                var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
+                let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                do {
+                    try FileManager.default.moveItem(at: localURL!, to: destinationURL)
+                    print("Finished receiving resource")
+                    try Globals.globals.importedMap = UIImage(named: resourceName)
+                    print("Done setting imported map")
+                } catch {
+                    print("[Error] \(error)")
+                }
                 break
             
+            
         default:
-
             print(resourceName)
             var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
-            
-            let destinationURL = URL(fileURLWithPath: .documentDirectory)
+            let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
             do {
-                try FileManager.default.moveItem(at: localURL, to: destinationURL)
+                try FileManager.default.moveItem(at: localURL!, to: destinationURL)
                 print("Finished receiving resource")
-                try chair.profilePhoto = UIImage(named: resourceName)
+                //try chair.profilePhoto = UIImage(named: resourceName)
                 print("Done Set profile photo")
             } catch {
                 print("[Error] \(error)")

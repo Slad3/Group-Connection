@@ -136,6 +136,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="59t-7G-OQb">
+                                <rect key="frame" x="16" y="388" width="343" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -147,6 +151,7 @@
                         <outlet property="TellUser" destination="fWX-VR-8hJ" id="B59-ne-g5S"/>
                         <outlet property="accessCodeBox" destination="Yhx-en-xl9" id="PDW-iz-Qkh"/>
                         <outlet property="connectedOrNot" destination="LX7-SX-GlB" id="kmQ-Pc-0zq"/>
+                        <outlet property="progBar" destination="fWX-VR-8hJ" id="ajQ-tm-gLQ"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="To Main" id="srJ-Gd-0es"/>
                     </connections>
                 </viewController>
@@ -1527,8 +1532,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pUr-sM-1Mi"/>
+        <segue reference="srJ-Gd-0es"/>
         <segue reference="1g9-qH-AoM"/>
-        <segue reference="ByP-vU-kVb"/>
+        <segue reference="haS-TD-5Sn"/>
     </inferredMetricsTieBreakers>
 </document>

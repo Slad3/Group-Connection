@@ -25,6 +25,9 @@ class Globals {
     var passingData: (String, String, String, String, String )
     var isCreator = false
     var receivedEvent = false
+    var importedMap: UIImage!
+    var importedMapName: String
+    
     
     var visitedRoster: Bool = false
         
@@ -39,6 +42,8 @@ class Globals {
         hans.checkInStatus = true
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
+        importedMap = nil
+        importedMapName = ""
         
         
     }

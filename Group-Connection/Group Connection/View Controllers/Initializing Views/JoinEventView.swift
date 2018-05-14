@@ -35,6 +35,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     @IBOutlet weak var TellUser: UILabel!
     
+    @IBOutlet weak var progBar: UILabel!
     
     func updateTextFields(fg: String, en: String, cn: String, di: String, connectionThere: Bool) {
         FoundGroupText.text = fg
@@ -64,6 +65,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.text = "Not Connected"
         }
         print("Finished View Did Load")
+        progBar.setProgress(Float(0), animated: animated)
         
     }
     
@@ -107,9 +109,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         self.present(browserView, animated: true, completion: nil)
     }
     
-    public func BeAdvance() {
-        performSegue(withIdentifier: "To Main", sender: nil)
-    }
+
     
     @IBAction func forward(_ sender: Any) {
         
@@ -118,7 +118,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             
             print("Received Event: " + String(Globals.globals.receivedEvent))
             
-            BeAdvance()
+            progBar.
+            performSegue(withIdentifier: "To Main", sender: nil)
         }
     }
 

@@ -107,10 +107,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
     }
     
-    private func tupac() {
-        
-    }
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }

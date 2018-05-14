@@ -82,7 +82,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 }
                 
   
-                Globals.globals.user.profilePhoto = profilePhoto.image
+               // Globals.globals.user.profilePhoto = #imageLiteral(resourceName: "download (1)")
                 
                 Globals.globals.teamRoster[0] = Globals.globals.user
                 
@@ -185,8 +185,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             phoneNumber.text = user?.phoneNumber
             email.text = user?.email
             additionalNotes.text = user?.additionalNotes
-            profilePhoto.image = user?.profilePhoto
-            
+            //profilePhoto.image = user?.profilePhoto
+            profilePhoto.image = #imageLiteral(resourceName: "download (1)")
             let sub = user?.subteam
             let pickerNum: Int! = subTeam.index(of: sub!) ?? 0
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)

@@ -21,13 +21,14 @@ class Event {
     var checkInLength: Double //minutes until required check-in
     var timeTillNotification: Double //minutes in between reminders to check in
     var groupName: String //Name of the Group
+    
 
     
     //init
     init(user: Person) {
         generalAccessCode = ""
         
-        importedMap = nil
+        //importedMap = nil
         competitionRoster = []
         competitionRoster.append(user)
         teamRoster = []
@@ -45,7 +46,7 @@ class Event {
 
     init(_ event: evant) {
         generalAccessCode = event.generalAccessCode
-        importedMap = UIImage(data: event.importedMap)
+//        importedMap = UIImage(data: event.importedMap)
         competitionRoster = event.competitionRoster.makePeople()
         teamRoster = event.teamRoster
         mentorRoster = event.mentorRoster.makePeople()
@@ -63,7 +64,7 @@ class Event {
         
         var generalAccessCode: String //access code to hook people up to the right compeititon
         
-        var importedMap: Data! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
+        //var importedMap: Data! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
         var competitionRoster: Person.Roster //list of all the users in the competion
         var teamRoster: [String] //list of all the people in the team
         var mentorRoster: Person.Roster//List of all mentors in roster
@@ -76,12 +77,12 @@ class Event {
         init(_ evint: Event){
             
             generalAccessCode = evint.generalAccessCode //access code to hook people up to the right compeititon
-            if(evint.importedMap != nil){
-                importedMap = UIImagePNGRepresentation(evint.importedMap)
-            }
-            else{
-                importedMap = UIImagePNGRepresentation(UIImage(named: "download (1)")!)
-            }
+//            if(evint.importedMap != nil){
+//                importedMap = UIImagePNGRepresentation(evint.importedMap)
+//            }
+//            else{
+//                importedMap = UIImagePNGRepresentation(UIImage(named: "download (1)")!)
+//            }
             //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
             
             var temp: [Person.Persoon] = []
