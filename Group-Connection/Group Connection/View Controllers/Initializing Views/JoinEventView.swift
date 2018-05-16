@@ -35,7 +35,9 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     @IBOutlet weak var TellUser: UILabel!
     
-    @IBOutlet weak var progBar: UILabel!
+
+    @IBOutlet weak var progBar: UIProgressView!
+    
     
     func updateTextFields(fg: String, en: String, cn: String, di: String, connectionThere: Bool) {
         FoundGroupText.text = fg
@@ -65,7 +67,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.text = "Not Connected"
         }
         print("Finished View Did Load")
-        progBar.setProgress(Float(0), animated: animated)
+        progBar.setProgress(0, animated: true)
         
     }
     
@@ -73,20 +75,6 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         performSegue(withIdentifier: "To Main", sender: nil)
     }
     
-  /*  func checkAccessCode() -> Bool {
-        var good = false
-        if accessCodeBox.hasText {
-            for index in 0...accessCodeBox.text.count {
-                if
-                
-            }
-            
-            
-        }
-        
-        
-    }
-    */
     
     @IBAction func FindSessions(_ sender: Any) {
         
@@ -116,10 +104,21 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         if(connectedToSession){
             Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
             
-            print("Received Event: " + String(Globals.globals.receivedEvent))
             
-            progBar.
-            performSegue(withIdentifier: "To Main", sender: nil)
+            var temp: Float = 0.0
+            
+            if(!Globals.globals.manager.until.isFinished){
+                while(true){
+                    temp = Float((Globals.globals.manager.until.completedUnitCount)/(Globals.globals.manager.until.totalUnitCount))
+                    print(temp)
+                    progBar.setProgress(temp, animated: true)
+                    
+                }
+            }
+            else{
+                performSegue(withIdentifier: "To Main", sender: nil)
+            }
+            
         }
     }
 

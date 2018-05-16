@@ -689,6 +689,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Group Connection/Group Connection.entitlements";
 				DEVELOPMENT_TEAM = 96L2Y94678;
 				INFOPLIST_FILE = "Group Connection/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196.groupConnection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -706,6 +707,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Group Connection/Group Connection.entitlements";
 				DEVELOPMENT_TEAM = 96L2Y94678;
 				INFOPLIST_FILE = "Group Connection/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196.groupConnection;
 				PRODUCT_NAME = "$(TARGET_NAME)";

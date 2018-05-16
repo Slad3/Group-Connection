@@ -11,13 +11,14 @@ import MultipeerConnectivity
 import CloudKit
 import UserNotifications
 
+@available(iOS 11.0, *)
 class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNearbyServiceAdvertiserDelegate {
    
 
     public var session: MCSession!
     var advertisementAssistant: MCAdvertiserAssistant!
     let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
-    var until: Progress
+    var until: Progress!
     
     
     
@@ -189,9 +190,12 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     }
     
     // Start receiving a resource from remote peer.
+    @available(iOS 11.0, *)
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
-        print(progress)
-        
+        while(!progress.isFinished){
+            print(progress.completedUnitCount/progress.totalUnitCount)
+            
+        }
     }
     
     // Finished receiving a resource from remote peer and saved the content
@@ -201,7 +205,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         switch(resourceName){
             case "importedMap":
                 print("got imported map")
-                print(resourceName)
                 var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
                 let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
                 do {

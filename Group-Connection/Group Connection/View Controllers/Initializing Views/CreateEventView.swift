@@ -159,7 +159,8 @@ UINavigationControllerDelegate {
     @objc func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        Globals.globals.importedMapName = (info[UIImagePickerControllerOriginalImage]?.displayName)!
+        //Globals.globals.importedMapName = (info[UIImagePickerControllerOriginalImage]?.displayName)!
+
         mapView.contentMode = .scaleAspectFit
         mapView.image = chosenImage
         
