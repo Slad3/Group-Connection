@@ -33,7 +33,7 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     @IBOutlet weak var connectedOrNot: UILabel!
     
-    @IBOutlet weak var TellUser: UILabel!
+    //@IBOutlet weak var TellUser: UILabel!
     
 
     @IBOutlet weak var progBar: UIProgressView!
@@ -49,13 +49,13 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         if !connectedToSession {
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
-            TellUser.text = "Please find a session"
+            //TellUser.text = "Please find a session"
         }
             
         else {
             connectedOrNot.text = "Connected"
             connectedOrNot.backgroundColor = UIColor.green
-            TellUser.text = ""
+            //TellUser.text = ""
         }
     }
     
@@ -109,8 +109,11 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             
             if(!Globals.globals.manager.until.isFinished){
                 while(true){
-                    temp = Float((Globals.globals.manager.until.completedUnitCount)/(Globals.globals.manager.until.totalUnitCount))
-                    print(temp)
+                    print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
+                    print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
+                    temp = Float((1 + Globals.globals.manager.until.completedUnitCount)/(1 + Globals.globals.manager.until.totalUnitCount) )
+                    print("fraction = " + String(temp))
+                    print(Globals.globals.manager.until.isFinished)
                     progBar.setProgress(temp, animated: true)
                     
                 }

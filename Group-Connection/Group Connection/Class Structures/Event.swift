@@ -185,4 +185,12 @@ class Event {
         }
         return list
     }
+    
+    func updateEvent(new: Event){
+        
+        
+        
+        
+        
+    }
 }

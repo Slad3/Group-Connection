@@ -158,6 +158,16 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     
                 break
                 
+                case "Update Event Request":
+                    print("Update Event Request")
+                    var clock = Present(ident: "Update Event", evant: Globals.globals.event)
+                    Globals.sendData(message: clock, toPeer: peerID)
+                break
+                
+                case "Update Event":
+                    print("Update Event")
+                    //Globals.globals.
+                break
                 default:
                     print(" is not recognized yet")
                 break
