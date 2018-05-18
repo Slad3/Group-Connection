@@ -27,6 +27,7 @@ class Globals {
     var receivedEvent = false
     var importedMap: UIImage!
     var importedMapName: String
+    var compressedMap: Data!
     
     
     var visitedRoster: Bool = false
@@ -44,6 +45,7 @@ class Globals {
         passingData = ("", "", "", "", "")
         importedMap = nil
         importedMapName = ""
+        compressedMap = nil
         
         
     }
@@ -237,6 +239,59 @@ class Globals {
         }
         
     }
+    
+        
+        func compressImage(image: UIImage) -> Data {
+            // Reducing file size to a 10th
+            
+            var actualHeight : CGFloat = image.size.height
+            var actualWidth : CGFloat = image.size.width
+            var maxHeight : CGFloat = 1136.0
+            var maxWidth : CGFloat = 640.0
+            var imgRatio : CGFloat = actualWidth/actualHeight
+            var maxRatio : CGFloat = maxWidth/maxHeight
+            var compressionQuality : CGFloat = 0.5
+            
+            if (actualHeight > maxHeight || actualWidth > maxWidth){
+                if(imgRatio < maxRatio){
+                    //adjust width according to maxHeight
+                    imgRatio = maxHeight / actualHeight
+                    actualWidth = imgRatio * actualWidth
+                    actualHeight = maxHeight
+                }
+                else if(imgRatio > maxRatio){
+                    //adjust height according to maxWidth
+                    imgRatio = maxWidth / actualWidth
+                    actualHeight = imgRatio * actualHeight
+                    actualWidth = maxWidth
+                }
+                else{
+                    actualHeight = maxHeight
+                    actualWidth = maxWidth
+                    compressionQuality = 1
+                }
+            }
+            
+            //var rect = CGRect(0.0, 0.0, actualWidth, actualHeight)
+            var rect = CGRect(x: 0.0, y: 0.0, width: actualWidth, height: actualHeight)
+            UIGraphicsBeginImageContext(rect.size)
+            image.draw(in: rect)
+            var img = UIGraphicsGetImageFromCurrentImageContext()
+            let imageData = UIImageJPEGRepresentation(img!, compressionQuality)
+            UIGraphicsEndImageContext()
+            
+            return imageData!
+        }
+        
+
+    
+    
+
+        
+        
+        
+        
+        
     
  
     

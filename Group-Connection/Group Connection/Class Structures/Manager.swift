@@ -11,7 +11,7 @@ import MultipeerConnectivity
 import CloudKit
 import UserNotifications
 
-@available(iOS 11.0, *)
+
 class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNearbyServiceAdvertiserDelegate {
    
 
@@ -143,7 +143,11 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     Globals.globals.event.competitionRoster.append(actualPresent.check.sender)
                     var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
                     Globals.sendData(message: lamp, toPeer: peerID)
+                    print("sent something")
+                    
+                    print("lasdhluasdfhafshuasdhoudsafhoi")
                     var fileURL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                    print(Globals.globals.importedMapName)
                     Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
                     
                     print("Sent event and inital data")
@@ -166,8 +170,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                 
                 case "Update Event":
                     print("Update Event")
-                    //Globals.globals.
+                    Globals.globals.event.updateEvent(new: actualPresent.event)
                 break
+                
                 default:
                     print(" is not recognized yet")
                 break

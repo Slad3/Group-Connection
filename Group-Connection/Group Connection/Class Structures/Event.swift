@@ -13,7 +13,7 @@ class Event {
     
     var importedMap: UIImage! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
     var competitionRoster: [Person] //list of all the users in the competion
-    var teamRoster: [String] //list of all the people in the team
+    //var teamRoster: [String] //list of all the people in the team
     var peeridRoster: [MCPeerID] //list of all the peer ids on the team
     var mentorRoster: [Person] = []//List of all mentors in roster
     var creator: Person //Creator of the event
@@ -31,10 +31,10 @@ class Event {
         //importedMap = nil
         competitionRoster = []
         competitionRoster.append(user)
-        teamRoster = []
+        //teamRoster = []
         peeridRoster = []
         mentorRoster.append(user)
-        teamRoster.append(user.firstName)
+        //teamRoster.append(user.firstName)
         
         eventName = ""
         checkInLength = -1.0
@@ -48,7 +48,7 @@ class Event {
         generalAccessCode = event.generalAccessCode
 //        importedMap = UIImage(data: event.importedMap)
         competitionRoster = event.competitionRoster.makePeople()
-        teamRoster = event.teamRoster
+        //teamRoster = event.teamRoster
         mentorRoster = event.mentorRoster.makePeople()
         creator = event.creator.toPerson()
         eventName = event.eventName
@@ -66,7 +66,7 @@ class Event {
         
         //var importedMap: Data! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
         var competitionRoster: Person.Roster //list of all the users in the competion
-        var teamRoster: [String] //list of all the people in the team
+        //var teamRoster: [String] //list of all the people in the team
         var mentorRoster: Person.Roster//List of all mentors in roster
         var creator: Person.Persoon //Creator of the event
         var eventName: String
@@ -91,7 +91,7 @@ class Event {
             }
             competitionRoster = Person.Roster(people: temp) //list of all the users in the competion
             
-            teamRoster = evint.teamRoster//list of all the people in the team
+            //teamRoster = evint.teamRoster//list of all the people in the team
             
             temp = []
             for i in evint.mentorRoster {
@@ -175,7 +175,7 @@ class Event {
     }
     
     
-    
+    //Finds the peerIDS in the event
     func findPeerIDs(names: [String]) -> [MCPeerID]{
     
         var list: [MCPeerID] = []
@@ -186,10 +186,14 @@ class Event {
         return list
     }
     
+    
+    //Updates event correctly
     func updateEvent(new: Event){
         
-        
-        
+        self.competitionRoster = new.competitionRoster
+        self.peeridRoster = new.peeridRoster
+        self.checkInLength = new.checkInLength
+        self.mentorRoster = new.mentorRoster
         
         
     }

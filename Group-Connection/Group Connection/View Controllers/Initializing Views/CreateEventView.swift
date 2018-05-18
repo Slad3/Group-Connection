@@ -65,7 +65,7 @@ UINavigationControllerDelegate {
             event.checkInLength = checkInLength.value
             event.generalAccessCode = generalAccessCode.text!
             event.groupName = groupName.text!
-            event.importedMap = mapView.image
+            Globals.globals.importedMap = mapView.image
             
             Globals.globals.event = event
             
@@ -163,7 +163,8 @@ UINavigationControllerDelegate {
 
         mapView.contentMode = .scaleAspectFit
         mapView.image = chosenImage
-        
+        var temp = Globals.globals.compressImage(image: chosenImage)
+        Globals.globals.compressedMap = temp
         dismiss(animated:true, completion: nil)
     }
     
