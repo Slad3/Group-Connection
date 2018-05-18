@@ -70,7 +70,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub
-       Globals.sendData(message: "message")
+        Globals.sendData(message: Present(ident: "panic", thePanic: Panic()))
             
 
         //general asshattery

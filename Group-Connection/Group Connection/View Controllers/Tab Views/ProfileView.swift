@@ -43,7 +43,8 @@ class ProfileView: Sub {
         phoneNumber.text = "Phone: " + (user?.phoneNumber)!
         emailText.text = "Email: " + (user?.email)!
         addedNotes.text = (user?.additionalNotes)
-        let tempImage = user?.profilePhoto
+        //let tempImage = user?.profilePhoto
+        let tempImage = #imageLiteral(resourceName: "download (1)")
         profilePhoto.contentMode = .scaleAspectFit
         profilePhoto.image = tempImage
     }

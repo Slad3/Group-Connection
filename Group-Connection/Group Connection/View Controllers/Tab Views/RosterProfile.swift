@@ -53,7 +53,7 @@ class RosterProfileView: UIViewController {
         rPhone.text = "Phone: " + user.phoneNumber
         rEmail.text = "Email: " + user.email
         rAdditionalNotes.text = user.additionalNotes
-        rProfilePhoto.image = user.profilePhoto
+        rProfilePhoto.image = #imageLiteral(resourceName: "download (1)") //user.profilePhoto
     }
     
     override func didReceiveMemoryWarning() {

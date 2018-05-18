@@ -24,6 +24,10 @@ class Globals {
     var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
+    var receivedEvent = false
+    var importedMap: UIImage!
+    var importedMapName: String
+    
     
     var visitedRoster: Bool = false
         
@@ -38,6 +42,8 @@ class Globals {
         hans.checkInStatus = true
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
+        importedMap = nil
+        importedMapName = ""
         
         
     }
@@ -82,6 +88,7 @@ class Globals {
         return
     }
     
+    
     func autopopulate(_ persons: [Person]) -> [Person]{
         let upperbound = 3
         var peeps = persons
@@ -103,8 +110,9 @@ class Globals {
         return temp
     }
     
+    //Seding String using .utf8 D/encoding
     static func sendData(message: String){
-        
+        print("DONT USE THIS METHOD YOU METH HEAD")
         //Seding String using .utf8 D/encoding
         print("Seding using .utf8 D/encoding. 0000000000000000000")
         if let dataa = message.data(using: .utf8){
@@ -117,46 +125,21 @@ class Globals {
                 print("[Error] \(error)")
             }
         }
-        
-        
-        
-//        //Seding Present using .JSON D/encoding
-//        print("Seding using .JSON D/encoding. 0000000000000000000")
-//        var temp = Present(ident: message)
-//
-//        //if let dataa = temp.data(using: .utf8)
-//        if let dataa = try JSONEncoder().encode(temp){
-//
-//            do{
-//                print("Encoded data")
-//                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
-//                print("sent check")
-//            }
-//            catch {
-//                print("[Error] \(error)")
-//            }
-//
-//        }
-//        catch{
-//            print("Encoding data did not work.")
-//
-//        }
-
 
     }
     
     
-    
+    //Sending Present using .JSON D/encoding
     static func sendData(message: Present){
         
-        //Seding Present using .JSON D/encoding
-        print("Seding using JSON D/encoding. 0000000000000000000")
-        var temp: Present! = message
+        //Sending Present using .JSON D/encoding
+        print("Sending using JSON D/encoding. 0000000000000000000")
+        let tmp: Present! = message
+        var temp: Present.present! = Present.present(message)
         
-        //if let dataa = temp.data(using: .utf8)
         do{
         let dataa = try JSONEncoder().encode(temp)
-        
+
             do{
                 print("Encoded data")
                 try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.manager.session.connectedPeers, with: .reliable)
@@ -172,6 +155,90 @@ class Globals {
     
     }
     
+    
+    static func sendData(message: Present, toPeer: Person){
+        
+        //Sending Present using .JSON D/encoding
+        print("Sending using JSON D/encoding. 0000000000000000000")
+        let tmp: Present! = message
+        var temp: Present.present! = Present.present(message)
+        
+        do{
+            let dataa = try JSONEncoder().encode(temp)
+            
+            do{
+                print("Encoded data")
+                try Globals.globals.manager.session.send(dataa, toPeers: [Globals.globals.event.findPeerID(name: toPeer.fullName)], with: .reliable)
+                print("sent check")
+            }
+            catch {
+                print("[Error] \(error)")
+            }
+        }
+        catch{
+            print("Encoding object did not work")
+        }
+        
+    }
+    
+    static func sendData(message: Present, toPeer: MCPeerID){
+        
+        //Sending Present using .JSON D/encoding
+        print("Sending using JSON D/encoding. 0000000000000000000")
+        let tmp: Present! = message
+        var temp: Present.present! = Present.present(message)
+        
+        do{
+            let dataa = try JSONEncoder().encode(temp)
+            
+            do{
+                print("Encoded data")
+                try Globals.globals.manager.session.send(dataa, toPeers: [toPeer], with: .reliable)
+                print("sent check")
+            }
+            catch {
+                print("[Error] \(error)")
+            }
+        }
+        catch{
+            print("Encoding object did not work")
+        }
+        
+    }
+    
+    
+    static func sendData(message: Present, toPeers: [Person]){
+        
+        //Sending Present using .JSON D/encoding
+        print("Sending using JSON D/encoding. 0000000000000000000")
+        let tmp: Present! = message
+        var temp: Present.present! = Present.present(message)
+        
+        var stuff: [String] = []
+        
+        for h in toPeers{
+            stuff.append(h.fullName)
+        }
+        
+        do{
+            let dataa = try JSONEncoder().encode(temp)
+            
+            do{
+                print("Encoded data")
+                try Globals.globals.manager.session.send(dataa, toPeers: Globals.globals.event.findPeerIDs(names: stuff), with: .reliable)
+                print("sent check")
+            }
+            catch {
+                print("[Error] \(error)")
+            }
+        }
+        catch{
+            print("Encoding object did not work")
+        }
+        
+    }
+    
+ 
     
     
 }

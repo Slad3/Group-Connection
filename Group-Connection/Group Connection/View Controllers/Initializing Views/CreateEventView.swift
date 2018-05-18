@@ -148,8 +148,8 @@ UINavigationControllerDelegate {
     @IBAction func autoFill(_ sender: Any) {
         
         generalAccessCode.text = "asdf"
-        eventName.text = "The Event Name"
-        groupName.text = "The Group Name"
+        eventName.text = "EvEnT NamE"
+        groupName.text = "GrOuP NamE hehehehe"
         
         
     }
@@ -158,9 +158,12 @@ UINavigationControllerDelegate {
     
     @objc func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage 
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //Globals.globals.importedMapName = (info[UIImagePickerControllerOriginalImage]?.displayName)!
+
         mapView.contentMode = .scaleAspectFit
         mapView.image = chosenImage
+        
         dismiss(animated:true, completion: nil)
     }
     

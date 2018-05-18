@@ -129,13 +129,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWX-VR-8hJ">
-                                <rect key="frame" x="10" y="388" width="394" height="53"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="59t-7G-OQb">
+                                <rect key="frame" x="16" y="388" width="343" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -144,9 +141,9 @@
                         <outlet property="DiscriptionText" destination="o5J-UN-H4r" id="YXH-pQ-JEA"/>
                         <outlet property="EventNameText" destination="3KV-YS-1Ab" id="v6n-vi-F9h"/>
                         <outlet property="FoundGroupText" destination="HMf-4J-4p3" id="V6Y-ES-q4p"/>
-                        <outlet property="TellUser" destination="fWX-VR-8hJ" id="B59-ne-g5S"/>
                         <outlet property="accessCodeBox" destination="Yhx-en-xl9" id="PDW-iz-Qkh"/>
                         <outlet property="connectedOrNot" destination="LX7-SX-GlB" id="kmQ-Pc-0zq"/>
+                        <outlet property="progBar" destination="59t-7G-OQb" id="cna-58-ClA"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="To Main" id="srJ-Gd-0es"/>
                     </connections>
                 </viewController>
@@ -1527,9 +1524,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ezE-1r-zet"/>
-        <segue reference="pUr-sM-1Mi"/>
+        <segue reference="srJ-Gd-0es"/>
         <segue reference="1g9-qH-AoM"/>
-        <segue reference="ByP-vU-kVb"/>
+        <segue reference="haS-TD-5Sn"/>
     </inferredMetricsTieBreakers>
 </document>

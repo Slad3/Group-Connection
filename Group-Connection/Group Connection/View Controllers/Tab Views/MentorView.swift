@@ -70,7 +70,8 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         
-        Globals.sendData(message: "panic")
+        Globals.sendData(message: Present(ident: "panic", thePanic: Panic()))
+        //Globals.sendD
         
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
@@ -106,10 +107,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
     }
     
-    private func tupac() {
-        
-    }
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }

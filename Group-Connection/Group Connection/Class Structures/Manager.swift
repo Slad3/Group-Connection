@@ -11,14 +11,14 @@ import MultipeerConnectivity
 import CloudKit
 import UserNotifications
 
-class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
-    
-    
-    
-    
+@available(iOS 11.0, *)
+class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNearbyServiceAdvertiserDelegate {
+   
+
     public var session: MCSession!
     var advertisementAssistant: MCAdvertiserAssistant!
     let peerid = MCPeerID(displayName: Globals.globals.user.fullName)
+    var until: Progress!
     
     
     
@@ -28,19 +28,35 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
         print("set session")
         session.delegate = self
         print("set delegate")
+        until = Progress()
         
     }
     
     //For making and starting advertisment system
     public func advertisementHandler(code: String) {
+        var service = false
         
-        advertisementAssistant = MCAdvertiserAssistant(serviceType: Globals.globals.passingData.0, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4 ], session: Globals.globals.manager.session)
-        //advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: nil, session: Globals.globals.manager.session)
-        advertisementAssistant.delegate = Globals.globals.manager
-        print("delegate setup")
-        print("Access Code: " + code)
-        advertisementAssistant.start()
-        print("Advertising Started")
+        if (service){//Advertising using the Nearby Service Advertiser
+            
+            let serviceNearby = MCNearbyServiceAdvertiser(peer: Globals.globals.manager.peerid, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4], serviceType: code)
+            
+            print("Access Code: " + code)
+            serviceNearby.delegate = self
+            print("Delegate Setup")
+            serviceNearby.startAdvertisingPeer()
+            print("Advertising Started")
+            
+        }
+        else {//Advertising using the Advertisement Assistant
+            
+        advertisementAssistant = MCAdvertiserAssistant(serviceType: code, discoveryInfo: ["Group Name": Globals.globals.passingData.1, "Event Name": Globals.globals.passingData.2, "Full Name": Globals.globals.passingData.3, "Discription": Globals.globals.passingData.4], session: Globals.globals.manager.session)
+            
+            print("Access Code: " + code)
+            advertisementAssistant.delegate = self
+            print("Delegate setup")
+            advertisementAssistant.start()
+            print("Advertising Started")
+        }
     }
     
     
@@ -108,21 +124,53 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
             //var sentData: String! = try String(data: data, encoding: .utf8)//String(data, .utf8)
             var sentData: Present.present! = try JSONDecoder().decode(Present.present.self, from: data)
             let actualPresent = Present(present: sentData)
-            print(sentData.identifier)
+            print(actualPresent.identifier)
             
-            switch(sentData.identifier){
+            switch(actualPresent.identifier){
                 
                 case "check":
                     print("check received " + actualPresent.identifier)
                     receivedCheck(check1: actualPresent.check)
-                    
+                break
                 
                 case "panic":
                     print("panic received " + actualPresent.identifier)
                     receivedPanic(panic: actualPresent.panic)
+                break
                 
+                case "Send Initial Check":
+                    print("Connected to session. Received Initial Check")
+                    Globals.globals.event.competitionRoster.append(actualPresent.check.sender)
+                    var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
+                    Globals.sendData(message: lamp, toPeer: peerID)
+                    var fileURL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                    Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
+                    
+                    print("Sent event and inital data")
+                break
+                
+                case "Send Event":
+                    print("Receiving event")
+                    Globals.globals.event = actualPresent.event
+                    print(actualPresent.identifier)
+                    Globals.globals.receivedEvent = true
+                    print("Received Event")
+                    
+                break
+                
+                case "Update Event Request":
+                    print("Update Event Request")
+                    var clock = Present(ident: "Update Event", evant: Globals.globals.event)
+                    Globals.sendData(message: clock, toPeer: peerID)
+                break
+                
+                case "Update Event":
+                    print("Update Event")
+                    //Globals.globals.
+                break
                 default:
                     print(" is not recognized yet")
+                break
                 
             }
         }
@@ -133,7 +181,18 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     }
     
     
-    
+    //Did receive invite to join from someone
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        print("found peer")
+        //Accept invite
+        invitationHandler(true, Globals.globals.manager.session)
+        
+        //Send Initial Event Stuff
+        print("Sending invited peer starting files")
+        //Change this to sending Event class once event class becomes D/Encodable
+        Globals.sendData(message: Present(ident: "initialCheck"))
+        
+    }
     
     // Received a byte stream from remote peer.
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID){
@@ -141,14 +200,65 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate {
     }
     
     // Start receiving a resource from remote peer.
+    @available(iOS 11.0, *)
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
-        
+        while(!progress.isFinished){
+            print(progress.completedUnitCount/progress.totalUnitCount)
+            
+        }
     }
     
     // Finished receiving a resource from remote peer and saved the content
     // in a temporary location - the app is responsible for moving the file
     // to a permanent location within its sandbox.
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?){
+        switch(resourceName){
+            case "importedMap":
+                print("got imported map")
+                var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
+                let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                do {
+                    try FileManager.default.moveItem(at: localURL!, to: destinationURL)
+                    print("Finished receiving resource")
+                    try Globals.globals.importedMap = UIImage(named: resourceName)
+                    print("Done setting imported map")
+                } catch {
+                    print("[Error] \(error)")
+                }
+                break
+            
+            
+        default:
+            print(resourceName)
+            var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
+            let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+            do {
+                try FileManager.default.moveItem(at: localURL!, to: destinationURL)
+                print("Finished receiving resource")
+                //try chair.profilePhoto = UIImage(named: resourceName)
+                print("Done Set profile photo")
+            } catch {
+                print("[Error] \(error)")
+            }
+            break
+            
+        }
+        
         
     }
+    
+    
+    
+//    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
+//
+//
+//
+//    }
+//
+//
+//    public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
+//
+//
+//    }
+    
 }

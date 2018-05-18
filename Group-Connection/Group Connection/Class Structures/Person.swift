@@ -21,7 +21,8 @@ class Person {
     var additionalNotes: String //essential
     var fullName: String!
     var checkInStatus: Bool //essential
-    var profilePhoto: UIImage!
+    //var profilePhoto: UIImage!
+    
     
     //mentor-specific stuff
     var hasCheckIn: Bool! //the mentor has a check waiting
@@ -48,7 +49,7 @@ class Person {
         let subteam: String //essential
         let additionalNotes: String //essential
         let hasCheckIn: Bool //the mentor has a check waiting
-        let profilePhoto: Data!
+        //let profilePhoto: Data!
         //var checkArray: [Check]!
         //var peerList:
         
@@ -62,22 +63,27 @@ class Person {
             self.subteam = person.subteam
             self.additionalNotes = person.additionalNotes
             self.hasCheckIn = person.hasCheckIn ?? false
-            self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
+//            if(person.profilePhoto != nil){
+//                self.profilePhoto = UIImagePNGRepresentation(person.profilePhoto)
+//            }
+//            else{
+//                self.profilePhoto = UIImagePNGRepresentation(#imageLiteral(resourceName: "download (1)"))
+//            }
             let peerid = MCPeerID(displayName: self.firstName + " " + self.lastName)
             
         }
         
         func toPerson() -> Person {
-            let tmp = UIImage(data: profilePhoto)
+            //let tmp = UIImage(data: profilePhoto)
             let person = Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
-            person.profilePhoto = tmp
-            print(tmp.debugDescription)
+//            person.profilePhoto = tmp
+//            print(tmp.debugDescription)
             return person
         }
     }
     
     struct Roster: Codable, Sequence {
-        let people: [Persoon]
+        var people: [Persoon]
         
         func makeIterator() -> VoodooMagic {
             return VoodooMagic(people: people)

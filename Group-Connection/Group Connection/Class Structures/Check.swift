@@ -69,8 +69,11 @@
     }
     
     init(_ check: Xeck) {
-        let formatter = DateFormatter()
-        timeSent = formatter.date(from: check.timeSent)!
+        print(check.timeSent)
+        var formatter = DateFormatter()
+        self.timeSent = formatter.date(from: check.timeSent) ?? Date()
+        print(self.timeSent.debugDescription)
+        print(check.timeSent)
         
         coordinate = CLLocationCoordinate2D(latitude: check.latitude, longitude: check.longitude)
         sender = check.sender.toPerson()
@@ -87,8 +90,8 @@
         
         print("sending check")
         do {
-            let temp = try JSONEncoder().encode("receiveCheck")
-            try Globals.globals.manager.session.send(temp, toPeers: [], with: .reliable)
+            let temp = Present(ident: "check", theCheck: self)
+            try Globals.sendData(message: temp, toPeers: Globals.globals.event.mentorRoster)
             self.hasBeenSent = true
             print("sent")
         }

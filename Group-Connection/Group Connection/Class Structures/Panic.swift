@@ -55,8 +55,10 @@ class Panic: NSObject, MKAnnotation{
         self.sender = penac.sender.toPerson()
         self.coordinate = CLLocationCoordinate2D(latitude: penac.latitude, longitude: penac.longitude)
         
+        print(penac.timeSent)
         let formatter = DateFormatter()
-        self.timeSent = formatter.date(from: penac.timeSent)!
+        self.timeSent = formatter.date(from: penac.timeSent) ?? Date()
+        print(self.timeSent.debugDescription)
     }
 }
 
