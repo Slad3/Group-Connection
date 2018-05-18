@@ -25,6 +25,7 @@
 		26D451339A8ED3CB28FC9C36 /* Pods_Group_Connection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A7A28BB0833AD11A3A3BC4 /* Pods_Group_Connection.framework */; };
 		4E0B488D205C2B350089AD46 /* Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488C205C2B350089AD46 /* Sub.swift */; };
 		4E134FA7207FC4EA00A6C042 /* SendCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E134FA6207FC4EA00A6C042 /* SendCheck.swift */; };
+		4E5FC48A20A4AB4D009AAA9E /* StudentRosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FC48920A4AB4D009AAA9E /* StudentRosterView.swift */; };
 		4E68033B2081186B00380FE5 /* BuddyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E68033A2081186B00380FE5 /* BuddyTable.swift */; };
 		4E68033D2081187600380FE5 /* BuddyRosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E68033C2081187600380FE5 /* BuddyRosterView.swift */; };
 		4EDC7F93207BD0F10041AB0B /* MentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B488E205C2E990089AD46 /* MentorView.swift */; };
@@ -85,6 +86,7 @@
 		4E0B488C205C2B350089AD46 /* Sub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sub.swift; sourceTree = "<group>"; };
 		4E0B488E205C2E990089AD46 /* MentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorView.swift; sourceTree = "<group>"; };
 		4E134FA6207FC4EA00A6C042 /* SendCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCheck.swift; sourceTree = "<group>"; };
+		4E5FC48920A4AB4D009AAA9E /* StudentRosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRosterView.swift; sourceTree = "<group>"; };
 		4E68033A2081186B00380FE5 /* BuddyTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTable.swift; sourceTree = "<group>"; };
 		4E68033C2081187600380FE5 /* BuddyRosterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyRosterView.swift; sourceTree = "<group>"; };
 		4E9018F92047203A005ACA2F /* Group Connection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Group Connection.entitlements"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				4E68033C2081187600380FE5 /* BuddyRosterView.swift */,
 				4E68033A2081186B00380FE5 /* BuddyTable.swift */,
 				4E134FA6207FC4EA00A6C042 /* SendCheck.swift */,
+				4E5FC48920A4AB4D009AAA9E /* StudentRosterView.swift */,
 			);
 			path = "Tab Views";
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				4EDC7F93207BD0F10041AB0B /* MentorView.swift in Sources */,
 				0E93E5BF2035FEA4003AD8EB /* TabBarView.swift in Sources */,
 				0E8898BD1FE2F69500B671A0 /* Person.swift in Sources */,
+				4E5FC48A20A4AB4D009AAA9E /* StudentRosterView.swift in Sources */,
 				0E8898B71FE2EEC000B671A0 /* MapView.swift in Sources */,
 				0E8898BB1FE2EEF500B671A0 /* ProfileView.swift in Sources */,
 				5D128D161FE4EC3D00D38505 /* InitialProfileView.swift in Sources */,

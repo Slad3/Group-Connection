@@ -26,9 +26,10 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
 
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
+    
     var textBox: UITextField!
     
-    var students: [Person]!
+    var data: [Person]! = Globals.globals.user.studentList 
     
     @objc func leaveVenue(_: Any) {
         //stub
@@ -76,6 +77,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
         //stub
         print("Notification")
         
+        //asshattery 
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
@@ -92,7 +94,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
     }
     
     @IBAction func changeBuddies(_ sender: Any) {
-        performSegue(withIdentifier: "toBuddyRoster", sender: nil)
+        performSegue(withIdentifier: "toMentorRoster", sender: nil)
     }
     
     private func panic() {
@@ -109,13 +111,9 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
         
     }
     
-    private func tupac() {
-        
-    }
-    
     // tells how many cells you want to have in the roster. This will be the number of people at the competition
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Globals.globals.user.buddyList.count
+        return data.count
     }
     
     
@@ -125,28 +123,47 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
         //test this here
         let buddyCell = tableView.dequeueReusableCell(withIdentifier: "buddyCell", for: indexPath) as! BuddyTable
         
-        buddyCell.buddyName.text = Globals.globals.user.buddyList[indexPath.row].fullName
-        
-        //delete
-        Globals.globals.user.buddyList[indexPath.row].checkInStatus = true
-        //------
-        
-        if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
-            //change for obvious reasons
-            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
-            //--------------------------
-            
-            buddyCell.statusPic.contentMode = .scaleAspectFit
-        }
-        else {
-            //change for obvious reasons (again)
-            let chosenImage = UIImage(named: "zucc.jpg")
-            //-------------------------
-            
-            buddyCell.statusPic.image = chosenImage
-            buddyCell.statusPic.clipsToBounds = true
-        }
+        buddyCell.buddyName.text = Globals.globals.user.studentList[indexPath.row].fullName
+//        
+//        
+//        if Globals.globals.user.studentList[indexPath.row].checkInStatus {
+//            //change for obvious reasons
+//            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
+//            //--------------------------
+//            
+//            buddyCell.statusPic.contentMode = .scaleAspectFit
+//        }
+//        else {
+//            //change for obvious reasons (again)
+//            let chosenImage = UIImage(named: "zucc.jpg")
+//            //-------------------------
+//            
+//            buddyCell.statusPic.image = chosenImage
+//            buddyCell.statusPic.clipsToBounds = true
+//        }
         return buddyCell
+    }
+    
+    //delete row
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("deleting")
+            //remove from the data array
+            let removed = data.remove(at: indexPath.row)
+            
+            //remove from the student list
+            let int = Globals.globals.user.studentList.index(of: removed)
+            Globals.globals.user.studentList.remove(at: int!)
+            
+            //remove from the physical table
+            table.deleteRows(at: [indexPath], with: .automatic)
+            table.reloadData()
+        }
+    }
+    
+    //set which rows can be edited
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -160,6 +177,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         super.isCheckInView = true
+        
         UNUserNotificationCenter.current().delegate = self
         
         //rotate panic
@@ -180,8 +198,8 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
         table.dataSource = self
         
         table.reloadData()
-    
-        if Globals.globals.user.buddyList.count < 2 {
+        
+        if Globals.globals.user.studentList.count < 2 {
             changeBuddy.titleLabel?.text = "Add Student"
         }
         
@@ -196,6 +214,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
     }
     
     private func constrain() {
+        print("constraining mentor view ------------------------")
         changeBuddy.snp.makeConstraints { (snap) -> Void in
             print(changeBuddy.frame.maxY)
             snap.bottom.equalTo(self.view.snp.bottomMargin)//view.snp.bottomMargin)
@@ -204,10 +223,8 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
         }
 
         table.snp.makeConstraints { (snap) -> Void in
+//            snap.height.equalTo(159)
 //            snap.centerX.equalTo(self.view.snp.centerX)
-//            snap.bottom.greaterThanOrEqualTo(changeBuddy.snp.top)
-//            snap.margins.lessThanOrEqualTo(self.view.snp.margins)
-//            snap.top.equalTo(buddyListTitle.frame.minY)
         }
 
     }
