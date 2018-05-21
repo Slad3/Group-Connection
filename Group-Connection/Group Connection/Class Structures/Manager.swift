@@ -113,8 +113,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         
     }
     
-    
-    
+
     
     // Received data from remote peer.
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID){
@@ -126,6 +125,8 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
             let actualPresent = Present(present: sentData)
             print(actualPresent.identifier)
             
+            
+            //Switch is based on the identifier of the Present
             switch(actualPresent.identifier){
                 
                 case "check":
@@ -144,12 +145,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
                     Globals.sendData(message: lamp, toPeer: peerID)
                     print("sent something")
-                    
-                    print("lasdhluasdfhafshuasdhoudsafhoi")
                     var fileURL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
                     print(Globals.globals.importedMapName)
                     Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
-                    
                     print("Sent event and inital data")
                 break
                 
@@ -159,7 +157,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     print(actualPresent.identifier)
                     Globals.globals.receivedEvent = true
                     print("Received Event")
-                    
+  
                 break
                 
                 case "Update Event Request":
@@ -188,7 +186,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     
     //Did receive invite to join from someone
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        print("found peer")
+        print("Found peer")
         //Accept invite
         invitationHandler(true, Globals.globals.manager.session)
         
@@ -221,7 +219,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
             case "importedMap":
                 print("got imported map")
                 var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
-                let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                let destinationURL: URL = Globals.globals.documentsDirectory
                 do {
                     try FileManager.default.moveItem(at: localURL!, to: destinationURL)
                     print("Finished receiving resource")
@@ -233,37 +231,28 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                 break
             
             
-        default:
-            print(resourceName)
-            var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
-            let destinationURL: URL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
-            do {
-                try FileManager.default.moveItem(at: localURL!, to: destinationURL)
-                print("Finished receiving resource")
-                //try chair.profilePhoto = UIImage(named: resourceName)
-                print("Done Set profile photo")
-            } catch {
-                print("[Error] \(error)")
-            }
-            break
+            case "Profile Image":
+                print(resourceName)
+                var chair: Person = Globals.globals.event.findPerson(name: peerID.displayName)
+                 let destinationURL: URL = Globals.globals.documentsDirectory
+                do {
+                    try FileManager.default.moveItem(at: localURL!, to: destinationURL)
+                    print("Finished receiving resource")
+                    //try chair.profilePhoto = UIImage(named: resourceName)
+                    print("Done Set profile photo")
+                } catch {
+                    print("[Error] \(error)")
+                }
+                break
+            
+            default:
+                print("Unidentified Resource")
+                break
             
         }
         
         
     }
     
-    
-    
-//    public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
-//
-//
-//
-//    }
-//
-//
-//    public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant){
-//
-//
-//    }
     
 }

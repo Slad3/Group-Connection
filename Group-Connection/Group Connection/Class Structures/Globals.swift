@@ -28,6 +28,7 @@ class Globals {
     var importedMap: UIImage!
     var importedMapName: String
     var compressedMap: Data!
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     
     var visitedRoster: Bool = false
