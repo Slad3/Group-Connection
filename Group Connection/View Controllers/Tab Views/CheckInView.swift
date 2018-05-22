@@ -24,7 +24,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
     
-    var students: [Person]!
+    var data: [Person]! = Globals.globals.user.buddyList ?? [Globals.globals.user]
     
     
     @objc func leaveVenue(_: Any) {
@@ -66,21 +66,6 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         //stub
         print("Notification")
         
-        //general asshattery
-        if Globals.globals.user.firstName == "Tupac" {
-            let content = UNMutableNotificationContent()
-            content.title = "RIP Bro"
-            content.subtitle = "You was an inspiration to me"
-            //content.sound = UNNotificationSound.init(named: "toolur_5C4U7D.wav")
-            print(Bool(UNNotificationSound(named: "toolur_sbCiis.wav") == content.sound))
-            content.badge = 31
-            content.categoryIdentifier = "tupac"
-            
-            let identifier = "tupac"
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        }
-        
         performSegue(withIdentifier: "toCheck", sender: nil)
         
     }
@@ -121,6 +106,29 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         return buddyCell
     }
     
+    //delete row
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print(indexPath.row)
+            print(data.count)
+            //remove from the data array
+            let removed = data.remove(at: indexPath.row)
+            
+            //remove from the student list
+            let int = Globals.globals.user.buddyList.index(of: removed)
+            Globals.globals.user.buddyList.remove(at: int!)
+            
+            //remove from the physical table
+            table.deleteRows(at: [indexPath], with: .automatic)
+            table.reloadData()
+        }
+    }
+    
+    //set which rows can be edited
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     @IBAction func changeBuddies(_ sender: Any) {
         performSegue(withIdentifier: "ToBuddyRoster", sender: nil)
     }
@@ -141,7 +149,22 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
     }
-    
+
+    private func constrain() {
+        print("constraining check in view ------------------------")
+        changeBuddy.snp.makeConstraints { (snap) -> Void in
+            print(changeBuddy.frame.maxY)
+//            snap.bottom.equalTo(self.view.snp.bottomMargin)//view.snp.bottomMargin)
+//            print(changeBuddy.frame.maxY)
+//            snap.centerX.equalTo(self.view.snp.centerX)
+        }
+
+        table.snp.makeConstraints { (snap) -> Void in
+            //            snap.height.equalTo(159)
+            //            snap.centerX.equalTo(self.view.snp.centerX)
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -57,7 +57,7 @@ class Globals {
     func getMentors() -> [Person] {
         var temp: [Person] = []
         for dude in teamRoster {
-            if dude.isMentor {
+            if dude.isMentor && dude != Globals.globals.user {
                 temp.append(dude)
             }
         }
@@ -118,7 +118,7 @@ class Globals {
         globals.teamRoster.append(named)
     }
     
-    public static func removePerson(_ named: Person) {
+    public static func removePersonMain(_ named: Person) {
         print("removing person \(named.firstName)")
         let int = globals.teamRoster.index(of: named)
         globals.teamRoster.remove(at: int!)

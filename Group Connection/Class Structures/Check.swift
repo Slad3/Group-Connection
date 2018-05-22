@@ -70,7 +70,7 @@ class Check: NSObject, MKAnnotation {
     
     init(_ check: Xeck) {
         let formatter = DateFormatter()
-        timeSent = formatter.date(from: check.timeSent)!
+        timeSent = formatter.date(from: check.timeSent) ?? Date()
         
         coordinate = CLLocationCoordinate2D(latitude: check.latitude, longitude: check.longitude)
         sender = check.sender.toPerson()

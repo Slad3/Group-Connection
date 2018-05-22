@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import UserNotifications
 import MultipeerConnectivity
+import SnapKit
 
-class MentorView: Sub, UNUserNotificationCenterDelegate {
+class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var buddyList: UILabel!
     @IBOutlet weak var userView: UILabel! //the panic button. Why I didn't call it panic is beyond me
     @IBOutlet weak var timeSinceLabel: UILabel! //the label
     @IBOutlet weak var timeEditor: UIDatePicker!
@@ -22,11 +22,14 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBOutlet weak var changeBuddy: UIButton!
     @IBOutlet weak var leaveVenue: UIButton!
     @IBOutlet weak var accessCode: UILabel!
-    
+    @IBOutlet weak var table: UITableView!
+
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
+    
     var textBox: UITextField!
-    var students: [Person]!
+    
+    var data: [Person]! = Globals.globals.user.studentList 
     
     @objc func leaveVenue(_: Any) {
         //stub
@@ -74,6 +77,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         //stub
         print("Notification")
         
+        //asshattery 
         if Globals.globals.user.firstName == "Tupac" {
             let content = UNMutableNotificationContent()
             content.title = "RIP Bro"
@@ -90,7 +94,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     }
     
     @IBAction func changeBuddies(_ sender: Any) {
-        //stub
+        performSegue(withIdentifier: "toMentorRoster", sender: nil)
     }
     
     private func panic() {
@@ -107,8 +111,59 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
     }
     
-    private func tupac() {
+    // tells how many cells you want to have in the roster. This will be the number of people at the competition
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    
+    // tells what should be displayed in each cell.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //test this here
+        let buddyCell = tableView.dequeueReusableCell(withIdentifier: "buddyCell", for: indexPath) as! BuddyTable
+        
+        buddyCell.buddyName.text = Globals.globals.user.studentList[indexPath.row].fullName
+//        
+//        
+//        if Globals.globals.user.studentList[indexPath.row].checkInStatus {
+//            //change for obvious reasons
+//            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
+//            //--------------------------
+//            
+//            buddyCell.statusPic.contentMode = .scaleAspectFit
+//        }
+//        else {
+//            //change for obvious reasons (again)
+//            let chosenImage = UIImage(named: "zucc.jpg")
+//            //-------------------------
+//            
+//            buddyCell.statusPic.image = chosenImage
+//            buddyCell.statusPic.clipsToBounds = true
+//        }
+        return buddyCell
+    }
+    
+    //delete row
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("deleting")
+            //remove from the data array
+            let removed = data.remove(at: indexPath.row)
+            
+            //remove from the student list
+            let int = Globals.globals.user.studentList.index(of: removed)
+            Globals.globals.user.studentList.remove(at: int!)
+            
+            //remove from the physical table
+            table.deleteRows(at: [indexPath], with: .automatic)
+            table.reloadData()
+        }
+    }
+    
+    //set which rows can be edited
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -122,6 +177,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.isCheckInView = true
+        
         UNUserNotificationCenter.current().delegate = self
         
         //rotate panic
@@ -136,7 +192,16 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         
         //delete 
         accessCode.text = "00:00.0"
+        //------
         
+        table.delegate = self
+        table.dataSource = self
+        
+        table.reloadData()
+        
+        if Globals.globals.user.studentList.count < 2 {
+            changeBuddy.titleLabel?.text = "Add Student"
+        }
         
         if Globals.globals.event != nil {
             accessCode.text = Globals.globals.event.generalAccessCode
@@ -144,16 +209,29 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         else {
             accessCode.text = "Here's your code, Ben"
         }
+        
+        constrain()
+    }
+    
+    private func constrain() {
+        print("constraining mentor view ------------------------")
+        changeBuddy.snp.makeConstraints { (snap) -> Void in
+            print(changeBuddy.frame.maxY)
+            snap.bottom.equalTo(self.view.snp.bottomMargin)//view.snp.bottomMargin)
+            print(changeBuddy.frame.maxY)
+            snap.centerX.equalTo(self.view.snp.centerX)
+        }
+
+        table.snp.makeConstraints { (snap) -> Void in
+//            snap.height.equalTo(159)
+//            snap.centerX.equalTo(self.view.snp.centerX)
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("mentor disappear")
     }
     
     //lower any keyboards when the user taps anywhere besides a text box

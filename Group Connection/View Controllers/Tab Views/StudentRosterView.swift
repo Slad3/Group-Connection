@@ -1,20 +1,20 @@
 //
-//  BuddyRosterView.swift
+//  StudentRosterView.swift
 //  Group Connection
 //
-//  Created by BURRIGHT, NICHOLAS on 3/22/18.
+//  Created by Naranjo, Daniel on 5/10/18.
 //  Copyright © 2018 District196. All rights reserved.
 //
 
 import UIKit
 
-class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class StudentRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
     var data: [Person] = Globals.globals.teamRoster.filter({(person: Person) -> Bool in
-        if Globals.globals.user.buddyList.contains(person) {
+        if Globals.globals.user.studentList.contains(person) {
             return false
         }
         return true
@@ -37,22 +37,15 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("buddy roster cell has been clicked")
-         Globals.globals.user.buddyList.insert(Globals.globals.teamRoster[indexPath.row], at: 0)
-        
-        if Globals.globals.user.buddyList.count >= 4 {
-            print("if is running")
-            Globals.globals.user.buddyList.remove(at: 3)
-
-        }
+        Globals.globals.user.studentList.insert(Globals.globals.teamRoster[indexPath.row], at: 0)
         
         
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
         
-        print(Globals.globals.user.buddyList[0].fullName)
-//        dismiss(animated: true, completion: nil)
-        performSegue(withIdentifier: "backToCheckIn", sender: nil)
+        print(Globals.globals.user.studentList[0].fullName)
+        performSegue(withIdentifier: "backToMentorIn", sender: nil)
+        print("Back to check in")
     }
     
     
@@ -95,4 +88,5 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         self.view.endEditing(true)
     }
 }
+
 

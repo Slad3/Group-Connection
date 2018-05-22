@@ -49,7 +49,7 @@ class Person {
         let additionalNotes: String //essential
         let hasCheckIn: Bool //the mentor has a check waiting
         let profilePhoto: Data!
-        //var checkArray: [Check]!
+//        var checkArray: [Check]!
         //var peerList:
         
         init(_ person: Person){
@@ -118,6 +118,7 @@ class Person {
         additionalNotes = ""
         checkInStatus = false
         buddyList = []
+        studentList = []
         print("I hope you didn't use the default init, you jackass")
     }
     
@@ -135,6 +136,7 @@ class Person {
         self.checkArray = []
         self.checkInStatus = false
         self.buddyList = []
+        self.studentList = []
         return
     }
     
@@ -190,7 +192,7 @@ class Person {
         
         
         let child = Person(firstName: Lorem.firstName, lastName: Lorem.lastName, isMentor: false, age: age, email: Lorem.emailAddress, phoneNumber: str, additionalNotes: Lorem.paragraph, ssubteam: "Programming")
-        child.checkInStatus = false
+        child.checkInStatus = false 
         return child
     }
 }
