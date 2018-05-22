@@ -79,7 +79,7 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
 //        else{
 //            testImage.image = UIImage(named: "importedMap")
 //            //testImage.image = UIImage(data: FileManager.default.contents(atPath: Globals.globals.documentsDirectory))
-//  
+//
 //        }
     }
     
