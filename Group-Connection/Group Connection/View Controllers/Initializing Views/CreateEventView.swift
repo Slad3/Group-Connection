@@ -171,11 +171,11 @@ UINavigationControllerDelegate {
 
         let fileURL = Globals.globals.documentsDirectory.appendingPathComponent(fileName)
         // get your UIImage jpeg data representation and check if the destination file url already exists
-        if let data = Globals.globals.compressedMap {
+        if let dataj = Globals.globals.compressedMap {
             !FileManager.default.fileExists(atPath: fileURL.path)
             do {
                 // writes the image data to disk
-                try data.write(to: fileURL)
+                try dataj.write(to: fileURL)
                 print("file saved")
             } catch {
                 print("error saving file:", error)

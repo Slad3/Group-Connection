@@ -22,11 +22,13 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBOutlet weak var changeBuddy: UIButton!
     @IBOutlet weak var leaveVenue: UIButton!
     @IBOutlet weak var accessCode: UILabel!
+    @IBOutlet weak var testImage: UIImageView!
     
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
     var textBox: UITextField!
     var students: [Person]!
+    var dumb = true
     
     @objc func leaveVenue(_: Any) {
         //stub
@@ -66,6 +68,26 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
             print("end")
         }
     }
+    
+    
+    @IBAction func leaveYVenue(_ sender: Any) {
+        
+//        dumb = !dumb
+//        if dumb {
+//            testImage.image = #imageLiteral(resourceName: "download (1)")
+//        }
+//        else{
+//            testImage.image = UIImage(named: "importedMap")
+//            //testImage.image = UIImage(data: FileManager.default.contents(atPath: Globals.globals.documentsDirectory))
+//  
+//        }
+    }
+    
+    
+    
+    
+    
+    
     
     @IBAction func composeMessage(_ sender: Any) {
         //stub

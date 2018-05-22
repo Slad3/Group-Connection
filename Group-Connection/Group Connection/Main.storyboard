@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1343,6 +1342,9 @@
                                 <state key="normal" title="Leave Venue">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="leaveVenue:" destination="cEp-ny-NHH" eventType="touchUpInside" id="CBn-Me-Ut8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="access code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXk-rP-mlI">
                                 <rect key="frame" x="52" y="353" width="278" height="37"/>
@@ -1372,6 +1374,10 @@
                                     <navigationItem title="Mentor" id="6E6-hl-vJx"/>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3j-12-Cyw">
+                                <rect key="frame" x="67" y="433" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -1386,6 +1392,7 @@
                         <outlet property="changeBuddy" destination="2gd-dv-6Pc" id="yJ8-bZ-rKH"/>
                         <outlet property="groupMessage" destination="GW6-Xh-Q4o" id="SxX-AM-J4m"/>
                         <outlet property="leaveVenue" destination="GpQ-2k-20a" id="8Cf-i2-cFi"/>
+                        <outlet property="testImage" destination="K3j-12-Cyw" id="79e-ur-JLf"/>
                         <outlet property="timeEditor" destination="OS1-kK-8Ml" id="Gpq-mc-Ueo"/>
                         <outlet property="timeSinceLabel" destination="hPz-Aj-O9K" id="PlV-KP-OEr"/>
                         <outlet property="userView" destination="ln0-tU-IDa" id="az4-cE-ENA"/>
