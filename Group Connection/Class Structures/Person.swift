@@ -68,7 +68,10 @@ class Person {
         }
         
         func toPerson() -> Person {
-            let tmp = UIImage(data: profilePhoto)
+            var tmp: UIImage! = UIImage()
+            if profilePhoto != nil {
+                tmp = UIImage(data: profilePhoto)!
+            }
             let person = Person(firstName: self.firstName, lastName: self.lastName, isMentor: self.isMentor, age: self.age, email: self.email, phoneNumber: self.phoneNumber, additionalNotes: self.additionalNotes, ssubteam: self.subteam)
             person.profilePhoto = tmp
             print(tmp.debugDescription)

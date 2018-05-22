@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SnapKit
 
 class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var titleBar: UILabel!
+    @IBOutlet weak var scroller: UIScrollView! //the superview for the table
     
     var data: [Person] = Globals.globals.teamRoster.filter({(person: Person) -> Bool in
         if Globals.globals.user.buddyList.contains(person) {
@@ -28,6 +31,7 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         searchBar.delegate = self
         table.dataSource = self
         filterD = data
+        constrain()
     }
     
     // tells how many cells you want to have in the roster. This will be the number of people at the competition
@@ -79,6 +83,25 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         }
         
         table.reloadData()
+    }
+    
+    private func constrain() {
+        searchBar.snp.makeConstraints { (snap) -> Void in
+            snap.top.equalTo(titleBar.snp.bottomMargin)
+//            snap.bottom.equalTo(table.snp.topMargin)
+//            snap.centerX.equalTo(self.view.snp.centerX)
+            snap.leading.equalTo(10)
+            snap.trailing.equalTo(-10)
+        }
+        scroller.snp.makeConstraints { (snap) -> Void in
+            snap.leading.equalTo(10)
+            snap.trailing.equalTo(-10)
+        }
+//        table.snp.makeConstraints { (snap) -> Void in
+//            snap.top.equalTo(searchBar.snp.bottomMargin)
+//            snap.centerX.equalTo(self.view.snp.centerX)
+//            snap.bottom.equalTo(self.view.snp.bottomMargin)
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
