@@ -67,7 +67,8 @@ class SendCheck: UIViewController, UITableViewDelegate, UITableViewDataSource, C
         }
         
         startReceivingLocationChanges()
-
+        
+        table.sectionIndexColor = UIColor.cyan
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,6 +89,29 @@ class SendCheck: UIViewController, UITableViewDelegate, UITableViewDataSource, C
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = .purple
+    }
+    
+    //delete row
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print(indexPath.row)
+            print(data.count)
+            //remove from the data array
+            let removed = data.remove(at: indexPath.row)
+            
+            //remove from the student list
+            let int = checkingIn.index(of: removed)
+            Globals.globals.user.buddyList.remove(at: int!)
+            
+            //remove from the physical table
+            table.deleteRows(at: [indexPath], with: .automatic)
+            table.reloadData()
+        }
+    }
+    
+    //set which rows can be edited
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     //started editing additionalNotes

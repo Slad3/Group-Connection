@@ -81,26 +81,20 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         
         //test this here
         let buddyCell = tableView.dequeueReusableCell(withIdentifier: "buddyCell", for: indexPath) as! BuddyTable
+        print("-------------------------------------------")
+        print(data[indexPath.row].fullName)
+        print(Globals.globals.user.buddyList[indexPath.row].fullName)
+        buddyCell.buddyName.text = data[indexPath.row].fullName
         
-        buddyCell.buddyName.text = Globals.globals.user.buddyList[indexPath.row].fullName
-        
-        //delete
-        Globals.globals.user.buddyList[indexPath.row].checkInStatus = true
-        //------
         
         if Globals.globals.user.buddyList[indexPath.row].checkInStatus {
-            //change for obvious reasons
-            buddyCell.statusPic.image = UIImage(named: "obama.jpg_large")
-            //--------------------------
+            //add status pic
             
             buddyCell.statusPic.contentMode = .scaleAspectFit
         }
         else {
-            //change for obvious reasons (again)
-            let chosenImage = UIImage(named: "zucc.jpg")
-            //-------------------------
+            //add status pic
             
-            buddyCell.statusPic.image = chosenImage
             buddyCell.statusPic.clipsToBounds = true
         }
         return buddyCell
@@ -121,6 +115,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
             //remove from the physical table
             table.deleteRows(at: [indexPath], with: .automatic)
             table.reloadData()
+            table.endUpdates()
         }
     }
     
@@ -128,6 +123,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+
     
     @IBAction func changeBuddies(_ sender: Any) {
         performSegue(withIdentifier: "ToBuddyRoster", sender: nil)

@@ -81,7 +81,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     print("hans is a mentor now")
                 }
                 
-  
+                Globals.globals.user.hasCheckIn = false
+
                 Globals.globals.user.profilePhoto = profilePhoto.image
                 
                 Globals.globals.teamRoster[0] = Globals.globals.user
