@@ -14,7 +14,6 @@ class Event {
     var importedMap: UIImage! //swift catch-all for images of any data type; optional type for right now (UIImages have to get an actual image for them when they're initialized
     var competitionRoster: [Person] //list of all the users in the competion
     //var teamRoster: [String] //list of all the people in the team
-    var peeridRoster: [MCPeerID] //list of all the peer ids on the team
     var mentorRoster: [Person] = []//List of all mentors in roster
     var creator: Person //Creator of the event
     var eventName: String
@@ -32,7 +31,6 @@ class Event {
         competitionRoster = []
         competitionRoster.append(user)
         //teamRoster = []
-        peeridRoster = []
         mentorRoster.append(user)
         //teamRoster.append(user.firstName)
         
@@ -55,7 +53,6 @@ class Event {
         checkInLength = event.checkInLength
         timeTillNotification = event.timeTillNotification
         groupName = event.groupName
-        peeridRoster = []
         
         return
     }
@@ -105,8 +102,6 @@ class Event {
             groupName = evint.groupName //Name of the Group
             
         }
-        
-        
     }
     
     //Generates random string of 3 words
@@ -191,7 +186,6 @@ class Event {
     func updateEvent(new: Event){
         
         self.competitionRoster = new.competitionRoster
-        self.peeridRoster = new.peeridRoster
         self.checkInLength = new.checkInLength
         self.mentorRoster = new.mentorRoster
         

@@ -13,7 +13,6 @@ class Globals {
     static let globals: Globals! = Globals()
     
     var initialized, inEvent: Bool
-    var isMentor: Bool
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
     //public var session: MCSession!
     var user: Person!
@@ -21,7 +20,6 @@ class Globals {
     var event: Event!
     var teamRoster: [Person]
     var selectedIndex: Int!
-    var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
     var receivedEvent = false
@@ -39,7 +37,6 @@ class Globals {
     init() {
         initialized = false
         inEvent = false
-        isMentor = false
         hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
         hans.checkInStatus = true
         teamRoster = [hans]
