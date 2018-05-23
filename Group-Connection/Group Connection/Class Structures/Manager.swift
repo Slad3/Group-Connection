@@ -100,17 +100,11 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         switch state {
         case MCSessionState.connected:
             print("Connected: \(peerID.displayName)")
-  
-            
         case MCSessionState.connecting:
             print("Connecting: \(peerID.displayName)")
-
-            
         case MCSessionState.notConnected:
             print("Not Connected: \(peerID.displayName)")
-
         }
-        
     }
     
 
@@ -145,7 +139,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
                     Globals.sendData(message: lamp, toPeer: peerID)
                     print("sent something")
-                    var fileURL = URL(fileURLWithPath: "FileManager.SearchPathDirectory.downloadsDirectory", isDirectory: true)
+                    var fileURL = URL(fileURLWithPath: Globals.globals.documentsDirectory.relativePath, isDirectory: true)
                     print(Globals.globals.importedMapName)
                     Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
                     print("Sent event and inital data")
@@ -193,7 +187,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
         //Send Initial Event Stuff
         print("Sending invited peer starting files")
         //Change this to sending Event class once event class becomes D/Encodable
-        Globals.sendData(message: Present(ident: "initialCheck"))
+        //Globals.sendData(message: Present(ident: "initialCheck"))
         
     }
     
@@ -205,7 +199,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     // Start receiving a resource from remote peer.
     @available(iOS 11.0, *)
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
+        until = progress
         while(!progress.isFinished){
+            
             print(progress.completedUnitCount/progress.totalUnitCount)
             
         }
@@ -224,6 +220,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     try FileManager.default.moveItem(at: localURL!, to: destinationURL)
                     print("Finished receiving resource")
                     try Globals.globals.importedMap = UIImage(named: resourceName)
+                    try Globals.globals.compressedMap = Globals.globals.compressImage(image: Globals.globals.importedMap)
                     print("Done setting imported map")
                 } catch {
                     print("[Error] \(error)")

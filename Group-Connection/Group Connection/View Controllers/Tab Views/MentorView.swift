@@ -69,26 +69,6 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
         }
     }
     
-    
-    @IBAction func leaveYVenue(_ sender: Any) {
-        
-//        dumb = !dumb
-//        if dumb {
-//            testImage.image = #imageLiteral(resourceName: "download (1)")
-//        }
-//        else{
-//            testImage.image = UIImage(named: "importedMap")
-//            //testImage.image = UIImage(data: FileManager.default.contents(atPath: Globals.globals.documentsDirectory))
-//
-//        }
-    }
-    
-    
-    
-    
-    
-    
-    
     @IBAction func composeMessage(_ sender: Any) {
         //stub
         

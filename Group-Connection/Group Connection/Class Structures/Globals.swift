@@ -47,8 +47,7 @@ class Globals {
         importedMap = nil
         importedMapName = ""
         compressedMap = nil
-        
-        
+          
     }
     
     func getStudents() -> [Person] {
