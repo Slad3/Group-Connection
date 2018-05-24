@@ -110,8 +110,9 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
                     //print("fraction = " + String(temp))
                     progBar.setProgress(temp, animated: true)
                 }
+                print(Globals.globals.receivedEvent)
             }
-            else{
+            if(Globals.globals.receivedEvent){
                 print("Finished Download")
                 performSegue(withIdentifier: "To Main", sender: nil)
             }

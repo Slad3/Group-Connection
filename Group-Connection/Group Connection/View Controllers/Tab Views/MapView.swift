@@ -98,7 +98,7 @@ class MapView: Sub, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
         centerMapOnLocation(location: initialLocation ?? CLLocation(latitude: 44.821152, longitude: -93.120435))
         
-        importMap.image = UIImage(data: Globals.globals.compressedMap)
+        importMap.image = Globals.globals.event.importedMap
         
         let presser = UILongPressGestureRecognizer(target: self, action: #selector(swapMaps(_:)))
         presser.minimumPressDuration = 0.33
