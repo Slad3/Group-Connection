@@ -101,12 +101,13 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
 
             var temp: Float = 0.0
-            if(!Globals.globals.manager.until.isFinished){
-                while(true){
-                    print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
-                    print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
+            if(!Globals.globals.receivedEvent){
+                while(!Globals.globals.receivedEvent){
+                    print("loading")
+                    //print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
+                    //print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
                     temp = Float((1 + Globals.globals.manager.until.completedUnitCount)/(1 + Globals.globals.manager.until.totalUnitCount) )
-                    print("fraction = " + String(temp))
+                    //print("fraction = " + String(temp))
                     progBar.setProgress(temp, animated: true)
                 }
             }

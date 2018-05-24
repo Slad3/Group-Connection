@@ -66,6 +66,7 @@ UINavigationControllerDelegate {
             event.generalAccessCode = generalAccessCode.text!
             event.groupName = groupName.text!
             Globals.globals.importedMap = mapView.image
+            event.importedMap = UIImage(data: Globals.globals.compressedMap)
             
             Globals.globals.event = event
             
