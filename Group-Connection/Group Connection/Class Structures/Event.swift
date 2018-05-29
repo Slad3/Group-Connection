@@ -20,6 +20,7 @@ class Event {
     var checkInLength: Double //minutes until required check-in
     var timeTillNotification: Double //minutes in between reminders to check in
     var groupName: String //Name of the Group
+    var complete: Bool
     
 
     
@@ -39,6 +40,7 @@ class Event {
         timeTillNotification = -1.0
         groupName = ""
         creator = user
+        complete = false
         return
     }
 
@@ -53,6 +55,7 @@ class Event {
         checkInLength = event.checkInLength
         timeTillNotification = event.timeTillNotification
         groupName = event.groupName
+        complete = event.complete
         
         return
     }
@@ -70,6 +73,7 @@ class Event {
         var checkInLength: Double //minutes until required check-in
         var timeTillNotification: Double //minutes in between reminders to check in
         var groupName: String //Name of the Group
+        var complete: Bool
         
         init(_ evint: Event){
             
@@ -100,6 +104,7 @@ class Event {
             checkInLength = evint.checkInLength//minutes until required check-in
             timeTillNotification = evint.timeTillNotification //minutes in between reminders to check in
             groupName = evint.groupName //Name of the Group
+            complete = evint.complete
             
         }
     }

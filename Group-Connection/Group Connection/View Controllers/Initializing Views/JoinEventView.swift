@@ -99,23 +99,36 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         
         if(connectedToSession){
             Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
-
+            
             var temp: Float = 0.0
-            if(!Globals.globals.receivedEvent){
-                while(!Globals.globals.receivedEvent){
-                    print("loading")
-                    //print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
-                    //print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
-                    temp = Float((1 + Globals.globals.manager.until.completedUnitCount)/(1 + Globals.globals.manager.until.totalUnitCount) )
-                    //print("fraction = " + String(temp))
-                    progBar.setProgress(temp, animated: true)
-                }
-                print(Globals.globals.receivedEvent)
+            var p = 0.0
+            var q = 1.0
+            while(!Globals.globals.event.complete){
+                temp = Float((p)/(q) )
+                progBar.setProgress(temp, animated: true)
+                p + 0.01
+                
             }
-            if(Globals.globals.receivedEvent){
-                print("Finished Download")
-                performSegue(withIdentifier: "To Main", sender: nil)
-            }
+            performSegue(withIdentifier: "To Main", sender: nil)
+            
+            
+            
+//            var temp: Float = 0.0
+//            if(!Globals.globals.receivedEvent){
+//                while(!Globals.globals.receivedEvent){
+//                    print("loading")
+//                    //print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
+//                    //print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
+//                    temp = Float((1 + Globals.globals.manager.until.completedUnitCount)/(1 + Globals.globals.manager.until.totalUnitCount) )
+//                    //print("fraction = " + String(temp))
+//                    progBar.setProgress(temp, animated: true)
+//                }
+//                print(Globals.globals.receivedEvent)
+//            }
+//            if(Globals.globals.receivedEvent){
+//                print("Finished Download")
+//                performSegue(withIdentifier: "To Main", sender: nil)
+//            }
             
         }
     }
