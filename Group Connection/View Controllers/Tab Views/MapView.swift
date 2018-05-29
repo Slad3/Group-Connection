@@ -97,8 +97,8 @@ class MapView: Sub, CLLocationManagerDelegate {
         let initialLocation = locationManager.location
         mapView.showsUserLocation = true
         centerMapOnLocation(location: initialLocation ?? CLLocation(latitude: 44.821152, longitude: -93.120435))
-        var bibbity = UIImage(named: "download (1)")
         
+        var bibbity = UIImage(named: "download (1)")
         if Globals.globals.event != nil {
             bibbity = Globals.globals.event.importedMap
         }
@@ -119,6 +119,7 @@ class MapView: Sub, CLLocationManagerDelegate {
     @objc func doStuff() {
         tempLabel.text = ""
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)

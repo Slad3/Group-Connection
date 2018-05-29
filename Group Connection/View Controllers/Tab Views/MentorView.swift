@@ -23,7 +23,8 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
     @IBOutlet weak var leaveVenue: UIButton!
     @IBOutlet weak var accessCode: UILabel!
     @IBOutlet weak var table: UITableView!
-
+    @IBOutlet weak var temp: UILabel!
+    
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
     
@@ -237,6 +238,17 @@ class MentorView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource, 
     //lower any keyboards when the user taps anywhere besides a text box
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    @objc func doStuff() {
+        temp.text = ""
+        print("ran")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        table.reloadData()
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)
     }
 }
 

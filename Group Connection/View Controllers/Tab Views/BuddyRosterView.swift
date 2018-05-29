@@ -17,7 +17,7 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
     @IBOutlet weak var scroller: UIScrollView! //the superview for the table
     
     var data: [Person] = Globals.globals.teamRoster.filter({(person: Person) -> Bool in
-        if Globals.globals.user.buddyList.contains(person) {
+        if Globals.globals.user.buddyList.contains(person) || person == Globals.globals.user{
             return false
         }
         return true
@@ -31,7 +31,12 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
         searchBar.delegate = self
         table.dataSource = self
         filterD = data
+                
         constrain()
+        
+        if Globals.globals.user.buddyList.count > 2 {
+            titleBar.text = "You got too many buddies. Please press back and "
+        }
     }
     
     // tells how many cells you want to have in the roster. This will be the number of people at the competition
@@ -93,15 +98,35 @@ class BuddyRosterView: Sub, UITableViewDelegate, UITableViewDataSource, UISearch
             snap.leading.equalTo(10)
             snap.trailing.equalTo(-10)
         }
+
+        print(scroller.center)
+        print(table.center)
+        
         scroller.snp.makeConstraints { (snap) -> Void in
-            snap.leading.equalTo(10)
-            snap.trailing.equalTo(-10)
+            print("constraining scroller")
+//            snap.top.equalTo(searchBar.snp.bottomMargin)
+//            snap.leading.equalTo(10)
+//            snap.trailing.equalTo(-10)
+//            snap.centerX.equalTo(view.snp.centerX)
+            snap.center.equalTo(view.snp.center)
         }
-//        table.snp.makeConstraints { (snap) -> Void in
+
+        print(scroller.center)
+        print(table.center)
+        
+        table.snp.makeConstraints { (snap) -> Void in
+//            snap.leading.equalTo(10)
+            print("constraining table")
+            snap.trailing.equalTo(10)
+
 //            snap.top.equalTo(searchBar.snp.bottomMargin)
 //            snap.centerX.equalTo(self.view.snp.centerX)
 //            snap.bottom.equalTo(self.view.snp.bottomMargin)
-//        }
+        }
+        
+        print(scroller.center)
+        print(table.center)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

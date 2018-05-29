@@ -20,6 +20,8 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
     @IBOutlet weak var groupMessage: UIButton!
     @IBOutlet weak var changeBuddy: UIButton!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var buddyLabel: UILabel!
+    @IBOutlet weak var temp: UILabel!
     
     var rotation: CGFloat = 0
     var rotate = UIGestureRecognizer()
@@ -126,7 +128,13 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
 
     
     @IBAction func changeBuddies(_ sender: Any) {
-        performSegue(withIdentifier: "ToBuddyRoster", sender: nil)
+        if data.count < 3 {
+            performSegue(withIdentifier: "ToBuddyRoster", sender: nil)
+            return
+        }
+        
+        //else
+        buddyLabel.text = "Delete a buddy first."
     }
     
     private func panic() {
@@ -167,6 +175,7 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         // Do any additional setup after loading the view, typically from a nib.
         table.delegate = self
         table.dataSource = self
+        table.isScrollEnabled = false
         
         table.reloadData()
         
@@ -186,8 +195,14 @@ class CheckInView: Sub, UNUserNotificationCenterDelegate, UITableViewDataSource,
         }
     }
     
+    @objc func doStuff() {
+        temp.text = ""
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
         table.reloadData()
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)
     }
     
     override func didReceiveMemoryWarning() {
