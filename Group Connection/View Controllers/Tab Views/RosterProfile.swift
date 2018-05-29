@@ -7,8 +7,9 @@
 
 import Foundation 
 import UIKit
+import MessageUI
 
-class RosterProfileView: UIViewController {
+class RosterProfileView: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     @IBOutlet weak var rFullName: UILabel!
@@ -26,10 +27,46 @@ class RosterProfileView: UIViewController {
         performSegue(withIdentifier: "To Main Tab", sender: nil)
     }
     
+    @IBAction func makeACall(_ sender: Any) {
+        let url:NSURL = NSURL(string: "tel://" + user.phoneNumber)!
+        UIApplication.shared.openURL(url as URL)
+    }
+    
+    var user: Person!
+    
+    @IBAction func sendAnEmail(_ sender: Any) {
+        
+        if !MFMailComposeViewController.canSendMail() {
+            print("Mail services are not available")
+            return
+        }
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.setToRecipients([user.email])
+        composeVC.setSubject("Hello!")
+        composeVC.setMessageBody("Hello from California!", isHTML: false)
+        
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+        
+        func mailComposeController(controller: MFMailComposeViewController,
+                                   didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+            // Check the result or perform other tasks.
+            
+            // Dismiss the mail compose view controller.
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
+
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let user = Globals.globals.teamRoster[Globals.globals.selectedIndex]
+        user = Globals.globals.teamRoster[Globals.globals.selectedIndex]
         
         rFullName.text = user.fullName
         rSubteam.text = "Subteam: " + user.subteam

@@ -773,6 +773,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;- Rotate with two fingers to activate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70W-RK-zst">
+                                <rect key="frame" x="292" y="203" width="83" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -780,10 +787,12 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Check In" id="t5g-gy-mz3"/>
                     <connections>
+                        <outlet property="buddyLabel" destination="WbN-CJ-yLN" id="QSW-e6-gKG"/>
                         <outlet property="changeBuddy" destination="1tD-JU-qem" id="7y5-xc-7hK"/>
                         <outlet property="checkInLabel" destination="Rsh-c1-syW" id="tGI-h5-HxS"/>
                         <outlet property="groupMessage" destination="xiK-Dy-eMf" id="cWb-qv-gd0"/>
                         <outlet property="table" destination="xEM-en-bMc" id="Qhu-iW-U55"/>
+                        <outlet property="temp" destination="70W-RK-zst" id="3Xg-c3-dPI"/>
                         <outlet property="timeDisplay" destination="Rsh-c1-syW" id="UPS-KX-epV"/>
                         <outlet property="timeSinceLabel" destination="uJO-nN-3v7" id="KrK-5p-ucK"/>
                         <outlet property="userView" destination="eja-Sy-gq7" id="Jff-y8-XZx"/>
@@ -975,6 +984,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-l9-zCf">
+                                <rect key="frame" x="278" y="402" width="81" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeACall:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="dEM-HJ-5xv"/>
+                                    <action selector="sendAnEmail:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="nlE-Ey-h7f"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subteam:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bru-Pg-Ovw">
                                 <rect key="frame" x="208" y="64" width="151" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1003,6 +1024,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlZ-qH-642">
+                                <rect key="frame" x="278" y="337" width="81" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Call">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeACall:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="w4L-Oi-Nle"/>
+                                    <action selector="sendAnEmail:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="dwU-zb-WrE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1192,6 +1225,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-vt-fVr">
+                                <rect key="frame" x="278" y="384" width="81" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Call">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeACall:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="iPL-wl-Cix"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWG-Tc-mbh">
+                                <rect key="frame" x="280" y="442" width="81" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeACall:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="QQl-eh-x0F"/>
+                                    <action selector="sendAnEmail:" destination="LUV-YT-ZAB" eventType="touchUpInside" id="1Qz-T8-mPq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1357,6 +1413,13 @@
                                     <action selector="changeBuddies:" destination="cEp-ny-NHH" eventType="touchUpInside" id="cCH-QW-iif"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;- Rotate with two fingers to activate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IS-iw-KIV">
+                                <rect key="frame" x="296" y="205" width="83" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -1372,6 +1435,7 @@
                         <outlet property="groupMessage" destination="GW6-Xh-Q4o" id="SxX-AM-J4m"/>
                         <outlet property="leaveVenue" destination="GpQ-2k-20a" id="8Cf-i2-cFi"/>
                         <outlet property="table" destination="Rhd-Qa-Shx" id="Gua-su-u4f"/>
+                        <outlet property="temp" destination="7IS-iw-KIV" id="tlY-Ze-vcO"/>
                         <outlet property="timeEditor" destination="OS1-kK-8Ml" id="Gpq-mc-Ueo"/>
                         <outlet property="timeSinceLabel" destination="hPz-Aj-O9K" id="PlV-KP-OEr"/>
                         <outlet property="userView" destination="ln0-tU-IDa" id="az4-cE-ENA"/>
@@ -1625,7 +1689,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ecS-Qb-DrJ"/>
-        <segue reference="rGk-wa-hiI"/>
+        <segue reference="4W6-x3-iUW"/>
         <segue reference="haS-TD-5Sn"/>
     </inferredMetricsTieBreakers>
 </document>
