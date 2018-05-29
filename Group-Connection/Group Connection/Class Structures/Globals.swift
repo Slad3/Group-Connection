@@ -13,7 +13,6 @@ class Globals {
     static let globals: Globals! = Globals()
     
     var initialized, inEvent: Bool
-    var isMentor: Bool
     var hasStoredData = UserDefaults.standard.bool(forKey: "hasStoredData")
     //public var session: MCSession!
     var user: Person!
@@ -21,12 +20,13 @@ class Globals {
     var event: Event!
     var teamRoster: [Person]
     var selectedIndex: Int!
-    var notificationCentre = NotificationCenter.default
     var passingData: (String, String, String, String, String )
     var isCreator = false
     var receivedEvent = false
     var importedMap: UIImage!
     var importedMapName: String
+    var compressedMap: Data!
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     
     var visitedRoster: Bool = false
@@ -37,15 +37,14 @@ class Globals {
     init() {
         initialized = false
         inEvent = false
-        isMentor = false
         hans = Person(firstName: "colonel hans", lastName: "landa", isMentor: false, age: 37, email: "myPipeIsBiggerThanYours@aol.com", phoneNumber: "9493781933", additionalNotes: "bwahahaha", ssubteam: "the jew hunter")
         hans.checkInStatus = true
         teamRoster = [hans]
         passingData = ("", "", "", "", "")
         importedMap = nil
         importedMapName = ""
-        
-        
+        compressedMap = nil
+          
     }
     
     func getStudents() -> [Person] {
@@ -237,6 +236,59 @@ class Globals {
         }
         
     }
+    
+        
+        func compressImage(image: UIImage) -> Data {
+            // Reducing file size to a 10th
+            
+            var actualHeight : CGFloat = image.size.height
+            var actualWidth : CGFloat = image.size.width
+            var maxHeight : CGFloat = 1136.0
+            var maxWidth : CGFloat = 640.0
+            var imgRatio : CGFloat = actualWidth/actualHeight
+            var maxRatio : CGFloat = maxWidth/maxHeight
+            var compressionQuality : CGFloat = 0.5
+            
+            if (actualHeight > maxHeight || actualWidth > maxWidth){
+                if(imgRatio < maxRatio){
+                    //adjust width according to maxHeight
+                    imgRatio = maxHeight / actualHeight
+                    actualWidth = imgRatio * actualWidth
+                    actualHeight = maxHeight
+                }
+                else if(imgRatio > maxRatio){
+                    //adjust height according to maxWidth
+                    imgRatio = maxWidth / actualWidth
+                    actualHeight = imgRatio * actualHeight
+                    actualWidth = maxWidth
+                }
+                else{
+                    actualHeight = maxHeight
+                    actualWidth = maxWidth
+                    compressionQuality = 1
+                }
+            }
+            
+            //var rect = CGRect(0.0, 0.0, actualWidth, actualHeight)
+            var rect = CGRect(x: 0.0, y: 0.0, width: actualWidth, height: actualHeight)
+            UIGraphicsBeginImageContext(rect.size)
+            image.draw(in: rect)
+            var img = UIGraphicsGetImageFromCurrentImageContext()
+            let imageData = UIImageJPEGRepresentation(img!, compressionQuality)
+            UIGraphicsEndImageContext()
+            
+            return imageData!
+        }
+        
+
+    
+    
+
+        
+        
+        
+        
+        
     
  
     

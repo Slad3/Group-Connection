@@ -65,7 +65,7 @@ UINavigationControllerDelegate {
             event.checkInLength = checkInLength.value
             event.generalAccessCode = generalAccessCode.text!
             event.groupName = groupName.text!
-            event.importedMap = mapView.image
+            Globals.globals.importedMap = mapView.image
             
             Globals.globals.event = event
             
@@ -163,9 +163,30 @@ UINavigationControllerDelegate {
 
         mapView.contentMode = .scaleAspectFit
         mapView.image = chosenImage
+        var temp = Globals.globals.compressImage(image: chosenImage)
+        Globals.globals.compressedMap = temp
+        
+
+        let fileName = "importedMap.jpg"
+
+        let fileURL = Globals.globals.documentsDirectory.appendingPathComponent(fileName)
+        // get your UIImage jpeg data representation and check if the destination file url already exists
+        if let dataj = Globals.globals.compressedMap {
+            !FileManager.default.fileExists(atPath: fileURL.path)
+            do {
+                // writes the image data to disk
+                try dataj.write(to: fileURL)
+                print("file saved")
+            } catch {
+                print("error saving file:", error)
+            }
+        }
+        
         
         dismiss(animated:true, completion: nil)
     }
+    
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

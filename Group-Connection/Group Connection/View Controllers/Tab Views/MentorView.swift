@@ -22,11 +22,13 @@ class MentorView: Sub, UNUserNotificationCenterDelegate {
     @IBOutlet weak var changeBuddy: UIButton!
     @IBOutlet weak var leaveVenue: UIButton!
     @IBOutlet weak var accessCode: UILabel!
+    @IBOutlet weak var testImage: UIImageView!
     
     var rotation: CGFloat = 0
     var rotate = UIRotationGestureRecognizer()
     var textBox: UITextField!
     var students: [Person]!
+    var dumb = true
     
     @objc func leaveVenue(_: Any) {
         //stub

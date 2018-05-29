@@ -66,17 +66,13 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
         }
-        print("Finished View Did Load")
         progBar.setProgress(0, animated: true)
         
-    }
     
-    public func move() {
-        performSegue(withIdentifier: "To Main", sender: nil)
     }
-    
     
     @IBAction func FindSessions(_ sender: Any) {
+        
         
         print("Start Function")
         
@@ -103,22 +99,19 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         
         if(connectedToSession){
             Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
-            
-            
+
             var temp: Float = 0.0
-            
             if(!Globals.globals.manager.until.isFinished){
                 while(true){
                     print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
                     print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
                     temp = Float((1 + Globals.globals.manager.until.completedUnitCount)/(1 + Globals.globals.manager.until.totalUnitCount) )
                     print("fraction = " + String(temp))
-                    print(Globals.globals.manager.until.isFinished)
                     progBar.setProgress(temp, animated: true)
-                    
                 }
             }
             else{
+                print("Finished Download")
                 performSegue(withIdentifier: "To Main", sender: nil)
             }
             
