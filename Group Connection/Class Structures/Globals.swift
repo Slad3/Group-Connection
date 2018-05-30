@@ -27,6 +27,7 @@ class Globals {
     var importedMapName: String
     var compressedMap: Data!
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    var checkInTime: Double = 0
     
     
     var visitedRoster: Bool = false

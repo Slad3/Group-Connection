@@ -1123,7 +1123,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2118" y="-495"/>
+            <point key="canvasLocation" x="2633" y="-500"/>
         </scene>
         <!--Profile-->
         <scene sceneID="kWB-Sv-Rgl">
@@ -1688,6 +1688,7 @@
         <image name="zucc.jpg" width="1280" height="720"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ffn-MX-CXB"/>
         <segue reference="ecS-Qb-DrJ"/>
         <segue reference="4W6-x3-iUW"/>
         <segue reference="haS-TD-5Sn"/>

@@ -197,7 +197,6 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     }
     
     // Start receiving a resource from remote peer.
-    @available(iOS 11.0, *)
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
         until = progress
         print("Receiving Resource")
