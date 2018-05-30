@@ -85,7 +85,7 @@ class MapView: Sub, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus != .authorizedWhenInUse {
             //if they haven't given permission already
@@ -98,12 +98,7 @@ class MapView: Sub, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
         centerMapOnLocation(location: initialLocation ?? CLLocation(latitude: 44.821152, longitude: -93.120435))
         
-        var bibbity = UIImage(named: "download (1)")
-        if Globals.globals.event != nil {
-            bibbity = Globals.globals.event.importedMap
-        }
-        
-        importMap.image = bibbity 
+        importMap.image = Globals.globals.event.importedMap
         
         let presser = UILongPressGestureRecognizer(target: self, action: #selector(swapMaps(_:)))
         presser.minimumPressDuration = 0.33
@@ -114,12 +109,11 @@ class MapView: Sub, CLLocationManagerDelegate {
         checkForIns()
     }
     
-
+    
     
     @objc func doStuff() {
         tempLabel.text = ""
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(doStuff), userInfo: nil, repeats: false)

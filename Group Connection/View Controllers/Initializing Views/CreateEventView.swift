@@ -25,18 +25,18 @@ UINavigationControllerDelegate {
     @IBOutlet weak var mapView: UIImageView!
     
     @IBOutlet weak var mistakeLabel: UILabel!
-
+    
     var imageWasTapped = false
     var checkInNumber: Int = 60
     let picker = UIImagePickerController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         picker.delegate = self
         
-
+        
     }
     
     @IBAction func changeCheckInLength(_ sender: Any) {
@@ -47,13 +47,13 @@ UINavigationControllerDelegate {
     @IBAction func back(_ sender: Any) {
         //performSegue(withIdentifier: "To Join or Create", sender: nil)
     }
-
+    
     @IBAction func makeGeneralCode(_ sender: Any) {
         //generalAccessCode.text = Event.makeCode()
         generalAccessCode.text = "asdf"
     }
     
-
+    
     @IBAction func makeEvent(_ sender: Any) {
         if checkInputs() {
             
@@ -65,23 +65,17 @@ UINavigationControllerDelegate {
             event.checkInLength = checkInLength.value
             event.generalAccessCode = generalAccessCode.text!
             event.groupName = groupName.text!
-            event.importedMap = mapView.image
+            Globals.globals.importedMap = mapView.image
+            event.importedMap = UIImage(data: Globals.globals.compressedMap)
+            event.complete = true
             
             Globals.globals.event = event
             
-            //temp here; delete this eventually 
-            //performSegue(withIdentifier: "To Main Tab", sender: nil)
-            //temp here
-
-
             let accessCodeThing = event.generalAccessCode
-            //accessCodeThing = "accessCode"
-
+            
             let fullName = Globals.globals.user.firstName + " " + Globals.globals.user.lastName
             Globals.globals.isCreator = true
-            print(Globals.globals.isCreator)
             Globals.globals.passingData = (accessCodeThing, groupName.text!, event.eventName, fullName, "discription")
-            print("Doing Segue")
             performSegue(withIdentifier: "To Main Tab", sender: nil)
         }
             
@@ -89,7 +83,7 @@ UINavigationControllerDelegate {
             mistakeLabel.text = "Please input all values correctly before proceeding."
         }
     }
-
+    
     //check all inputs
     func checkInputs() -> Bool {
         return true
@@ -145,13 +139,48 @@ UINavigationControllerDelegate {
         present(picker, animated: true, completion: nil)
     }
     
+    @IBAction func autoFill(_ sender: Any) {
+        
+        generalAccessCode.text = "asdf"
+        eventName.text = "EvEnT NamE"
+        groupName.text = "GrOuP NamE hehehehe"
+        
+        
+    }
+    
+    
+    
     @objc func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage 
+                                     didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //Globals.globals.importedMapName = (info[UIImagePickerControllerOriginalImage]?.displayName)!
+        
         mapView.contentMode = .scaleAspectFit
         mapView.image = chosenImage
+        var temp = Globals.globals.compressImage(image: chosenImage)
+        Globals.globals.compressedMap = temp
+        
+        
+        let fileName = "importedMap.jpg"
+        
+        let fileURL = Globals.globals.documentsDirectory.appendingPathComponent(fileName)
+        // get your UIImage jpeg data representation and check if the destination file url already exists
+        if let dataj = Globals.globals.compressedMap {
+            !FileManager.default.fileExists(atPath: fileURL.path)
+            do {
+                // writes the image data to disk
+                try dataj.write(to: fileURL)
+                print("file saved")
+            } catch {
+                print("error saving file:", error)
+            }
+        }
+        
+        
         dismiss(animated:true, completion: nil)
     }
+    
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

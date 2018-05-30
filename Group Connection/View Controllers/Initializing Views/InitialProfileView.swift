@@ -81,9 +81,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     print("hans is a mentor now")
                 }
                 
-                Globals.globals.user.hasCheckIn = false
-
-                Globals.globals.user.profilePhoto = profilePhoto.image
+                
+                // Globals.globals.user.profilePhoto = #imageLiteral(resourceName: "download (1)")
                 
                 Globals.globals.teamRoster[0] = Globals.globals.user
                 
@@ -91,7 +90,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                 
                 Person.encodeEveryone()
                 Globals.globals.manager = Manager()
-
+                
                 
                 if Globals.globals.user.isMentor { //Action Sheet Stuff
                     let actionSheet = UIAlertController(title: "Join or Create", message: "Do you want to Create or Join a session?", preferredStyle: .actionSheet)
@@ -105,7 +104,14 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                         Person.encodeEveryone()
                         print("join event")
                         Globals.globals.inEvent = true
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        
+                        //Separates people so Nick can do his stuff without going through creating an event
+                        if Globals.globals.user.firstName == "Nick" && Globals.globals.user.lastName == "Burright"{
+                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                        }
+                        else{
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        }
                         //                        self.performSegue(withIdentifier: "To Join Event", sender: nil)
                     }))
                     
@@ -126,8 +132,15 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
                     let actionSheet = UIAlertController(title: "Join Event", message: "", preferredStyle: .actionSheet)
                     
                     actionSheet.addAction(UIAlertAction(title: "Join Event", style: .default, handler: { (action:UIAlertAction) in
-                        self.performSegue(withIdentifier: "toTabTemp", sender: nil)
-                        //self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        
+                        //Separates people so Nick can do his stuff without going through creating an event
+                        if Globals.globals.user.firstName == "Nick" && Globals.globals.user.lastName == "Burright"{
+                            self.performSegue(withIdentifier: "toTabTemp", sender: nil)
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        }
+                        else{
+                            self.performSegue(withIdentifier: "To Join Event", sender: nil)
+                        }
                     }))
                     
                     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -172,8 +185,8 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             phoneNumber.text = user?.phoneNumber
             email.text = user?.email
             additionalNotes.text = user?.additionalNotes
-            profilePhoto.image = user?.profilePhoto
-            
+            //profilePhoto.image = user?.profilePhoto
+            profilePhoto.image = #imageLiteral(resourceName: "download (1)")
             let sub = user?.subteam
             let pickerNum: Int! = subTeam.index(of: sub!) ?? 0
             subPicker.selectRow(pickerNum, inComponent: 0, animated: false)
@@ -249,7 +262,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIT
             print("no photo input")
             return false
         }
-
+        
         return true
     }
     

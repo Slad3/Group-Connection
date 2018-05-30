@@ -43,26 +43,10 @@ class TabBarView: UITabBarController, UITabBarControllerDelegate {
         
         if Globals.globals.isCreator {
             
-            //Globals.globals.manager.setupAdvertising(accessCode: Globals.globals.passingData.0)
-            
-            
-            print("Is Creator")
-            var service = false
-            
-            if (service){
-                let serviceBrowser = MCNearbyServiceBrowser(peer: Globals.globals.manager.peerid, serviceType: Globals.globals.passingData.0)
-                //serviceBrowser.delegate = Globals.globals.manager
-                print("Access Code: " + Globals.globals.passingData.0)
-                serviceBrowser.startBrowsingForPeers()
-                print("Advertising Started")
-                
-            }
-            else {
-                
                 Globals.globals.manager.advertisementHandler(code: Globals.globals.passingData.0)
                 
             }
-        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

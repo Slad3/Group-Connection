@@ -90,7 +90,7 @@ class RosterProfileView: UIViewController, MFMailComposeViewControllerDelegate {
         rPhone.text = "Phone: " + user.phoneNumber
         rEmail.text = "Email: " + user.email
         rAdditionalNotes.text = user.additionalNotes
-        rProfilePhoto.image = user.profilePhoto
+        //rProfilePhoto.image = user.profilePhoto
     }
     
     override func didReceiveMemoryWarning() {

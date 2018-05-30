@@ -93,7 +93,7 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     
     
     
-    //Delagate Stuff
+    //All Delagate Stuff
     
     public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState){
         print("Got to connection state")
@@ -139,9 +139,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
                     var lamp = Present(ident: "Send Event", evant: Globals.globals.event)
                     Globals.sendData(message: lamp, toPeer: peerID)
                     print("sent something")
-                    var fileURL = URL(fileURLWithPath: Globals.globals.documentsDirectory.relativePath, isDirectory: true)
-                    print(Globals.globals.importedMapName)
-                    Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
+//                    var fileURL = URL(fileURLWithPath: Globals.globals.documentsDirectory.relativePath, isDirectory: true)
+//                    print(Globals.globals.importedMapName)
+//                    Globals.globals.manager.session.sendResource(at: fileURL, withName: Globals.globals.importedMapName, toPeer: peerID, withCompletionHandler: nil)
                     print("Sent event and inital data")
                 break
                 
@@ -200,8 +200,9 @@ class Manager: NSObject, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCNea
     @available(iOS 11.0, *)
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress){
         until = progress
+        print("Receiving Resource")
         while(!progress.isFinished){
-            
+            print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
             print(progress.completedUnitCount/progress.totalUnitCount)
             
         }

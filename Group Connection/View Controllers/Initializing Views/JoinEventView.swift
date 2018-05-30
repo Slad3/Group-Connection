@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 import MultipeerConnectivity
+import MapKit
 
 class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     var accessCode: String = ""
     var creatorPeerid: MCPeerID!
     var connectedToSession = false
+    
     
     //var SessionMC: MCSession! Used for testing purposes
     
@@ -31,7 +33,10 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
     
     @IBOutlet weak var connectedOrNot: UILabel!
     
-    @IBOutlet weak var TellUser: UILabel!
+    //@IBOutlet weak var TellUser: UILabel!
+    
+    
+    @IBOutlet weak var progBar: UIProgressView!
     
     
     func updateTextFields(fg: String, en: String, cn: String, di: String, connectionThere: Bool) {
@@ -44,49 +49,30 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         if !connectedToSession {
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
-            TellUser.text = "Please find a session"
+            //TellUser.text = "Please find a session"
         }
             
         else {
             connectedOrNot.text = "Connected"
             connectedOrNot.backgroundColor = UIColor.green
-            TellUser.text = ""
+            //TellUser.text = ""
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Join Event View Loading")
-
-        
         if !connectedToSession{
             connectedOrNot.backgroundColor = UIColor.red
             connectedOrNot.text = "Not Connected"
         }
-       
-        
-
-
-        print("Finished View Did Load")
-    }
-    
-  /*  func checkAccessCode() -> Bool {
-        var good = false
-        if accessCodeBox.hasText {
-            for index in 0...accessCodeBox.text.count {
-                if
-                
-            }
-            
-            
-        }
+        progBar.setProgress(0, animated: true)
         
         
     }
-    */
     
     @IBAction func FindSessions(_ sender: Any) {
+        
         
         print("Start Function")
         
@@ -107,14 +93,46 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         self.present(browserView, animated: true, completion: nil)
     }
     
+    
+    
     @IBAction func forward(_ sender: Any) {
-        advance()
+        
+        if(connectedToSession){
+            Globals.sendData(message: Present(ident: "Send Initial Check", theCheck: Check(sender: Globals.globals.user, place: CLLocation(), description: "Inital Check")))
+            
+            var temp: Float = 0.0
+            var p = 0.0
+            var q = 1.0
+            while(!Globals.globals.event.complete){
+                temp = Float((p)/(q) )
+                progBar.setProgress(temp, animated: true)
+                p + 0.01
+                
+            }
+            performSegue(withIdentifier: "To Main", sender: nil)
+            
+            
+            
+            //            var temp: Float = 0.0
+            //            if(!Globals.globals.receivedEvent){
+            //                while(!Globals.globals.receivedEvent){
+            //                    print("loading")
+            //                    //print("Completed " + String(Globals.globals.manager.until.completedUnitCount))
+            //                    //print("Total     " + String(Globals.globals.manager.until.totalUnitCount))
+            //                    temp = Float((1 + Globals.globals.manager.until.completedUnitCount)/(1 + Globals.globals.manager.until.totalUnitCount) )
+            //                    //print("fraction = " + String(temp))
+            //                    progBar.setProgress(temp, animated: true)
+            //                }
+            //                print(Globals.globals.receivedEvent)
+            //            }
+            //            if(Globals.globals.receivedEvent){
+            //                print("Finished Download")
+            //                performSegue(withIdentifier: "To Main", sender: nil)
+            //            }
+            
+        }
     }
     
-    func advance(){
-        performSegue(withIdentifier: "To Main", sender: nil)
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -148,7 +166,8 @@ class JoinEventView: UIViewController, MCBrowserViewControllerDelegate {
         else{
             self.updateTextFields(fg: "The slajkdfGroup Name", en: "The asdfEvent Name", cn: "The asdfCreator Name", di: "The asdfDiscription", connectionThere: true)
         }
-
+        
         return true
     }
 }
+

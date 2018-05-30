@@ -44,6 +44,7 @@ class Globals {
         importedMap = nil
         importedMapName = ""
         compressedMap = nil
+        event = Event(user: Person())
           
     }
     
